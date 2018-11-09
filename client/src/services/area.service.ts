@@ -1,0 +1,66 @@
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from '../../node_modules/rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from '../environments/environment';
+
+const BASEURL = environment.BASEURL;
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AreaService {
+
+  constructor(private http: Http) { }
+
+
+  getArea(area) {
+   return this.http.get(`${BASEURL}/api/area/${area}`).pipe(map(res => {
+     const positionsArea = res.json();
+     return positionsArea;
+   }));
+ }
+
+ getEmployeesCount(area) {
+  return this.http.get(`${BASEURL}/api/area/${area}`).pipe(map(res => {
+    let employees = 0;
+    for (let i = 0; i < res.json().positions.length; i++) {
+      employees = employees + res.json().positions[i].Puestos.length;
+ }
+ const employeesArea = employees;
+ return employeesArea;
+}));
+}
+
+getVacancies(area) {
+  return this.http.get(`${BASEURL}/api/area/${area}`).pipe(map(res => {
+    let vacantes = 0;
+    for (let i = 0; i < res.json().positions.length; i++) {
+     vacantes = vacantes + res.json().positions[i].Vacantes.length;
+    }
+return vacantes;
+  }));
+}
+// getSalaryDist(area) {
+//   return this.http.get(`${BASEURL}/api/area/${area}`).pipe(map(res => {
+//     const employees = res.json();
+//     let salary1 = 0;
+//     let salary2 = 0;
+//     let salary3 = 0;
+//     let salary4 = 0;
+//     for (let i = 0; i < employees.jobs.length; i++) {
+//       if ((employees.jobs[i].ImportePuestoCE + employees.jobs[i].ImportePuestoCd + employees.jobs[i].Sbase) > 15000 && (employees.jobs[i].ImportePuestoCE + employees.puestos[i].ImportePuestoCd + employees.jobs[i].Sbase) < 20000) {
+//         salary1++;
+//       } else if ((employees.jobs[i].ImportePuestoCE + employees.jobs[i].ImportePuestoCd + employees.jobs[i].Sbase) > 20000 && (employees.jobs[i].ImportePuestoCE + employees.jobs[i].ImportePuestoCd + employees.jobs[i].Sbase) < 35000) {
+//         salary2++;
+//       } else if ((employees.jobs[i].ImportePuestoCE + employees.jobs[i].ImportePuestoCd + employees.jobs[i].Sbase) > 35000 && (employees.jobs[i].ImportePuestoCE + employees.jobs[i].ImportePuestoCd + employees.jobs[i].Sbase) < 50000) {
+//         salary3++;
+//       } else {
+//         salary4++;
+//       }
+//   }
+//   const SalaryDist = [salary1, salary2, salary3, salary4];
+//   return SalaryDist;
+// }));
+}
+

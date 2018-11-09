@@ -1,0 +1,18 @@
+<h2>{{position.position.FichaDPT.DenomPuesto}}</h2>
+<p> 'Usuario', hac clic en el icono correspondiente para ver la información que necesitas</p>
+<mat-grid-list cols="3" rowHeight="175px">
+    <mat-grid-tile>
+      <img src='../../../assets/images/tools.png' width="80px" href='#1' [routerLink]="['./dpt', position.position._id]">
+        <h6>DPT</h6>
+        </mat-grid-tile>
+    <mat-grid-tile>
+        <img src='../../../assets/images/growth.png' width="80px" href='#1' [routerLink]="['./vpt', position.position._id]">
+        <h6>VPT</h6>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <img src='../../../assets/images/networking.png' width="80px" href='#name' [routerLink]="['./rpt', position.position._id]">
+        <h6>PUESTOS</h6>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+        <router-outlet></router-outlet>

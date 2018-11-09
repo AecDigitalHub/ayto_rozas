@@ -1,0 +1,39 @@
+h4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  color: #3675ac;
+  font-weight: 500;
+}
+
+h6 {
+  text-align: center;
+  font-weight: 400;
+}
+
+.btn-outline-info {
+  background-color: transparent;
+  color: #1c5c8e;
+  border-color: #1c5c8e;
+}
+
+.btn-success {
+  background-color: #50BF9F;
+  border-color: #50BF9F;
+}
+
+.btn-danger {
+  background-color: #f16051;
+  border-color: #f16051;
+}
+
+.btn-primary {
+  background-color: #2E5C8A;
+  border-color: #2E5C8A;
+}
+
+
+.dpt-profile-container {
+  margin: 0 50px 0 50px;
+}

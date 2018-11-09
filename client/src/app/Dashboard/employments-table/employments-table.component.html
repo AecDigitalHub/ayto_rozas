@@ -1,0 +1,33 @@
+<mat-grid-list class="divider" cols="1" rowHeight="60px">
+    <mat-grid-tile class="divider">
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+  <input type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Buscar...">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Cód. DPT</th>
+            <th scope="col">Cód. Puesto</th>
+            <th scope="col">Área</th>
+            <th scope="col">Nombre Empleado</th>
+            <th scope="col">Salario Base</th>
+            <th scope="col">CD</th>
+            <th scope="col">CE</th>
+            <th scope="col"></th>
+  
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let job of jobs | filter : searchText" >
+            <td>{{job.CodDPT}}</td>
+            <td>{{job.CodEmpleado}}</td>
+            <td>{{job.Area}}</td>
+            <td>{{job.NombreEmpleado}}</td>
+            <td>{{job.Sbase}}</td>
+            <td>{{job.ImportePuestoCd}}</td>
+            <td>{{job.ImportePuestoCE}}</td>
+            <td><i class="fas fa-search-plus"></i></td>
+          </tr>
+        </tbody>
+      </table>

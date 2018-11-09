@@ -1,0 +1,15 @@
+.mat-card {
+  /* width: 33.3%; */
+  box-shadow: 3px 7px #e7e7e7;
+  padding: 30px;
+}
+
+h3 {
+  color: #314055;
+  font-weight: 700;
+}
+
+h4 {
+  font-weight: 300;
+  text-align: center;
+}

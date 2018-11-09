@@ -1,0 +1,32 @@
+<mat-grid-list class="divider" cols="1" rowHeight="60px">
+  <mat-grid-tile class="divider"></mat-grid-tile>
+</mat-grid-list>
+<input type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Buscar...">
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Cód. DPT</th>
+          <th scope="col">Denominación</th>
+          <th scope="col">Área</th>
+          <th scope="col">Colectivo</th>
+          <th scope="col">Forma Provisión</th>
+          <th scope="col">Nº Puestos</th>
+          <th scope="col">Nº Vacantes</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let position of positions | filter : searchText" >
+          <td>{{position.CodigoDPT}}</td>
+          <td>{{position.FichaDPT.DenomPuesto}}</td>
+          <td>{{position.FichaDPT.Area}}</td>
+          <td>{{position.FichaDPT.Colectivo}}</td>
+          <td>{{position.FichaDPT.FormaProvision}}</td>
+          <td>{{position.Puestos.length}}</td>
+          <td>{{position.Vacantes.length}} / {{position.Puestos.length}}</td>
+          <td><button type="button" href='#name' [routerLink]="['/Posicion', position._id]" class="btn btn-primary">
+            <i class="fas fa-search-plus"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+

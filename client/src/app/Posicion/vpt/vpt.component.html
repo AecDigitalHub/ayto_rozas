@@ -1,0 +1,74 @@
+<mat-grid-list class="divider" cols="1" rowHeight="30px">
+  <mat-grid-tile class="divider"></mat-grid-tile>
+</mat-grid-list>
+
+<mat-tab-group>
+  <mat-tab label="Complementos - Puntuación">
+    <mat-grid-list cols="1" rowHeight="30px">
+    </mat-grid-list>
+    <mat-grid-list cols="4" rowHeight="40px">
+      <mat-grid-tile>
+        <h4>Complemento</h4>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <h4>Grado</h4>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <h4>Puntos</h4>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button type="button" class="btn btn-primary">
+          <i class="fas fa-plus"></i> Añadir Complemento</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list *ngFor="let complemento of position.vpt.Complementos" cols="4" rowHeight="100px">
+      <mat-grid-tile>
+        <h6>{{complemento.Complemento}}</h6>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <h6>{{complemento.Grado}}</h6>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <h6>{{complemento.Puntos}}</h6>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button type="button" class="btn btn-success">
+          <i class="far fa-edit"></i> Editar </button>
+        <button type="button" class="btn btn-danger">
+          <i class="far fa-trash-alt"></i> Borrar </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+  <mat-tab label="Complementos - Retribución">
+    <div class="dpt-profile-container">
+     
+      <div class="row">
+        <div class="col">
+          <h4>Salario Base:</h4>{{position.retribucion.Sbase}} EUR.
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>Puesto CE:</h4>{{position.retribucion.PuestoCe}}
+        </div>
+        <div class="col">
+          <h4>Importe Puesto CE:</h4>{{position.retribucion.ImportePuestoCE}}
+        </div>
+      </div>
+      <div class="row">
+          <div class="col">
+            <h4>Puesto CD:</h4>{{position.retribucion.PuestoCD}}
+          </div>
+          <div class="col">
+            <h4>Importe Puesto CD:</h4>{{position.retribucion.ImportePuestoCd}}
+          </div>
+        </div>
+    </div>
+    <mat-grid-list cols="1" rowHeight="120px">
+        <mat-grid-tile>
+            <button type="button" class="btn btn-primary">
+                <i class="far fa-edit"></i> Editar </button>
+        </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+</mat-tab-group>

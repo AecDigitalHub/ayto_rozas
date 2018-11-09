@@ -1,0 +1,39 @@
+<mat-grid-list class="divider" cols="1" rowHeight="20px">
+  <mat-grid-tile class="divider"></mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="1" rowHeight="120px">
+  <mat-grid-tile>
+    <button type="button" class="btn btn-primary">
+      <i class="fas fa-plus"></i> Añadir Puesto</button>
+  </mat-grid-tile>
+</mat-grid-list>
+<input type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Buscar...">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Puesto</th>
+      <th scope="col">Denominación</th>
+      <th scope="col">Nombre Empleado</th>
+      <th scope="col">Situación</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let puesto of position.Puestos | filter : searchText">
+      <td>{{puesto.CodEmpleado}}</td>
+      <td>{{puesto.DenomPuesto}}</td>
+      <td>{{puesto.NombreEmpleado}}</td>
+      <td>{{puesto.Situacion}}</td>
+      <td>
+        <button type="button" class="btn btn-success">
+          <i class="far fa-edit"></i>
+        </button>
+        <button type="button" class="btn btn-danger">
+          <i class="far fa-trash-alt"></i>
+        </button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>

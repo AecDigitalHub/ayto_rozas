@@ -1,0 +1,67 @@
+h2 {
+  text-align: center;
+  font-weight: 700;
+}
+
+h4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  color: #3675ac;
+  font-weight: 500;
+}
+
+h6 {
+  text-align: center;
+  font-weight: 400;
+}
+
+mat-grid-tile {
+  text-align: center;
+}
+
+h5 {
+  text-align: center;
+  font-weight: 400;
+  margin: 0 50px 0 50px;
+}
+
+mat-card-title {
+  color: #3675ac;
+}
+
+.btn-outline-info {
+  background-color: transparent;
+  color: #1c5c8e;
+  border-color: #1c5c8e;
+}
+
+.btn-primary {
+  background-color: #2E5C8A;
+  border-color: #2E5C8A;
+}
+
+.btn-danger {
+  background-color: #f16051;
+  border-color: #f16051;
+}
+
+.dpt-profile-container {
+  margin: 0 50px 0 50px;
+}
+
+.list-group-item {
+  background-color: #F0F1F5;
+  border: 0px;
+}
+
+span{
+  margin-left: 40px;
+}
+
+.form-group>label:first-child, form .form-group>span:first-child {
+  color: #2E5C8A;
+  font-size: 0.7rem;
+  font-weight: 400;
+}

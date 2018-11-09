@@ -1,0 +1,69 @@
+mat-grid-list {
+margin: 0 20px 0 20px;  
+}
+
+mat-grid-tile {
+  background: #F0F1F5;
+  margin: 0;
+}
+
+.divider {
+  background-color: #F0F1F5;
+}
+
+h3 {
+  color: #314055;
+  font-weight: 500;
+  text-align: center;
+}
+
+.a {
+  color: #EAA842;
+  font-weight: 500;
+  text-align: center;
+}
+
+.b {
+  color: #395C87;
+  font-weight: 500;
+  text-align: center;
+}
+
+.c {
+  color: #C85034;
+  font-weight: 500;
+  text-align: center;
+}
+
+h4 {
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h5 {
+  margin-bottom: 20px;
+  color: #F5A51E;
+}
+
+mat-list {
+  width: 400px;
+}
+
+
+.mat-list-item-divider {
+  flex: 1 1 auto;
+}
+
+.label {
+  color: blue;
+}
+
+.mat-tab-group {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.mat-card {
+  width: 70%;
+}

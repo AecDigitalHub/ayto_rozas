@@ -1,0 +1,451 @@
+<mat-grid-list class="divider" cols="1" rowHeight="30px">
+  <mat-grid-tile class="divider"></mat-grid-tile>
+</mat-grid-list>
+
+<mat-tab-group>
+  <mat-tab label="Ficha">
+    <div class="dpt-profile-container">
+      <div class="row">
+        <div class="col">
+          <h4>Denominación Puesto:</h4>
+          {{ position.FichaDPT.DenomPuesto }}
+        </div>
+        <div class="col">
+          <h4>Cód. DPT:</h4>
+          {{ position.CodigoDPT }}
+        </div>
+      </div>
+      <div class="row">
+        <!-- <div class="col">
+          <h4>Órgano Directivo:</h4>
+          {{ position.FichaDPT.OrgDirectivo }}
+        </div>
+        <div class="col">
+          <h4>Concejalía</h4>
+          {{ position.FichaDPT.Concejalia }}
+        </div> -->
+        <div class="w-100"></div>
+        <div class="col">
+          <h4>Área</h4>
+          {{ position.FichaDPT.Area }}
+        </div>
+        <div class="col">
+          <h4>Unidad</h4>
+          {{ position.FichaDPT.Unidad }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>Escala:</h4>
+          {{ position.FichaDPT.Escala }}
+        </div>
+        <div class="col">
+          <h4>Subescala:</h4>
+          {{ position.FichaDPT.Subescala }}
+        </div>
+        <div class="col">
+          <h4>Categoría:</h4>
+          {{ position.FichaDPT.Categoria }}
+        </div>
+        <div class="col">
+          <h4>Grupo:</h4>
+          {{ position.FichaDPT.Grupo }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>Colectivo:</h4>
+          {{ position.FichaDPT.Colectivo }}
+        </div>
+        <div class="col">
+          <h4>Forma Provisión:</h4>
+          {{ position.FichaDPT.FormaProvision }}
+        </div>
+        <div class="col">
+          <h4>Tipo:</h4>
+          {{ position.FichaDPT.Tipo }}
+        </div>
+        <div class="col">
+          <h4>Nª Puestos Homogéneos:</h4>
+          {{ position.FichaDPT.NumPuestosHomog }}
+        </div>
+      </div>
+    </div>
+    <mat-grid-list cols="1" rowHeight="120px">
+      <mat-grid-tile>
+        <button type="button" class="btn btn-primary">
+          <i class="far fa-edit"></i> Editar Ficha
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+  <mat-tab label="Misión">
+    <div class="dpt-profile-container">
+      <h2>"</h2>
+      <h6>{{ position.Mision }}</h6>
+      <h2>"</h2>
+    </div>
+    <mat-grid-list cols="1" rowHeight="120px">
+      <mat-grid-tile>
+        <button type="button" class="btn btn-primary" (click)="MisionModal.open()">
+          <i class="far fa-edit"></i> Editar Misión
+        </button>
+        
+
+        <ngx-smart-modal identifier="MisionModal" #MisionModal>
+          <div class="modal-header">
+            <h5 class="modal-title">Editando Misión Posición: </h5>
+          </div>
+          <div class="modal-body">
+              <form>
+              <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Introduce cambios en la misión de esta posición:</label>
+                  <textarea class="form-control" [(ngModel)]="position.Mision" name="position.Mision " id="position.Mision " value="{{position.Mision}}"
+                  rows="6"></textarea>
+                </div>
+              </form>
+            </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="MisionModal.close()"
+            >
+              Cancelar
+            </button>
+            <button type="button" (click)= "editMision(position._id, position.Mision)" type="submit"class="btn btn-primary">Guardar cambios</button>
+          </div>
+        </ngx-smart-modal>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+  <mat-tab label="Funciones">
+    <div class="dpt-profile-container">
+      <ul class="list-group" *ngFor="let funcion of position.Funciones">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          - {{ funcion }} <span> <i class="far fa-trash-alt"></i> </span>
+        </li>
+      </ul>
+    </div>
+    <mat-grid-list cols="1" rowHeight="120px">
+      <mat-grid-tile>
+        <button type="button" class="btn btn-primary" (click)="FuncionModal.open()">
+          <i class="fas fa-plus"></i> Añadir Función
+        </button>      
+  
+          <ngx-smart-modal identifier="FuncionModal" #FuncionModal>
+            <div class="modal-header">
+              <h5 class="modal-title">Añadiendo nueva función a esta posición: </h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Nueva función:</label>
+                    <textarea class="form-control" [(ngModel)]="funcion" name="funcion " id="funcion " placeholder="Por favor, describe aquí la nueva función..." value=""
+                    rows="6"></textarea>
+                  </div>
+                </form>
+              </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                (click)="FuncionModal.close()"
+              >
+                Cancelar
+              </button>
+              <button type="button" class="btn btn-primary">Añadir Función</button>
+            </div>
+          </ngx-smart-modal>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+
+  <mat-tab label="Tareas">
+    <mat-grid-list cols="1" rowHeight="30px"> </mat-grid-list>
+    <mat-grid-list cols="4" rowHeight="40px">
+      <mat-grid-tile> <h4>Tarea</h4> </mat-grid-tile>
+      <mat-grid-tile> <h4>Resultados</h4> </mat-grid-tile>
+      <mat-grid-tile> <h4>Dedicación</h4> </mat-grid-tile>
+      <mat-grid-tile>
+        <button type="button" class="btn btn-primary">
+          <i class="fas fa-plus"></i> Añadir Tarea
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list
+      *ngFor="let tarea of position.Tareas"
+      cols="4"
+      rowHeight="100px"
+    >
+      <mat-grid-tile>
+        <h6>{{ tarea.TipoTarea }}</h6>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <h6>{{ tarea.Resultado }}</h6>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <h6>{{ tarea.TiempoDedic }}</h6>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button type="button" class="btn btn-danger">
+          <i class="far fa-trash-alt"></i> Borrar
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+
+  <mat-tab label="Conocimientos - Experiencia">
+    <div class="dpt-profile-container">
+      <div class="row">
+        <div class="col">
+          <h4>Nivel Formación Reglada:</h4>
+          {{ position.ConocExper.FormReglada.Nivel }}
+        </div>
+        <div class="col">
+          <h4>Título:</h4>
+          {{ position.ConocExper.FormReglada.Titulo }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>Actividad/Experiencia Previa:</h4>
+          {{ position.ExperPrevia.Actividad }}
+        </div>
+        <div class="col">
+          <h4>Tiempo/Duración:</h4>
+          {{ position.ExperPrevia.Tiempo }}
+        </div>
+      </div>
+    </div>
+    <mat-grid-list cols="1" rowHeight="120px">
+      <mat-grid-tile>
+        <button type="button" class="btn btn-primary">
+          <i class="far fa-edit"></i> Editar Conoc/Exper.
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+  <mat-tab label="Responsabilidad - Autonomía">
+    <div class="dpt-profile-container">
+      <div class="row">
+        <div class="col">
+          <h4>Dependencia Funcional:</h4>
+          {{ position.ResponsAut.DependFuncional }}
+        </div>
+        <div class="col">
+          <h4>Responsabilidad y/o Mando:</h4>
+          {{ position.ResponsAut.ResponsabilidadMando }}
+        </div>
+        <div class="col">
+          <h4>Subordinados:</h4>
+          {{ position.ResponsAut.Subordinados }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>Magnitud en la Toma de Decisiones:</h4>
+          {{ position.ResponsAut.MagnitDecisiones }}
+        </div>
+        <div class="col">
+          <h4>Guía y Orientación Recibidas</h4>
+          <ul *ngFor="let guia of position.ResponsAut.GuiaOrientRecibidas">
+            <li>{{ guia }}</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>Grado de Supervisión:</h4>
+          <ul *ngFor="let supervision of position.ResponsAut.GradoSuperv">
+            <li>{{ supervision }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <mat-grid-list cols="1" rowHeight="120px">
+      <mat-grid-tile>
+        <button type="button" class="btn btn-primary">
+          <i class="far fa-edit"></i> Editar Respons/Aut.
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+  <mat-tab label="Relaciones Funcionales">
+    <div class="dpt-profile-container">
+      <div class="row">
+        <div class="col">
+          <h4>Relaciones Internas:</h4>
+          <ul *ngFor="let interna of position.RelacFuncionales.RelInternas">
+            <li>{{ interna }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>Relaciones Externas:</h4>
+          <ul *ngFor="let externa of position.RelacFuncionales.RelExternas">
+            <li>{{ externa }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <mat-grid-list cols="1" rowHeight="120px">
+      <mat-grid-tile>
+        <button type="button" class="btn btn-primary">
+          <i class="far fa-edit"></i> Editar Relaciones
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+  <mat-tab label="Condiciones">
+    <div class="dpt-profile-container">
+      <div class="row">
+        <div class="col">
+          <h4>Dedicación:</h4>
+          {{ position.Condiciones.Dedicacion }}
+        </div>
+        <div class="col">
+          <h4>Dificultad Técnica:</h4>
+          {{ position.Condiciones.Dificultad }}
+        </div>
+        <div class="col">
+          <h4>Responsabilidad y/o Mando:</h4>
+          {{ position.Condiciones.Responsabilidad }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>Nocturnidad:</h4>
+          {{ position.Condiciones.Nocturnidad }}
+        </div>
+        <div class="col">
+          <h4>Turnicidad:</h4>
+          {{ position.Condiciones.Turnicidad }}
+        </div>
+        <div class="col">
+          <h4>Peligro y/o Penosidad:</h4>
+          {{ position.Condiciones.PeligrosidadPenosidad }}
+        </div>
+      </div>
+    </div>
+    <mat-grid-list cols="1" rowHeight="120px">
+      <mat-grid-tile>
+        <button type="button" class="btn btn-primary" (click)="CondicionesModal.open()">
+          <i class="far fa-edit"></i> Editar Condiciones
+        </button>
+
+        <ngx-smart-modal identifier="CondicionesModal" #CondicionesModal>
+          <div class="modal-header">
+            <h5 class="modal-title">Editando Condiciones Posición: </h5>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Dedicación</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.Condiciones.Dedicacion " name="position.Condiciones.Dedicacion " id="position.Condiciones.Dedicacion " value="{{position.Condiciones.Dedicacion }}"
+                      >
+                      <option></option>
+                        <option>Sí</option>
+                        <option>No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Dificultad</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.Condiciones.Dificultad " name="position.Condiciones.Dificultad " id="position.Condiciones.Dificultad " value="{{position.Condiciones.Dificultad }}"
+
+                      >
+                      <option></option>
+                        <option>Sí</option>
+                        <option>No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Responsabilidad</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.Condiciones.Responsabilidad " name="position.Condiciones.Responsabilidad" id="position.Condiciones.Responsabilidad " value="{{position.Condiciones.Responsabilidad }}"
+
+                      >
+                      <option></option>  
+                      <option>Sí</option>
+                        <option>No</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                        <div class="col-sm">
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1">Nocturnidad</label>
+                            <select
+                              class="form-control"
+                              [(ngModel)]="position.Condiciones.Nocturnidad " name="position.Condiciones.Nocturnidad " id="position.Condiciones.Nocturnidad " value="{{position.Condiciones.Nocturnidad }}"
+
+                            >                    
+                                    <option></option>
+                              <option>Sí</option>
+                              <option>No</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-sm">
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1">Turnicidad</label>
+                            <select
+                              class="form-control"
+                              [(ngModel)]="position.Condiciones.Turnicidad " name="position.Condiciones.Turnicidad " id="position.Condiciones.Turnicidad " value="{{position.Condiciones.Turnicidad }}"
+                              >
+                              
+                            <option></option>
+                            <option>Sí</option>
+                              <option>No</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-sm">
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1">Peligrosidad/Penosidad</label>
+                            <select
+                              class="form-control"
+                              [(ngModel)]="position.Condiciones.PeligrosidadPenosidad " name="position.Condiciones.PeligrosidadPenosidad " id="position.Condiciones.PeligrosidadPenosidad " value="{{position.Condiciones.PeligrosidadPenosidad }}"
+                            >
+                            <option></option>  
+                            <option>Sí</option>
+                              <option>No</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+               </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="CondicionesModal.close()"
+            >
+              Cancelar
+            </button>
+            <button type="button" (click)= "editCondiciones(position._id, position.Condiciones.Dedicacion, position.Condiciones.Dificultad, position.Condiciones.Responsabilidad, position.Condiciones.Nocturnidad, position.Condiciones.Turnicidad, position.Condiciones.PeligrosidadPenosidad)" type="submit" class="btn btn-primary" data-dismiss="modal">Guardar cambios</button>
+          </div>
+        </ngx-smart-modal>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+</mat-tab-group>
