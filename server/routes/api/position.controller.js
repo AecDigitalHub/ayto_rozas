@@ -96,6 +96,49 @@ router.put("/edit/condiciones/:id", (req, res, next) => {
     .catch(err => console.log(err));
 });
 
+router.put("/edit/ficha/:id", (req, res, next) => {
+  const {
+    DenomPuesto,
+    CodigoDPT,
+    Area,
+    Unidad,
+    Escala,
+    Subescala,
+    Categoria,
+    Grupo,
+    Colectivo,
+    FormaProvision,
+    Tipo,
+    NumPuestos
+  } = req.body;
+  let editedFicha = {
+    DenomPuesto: DenomPuesto,
+    CodigoDPT: CodigoDPT,
+    Area: Area,
+    Unidad: Unidad,
+    Escala: Escala,
+    Subescala: Subescala,
+    Categoria: Categoria,
+    Grupo: Grupo,
+    Colectivo: Colectivo,
+    FormaProvision: FormaProvision,
+    Tipo: Tipo,
+    NumPuestosHomog: NumPuestos
+  };
+  editedFicha = _.pickBy(editedFicha);
+  console.log(editedFicha);
+
+  dpt
+    .findByIdAndUpdate(
+      req.params.id,
+      { FichaDPT: editedFicha },
+      { new: true }
+    )
+    .then(position => res.status(200).json())
+    .catch(err => console.log(err));
+});
+
+
 router.put("/edit/mision/:id", (req, res, next) => {
   console.log(req.body);
   const { Mision } = req.body;

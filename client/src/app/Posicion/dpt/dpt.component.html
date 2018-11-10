@@ -336,14 +336,20 @@
             <button
               type="button"
               (click)="
-                editCondiciones(
+                editFicha(
                   position._id,
-                  position.Condiciones.Dedicacion,
-                  position.Condiciones.Dificultad,
-                  position.Condiciones.Responsabilidad,
-                  position.Condiciones.Nocturnidad,
-                  position.Condiciones.Turnicidad,
-                  position.Condiciones.PeligrosidadPenosidad
+                  position.FichaDPT.DenomPuesto,
+                  position.CodigoDPT,
+                  position.FichaDPT.Area,
+                  position.FichaDPT.Unidad,
+                  position.FichaDPT.Escala,
+                  position.FichaDPT.Subescala,
+                  position.FichaDPT.Categoria,
+                  position.FichaDPT.Grupo,
+                  position.FichaDPT.Colectivo,
+                  position.FichaDPT.FormaProvision,
+                  position.FichaDPT.Tipo,
+                  position.FichaDPT.NumPuestosHomog
                 )
               "
               type="submit"

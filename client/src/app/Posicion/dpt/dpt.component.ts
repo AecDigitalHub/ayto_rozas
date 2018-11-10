@@ -16,6 +16,7 @@ import { Http, Response } from '@angular/http';
 export class DPTComponent implements OnInit {
 positionId: String;
 position: Observable<any>;
+editedFicha: any;
 editedCondiciones: any;
 editedFunciones: any;
 editedMision: any;
@@ -34,6 +35,14 @@ ngOnInit() {
   console.log(this.position);
 });
 }
+editFicha(id, DenomPuesto, CodigoDPT, Area, Unidad, Escala, Subescala, Categoria, Grupo, Colectivo, FormaProvision, Tipo, NumPuestos) {
+  this.Edit.editFicha(id, DenomPuesto, CodigoDPT, Area, Unidad, Escala, Subescala, Categoria, Grupo, Colectivo, FormaProvision, Tipo, NumPuestos).subscribe(ficha => {
+    this.editedFicha = ficha;
+    this.PositionDPTView.getPosition(this.positionId).subscribe(Position => {
+      this.position = Position.position;
+  });
+  });
+  }
 editCondiciones(id, Dedicacion, Dificultad, Responsabilidad, Nocturnidad, Turnicidad, PeligrosidadPenosidad) {
 this.Edit.editCondiciones(id, Dedicacion, Dificultad, Responsabilidad, Nocturnidad, Turnicidad, PeligrosidadPenosidad).subscribe(condiciones => {
   this.editedCondiciones = condiciones;

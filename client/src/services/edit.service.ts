@@ -10,12 +10,23 @@ const BASEURL = environment.BASEURL;
   providedIn: 'root'
 })
 export class EditService {
+editedFicha: any;
 editedCondiciones: any;
 editedFunciones: any;
 editedMision: any;
 
   constructor(private http: Http) { }
 
+  editFicha(id, DenomPuesto, CodigoDPT, Area, Unidad, Escala, Subescala, Categoria, Grupo, Colectivo, FormaProvision, Tipo, NumPuestos) {
+    return this.http
+      .put(`${BASEURL}/api/positions/edit/ficha/${id}`, { id, DenomPuesto, CodigoDPT, Area, Unidad, Escala, Subescala, Categoria, Grupo, Colectivo, FormaProvision, Tipo, NumPuestos })
+      .pipe(map((res: Response) => {
+        let editedFicha = res.json();
+        return this.editedFicha;
+      }));
+  }
+  
+  
   editCondiciones(id, Dedicacion, Dificultad, Responsabilidad, Nocturnidad, Turnicidad, PeligrosidadPenosidad) {
     return this.http
       .put(`${BASEURL}/api/positions/edit/condiciones/${id}`, { id, Dedicacion, Dificultad, Responsabilidad, Nocturnidad, Turnicidad, PeligrosidadPenosidad })
