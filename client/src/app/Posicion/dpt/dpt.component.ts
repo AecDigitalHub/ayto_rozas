@@ -17,6 +17,7 @@ export class DPTComponent implements OnInit {
 positionId: String;
 position: Observable<any>;
 editedCondiciones: any;
+editedFunciones: any;
 editedMision: any;
 
   constructor(public PositionDPTView: PositionService, private route: ActivatedRoute, private router: Router, public Edit: EditService) { }
@@ -49,4 +50,21 @@ editMision(id, Mision) {
   });
   });
   }
+
+addFuncion(id, Funcion) {
+  this.Edit.addFuncion(id, Funcion).subscribe(funciones => {
+  this.editedFunciones = funciones;
+  this.PositionDPTView.getPosition(this.positionId).subscribe(Position => {
+  this.position = Position.position;
+});
+});
+}
+removeFuncion(id, Funcion) {
+  this.Edit.removeFuncion(id, Funcion).subscribe(funciones => {
+  this.editedFunciones = funciones;
+  this.PositionDPTView.getPosition(this.positionId).subscribe(Position => {
+  this.position = Position.position;
+});
+});
+}
 }

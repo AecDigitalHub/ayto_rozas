@@ -16,14 +16,16 @@
         </div>
       </div>
       <div class="row">
-        <!-- <div class="col">
-          <h4>Órgano Directivo:</h4>
-          {{ position.FichaDPT.OrgDirectivo }}
-        </div>
-        <div class="col">
-          <h4>Concejalía</h4>
-          {{ position.FichaDPT.Concejalia }}
-        </div> -->
+        <!--
+          <div class="col">
+            <h4>Órgano Directivo:</h4>
+            {{ position.FichaDPT.OrgDirectivo }}
+          </div>
+          <div class="col">
+            <h4>Concejalía</h4>
+            {{ position.FichaDPT.Concejalia }}
+          </div>
+        -->
         <div class="w-100"></div>
         <div class="col">
           <h4>Área</h4>
@@ -73,9 +75,285 @@
     </div>
     <mat-grid-list cols="1" rowHeight="120px">
       <mat-grid-tile>
-        <button type="button" class="btn btn-primary">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="FichaDPTModal.open()"
+        >
           <i class="far fa-edit"></i> Editar Ficha
         </button>
+        <ngx-smart-modal identifier="FichaDPTModal" #FichaDPTModal>
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Editando Ficha Posición: {{ position.FichaDPT.DenomPuesto }}
+            </h5>
+          </div>
+          <div class="modal-body">
+              <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                  <mat-grid-tile class="divider"></mat-grid-tile>
+                </mat-grid-list>
+            <form>
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1"
+                        >Denom. Puesto</label
+                      >
+                      <input
+                        class="form-control"
+                        [(ngModel)]="position.FichaDPT.DenomPuesto"
+                        name="position.FichaDPT.DenomPuesto "
+                        id="position.FichaDPT.DenomPuesto "
+                        value="{{position.FichaDPT.DenomPuesto }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Cód.DPT</label>
+                      <input
+                        class="form-control"
+                        [(ngModel)]="position.CodigoDPT"
+                        name="position.CodigoDPT "
+                        id="position.CodigoDPT"
+                        value="{{position.CodigoDPT }}"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Área</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.FichaDPT.Area"
+                        name="position.FichaDPT.Area"
+                        id="position.FichaDPT.Area"
+                        value="{{position.FichaDPT.Area}}"
+                      >
+                        <option>Hacienda</option>
+                        <option>Régimen Interior</option>
+                        <option>Recursos Humanos</option>
+                        <option>Economía y Empleo</option>
+                        <option>Admón. Electrónica</option>
+                        <option>Urbanismo</option>
+                        <option>Servicios a la Ciudad</option>
+                        <option>Espacios a la Ciudad</option>
+                        <option>Seguridad Ciudadana</option>
+                        <option>Sanidad</option>
+                        <option>Familia y Serv.Sociales</option>
+                        <option>Deportes</option>
+                        <option>Juventud</option>
+                        <option>Educación y Cultura</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Unidad</label>
+                      <input
+                        class="form-control"
+                        [(ngModel)]="position.FichaDPT.Unidad"
+                        name="position.FichaDPT.Unidad"
+                        id="position.FichaDPT.Unidad"
+                        value="{{position.FichaDPT.Unidad}}"
+                      />
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Escala</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.FichaDPT.Escala"
+                        name="position.FichaDPT.Escala"
+                        id="position.FichaDPT.Escala"
+                        value="{{position.FichaDPT.Escala}}"
+                      >
+                        <option>(AE) Administración Especial</option>
+                        <option>(AG) Administración General</option>
+                        <option>(HN) Habilitado Nacional</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Subescala</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.FichaDPT.Subescala"
+                        name="position.FichaDPT.Subescala"
+                        id="position.FichaDPT.Subescala"
+                        value="{{position.FichaDPT.Subescala}}"
+                      >
+                        <option>E: Entrada</option>
+                        <option>T: Técnica</option>
+                        <option>SE: Servicios Especiales</option>
+                        <option>AUX: Auxiliar</option>
+                        <option>ADV: Administrativa</option>
+                        <option>SUB: Subalterna</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Categoría</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.FichaDPT.Categoria"
+                        name="position.FichaDPT.Categoria"
+                        id="position.FichaDPT.Categoria"
+                        value="{{position.FichaDPT.Categoria}}"
+                      >
+                        <option>Intervención/Tesorería</option>
+                        <option>Superior</option>
+                        <option>Media</option>
+                        <option>Téc-Aux</option>
+                        <option>Admva</option>
+                        <option>Auxiliar</option>
+                        <option>Subalterna</option>
+                        <option>Policía Local</option>
+                        <option>Personal oficios</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Grupo</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.FichaDPT.Grupo"
+                        name="position.FichaDPT.Grupo"
+                        id="position.FichaDPT.Grupo"
+                        value="{{position.FichaDPT.Grupo}}"
+                      >
+                        <option>Grupo A: A1</option>
+                        <option>Grupo B: A2</option>
+                        <option>Grupo C: C1</option>
+                        <option>Grupo D: C2</option>
+                        <option
+                          >Grupo E: Otras agrupaciones profesionales sin
+                          requisito de titulación</option
+                        >
+                      </select>
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Colectivo</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.FichaDPT.Colectivo"
+                        name="position.FichaDPT.Colectivo"
+                        id="position.FichaDPT.Colectivo"
+                        value="{{position.FichaDPT.Colectivo}}"
+                      >
+                        <option>(F) Funcionario</option>
+                        <option>(L) Laboral</option>
+                        <option>(E) Eventual</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1"
+                        >Forma Provisión</label
+                      >
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.FichaDPT.FormaProvision"
+                        name="position.FichaDPT.FormaProvision"
+                        id="position.FichaDPT.FormaProvision"
+                        value="{{position.FichaDPT.FormaProvision}}"
+                      >
+                        <option>(C) Concurso</option>
+                        <option>(D) Oposición</option>
+                        <option>(CE/C) Habilitados Nacionales</option>
+                        <option>(CO) Concurso Abierto AAPP</option>
+                        <option>(LD) Libre Designación</option>
+                        <option>(RE) Redistribución de efectivos</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Tipo</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.FichaDPT.Tipo"
+                        name="position.FichaDPT.Tipo"
+                        id="position.FichaDPT.Tipo"
+                        value="{{position.FichaDPT.Tipo}}"
+                      >
+                        <option
+                          >(S) Singularizado (Diferentes a otros puestos) –
+                          Jefaturas de unidades (Libre designación)</option
+                        >
+                        <option
+                          >(NS) No Singularizado (Concurso/redistribución de
+                          efectivos)</option
+                        >
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1"
+                        >Nº Puestos Homogéneos</label
+                      >
+                      <input
+                        class="form-control"
+                        type="number"
+                        [(ngModel)]="position.FichaDPT.NumPuestosHomog"
+                        name="position.FichaDPT.NumPuestosHomog"
+                        id="position.FichaDPT.NumPuestosHomog"
+                        value="{{position.FichaDPT.NumPuestosHomog}}"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <mat-grid-list class="divider" cols="1" rowHeight="20px">
+              <mat-grid-tile class="divider"></mat-grid-tile>
+            </mat-grid-list>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="FichaDPTModal.close()"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              (click)="
+                editCondiciones(
+                  position._id,
+                  position.Condiciones.Dedicacion,
+                  position.Condiciones.Dificultad,
+                  position.Condiciones.Responsabilidad,
+                  position.Condiciones.Nocturnidad,
+                  position.Condiciones.Turnicidad,
+                  position.Condiciones.PeligrosidadPenosidad
+                )
+              "
+              type="submit"
+              class="btn btn-primary"
+              data-dismiss="modal"
+            >
+              Guardar cambios
+            </button>
+          </div>
+        </ngx-smart-modal>
       </mat-grid-tile>
     </mat-grid-list>
   </mat-tab>
@@ -87,24 +365,35 @@
     </div>
     <mat-grid-list cols="1" rowHeight="120px">
       <mat-grid-tile>
-        <button type="button" class="btn btn-primary" (click)="MisionModal.open()">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="MisionModal.open()"
+        >
           <i class="far fa-edit"></i> Editar Misión
         </button>
-        
 
         <ngx-smart-modal identifier="MisionModal" #MisionModal>
           <div class="modal-header">
-            <h5 class="modal-title">Editando Misión Posición: </h5>
+            <h5 class="modal-title">Editando Misión Posición:</h5>
           </div>
           <div class="modal-body">
-              <form>
+            <form>
               <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Introduce cambios en la misión de esta posición:</label>
-                  <textarea class="form-control" [(ngModel)]="position.Mision" name="position.Mision " id="position.Mision " value="{{position.Mision}}"
-                  rows="6"></textarea>
-                </div>
-              </form>
-            </div>
+                <label for="exampleFormControlTextarea1"
+                  >Introduce cambios en la misión de esta posición:</label
+                >
+                <textarea
+                  class="form-control"
+                  [(ngModel)]="position.Mision"
+                  name="position.Mision "
+                  id="position.Mision "
+                  value="{{position.Mision}}"
+                  rows="6"
+                ></textarea>
+              </div>
+            </form>
+          </div>
           <div class="modal-footer">
             <button
               type="button"
@@ -114,7 +403,14 @@
             >
               Cancelar
             </button>
-            <button type="button" (click)= "editMision(position._id, position.Mision)" type="submit"class="btn btn-primary">Guardar cambios</button>
+            <button
+              type="button"
+              (click)="editMision(position._id, position.Mision)"
+              type="submit"
+              class="btn btn-primary"
+            >
+              Guardar cambios
+            </button>
           </div>
         </ngx-smart-modal>
       </mat-grid-tile>
@@ -126,41 +422,102 @@
         <li
           class="list-group-item d-flex justify-content-between align-items-center"
         >
-          - {{ funcion }} <span> <i class="far fa-trash-alt"></i> </span>
+          - {{ funcion }}
+          <span>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="RemoveFuncionModal.open()"
+            >
+              <i class="far fa-trash-alt"></i>
+            </button>
+            <ngx-smart-modal
+              identifier="RemoveFuncionModal"
+              #RemoveFuncionModal
+            >
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  ¿Deseas eliminar esta función del catálogo de funciones para
+                  esta posición?
+                </h5>
+              </div>
+              <div class="modal-body"><h5></h5></div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                  (click)="RemoveFuncionModal.close()"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  (click)="removeFuncion(position._id, funcion)"
+                  type="submit"
+                  data-dismiss="FuncionModal"
+                  class="btn btn-primary"
+                >
+                  Sí, eliminar función
+                </button>
+              </div>
+            </ngx-smart-modal>
+          </span>
         </li>
       </ul>
     </div>
     <mat-grid-list cols="1" rowHeight="120px">
       <mat-grid-tile>
-        <button type="button" class="btn btn-primary" (click)="FuncionModal.open()">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="FuncionModal.open()"
+        >
           <i class="fas fa-plus"></i> Añadir Función
-        </button>      
-  
-          <ngx-smart-modal identifier="FuncionModal" #FuncionModal>
-            <div class="modal-header">
-              <h5 class="modal-title">Añadiendo nueva función a esta posición: </h5>
-            </div>
-            <div class="modal-body">
-                <form>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Nueva función:</label>
-                    <textarea class="form-control" [(ngModel)]="funcion" name="funcion " id="funcion " placeholder="Por favor, describe aquí la nueva función..." value=""
-                    rows="6"></textarea>
-                  </div>
-                </form>
+        </button>
+
+        <ngx-smart-modal identifier="FuncionModal" #FuncionModal>
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Añadiendo nueva función a esta posición:
+            </h5>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Nueva función:</label>
+                <textarea
+                  class="form-control"
+                  [(ngModel)]="Funcion"
+                  name="Funcion"
+                  id="Funcion "
+                  placeholder="Por favor, describe aquí la nueva función..."
+                  value="{{Funcion}}"
+                  rows="6"
+                ></textarea>
               </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-                (click)="FuncionModal.close()"
-              >
-                Cancelar
-              </button>
-              <button type="button" class="btn btn-primary">Añadir Función</button>
-            </div>
-          </ngx-smart-modal>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="FuncionModal.close()"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              (click)="addFuncion(position._id, Funcion)"
+              type="submit"
+              data-dismiss="FuncionModal"
+              class="btn btn-primary"
+            >
+              Añadir Función
+            </button>
+          </div>
+        </ngx-smart-modal>
       </mat-grid-tile>
     </mat-grid-list>
   </mat-tab>
@@ -333,13 +690,17 @@
     </div>
     <mat-grid-list cols="1" rowHeight="120px">
       <mat-grid-tile>
-        <button type="button" class="btn btn-primary" (click)="CondicionesModal.open()">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="CondicionesModal.open()"
+        >
           <i class="far fa-edit"></i> Editar Condiciones
         </button>
 
         <ngx-smart-modal identifier="CondicionesModal" #CondicionesModal>
           <div class="modal-header">
-            <h5 class="modal-title">Editando Condiciones Posición: </h5>
+            <h5 class="modal-title">Editando Condiciones Posición:</h5>
           </div>
           <div class="modal-body">
             <form>
@@ -350,9 +711,12 @@
                       <label for="exampleFormControlSelect1">Dedicación</label>
                       <select
                         class="form-control"
-                        [(ngModel)]="position.Condiciones.Dedicacion " name="position.Condiciones.Dedicacion " id="position.Condiciones.Dedicacion " value="{{position.Condiciones.Dedicacion }}"
+                        [(ngModel)]="position.Condiciones.Dedicacion"
+                        name="position.Condiciones.Dedicacion "
+                        id="position.Condiciones.Dedicacion "
+                        value="{{position.Condiciones.Dedicacion }}"
                       >
-                      <option></option>
+                        <option></option>
                         <option>Sí</option>
                         <option>No</option>
                       </select>
@@ -363,10 +727,12 @@
                       <label for="exampleFormControlSelect1">Dificultad</label>
                       <select
                         class="form-control"
-                        [(ngModel)]="position.Condiciones.Dificultad " name="position.Condiciones.Dificultad " id="position.Condiciones.Dificultad " value="{{position.Condiciones.Dificultad }}"
-
+                        [(ngModel)]="position.Condiciones.Dificultad"
+                        name="position.Condiciones.Dificultad "
+                        id="position.Condiciones.Dificultad "
+                        value="{{position.Condiciones.Dificultad }}"
                       >
-                      <option></option>
+                        <option></option>
                         <option>Sí</option>
                         <option>No</option>
                       </select>
@@ -374,63 +740,76 @@
                   </div>
                   <div class="col-sm">
                     <div class="form-group">
-                      <label for="exampleFormControlSelect1">Responsabilidad</label>
+                      <label for="exampleFormControlSelect1"
+                        >Responsabilidad</label
+                      >
                       <select
                         class="form-control"
-                        [(ngModel)]="position.Condiciones.Responsabilidad " name="position.Condiciones.Responsabilidad" id="position.Condiciones.Responsabilidad " value="{{position.Condiciones.Responsabilidad }}"
-
+                        [(ngModel)]="position.Condiciones.Responsabilidad"
+                        name="position.Condiciones.Responsabilidad"
+                        id="position.Condiciones.Responsabilidad "
+                        value="{{position.Condiciones.Responsabilidad }}"
                       >
-                      <option></option>  
-                      <option>Sí</option>
+                        <option></option>
+                        <option>Sí</option>
                         <option>No</option>
                       </select>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                        <div class="col-sm">
-                          <div class="form-group">
-                            <label for="exampleFormControlSelect1">Nocturnidad</label>
-                            <select
-                              class="form-control"
-                              [(ngModel)]="position.Condiciones.Nocturnidad " name="position.Condiciones.Nocturnidad " id="position.Condiciones.Nocturnidad " value="{{position.Condiciones.Nocturnidad }}"
-
-                            >                    
-                                    <option></option>
-                              <option>Sí</option>
-                              <option>No</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-sm">
-                          <div class="form-group">
-                            <label for="exampleFormControlSelect1">Turnicidad</label>
-                            <select
-                              class="form-control"
-                              [(ngModel)]="position.Condiciones.Turnicidad " name="position.Condiciones.Turnicidad " id="position.Condiciones.Turnicidad " value="{{position.Condiciones.Turnicidad }}"
-                              >
-                              
-                            <option></option>
-                            <option>Sí</option>
-                              <option>No</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-sm">
-                          <div class="form-group">
-                            <label for="exampleFormControlSelect1">Peligrosidad/Penosidad</label>
-                            <select
-                              class="form-control"
-                              [(ngModel)]="position.Condiciones.PeligrosidadPenosidad " name="position.Condiciones.PeligrosidadPenosidad " id="position.Condiciones.PeligrosidadPenosidad " value="{{position.Condiciones.PeligrosidadPenosidad }}"
-                            >
-                            <option></option>  
-                            <option>Sí</option>
-                              <option>No</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-               </div>
+                  <div class="col-sm">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Nocturnidad</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.Condiciones.Nocturnidad"
+                        name="position.Condiciones.Nocturnidad "
+                        id="position.Condiciones.Nocturnidad "
+                        value="{{position.Condiciones.Nocturnidad }}"
+                      >
+                        <option></option>
+                        <option>Sí</option>
+                        <option>No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Turnicidad</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.Condiciones.Turnicidad"
+                        name="position.Condiciones.Turnicidad "
+                        id="position.Condiciones.Turnicidad "
+                        value="{{position.Condiciones.Turnicidad }}"
+                      >
+                        <option></option>
+                        <option>Sí</option>
+                        <option>No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1"
+                        >Peligrosidad/Penosidad</label
+                      >
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.Condiciones.PeligrosidadPenosidad"
+                        name="position.Condiciones.PeligrosidadPenosidad "
+                        id="position.Condiciones.PeligrosidadPenosidad "
+                        value="{{position.Condiciones.PeligrosidadPenosidad }}"
+                      >
+                        <option></option>
+                        <option>Sí</option>
+                        <option>No</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </form>
           </div>
           <div class="modal-footer">
@@ -442,7 +821,25 @@
             >
               Cancelar
             </button>
-            <button type="button" (click)= "editCondiciones(position._id, position.Condiciones.Dedicacion, position.Condiciones.Dificultad, position.Condiciones.Responsabilidad, position.Condiciones.Nocturnidad, position.Condiciones.Turnicidad, position.Condiciones.PeligrosidadPenosidad)" type="submit" class="btn btn-primary" data-dismiss="modal">Guardar cambios</button>
+            <button
+              type="button"
+              (click)="
+                editCondiciones(
+                  position._id,
+                  position.Condiciones.Dedicacion,
+                  position.Condiciones.Dificultad,
+                  position.Condiciones.Responsabilidad,
+                  position.Condiciones.Nocturnidad,
+                  position.Condiciones.Turnicidad,
+                  position.Condiciones.PeligrosidadPenosidad
+                )
+              "
+              type="submit"
+              class="btn btn-primary"
+              data-dismiss="modal"
+            >
+              Guardar cambios
+            </button>
           </div>
         </ngx-smart-modal>
       </mat-grid-tile>

@@ -11,6 +11,7 @@ const BASEURL = environment.BASEURL;
 })
 export class EditService {
 editedCondiciones: any;
+editedFunciones: any;
 editedMision: any;
 
   constructor(private http: Http) { }
@@ -29,6 +30,22 @@ editedMision: any;
       .pipe(map((res: Response) => {
         let editedMision = res.json();
         return this.editedMision;
+      }));
+  }
+  addFuncion(id, Funcion) {
+    return this.http
+      .put(`${BASEURL}/api/positions/add/funcion/${id}`, { Funcion })
+      .pipe(map((res: Response) => {
+        let editedFunciones = res.json();
+        return this.editedFunciones;
+      }));
+  }
+  removeFuncion(id, Funcion) {
+    return this.http
+      .put(`${BASEURL}/api/positions/remove/funcion/${id}`, { Funcion })
+      .pipe(map((res: Response) => {
+        let editedFunciones = res.json();
+        return this.editedFunciones;
       }));
   }
 }
