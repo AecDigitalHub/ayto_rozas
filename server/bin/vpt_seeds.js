@@ -7,7 +7,7 @@ const vpts = [
   {
   CodDPT: 'SS125' ,
   Complementos: [
-  {
+    ComplementosDestino: [ {
   Complemento: 'Formación',
   Grado: 3,
   Puntos: 6,
@@ -22,8 +22,8 @@ const vpts = [
   },
   {
     Complemento: 'Desarrollo de Competencias',
-    Grado: 4,
-    Puntos: 6,
+    Grado: '',
+    Puntos: '',
     Retribución: '',
     Subcompl : [
       {

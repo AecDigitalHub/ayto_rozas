@@ -4,8 +4,11 @@ import { Router, RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { PositionService } from '../../../services/position.service';
 import { PosicionComponent } from '../posicion/posicion.component';
+import { NotificacionComponent } from '../../notificacion/notificacion.component';
 import { EditService } from '../../../services/edit.service';
 import { Http, Response } from '@angular/http';
+import {MatSnackBar} from '@angular/material';
+
 
 
 @Component({
@@ -21,7 +24,7 @@ editedCondiciones: any;
 editedFunciones: any;
 editedMision: any;
 
-  constructor(public PositionDPTView: PositionService, private route: ActivatedRoute, private router: Router, public Edit: EditService) { }
+  constructor(public PositionDPTView: PositionService, private route: ActivatedRoute, private router: Router, public Edit: EditService, public snackBar: MatSnackBar) { }
 
 
 
@@ -75,5 +78,10 @@ removeFuncion(id, Funcion) {
   this.position = Position.position;
 });
 });
+}
+openSnackBar(message: string, action: string) {
+  this.snackBar.open(message, action, {
+    duration: 1000,
+  });
 }
 }

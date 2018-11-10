@@ -41,6 +41,8 @@ import { DPTComponent } from './Posicion/dpt/dpt.component';
 import { VPTComponent } from './Posicion/vpt/vpt.component';
 import { RPTComponent } from './Posicion/rpt/rpt.component';
 import { AreaPosititionsTableComponent } from './Area/area-posititions-table/area-posititions-table.component';
+import { NotificacionComponent } from './notificacion/notificacion.component';
+import { MatSnackBarModule } from '@angular/material';
 
 
 @NgModule({
@@ -61,6 +63,7 @@ import { AreaPosititionsTableComponent } from './Area/area-posititions-table/are
     VPTComponent,
     RPTComponent,
     AreaPosititionsTableComponent,
+    NotificacionComponent,
   ],
   entryComponents: [
   ]
@@ -86,7 +89,8 @@ import { AreaPosititionsTableComponent } from './Area/area-posititions-table/are
     FormsModule,
     Ng2SearchPipeModule,
     MatIconModule,
-    NgxSmartModalModule.forRoot()
+    NgxSmartModalModule.forRoot(),
+    MatSnackBarModule
   ],
   providers: [DashboardService, AreaService, TestService, FileDatabase, EditService],
   bootstrap: [AppComponent]

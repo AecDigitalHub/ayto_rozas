@@ -350,11 +350,13 @@
                   position.FichaDPT.FormaProvision,
                   position.FichaDPT.Tipo,
                   position.FichaDPT.NumPuestosHomog
-                )
+                );
+                FichaDPTModal.close();
+                openSnackBar('Cambios guardados', 'OK!');
               "
               type="submit"
               class="btn btn-primary"
-              data-dismiss="modal"
+              data-dismiss="FichaDPTModal"
             >
               Guardar cambios
             </button>
@@ -411,7 +413,9 @@
             </button>
             <button
               type="button"
-              (click)="editMision(position._id, position.Mision)"
+              (click)="editMision(position._id, position.Mision);
+              MisionModal.close();
+              openSnackBar('Cambios guardados', 'OK!');"
               type="submit"
               class="btn btn-primary"
             >
@@ -459,7 +463,8 @@
                 </button>
                 <button
                   type="button"
-                  (click)="removeFuncion(position._id, funcion)"
+                  (click)="removeFuncion(position._id, funcion); RemoveFuncionModal.close();
+                  openSnackBar('Función eliminada', '');"
                   type="submit"
                   data-dismiss="FuncionModal"
                   class="btn btn-primary"
@@ -515,7 +520,8 @@
             </button>
             <button
               type="button"
-              (click)="addFuncion(position._id, Funcion)"
+              (click)="addFuncion(position._id, Funcion); FuncionModal.close();
+              openSnackBar('Función añadida', 'OK');"
               type="submit"
               data-dismiss="FuncionModal"
               class="btn btn-primary"
@@ -838,7 +844,9 @@
                   position.Condiciones.Nocturnidad,
                   position.Condiciones.Turnicidad,
                   position.Condiciones.PeligrosidadPenosidad
-                )
+                );
+                CondicionesModal.close();
+              openSnackBar('Cambios Guardados', 'OK');
               "
               type="submit"
               class="btn btn-primary"

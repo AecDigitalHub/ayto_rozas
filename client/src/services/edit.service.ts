@@ -17,6 +17,8 @@ editedMision: any;
 
   constructor(private http: Http) { }
 
+  @Output() refreshposition: EventEmitter<void> = new EventEmitter();
+
   editFicha(id, DenomPuesto, CodigoDPT, Area, Unidad, Escala, Subescala, Categoria, Grupo, Colectivo, FormaProvision, Tipo, NumPuestos) {
     return this.http
       .put(`${BASEURL}/api/positions/edit/ficha/${id}`, { id, DenomPuesto, CodigoDPT, Area, Unidad, Escala, Subescala, Categoria, Grupo, Colectivo, FormaProvision, Tipo, NumPuestos })
