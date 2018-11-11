@@ -13,6 +13,7 @@ export class EditService {
 editedFicha: any;
 editedCondiciones: any;
 editedFunciones: any;
+editedTareas: any;
 editedMision: any;
 
   constructor(private http: Http) { }
@@ -59,6 +60,22 @@ editedMision: any;
       .pipe(map((res: Response) => {
         let editedFunciones = res.json();
         return this.editedFunciones;
+      }));
+  }
+  addTarea(id, TipoTarea, Resultado, TiempoDedic) {
+    return this.http
+      .put(`${BASEURL}/api/positions/add/tarea/${id}`, { id, TipoTarea, Resultado, TiempoDedic })
+      .pipe(map((res: Response) => {
+        let editedTareas = res.json();
+        return this.editedTareas;
+      }));
+  }
+  removeTarea(id, tarea) {
+    return this.http
+      .put(`${BASEURL}/api/positions/remove/tarea/${id}`,  {tarea} )
+      .pipe(map((res: Response) => {
+        let editedTareas = res.json();
+        return this.editedTareas;
       }));
   }
 }

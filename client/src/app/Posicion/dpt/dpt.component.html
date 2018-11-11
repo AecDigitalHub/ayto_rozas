@@ -541,9 +541,90 @@
       <mat-grid-tile> <h4>Resultados</h4> </mat-grid-tile>
       <mat-grid-tile> <h4>Dedicación</h4> </mat-grid-tile>
       <mat-grid-tile>
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" (click)="TareaModal.open()">
           <i class="fas fa-plus"></i> Añadir Tarea
         </button>
+
+        <ngx-smart-modal identifier="TareaModal" #TareaModal>
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Añadiendo nueva tarea a esta posición:
+            </h5>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Tarea:</label>
+                <textarea
+                  class="form-control"
+                  [(ngModel)]="TipoTarea"
+                  name="TipoTarea"
+                  id="TipoTarea "
+                  placeholder="Por favor, describe aquí el tipo de tarea..."
+                  rows="2"
+                ></textarea>
+              </div>
+            </form>
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Resultados:</label>
+                <textarea
+                  class="form-control"
+                  [(ngModel)]="Resultado"
+                  name="Resultado"
+                  id="Resultado"
+                  placeholder="Por favor, describe aquí los resultados esperados..."
+                  rows="2"
+                ></textarea>
+              </div>
+            </form>
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Dedicación:</label>
+                <select
+                class="form-control"
+                [(ngModel)]="TiempoDedic"
+                name="TiempoDedic"
+                id="TiempoDedic"
+              >
+                <option
+                  >25%</option
+                >
+                <option
+                  >50%</option
+                >
+                <option
+                  >75%</option
+                >
+                <option
+                  >100%</option
+                >
+              </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="TareaModal.close()"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              type="submit"
+              (click)="addTarea(position._id, TipoTarea, Resultado, TiempoDedic); TareaModal.close();
+              openSnackBar('Tarea añadida', 'OK');"
+              data-dismiss="TareaModal"
+              class="btn btn-primary"
+            >
+              Añadir Tarea
+            </button>
+          </div>
+        </ngx-smart-modal>
+
       </mat-grid-tile>
     </mat-grid-list>
     <mat-grid-list
@@ -551,6 +632,8 @@
       cols="4"
       rowHeight="100px"
     >
+    
+
       <mat-grid-tile>
         <h6>{{ tarea.TipoTarea }}</h6>
       </mat-grid-tile>
@@ -561,7 +644,13 @@
         <h6>{{ tarea.TiempoDedic }}</h6>
       </mat-grid-tile>
       <mat-grid-tile>
-        <button type="button" class="btn btn-danger">
+        <button type="button" class="btn btn-danger" (click)="
+        removeTarea(
+          position._id,
+        tarea
+        );
+      openSnackBar('Tarea Eliminada', '');
+      ">
           <i class="far fa-trash-alt"></i> Borrar
         </button>
       </mat-grid-tile>
@@ -583,11 +672,11 @@
       <div class="row">
         <div class="col">
           <h4>Actividad/Experiencia Previa:</h4>
-          {{ position.ExperPrevia.Actividad }}
+          {{ position.ConocExper.ExperPrevia.Actividad }}
         </div>
         <div class="col">
           <h4>Tiempo/Duración:</h4>
-          {{ position.ExperPrevia.Tiempo }}
+          {{ position.ConocExper.ExperPrevia.Tiempo }}
         </div>
       </div>
     </div>

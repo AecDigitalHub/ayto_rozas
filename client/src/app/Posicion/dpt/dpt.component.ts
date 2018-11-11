@@ -22,6 +22,7 @@ position: Observable<any>;
 editedFicha: any;
 editedCondiciones: any;
 editedFunciones: any;
+editedTareas: any;
 editedMision: any;
 
   constructor(public PositionDPTView: PositionService, private route: ActivatedRoute, private router: Router, public Edit: EditService, public snackBar: MatSnackBar) { }
@@ -62,7 +63,6 @@ editMision(id, Mision) {
   });
   });
   }
-
 addFuncion(id, Funcion) {
   this.Edit.addFuncion(id, Funcion).subscribe(funciones => {
   this.editedFunciones = funciones;
@@ -74,6 +74,22 @@ addFuncion(id, Funcion) {
 removeFuncion(id, Funcion) {
   this.Edit.removeFuncion(id, Funcion).subscribe(funciones => {
   this.editedFunciones = funciones;
+  this.PositionDPTView.getPosition(this.positionId).subscribe(Position => {
+  this.position = Position.position;
+});
+});
+}
+addTarea(id, TipoTarea, Resultado, TiempoDedic) {
+  this.Edit.addTarea(id, TipoTarea, Resultado, TiempoDedic).subscribe(tareas => {
+  this.editedTareas = tareas;
+  this.PositionDPTView.getPosition(this.positionId).subscribe(Position => {
+  this.position = Position.position;
+});
+});
+}
+removeTarea(id, Tarea) {
+  this.Edit.removeTarea(id, Tarea).subscribe(tareas => {
+  this.editedTareas = tareas;
   this.PositionDPTView.getPosition(this.positionId).subscribe(Position => {
   this.position = Position.position;
 });

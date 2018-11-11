@@ -34,20 +34,20 @@ const DPTSchema = new Schema({
     FormReglada: {
       Nivel: { type: String, enum: ['A2', 'C1', 'nivel3', ''], default: ''},
       Titulo: String
-    }
-  },
-  FormCompl: [String],
-  Idiomas: {
+    },
+    FormCompl: [String],
+    Idiomas: {
       Idioma: String,
       Nivel: { type: String, enum: ['Bajo', 'Intermedio', 'Alto', ''], default: ''}
     },
-  ExperPrevia: {
+    ExperPrevia: {
       Actividad: String,
       Tiempo: String
     },
-  PeriodAdapt: String,
-  Habilidades: [String],
-  Certificaciones: [String],
+    PeriodAdapt: String,
+    Habilidades: [String],
+    Certificaciones: [String],
+  },
   ResponsAut: {
     DependFuncional: String,
     ResponsabilidadMando: {type: String, enum: ['Sí', 'No', ''], default: ''},

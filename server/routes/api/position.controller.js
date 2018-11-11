@@ -18,12 +18,6 @@ router.get("/", (req, res, next) => {
     });
 });
 
-// router.get("/:id", (req, res, next) => {
-//   dpt.findById(req.params.id).populate('Puestos').populate('Vacantes').then(position => {
-//         return res.status(200).json( { position });
-//         })
-//       })
-
 router.get("/:id", (req, res, next) => {
   dpt
     .findById(req.params.id)
@@ -39,32 +33,66 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.put("/add/funcion/:id", (req, res, next) => {
-  const Funcion  = req.body;
-  let FunctiontoAdd = Object.values(Funcion).toString();  
+  const Funcion = req.body;
+  let FunctiontoAdd = Object.values(Funcion).toString();
 
-dpt.findById(req.params.id)
-.then(pos => {
-  actualiz = pos.Funciones.unshift(FunctiontoAdd);
-  dpt.findByIdAndUpdate(req.params.id, { Funciones: pos.Funciones }, { new: true } )
-  .then(position => res.status(200).json())
-  .catch(err => console.log(err));
+  dpt.findById(req.params.id).then(pos => {
+    actualiz = pos.Funciones.unshift(FunctiontoAdd);
+    dpt
+      .findByIdAndUpdate(
+        req.params.id,
+        { Funciones: pos.Funciones },
+        { new: true }
+      )
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
 });
-})
-
 
 router.put("/remove/funcion/:id", (req, res, next) => {
   const Funcion = req.body;
   let FunctiontoRemove = Object.values(Funcion).toString();
 
-  dpt.findById(req.params.id)
-  .then(pos => {
-  actual = pos.Funciones.pull(FunctiontoRemove);
-  dpt.findByIdAndUpdate(req.params.id, { Funciones: pos.Funciones }, { new: true })
-  .then(position => res.status(200).json())
-  .catch(err => console.log(err));
+  dpt.findById(req.params.id).then(pos => {
+    actual = pos.Funciones.pull(FunctiontoRemove);
+    dpt
+      .findByIdAndUpdate(
+        req.params.id,
+        { Funciones: pos.Funciones },
+        { new: true }
+      )
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
   });
-})
+});
 
+router.put("/add/tarea/:id", (req, res, next) => {
+  const Tarea = req.body;
+  let TareatoAdd = Tarea;
+  console.log(TareatoAdd);
+
+  dpt.findById(req.params.id).then(pos => {
+    actualiz = pos.Tareas.unshift(TareatoAdd);
+    dpt
+      .findByIdAndUpdate(req.params.id, { Tareas: pos.Tareas }, { new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
+
+router.put("/remove/tarea/:id", (req, res, next) => {
+  const Tarea = req.body;
+  let TareatoRemove = Tarea.tarea;
+  console.log(TareatoRemove);
+
+  dpt.findById(req.params.id).then(pos => {
+    actual = pos.Tareas.pull(TareatoRemove);
+    dpt
+      .findByIdAndUpdate(req.params.id, { Tareas: pos.Tareas }, { new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
 
 router.put("/edit/condiciones/:id", (req, res, next) => {
   const {
@@ -129,15 +157,10 @@ router.put("/edit/ficha/:id", (req, res, next) => {
   console.log(editedFicha);
 
   dpt
-    .findByIdAndUpdate(
-      req.params.id,
-      { FichaDPT: editedFicha },
-      { new: true }
-    )
+    .findByIdAndUpdate(req.params.id, { FichaDPT: editedFicha }, { new: true })
     .then(position => res.status(200).json())
     .catch(err => console.log(err));
 });
-
 
 router.put("/edit/mision/:id", (req, res, next) => {
   console.log(req.body);
