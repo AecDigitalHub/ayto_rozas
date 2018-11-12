@@ -36,10 +36,10 @@ const DPTSchema = new Schema({
       Titulo: String
     },
     FormCompl: [String],
-    Idiomas: {
+    Idiomas: [{
       Idioma: String,
       Nivel: { type: String, enum: ['Bajo', 'Intermedio', 'Alto', ''], default: ''}
-    },
+    }],
     ExperPrevia: {
       Actividad: String,
       Tiempo: String

@@ -56,7 +56,7 @@ const dpts = [
         'Idiomas': [{
           'Idioma': '',
           'Nivel': '',
-        },],
+        }],
         'ExperPrevia': {
           'Actividad': '',
           'Tiempo': '',

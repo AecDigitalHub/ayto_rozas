@@ -50,33 +50,62 @@ editedMision: any;
     return this.http
       .put(`${BASEURL}/api/positions/add/funcion/${id}`, { Funcion })
       .pipe(map((res: Response) => {
-        let editedFunciones = res.json();
-        return this.editedFunciones;
+        // const editedFunciones = res.json();
+        // return this.editedFunciones;
       }));
   }
   removeFuncion(id, Funcion) {
     return this.http
       .put(`${BASEURL}/api/positions/remove/funcion/${id}`, { Funcion })
       .pipe(map((res: Response) => {
-        let editedFunciones = res.json();
-        return this.editedFunciones;
+        // let editedFunciones = res.json();
+        // this.refreshposition.emit();
+        // return this.editedFunciones;
       }));
   }
   addTarea(id, TipoTarea, Resultado, TiempoDedic) {
     return this.http
       .put(`${BASEURL}/api/positions/add/tarea/${id}`, { id, TipoTarea, Resultado, TiempoDedic })
       .pipe(map((res: Response) => {
-        let editedTareas = res.json();
-        return this.editedTareas;
       }));
   }
   removeTarea(id, tarea) {
     return this.http
       .put(`${BASEURL}/api/positions/remove/tarea/${id}`,  {tarea} )
       .pipe(map((res: Response) => {
-        let editedTareas = res.json();
-        return this.editedTareas;
       }));
   }
+  removeCertificacion(id, certificacion) {
+    return this.http
+      .put(`${BASEURL}/api/positions/remove/certificacion/${id}`,  {certificacion} )
+      .pipe(map((res: Response) => {
+      }));
+  }
+  removeHabilidad(id, habilidad) {
+    return this.http
+      .put(`${BASEURL}/api/positions/remove/habilidad/${id}`,  {habilidad} )
+      .pipe(map((res: Response) => {
+      }));
+  }
+  removeFormacion(id, formacion) {
+    return this.http
+      .put(`${BASEURL}/api/positions/remove/formacion/${id}`,  {formacion} )
+      .pipe(map((res: Response) => {
+      }));
+  }
+  removeIdioma(id, idioma) {
+    return this.http
+      .put(`${BASEURL}/api/positions/remove/idioma/${id}`,  {idioma} )
+      .pipe(map((res: Response) => {
+      }));
+  }
+  getPosition(position) {
+    return this.http.get(`${BASEURL}/api/positions/${position}`).pipe(map(res => {
+      const Position = res.json();
+      console.log(Position);
+      return Position;
+    }));
 }
+}
+
 

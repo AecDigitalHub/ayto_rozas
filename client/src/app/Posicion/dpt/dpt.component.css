@@ -31,6 +31,11 @@ mat-card-title {
   color: #3675ac;
 }
 
+li {
+  text-align: left;
+  margin: initial;
+}
+
 .btn-outline-info {
   background-color: transparent;
   color: #1c5c8e;
@@ -46,6 +51,12 @@ mat-card-title {
   background-color: #f16051;
   border-color: #f16051;
 }
+.btn-warning {
+  padding: 0;
+  border-color: white;
+  background-color: white;
+  width: 20px;
+}
 
 .dpt-profile-container {
   margin: 0 50px 0 50px;
@@ -54,6 +65,11 @@ mat-card-title {
 .list-group-item {
   background-color: #F0F1F5;
   border: 0px;
+}
+
+.fa-plus {
+    text-align: left;
+    margin: initial;
 }
 
 span{

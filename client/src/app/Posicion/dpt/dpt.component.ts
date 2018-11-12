@@ -7,7 +7,7 @@ import { PosicionComponent } from '../posicion/posicion.component';
 import { NotificacionComponent } from '../../notificacion/notificacion.component';
 import { EditService } from '../../../services/edit.service';
 import { Http, Response } from '@angular/http';
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 
 
@@ -21,6 +21,10 @@ positionId: String;
 position: Observable<any>;
 editedFicha: any;
 editedCondiciones: any;
+editedCertificaciones: any;
+editedHabilidades: any;
+editedFormCompl: any;
+editedIdiomas: any;
 editedFunciones: any;
 editedTareas: any;
 editedMision: any;
@@ -63,36 +67,54 @@ editMision(id, Mision) {
   });
   });
   }
-addFuncion(id, Funcion) {
+addFuncion(id, Funcion, form) {
+  form.reset();
   this.Edit.addFuncion(id, Funcion).subscribe(funciones => {
   this.editedFunciones = funciones;
-  this.PositionDPTView.getPosition(this.positionId).subscribe(Position => {
-  this.position = Position.position;
-});
-});
+  this.ngOnInit();
+  });
 }
+
 removeFuncion(id, Funcion) {
   this.Edit.removeFuncion(id, Funcion).subscribe(funciones => {
   this.editedFunciones = funciones;
-  this.PositionDPTView.getPosition(this.positionId).subscribe(Position => {
-  this.position = Position.position;
-});
+  this.ngOnInit();
 });
 }
 addTarea(id, TipoTarea, Resultado, TiempoDedic) {
   this.Edit.addTarea(id, TipoTarea, Resultado, TiempoDedic).subscribe(tareas => {
   this.editedTareas = tareas;
-  this.PositionDPTView.getPosition(this.positionId).subscribe(Position => {
-  this.position = Position.position;
-});
+  this.ngOnInit();
 });
 }
 removeTarea(id, Tarea) {
   this.Edit.removeTarea(id, Tarea).subscribe(tareas => {
   this.editedTareas = tareas;
-  this.PositionDPTView.getPosition(this.positionId).subscribe(Position => {
-  this.position = Position.position;
+  this.ngOnInit();
 });
+}
+removeCertificacion(id, Certificacion) {
+  this.Edit.removeCertificacion(id, Certificacion).subscribe(certificaciones => {
+  this.editedCertificaciones = certificaciones;
+  this.ngOnInit();
+});
+}
+removeHabilidad(id, Habilidad) {
+  this.Edit.removeHabilidad(id, Habilidad).subscribe(habilidades => {
+  this.editedHabilidades = habilidades;
+  this.ngOnInit();
+});
+}
+removeFormacion(id, Formacion) {
+  this.Edit.removeFormacion(id, Formacion).subscribe(formaciones => {
+  this.editedFormCompl = formaciones;
+  this.ngOnInit();
+});
+}
+removeIdioma(id, Idioma) {
+  this.Edit.removeIdioma(id, Idioma).subscribe(idiomas => {
+  this.editedIdiomas = idiomas;
+  this.ngOnInit();
 });
 }
 openSnackBar(message: string, action: string) {

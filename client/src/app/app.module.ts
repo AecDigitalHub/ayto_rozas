@@ -71,7 +71,7 @@ import { MatSnackBarModule } from '@angular/material';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload' }),
     HttpModule,
     MatToolbarModule,
     MatSidenavModule,

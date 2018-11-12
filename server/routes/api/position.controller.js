@@ -94,6 +94,74 @@ router.put("/remove/tarea/:id", (req, res, next) => {
   });
 });
 
+router.put("/add/certificacion/:id", (req, res, next) => {
+  const Certificacion = req.body;
+  let CertificaciontoAdd = Certificacion;
+  console.log(CertificaciontoAdd);
+
+  dpt.findById(req.params.id).then(pos => {
+    actualiz = pos.ConocExper.Certificaciones.unshift(CertificaciontoAdd);
+    dpt
+      .findByIdAndUpdate(req.params.id, { Certificaciones: pos.ConocExper.Certificaciones }, { new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
+
+router.put("/remove/certificacion/:id", (req, res, next) => {
+  const Certificacion = req.body;
+  let CertificaciontoRemove = Object.values(Certificacion).toString();
+
+  dpt.findById(req.params.id).then(pos => {
+    actual = pos.ConocExper.Certificaciones.pull(CertificaciontoRemove);
+    dpt
+      .findByIdAndUpdate(req.params.id,{ 'ConocExper.Certificaciones': actual },{ new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
+
+router.put("/remove/habilidad/:id", (req, res, next) => {
+  const Habilidad = req.body;
+  let HabilidadtoRemove = Object.values(Habilidad).toString();
+
+  dpt.findById(req.params.id).then(pos => {
+    actual = pos.ConocExper.Habilidades.pull(HabilidadtoRemove);
+    dpt
+      .findByIdAndUpdate(req.params.id,{ 'ConocExper.Habilidades': actual },{ new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
+
+router.put("/remove/formacion/:id", (req, res, next) => {
+  const Formacion = req.body;
+  let FormaciontoRemove = Object.values(Formacion).toString();
+
+  dpt.findById(req.params.id).then(pos => {
+    actual = pos.ConocExper.FormCompl.pull(FormaciontoRemove);
+    dpt
+      .findByIdAndUpdate(req.params.id,{ 'ConocExper.FormCompl': actual },{ new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
+router.put("/remove/idioma/:id", (req, res, next) => {
+  const Idioma = req.body;
+  let IdiomatoRemove = Idioma.idioma
+  console.log(IdiomatoRemove);
+
+
+  dpt.findById(req.params.id).then(pos => {
+    actual = pos.ConocExper.Idiomas.pull(IdiomatoRemove);
+    dpt
+      .findByIdAndUpdate(req.params.id,{ 'ConocExper.Idiomas': actual },{ new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
+
+
 router.put("/edit/condiciones/:id", (req, res, next) => {
   const {
     Dedicacion,

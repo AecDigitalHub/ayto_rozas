@@ -1,3 +1,6 @@
+<div *ngIf="position"> 
+
+
 <h2>{{position.position.FichaDPT.DenomPuesto}}</h2>
 <p> 'Usuario', hac clic en el icono correspondiente para ver la información que necesitas</p>
 <mat-grid-list cols="3" rowHeight="175px">
@@ -16,3 +19,4 @@
   </mat-grid-list>
 
         <router-outlet></router-outlet>
+</div>

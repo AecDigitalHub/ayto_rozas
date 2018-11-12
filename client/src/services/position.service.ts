@@ -18,7 +18,6 @@ export class PositionService {
   getPosition(position) {
     return this.http.get(`${BASEURL}/api/positions/${position}`).pipe(map(res => {
       const Position = res.json();
-      console.log(Position);
       return Position;
     }));
 }
