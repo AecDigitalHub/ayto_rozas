@@ -771,24 +771,85 @@
                     <div class="w-100"></div>
                     <div class="col">
                       <h4>Formación Complementaria:</h4>
+                      <button
+                      type="button"
+                      class="btn btn-primary"
+                      (click)="FormacionModal.open()"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                    <ngx-smart-modal
+                      identifier="FormacionModal"
+                      #FormacionModal
+                    >
+                      <div class="modal-header">
+                        <h5 class="modal-title">Añadiendo Formación Complementaria:</h5>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1"
+                              >Añade form. complementaria deseable para esta
+                              posición:</label
+                            >
+                            <textarea
+                              class="form-control"
+                              [(ngModel)]="formacion"
+                              name="formacion "
+                              id="formacion "
+                              value="{{formacion}}"
+                              rows="3"
+                            ></textarea>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                          (click)="FormacionModal.close()"
+                        >
+                          Cancelar
+                        </button>
+                        <button
+                          type="button"
+                          (click)="
+                            addFormacion(position._id, formacion);
+                            FormacionModal.close()
+                          "
+                          type="submit"
+                          class="btn btn-primary"
+                        >
+                          Añadir
+                        </button>
+                      </div>
+                    </ngx-smart-modal>
                       <ul
                         *ngFor="let formacion of position.ConocExper.FormCompl"
                       >
-                        <li>{{ formacion }} <button
-                          type="button"
-                          class="btn btn-warning"
-                          (click)="
-                            removeFormacion(position._id, formacion)
-                          "
-                        >
-                          <i class="fas fa-trash"></i>
-                        </button>
-                      </li>
+                        <li>
+                          {{ formacion }}
+                          <button
+                            type="button"
+                            class="btn btn-warning"
+                            (click)="removeFormacion(position._id, formacion)"
+                          >
+                            <i class="fas fa-trash"></i>
+                          </button>
+                        </li>
                       </ul>
                     </div>
                     <div class="w-100"></div>
                     <div class="col">
                       <h4>Habilidades:</h4>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="CertificacionModal.open()"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
                       <ul
                         *ngFor="
                           let habilidad of position.ConocExper.Habilidades
@@ -808,6 +869,60 @@
                     </div>
                     <div class="col">
                       <h4>Certificaciones:</h4>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="CertificacionModal.open()"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
+                      <ngx-smart-modal
+                        identifier="CertificacionModal"
+                        #CertificacionModal
+                      >
+                        <div class="modal-header">
+                          <h5 class="modal-title">Añadiendo Certificación:</h5>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1"
+                                >Añade certificación necesaria para esta
+                                posición:</label
+                              >
+                              <textarea
+                                class="form-control"
+                                [(ngModel)]="certificacion"
+                                name="certificacion "
+                                id="certificacion "
+                                value="{{certificacion}}"
+                                rows="3"
+                              ></textarea>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                            (click)="CertificacionModal.close()"
+                          >
+                            Cancelar
+                          </button>
+                          <button
+                            type="button"
+                            (click)="
+                              addCertificacion(position._id, certificacion);
+                              CertificacionModal.close()
+                            "
+                            type="submit"
+                            class="btn btn-primary"
+                          >
+                            Añadir
+                          </button>
+                        </div>
+                      </ngx-smart-modal>
                       <ul
                         *ngFor="
                           let certificacion of position.ConocExper
@@ -831,15 +946,23 @@
                     <div class="w-100"></div>
                     <div class="col">
                       <h4>Idiomas:</h4>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="CertificacionModal.open()"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
                       <ul *ngFor="let idioma of position.ConocExper.Idiomas">
                         <li>
-                          {{ idioma.Idioma }}  <button
-                          type="button"
-                          class="btn btn-warning"
-                          (click)="removeIdioma(position._id, idioma._id)"
-                        >
-                          <i class="fas fa-trash"></i>
-                        </button>
+                          {{ idioma.Idioma }}
+                          <button
+                            type="button"
+                            class="btn btn-warning"
+                            (click)="removeIdioma(position._id, idioma._id)"
+                          >
+                            <i class="fas fa-trash"></i>
+                          </button>
                         </li>
                       </ul>
                     </div>

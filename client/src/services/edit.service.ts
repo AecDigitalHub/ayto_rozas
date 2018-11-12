@@ -75,6 +75,12 @@ editedMision: any;
       .pipe(map((res: Response) => {
       }));
   }
+  addCertificacion(id, certificacion) {
+    return this.http
+      .put(`${BASEURL}/api/positions/add/certificacion/${id}`, { certificacion })
+      .pipe(map((res: Response) => {
+      }));
+  }
   removeCertificacion(id, certificacion) {
     return this.http
       .put(`${BASEURL}/api/positions/remove/certificacion/${id}`,  {certificacion} )
@@ -84,6 +90,12 @@ editedMision: any;
   removeHabilidad(id, habilidad) {
     return this.http
       .put(`${BASEURL}/api/positions/remove/habilidad/${id}`,  {habilidad} )
+      .pipe(map((res: Response) => {
+      }));
+  }
+  addFormacion(id, formacion) {
+    return this.http
+      .put(`${BASEURL}/api/positions/add/formacion/${id}`, { formacion })
       .pipe(map((res: Response) => {
       }));
   }

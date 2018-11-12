@@ -5,7 +5,7 @@ h2 {
 
 h4 {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   text-align: left;
   color: #3675ac;
@@ -45,6 +45,11 @@ li {
 .btn-primary {
   background-color: #2E5C8A;
   border-color: #2E5C8A;
+  display: flex;
+  align-items: center;
+  flex-direction: inherit;
+  justify-content: space-evenly;
+  
 }
 
 .btn-danger {

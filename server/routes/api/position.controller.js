@@ -96,13 +96,14 @@ router.put("/remove/tarea/:id", (req, res, next) => {
 
 router.put("/add/certificacion/:id", (req, res, next) => {
   const Certificacion = req.body;
-  let CertificaciontoAdd = Certificacion;
+  let CertificaciontoAdd = Certificacion.certificacion;
   console.log(CertificaciontoAdd);
 
   dpt.findById(req.params.id).then(pos => {
     actualiz = pos.ConocExper.Certificaciones.unshift(CertificaciontoAdd);
+    console.log(pos.ConocExper.Certificaciones);
     dpt
-      .findByIdAndUpdate(req.params.id, { Certificaciones: pos.ConocExper.Certificaciones }, { new: true })
+      .findByIdAndUpdate(req.params.id, { 'ConocExper.Certificaciones': pos.ConocExper.Certificaciones}, { new: true })
       .then(position => res.status(200).json())
       .catch(err => console.log(err));
   });
@@ -129,6 +130,20 @@ router.put("/remove/habilidad/:id", (req, res, next) => {
     actual = pos.ConocExper.Habilidades.pull(HabilidadtoRemove);
     dpt
       .findByIdAndUpdate(req.params.id,{ 'ConocExper.Habilidades': actual },{ new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
+
+router.put("/add/formacion/:id", (req, res, next) => {
+  const Formacion = req.body;
+  let FormaciontoAdd = Formacion.formacion;
+  console.log(Formacion);
+
+  dpt.findById(req.params.id).then(pos => {
+    actualiz = pos.ConocExper.FormCompl.push(FormaciontoAdd);
+    dpt
+      .findByIdAndUpdate(req.params.id, { 'ConocExper.FormCompl': pos.ConocExper.FormCompl}, { new: true })
       .then(position => res.status(200).json())
       .catch(err => console.log(err));
   });

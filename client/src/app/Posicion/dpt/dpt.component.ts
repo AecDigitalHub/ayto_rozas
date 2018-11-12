@@ -87,6 +87,18 @@ addTarea(id, TipoTarea, Resultado, TiempoDedic) {
   this.ngOnInit();
 });
 }
+addCertificacion(id, Certificacion) {
+  this.Edit.addCertificacion(id, Certificacion).subscribe(certificaciones => {
+  this.editedCertificaciones = certificaciones;
+  this.ngOnInit();
+});
+}
+addFormacion(id, Formacion) {
+  this.Edit.addFormacion(id, Formacion).subscribe(formaciones => {
+  this.editedFormCompl = formaciones;
+  this.ngOnInit();
+});
+}
 removeTarea(id, Tarea) {
   this.Edit.removeTarea(id, Tarea).subscribe(tareas => {
   this.editedTareas = tareas;
