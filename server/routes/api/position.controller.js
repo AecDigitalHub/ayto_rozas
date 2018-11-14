@@ -161,6 +161,19 @@ router.put("/remove/formacion/:id", (req, res, next) => {
       .catch(err => console.log(err));
   });
 });
+router.put("/add/idioma/:id", (req, res, next) => {
+  const Idioma = req.body;
+  let IdiomatoAdd = Idioma;
+  console.log(IdiomatoAdd);
+
+  dpt.findById(req.params.id).then(pos => {
+    actualiz = pos.ConocExper.Idiomas.unshift(IdiomatoAdd);
+    dpt
+      .findByIdAndUpdate(req.params.id, { 'ConocExper.Idiomas': pos.ConocExper.Idiomas }, { new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
 router.put("/remove/idioma/:id", (req, res, next) => {
   const Idioma = req.body;
   let IdiomatoRemove = Idioma.idioma
@@ -201,6 +214,43 @@ router.put("/edit/condiciones/:id", (req, res, next) => {
     .findByIdAndUpdate(
       req.params.id,
       { Condiciones: editedCondiciones },
+      { new: true }
+    )
+    .then(position => res.status(200).json())
+    .catch(err => console.log(err));
+});
+
+router.put("/edit/conocimientos/:id", (req, res, next) => {
+  const {
+    Nivel,
+    Titulo,
+    Certificaciones,
+    FormCompl,
+    Idiomas,
+    Actividad,
+    Tiempo,
+    Habilidades
+  } = req.body;
+  let editedConocExper = {
+    FormReglada: {
+      Nivel: Nivel,
+      Titulo: Titulo
+    },
+    FormCompl: FormCompl,
+    Certificaciones: Certificaciones,
+    Idiomas: Idiomas,
+    ExperPrevia: {
+      Actividad: Actividad,
+      Tiempo: Tiempo
+    },
+    Habilidades: Habilidades
+  }
+  console.log(editedConocExper);
+
+  dpt
+    .findByIdAndUpdate(
+      req.params.id,
+      { ConocExper: editedConocExper },
       { new: true }
     )
     .then(position => res.status(200).json())

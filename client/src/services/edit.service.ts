@@ -15,6 +15,7 @@ editedCondiciones: any;
 editedFunciones: any;
 editedTareas: any;
 editedMision: any;
+editedConocimientos: any;
 
   constructor(private http: Http) { }
 
@@ -38,6 +39,14 @@ editedMision: any;
         return this.editedCondiciones;
       }));
   }
+  editConocimientos( id, Nivel, Titulo, Certificaciones, FormCompl, Idiomas, Actividad, Tiempo, Habilidades ) {
+    return this.http
+      .put(`${BASEURL}/api/positions/edit/conocimientos/${id}`, { id, Nivel, Titulo, Certificaciones, FormCompl, Idiomas, Actividad, Tiempo, Habilidades })
+      .pipe(map((res: Response) => {
+        let editedConocimientos = res.json();
+        return this.editedConocimientos;
+      }));
+  }
   editMision(id, Mision) {
     return this.http
       .put(`${BASEURL}/api/positions/edit/mision/${id}`, { id, Mision })
@@ -50,17 +59,12 @@ editedMision: any;
     return this.http
       .put(`${BASEURL}/api/positions/add/funcion/${id}`, { Funcion })
       .pipe(map((res: Response) => {
-        // const editedFunciones = res.json();
-        // return this.editedFunciones;
       }));
   }
   removeFuncion(id, Funcion) {
     return this.http
       .put(`${BASEURL}/api/positions/remove/funcion/${id}`, { Funcion })
       .pipe(map((res: Response) => {
-        // let editedFunciones = res.json();
-        // this.refreshposition.emit();
-        // return this.editedFunciones;
       }));
   }
   addTarea(id, TipoTarea, Resultado, TiempoDedic) {
@@ -102,6 +106,12 @@ editedMision: any;
   removeFormacion(id, formacion) {
     return this.http
       .put(`${BASEURL}/api/positions/remove/formacion/${id}`,  {formacion} )
+      .pipe(map((res: Response) => {
+      }));
+  }
+  addIdioma(id, Idioma, Nivel) {
+    return this.http
+      .put(`${BASEURL}/api/positions/add/idioma/${id}`, { id, Idioma, Nivel })
       .pipe(map((res: Response) => {
       }));
   }

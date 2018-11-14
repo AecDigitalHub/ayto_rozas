@@ -20,6 +20,7 @@ export class DPTComponent implements OnInit {
 positionId: String;
 position: Observable<any>;
 editedFicha: any;
+editedConocimientos: any;
 editedCondiciones: any;
 editedCertificaciones: any;
 editedHabilidades: any;
@@ -87,6 +88,14 @@ addTarea(id, TipoTarea, Resultado, TiempoDedic) {
   this.ngOnInit();
 });
 }
+editConocimientos(id, Nivel, Titulo, Certificaciones, FormCompl, Idiomas, Actividad, Tiempo, Habilidades) {
+  this.Edit.editConocimientos(id, Nivel, Titulo, Certificaciones, FormCompl, Idiomas, Actividad, Tiempo, Habilidades).subscribe(conocimientos => {
+    this.editedConocimientos = conocimientos;
+    this.PositionDPTView.getPosition(this.positionId).subscribe(Position => {
+      this.position = Position.position;
+  });
+  });
+  }
 addCertificacion(id, Certificacion) {
   this.Edit.addCertificacion(id, Certificacion).subscribe(certificaciones => {
   this.editedCertificaciones = certificaciones;
@@ -120,6 +129,12 @@ removeHabilidad(id, Habilidad) {
 removeFormacion(id, Formacion) {
   this.Edit.removeFormacion(id, Formacion).subscribe(formaciones => {
   this.editedFormCompl = formaciones;
+  this.ngOnInit();
+});
+}
+addIdioma(id, Idioma, Nivel) {
+  this.Edit.addIdioma(id, Idioma, Nivel).subscribe(idiomas => {
+  this.editedIdiomas = idiomas;
   this.ngOnInit();
 });
 }

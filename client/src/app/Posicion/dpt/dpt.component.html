@@ -697,12 +697,13 @@
             </ul>
           </div>
         </div>
-        <div class="row">
-          <div class="col" *ngFor="let idioma of position.ConocExper.Idiomas">
+        <h4>Idiomas</h4>
+        <div class="row" *ngFor="let idioma of position.ConocExper.Idiomas">
+          <div class="col">
             <h4>Idioma:</h4>
             {{ idioma.Idioma }}
           </div>
-          <div class="col" *ngFor="let idioma of position.ConocExper.Idiomas">
+          <div class="col">
             <h4>Nivel:</h4>
             {{ idioma.Nivel }}
           </div>
@@ -772,59 +773,61 @@
                     <div class="col">
                       <h4>Formación Complementaria:</h4>
                       <button
-                      type="button"
-                      class="btn btn-primary"
-                      (click)="FormacionModal.open()"
-                    >
-                      <i class="fas fa-plus"></i>
-                    </button>
-                    <ngx-smart-modal
-                      identifier="FormacionModal"
-                      #FormacionModal
-                    >
-                      <div class="modal-header">
-                        <h5 class="modal-title">Añadiendo Formación Complementaria:</h5>
-                      </div>
-                      <div class="modal-body">
-                        <form>
-                          <div class="form-group">
-                            <label for="exampleFormControlTextarea1"
-                              >Añade form. complementaria deseable para esta
-                              posición:</label
-                            >
-                            <textarea
-                              class="form-control"
-                              [(ngModel)]="formacion"
-                              name="formacion "
-                              id="formacion "
-                              value="{{formacion}}"
-                              rows="3"
-                            ></textarea>
-                          </div>
-                        </form>
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-dismiss="modal"
-                          (click)="FormacionModal.close()"
-                        >
-                          Cancelar
-                        </button>
-                        <button
-                          type="button"
-                          (click)="
-                            addFormacion(position._id, formacion);
-                            FormacionModal.close()
-                          "
-                          type="submit"
-                          class="btn btn-primary"
-                        >
-                          Añadir
-                        </button>
-                      </div>
-                    </ngx-smart-modal>
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="FormacionModal.open()"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
+                      <ngx-smart-modal
+                        identifier="FormacionModal"
+                        #FormacionModal
+                      >
+                        <div class="modal-header">
+                          <h5 class="modal-title">
+                            Añadiendo Formación Complementaria:
+                          </h5>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1"
+                                >Añade form. complementaria para esta
+                                posición:</label
+                              >
+                              <textarea
+                                class="form-control"
+                                [(ngModel)]="formacion"
+                                name="formacion "
+                                id="formacion "
+                                value="{{formacion}}"
+                                rows="3"
+                              ></textarea>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                            (click)="FormacionModal.close()"
+                          >
+                            Cancelar
+                          </button>
+                          <button
+                            type="button"
+                            (click)="
+                              addFormacion(position._id, formacion);
+                              FormacionModal.close()
+                            "
+                            type="submit"
+                            class="btn btn-primary"
+                          >
+                            Añadir
+                          </button>
+                        </div>
+                      </ngx-smart-modal>
                       <ul
                         *ngFor="let formacion of position.ConocExper.FormCompl"
                       >
@@ -949,29 +952,110 @@
                       <button
                         type="button"
                         class="btn btn-primary"
-                        (click)="CertificacionModal.open()"
+                        (click)="IdiomaModal.open()"
                       >
                         <i class="fas fa-plus"></i>
                       </button>
-                      <ul *ngFor="let idioma of position.ConocExper.Idiomas">
-                        <li>
-                          {{ idioma.Idioma }}
+                      <ngx-smart-modal identifier="IdiomaModal" #IdiomaModal>
+                        <div class="modal-header">
+                          <h5 class="modal-title">
+                            Añadiendo idioma a esta posición:
+                          </h5>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="exampleFormControlTextarea1"
+                                  >Idioma:</label
+                                >
+                                <select
+                                  class="form-control"
+                                  [(ngModel)]="Idioma"
+                                  name="Idioma"
+                                  id="Idioma"
+                                >
+                                  <option>Inglés</option>
+                                  <option>Francés</option>
+                                  <option>Alemán</option>
+                                  <option>Otro</option>
+                                </select>
+                              </div>
+                            </div>
+                          </form>
+                          <form>
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="exampleFormControlTextarea1"
+                                  >Nivel:</label
+                                >
+                                <select
+                                  class="form-control"
+                                  [(ngModel)]="Nivel"
+                                  name="Nivel"
+                                  id="Nivel"
+                                >
+                                  <option>A1</option>
+                                  <option>A2</option>
+                                  <option>B1</option>
+                                  <option>B2</option>
+                                  <option>C1</option>
+                                  <option>C2</option>
+                                </select>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
                           <button
                             type="button"
-                            class="btn btn-warning"
-                            (click)="removeIdioma(position._id, idioma._id)"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                            (click)="IdiomaModal.close()"
                           >
-                            <i class="fas fa-trash"></i>
+                            Cancelar
                           </button>
-                        </li>
-                      </ul>
+                          <button
+                            type="button"
+                            type="submit"
+                            (click)="
+                              addIdioma(position._id, Idioma, Nivel);
+                              IdiomaModal.close()
+                            "
+                            data-dismiss="IdiomaModal"
+                            class="btn btn-primary"
+                          >
+                            Añadir Idioma
+                          </button>
+                        </div>
+                      </ngx-smart-modal>
+                      <div
+                        class="row"
+                        *ngFor="let idioma of position.ConocExper.Idiomas"
+                      >
+                        <mat-grid-list
+                          class="divider"
+                          cols="1"
+                          rowHeight="20px"
+                        >
+                          <mat-grid-tile class="divider"></mat-grid-tile>
+                        </mat-grid-list>
+                        <div class="col-sm">
+                          <h5>Idioma: {{ idioma.Idioma }}</h5>
+                        </div>
+                        <div class="col-sm">
+                          <h5>Nivel: {{ idioma.Nivel }}</h5>
+                        </div>
+                        <button
+                          type="button"
+                          class="btn btn-warning"
+                          (click)="removeIdioma(position._id, idioma._id)"
+                        >
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </div>
                     </div>
-                    <div class="col">
-                      <h4>Nivel:</h4>
-                      <ul *ngFor="let nivel of position.ConocExper.Idiomas">
-                        <li>{{ nivel.Nivel }}</li>
-                      </ul>
-                    </div>
+
                     <div class="w-100"></div>
                     <div class="col">
                       <h4>Actividad / Exper.Previa:</h4>
@@ -1010,14 +1094,13 @@
                 </button>
                 <button
                   type="button"
-                  type="submit"
-                  (click)="
-                    addTarea(position._id, TipoTarea, Resultado, TiempoDedic);
-                    TareaModal.close();
-                    openSnackBar('Tarea añadida', 'OK')
-                  "
-                  data-dismiss="TareaModal"
-                  class="btn btn-primary"
+                  (click)="editConocimientos(position._id,position.ConocExper.FormReglada.Nivel,position.ConocExper.FormReglada.Titulo,position.ConocExper.Certificaciones,position.ConocExper.FormCompl,position.ConocExper.Idiomas,position.ConocExper.ExperPrevia.Actividad,position.ConocExper.ExperPrevia.Tiempo,position.ConocExper.Habilidades);
+                  ConocExperModal.close();
+                  openSnackBar('Cambios guardados', 'OK!')
+                "
+                type="submit"
+                class="btn btn-primary"
+                data-dismiss="ConocExperModal"
                 >
                   Guardar Cambios
                 </button>
