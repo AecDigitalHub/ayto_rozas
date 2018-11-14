@@ -121,6 +121,30 @@ editedConocimientos: any;
       .pipe(map((res: Response) => {
       }));
   }
+  addGuia(id, guia) {
+    return this.http
+      .put(`${BASEURL}/api/positions/add/guia/${id}`, { guia })
+      .pipe(map((res: Response) => {
+      }));
+  }
+  removeGuia(id, guia) {
+    return this.http
+      .put(`${BASEURL}/api/positions/remove/guia/${id}`,  {guia} )
+      .pipe(map((res: Response) => {
+      }));
+  }
+  addSupervision(id, supervision) {
+    return this.http
+      .put(`${BASEURL}/api/positions/add/supervision/${id}`, { supervision })
+      .pipe(map((res: Response) => {
+      }));
+  }
+  removeSupervision(id, supervision) {
+    return this.http
+      .put(`${BASEURL}/api/positions/remove/supervision/${id}`,  {supervision} )
+      .pipe(map((res: Response) => {
+      }));
+  }
   getPosition(position) {
     return this.http.get(`${BASEURL}/api/positions/${position}`).pipe(map(res => {
       const Position = res.json();

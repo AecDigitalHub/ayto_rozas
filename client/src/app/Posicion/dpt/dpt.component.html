@@ -1145,11 +1145,255 @@
           </div>
         </div>
       </div>
-      <mat-grid-list cols="1" rowHeight="120px">
+      <mat-grid-list cols="1" rowHeight="120px" (click)="ResponsAutModal.open()">
         <mat-grid-tile>
           <button type="button" class="btn btn-primary">
             <i class="far fa-edit"></i> Editar Respons/Aut.
           </button>
+          
+          <ngx-smart-modal identifier="ResponsAutModal" #ResponsAutModal>
+            <div class="modal-header">
+              <h5 class="modal-title">
+                Editando Responsabilidad y Autonomía:
+              </h5>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="row">
+                  <div class="col">
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Dep. Funcional</label>
+                          <input
+                            class="form-control"
+                            [(ngModel)]="position.ResponsAut.DependFuncional"
+                            name="position.ResponsAut.DependFuncional"
+                            id="position.ResponsAut.DependFuncional"
+                            value="{{position.ResponsAut.DependFuncional}}"
+                          />
+                        </div>
+                      </div>
+                      <div class="col">
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1">Magnitud Toma Decisiones</label>
+                            <input
+                              class="form-control"
+                              [(ngModel)]="position.ResponsAut.MagnitDecisiones"
+                              name="position.ResponsAut.MagnitDecisiones"
+                              id="position.ResponsAut.MagnitDecisiones"
+                              value="{{position.ResponsAut.MagnitDecisiones}}"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="w-100"></div>
+                      <div class="row">
+                          <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1"
+                        >Responsabilidad:</label
+                      >
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.ResponsAut.ResponsabilidadMando"
+                        name="position.ResponsAut.ResponsabilidadMando"
+                        id="position.ResponsAut.ResponsabilidadMando"
+                        value="{{position.ResponsAut.ResponsabilidadMando}}"
+                      >
+                        <option></option>
+                        <option>Sí</option>
+                        <option>No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                      <div class="form-group">
+                        <label for="exampleFormControlSelect1"
+                          >Subordinados:</label
+                        >
+                        <select
+                          class="form-control"
+                          [(ngModel)]="position.ResponsAut.Subordinados"
+                          name="position.ResponsAut.Subordinados"
+                          id="position.ResponsAut.Subordinados"
+                          value="{{position.ResponsAut.Subordinados}}"
+                        >
+                          <option></option>
+                          <option>Sí</option>
+                          <option>No</option>
+                        </select>
+                      </div>
+                    </div>
+                    </div>
+               
+                  <div class="w-100"></div>
+                  <div class="row">
+                  <div class="col-sm">
+                    <h4>Guía/Orientación Recibidas:</h4>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      (click)="GuiaOrientModal.open()"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                    <ngx-smart-modal
+                      identifier="GuiaOrientModal"
+                      #GuiaOrientModal
+                    >
+                      <div class="modal-header">
+                        <h5 class="modal-title">
+                          Añadiendo Guía/Orientación Recibidas:
+                        </h5>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1"
+                              >Añade guía/orient. para esta
+                              posición:</label
+                            >
+                            <textarea
+                              class="form-control"
+                              [(ngModel)]="guia"
+                              name="guia "
+                              id="guia "
+                              value="{{guia}}"
+                              rows="3"
+                            ></textarea>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                          (click)="GuiaOrientModal.close()"
+                        >
+                          Cancelar
+                        </button>
+                        <button
+                          type="button"
+                          (click)="
+                            addGuia(position._id, guia);
+                            GuiaOrientModal.close()
+                          "
+                          type="submit"
+                          class="btn btn-primary"
+                        >
+                          Añadir
+                        </button>
+                      </div>
+                    </ngx-smart-modal>
+                    <ul *ngFor="let guia of position.ResponsAut.GuiaOrientRecibidas">
+                        <li>{{ guia }}
+                        <button
+                        type="button"
+                        class="btn btn-warning"
+                        (click)="removeGuia(position._id, guia)"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </li>
+                      </ul>
+                  </div>
+                  <div class="col-sm">
+                      <h4>Grado Supervisión Recibidos:</h4>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="SupervisionModal.open()"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
+                      <ngx-smart-modal
+                        identifier="SupervisionModal"
+                        #SupervisionModal
+                      >
+                        <div class="modal-header">
+                          <h5 class="modal-title">
+                            Añadiendo Grado Supervisión:
+                          </h5>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1"
+                                >Añade grado supervisión. para esta
+                                posición:</label
+                              >
+                              <textarea
+                                class="form-control"
+                                [(ngModel)]="supervision"
+                                name="supervision "
+                                id="supervision "
+                                value="{{supervision}}"
+                                rows="3"
+                              ></textarea>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                            (click)="SupervisionModal.close()"
+                          >
+                            Cancelar
+                          </button>
+                          <button
+                            type="button"
+                            (click)="
+                              addSupervision(position._id, supervision);
+                              SupervisionModal.close()
+                            "
+                            type="submit"
+                            class="btn btn-primary"
+                          >
+                            Añadir
+                          </button>
+                        </div>
+                      </ngx-smart-modal>
+                      <ul *ngFor="let supervision of position.ResponsAut.GradoSuperv">
+                          <li>{{ supervision }}
+                          <button
+                          type="button"
+                          class="btn btn-warning"
+                          (click)="removeSupervision(position._id, supervision)"
+                        >
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </li>
+                        </ul>
+                    </div>
+                    </div>
+                </form>
+                </div>
+                <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                      (click)="ResponsAutModal.close()"
+                    >
+                      Cancelar
+                    </button>
+                    <button
+                      type="button"
+                      (click)="editConocimientos(position._id,position.ConocExper.FormReglada.Nivel,position.ConocExper.FormReglada.Titulo,position.ConocExper.Certificaciones,position.ConocExper.FormCompl,position.ConocExper.Idiomas,position.ConocExper.ExperPrevia.Actividad,position.ConocExper.ExperPrevia.Tiempo,position.ConocExper.Habilidades);
+                      ConocExperModal.close();
+                      openSnackBar('Cambios guardados', 'OK!')
+                    "
+                    type="submit"
+                    class="btn btn-primary"
+                    data-dismiss="ConocExperModal"
+                    >
+                      Guardar Cambios
+                    </button>
+                  </div>
+                </ngx-smart-modal>
+          
         </mat-grid-tile>
       </mat-grid-list>
     </mat-tab>

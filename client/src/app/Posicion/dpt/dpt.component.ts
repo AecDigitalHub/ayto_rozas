@@ -26,6 +26,8 @@ editedCertificaciones: any;
 editedHabilidades: any;
 editedFormCompl: any;
 editedIdiomas: any;
+editedGuias: any;
+editedSupervisiones: any;
 editedFunciones: any;
 editedTareas: any;
 editedMision: any;
@@ -141,6 +143,30 @@ addIdioma(id, Idioma, Nivel) {
 removeIdioma(id, Idioma) {
   this.Edit.removeIdioma(id, Idioma).subscribe(idiomas => {
   this.editedIdiomas = idiomas;
+  this.ngOnInit();
+});
+}
+addGuia(id, guia) {
+  this.Edit.addGuia(id, guia).subscribe(guias => {
+  this.editedGuias = guias;
+  this.ngOnInit();
+});
+}
+removeGuia(id, guia) {
+  this.Edit.removeGuia(id, guia).subscribe(guias => {
+  this.editedGuias = guias;
+  this.ngOnInit();
+});
+}
+addSupervision(id, supervision) {
+  this.Edit.addSupervision(id, supervision).subscribe(supervisiones => {
+  this.editedSupervisiones = supervisiones;
+  this.ngOnInit();
+});
+}
+removeSupervision(id, supervision) {
+  this.Edit.removeSupervision(id, supervision).subscribe(supervisiones => {
+  this.editedSupervisiones = supervisiones;
   this.ngOnInit();
 });
 }
