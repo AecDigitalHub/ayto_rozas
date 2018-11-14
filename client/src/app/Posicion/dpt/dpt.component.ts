@@ -21,6 +21,7 @@ positionId: String;
 position: Observable<any>;
 editedFicha: any;
 editedConocimientos: any;
+editedResponsAut: any;
 editedCondiciones: any;
 editedCertificaciones: any;
 editedHabilidades: any;
@@ -146,6 +147,14 @@ removeIdioma(id, Idioma) {
   this.ngOnInit();
 });
 }
+editResponsAut(id, DependFuncional, GradoSuperv, GuiaOrientRecibidas, MagnitDecisiones, ResponsabilidadMando, Subordinados) {
+  this.Edit.editResponsAut(id, DependFuncional, GradoSuperv, GuiaOrientRecibidas, MagnitDecisiones, ResponsabilidadMando, Subordinados).subscribe(responsaut => {
+    this.editedResponsAut = responsaut;
+    this.PositionDPTView.getPosition(this.positionId).subscribe(Position => {
+      this.position = Position.position;
+  });
+  });
+  }
 addGuia(id, guia) {
   this.Edit.addGuia(id, guia).subscribe(guias => {
   this.editedGuias = guias;

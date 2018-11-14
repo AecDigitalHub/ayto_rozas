@@ -306,6 +306,35 @@ router.put("/edit/conocimientos/:id", (req, res, next) => {
     .catch(err => console.log(err));
 });
 
+router.put("/edit/responsaut/:id", (req, res, next) => {
+  const {
+    DependFuncional,
+    GradoSuperv,
+    GuiaOrientRecibidas,
+    MagnitDecisiones,
+    ResponsabilidadMando,
+    Subordinados
+  } = req.body;
+  let editedResponsAut = {
+    DependFuncional: DependFuncional,
+    GradoSuperv: GradoSuperv,
+    GuiaOrientRecibidas: GuiaOrientRecibidas,
+    MagnitDecisiones: MagnitDecisiones,
+    ResponsabilidadMando: ResponsabilidadMando,
+    Subordinados: Subordinados
+  }
+  console.log(editedResponsAut);
+
+  dpt
+    .findByIdAndUpdate(
+      req.params.id,
+      { ResponsAut: editedResponsAut },
+      { new: true }
+    )
+    .then(position => res.status(200).json())
+    .catch(err => console.log(err));
+});
+
 router.put("/edit/ficha/:id", (req, res, next) => {
   const {
     DenomPuesto,

@@ -16,6 +16,7 @@ editedFunciones: any;
 editedTareas: any;
 editedMision: any;
 editedConocimientos: any;
+editedResponsAut: any;
 
   constructor(private http: Http) { }
 
@@ -119,6 +120,14 @@ editedConocimientos: any;
     return this.http
       .put(`${BASEURL}/api/positions/remove/idioma/${id}`,  {idioma} )
       .pipe(map((res: Response) => {
+      }));
+  }
+  editResponsAut( id, DependFuncional, GradoSuperv, GuiaOrientRecibidas, MagnitDecisiones, ResponsabilidadMando, Subordinados ) {
+    return this.http
+      .put(`${BASEURL}/api/positions/edit/responsaut/${id}`, { id, DependFuncional, GradoSuperv, GuiaOrientRecibidas, MagnitDecisiones, ResponsabilidadMando, Subordinados })
+      .pipe(map((res: Response) => {
+        let editedResponsAut = res.json();
+        return this.editedResponsAut;
       }));
   }
   addGuia(id, guia) {

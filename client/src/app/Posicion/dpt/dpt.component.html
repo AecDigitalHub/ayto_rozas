@@ -1381,13 +1381,13 @@
                     </button>
                     <button
                       type="button"
-                      (click)="editConocimientos(position._id,position.ConocExper.FormReglada.Nivel,position.ConocExper.FormReglada.Titulo,position.ConocExper.Certificaciones,position.ConocExper.FormCompl,position.ConocExper.Idiomas,position.ConocExper.ExperPrevia.Actividad,position.ConocExper.ExperPrevia.Tiempo,position.ConocExper.Habilidades);
-                      ConocExperModal.close();
+                      (click)="editResponsAut(position._id, position.ResponsAut.DependFuncional,position.ResponsAut.ResponsabilidadMando, position.ResponsAut.Subordinados,position.ResponsAut.MagnitDecisiones, position.ResponsAut.GuiaOrientRecibidas, position.ResponsAut.GradoSuperv );
+                      ResponsAutModal.close();
                       openSnackBar('Cambios guardados', 'OK!')
                     "
                     type="submit"
                     class="btn btn-primary"
-                    data-dismiss="ConocExperModal"
+                    data-dismiss="ResponsAutModal"
                     >
                       Guardar Cambios
                     </button>
