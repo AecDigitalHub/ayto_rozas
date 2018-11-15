@@ -1094,13 +1094,24 @@
                 </button>
                 <button
                   type="button"
-                  (click)="editConocimientos(position._id,position.ConocExper.FormReglada.Nivel,position.ConocExper.FormReglada.Titulo,position.ConocExper.Certificaciones,position.ConocExper.FormCompl,position.ConocExper.Idiomas,position.ConocExper.ExperPrevia.Actividad,position.ConocExper.ExperPrevia.Tiempo,position.ConocExper.Habilidades);
-                  ConocExperModal.close();
-                  openSnackBar('Cambios guardados', 'OK!')
-                "
-                type="submit"
-                class="btn btn-primary"
-                data-dismiss="ConocExperModal"
+                  (click)="
+                    editConocimientos(
+                      position._id,
+                      position.ConocExper.FormReglada.Nivel,
+                      position.ConocExper.FormReglada.Titulo,
+                      position.ConocExper.Certificaciones,
+                      position.ConocExper.FormCompl,
+                      position.ConocExper.Idiomas,
+                      position.ConocExper.ExperPrevia.Actividad,
+                      position.ConocExper.ExperPrevia.Tiempo,
+                      position.ConocExper.Habilidades
+                    );
+                    ConocExperModal.close();
+                    openSnackBar('Cambios guardados', 'OK!')
+                  "
+                  type="submit"
+                  class="btn btn-primary"
+                  data-dismiss="ConocExperModal"
                 >
                   Guardar Cambios
                 </button>
@@ -1145,49 +1156,55 @@
           </div>
         </div>
       </div>
-      <mat-grid-list cols="1" rowHeight="120px" (click)="ResponsAutModal.open()">
+      <mat-grid-list
+        cols="1"
+        rowHeight="120px"
+        (click)="ResponsAutModal.open()"
+      >
         <mat-grid-tile>
           <button type="button" class="btn btn-primary">
             <i class="far fa-edit"></i> Editar Respons/Aut.
           </button>
-          
+
           <ngx-smart-modal identifier="ResponsAutModal" #ResponsAutModal>
             <div class="modal-header">
-              <h5 class="modal-title">
-                Editando Responsabilidad y Autonomía:
-              </h5>
+              <h5 class="modal-title">Editando Responsabilidad y Autonomía:</h5>
             </div>
             <div class="modal-body">
               <form>
                 <div class="row">
                   <div class="col">
-                        <div class="form-group">
-                          <label for="exampleFormControlSelect1">Dep. Funcional</label>
-                          <input
-                            class="form-control"
-                            [(ngModel)]="position.ResponsAut.DependFuncional"
-                            name="position.ResponsAut.DependFuncional"
-                            id="position.ResponsAut.DependFuncional"
-                            value="{{position.ResponsAut.DependFuncional}}"
-                          />
-                        </div>
-                      </div>
-                      <div class="col">
-                          <div class="form-group">
-                            <label for="exampleFormControlSelect1">Magnitud Toma Decisiones</label>
-                            <input
-                              class="form-control"
-                              [(ngModel)]="position.ResponsAut.MagnitDecisiones"
-                              name="position.ResponsAut.MagnitDecisiones"
-                              id="position.ResponsAut.MagnitDecisiones"
-                              value="{{position.ResponsAut.MagnitDecisiones}}"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-100"></div>
-                      <div class="row">
-                          <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1"
+                        >Dep. Funcional</label
+                      >
+                      <input
+                        class="form-control"
+                        [(ngModel)]="position.ResponsAut.DependFuncional"
+                        name="position.ResponsAut.DependFuncional"
+                        id="position.ResponsAut.DependFuncional"
+                        value="{{position.ResponsAut.DependFuncional}}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1"
+                        >Magnitud Toma Decisiones</label
+                      >
+                      <input
+                        class="form-control"
+                        [(ngModel)]="position.ResponsAut.MagnitDecisiones"
+                        name="position.ResponsAut.MagnitDecisiones"
+                        id="position.ResponsAut.MagnitDecisiones"
+                        value="{{position.ResponsAut.MagnitDecisiones}}"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="row">
+                  <div class="col">
                     <div class="form-group">
                       <label for="exampleFormControlSelect1"
                         >Responsabilidad:</label
@@ -1206,27 +1223,27 @@
                     </div>
                   </div>
                   <div class="col">
-                      <div class="form-group">
-                        <label for="exampleFormControlSelect1"
-                          >Subordinados:</label
-                        >
-                        <select
-                          class="form-control"
-                          [(ngModel)]="position.ResponsAut.Subordinados"
-                          name="position.ResponsAut.Subordinados"
-                          id="position.ResponsAut.Subordinados"
-                          value="{{position.ResponsAut.Subordinados}}"
-                        >
-                          <option></option>
-                          <option>Sí</option>
-                          <option>No</option>
-                        </select>
-                      </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1"
+                        >Subordinados:</label
+                      >
+                      <select
+                        class="form-control"
+                        [(ngModel)]="position.ResponsAut.Subordinados"
+                        name="position.ResponsAut.Subordinados"
+                        id="position.ResponsAut.Subordinados"
+                        value="{{position.ResponsAut.Subordinados}}"
+                      >
+                        <option></option>
+                        <option>Sí</option>
+                        <option>No</option>
+                      </select>
                     </div>
-                    </div>
-               
-                  <div class="w-100"></div>
-                  <div class="row">
+                  </div>
+                </div>
+
+                <div class="w-100"></div>
+                <div class="row">
                   <div class="col-sm">
                     <h4>Guía/Orientación Recibidas:</h4>
                     <button
@@ -1249,8 +1266,7 @@
                         <form>
                           <div class="form-group">
                             <label for="exampleFormControlTextarea1"
-                              >Añade guía/orient. para esta
-                              posición:</label
+                              >Añade guía/orient. para esta posición:</label
                             >
                             <textarea
                               class="form-control"
@@ -1275,8 +1291,7 @@
                         <button
                           type="button"
                           (click)="
-                            addGuia(position._id, guia);
-                            GuiaOrientModal.close()
+                            addGuia(position._id, guia); GuiaOrientModal.close()
                           "
                           type="submit"
                           class="btn btn-primary"
@@ -1285,79 +1300,89 @@
                         </button>
                       </div>
                     </ngx-smart-modal>
-                    <ul *ngFor="let guia of position.ResponsAut.GuiaOrientRecibidas">
-                        <li>{{ guia }}
+                    <ul
+                      *ngFor="
+                        let guia of position.ResponsAut.GuiaOrientRecibidas
+                      "
+                    >
+                      <li>
+                        {{ guia }}
                         <button
-                        type="button"
-                        class="btn btn-warning"
-                        (click)="removeGuia(position._id, guia)"
-                      >
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </li>
-                      </ul>
+                          type="button"
+                          class="btn btn-warning"
+                          (click)="removeGuia(position._id, guia)"
+                        >
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
                   <div class="col-sm">
-                      <h4>Grado Supervisión Recibidos:</h4>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        (click)="SupervisionModal.open()"
-                      >
-                        <i class="fas fa-plus"></i>
-                      </button>
-                      <ngx-smart-modal
-                        identifier="SupervisionModal"
-                        #SupervisionModal
-                      >
-                        <div class="modal-header">
-                          <h5 class="modal-title">
-                            Añadiendo Grado Supervisión:
-                          </h5>
-                        </div>
-                        <div class="modal-body">
-                          <form>
-                            <div class="form-group">
-                              <label for="exampleFormControlTextarea1"
-                                >Añade grado supervisión. para esta
-                                posición:</label
-                              >
-                              <textarea
-                                class="form-control"
-                                [(ngModel)]="supervision"
-                                name="supervision "
-                                id="supervision "
-                                value="{{supervision}}"
-                                rows="3"
-                              ></textarea>
-                            </div>
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-dismiss="modal"
-                            (click)="SupervisionModal.close()"
-                          >
-                            Cancelar
-                          </button>
-                          <button
-                            type="button"
-                            (click)="
-                              addSupervision(position._id, supervision);
-                              SupervisionModal.close()
-                            "
-                            type="submit"
-                            class="btn btn-primary"
-                          >
-                            Añadir
-                          </button>
-                        </div>
-                      </ngx-smart-modal>
-                      <ul *ngFor="let supervision of position.ResponsAut.GradoSuperv">
-                          <li>{{ supervision }}
-                          <button
+                    <h4>Grado Supervisión Recibidos:</h4>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      (click)="SupervisionModal.open()"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                    <ngx-smart-modal
+                      identifier="SupervisionModal"
+                      #SupervisionModal
+                    >
+                      <div class="modal-header">
+                        <h5 class="modal-title">
+                          Añadiendo Grado Supervisión:
+                        </h5>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1"
+                              >Añade grado supervisión. para esta
+                              posición:</label
+                            >
+                            <textarea
+                              class="form-control"
+                              [(ngModel)]="supervision"
+                              name="supervision "
+                              id="supervision "
+                              value="{{supervision}}"
+                              rows="3"
+                            ></textarea>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                          (click)="SupervisionModal.close()"
+                        >
+                          Cancelar
+                        </button>
+                        <button
+                          type="button"
+                          (click)="
+                            addSupervision(position._id, supervision);
+                            SupervisionModal.close()
+                          "
+                          type="submit"
+                          class="btn btn-primary"
+                        >
+                          Añadir
+                        </button>
+                      </div>
+                    </ngx-smart-modal>
+                    <ul
+                      *ngFor="
+                        let supervision of position.ResponsAut.GradoSuperv
+                      "
+                    >
+                      <li>
+                        {{ supervision }}
+                        <button
                           type="button"
                           class="btn btn-warning"
                           (click)="removeSupervision(position._id, supervision)"
@@ -1365,35 +1390,43 @@
                           <i class="fas fa-trash"></i>
                         </button>
                       </li>
-                        </ul>
-                    </div>
-                    </div>
-                </form>
-                </div>
-                <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-dismiss="modal"
-                      (click)="ResponsAutModal.close()"
-                    >
-                      Cancelar
-                    </button>
-                    <button
-                      type="button"
-                      (click)="editResponsAut(position._id, position.ResponsAut.DependFuncional,position.ResponsAut.ResponsabilidadMando, position.ResponsAut.Subordinados,position.ResponsAut.MagnitDecisiones, position.ResponsAut.GuiaOrientRecibidas, position.ResponsAut.GradoSuperv );
-                      ResponsAutModal.close();
-                      openSnackBar('Cambios guardados', 'OK!')
-                    "
-                    type="submit"
-                    class="btn btn-primary"
-                    data-dismiss="ResponsAutModal"
-                    >
-                      Guardar Cambios
-                    </button>
+                    </ul>
                   </div>
-                </ngx-smart-modal>
-          
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                (click)="ResponsAutModal.close()"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                (click)="
+                  editResponsAut(
+                    position._id,
+                    position.ResponsAut.DependFuncional,
+                    position.ResponsAut.GradoSuperv,
+                    position.ResponsAut.GuiaOrientRecibidas,
+                    position.ResponsAut.MagnitDecisiones,
+                    position.ResponsAut.ResponsabilidadMando,
+                    position.ResponsAut.Subordinados
+                  );
+                  ResponsAutModal.close();
+                  openSnackBar('Cambios guardados', 'OK!')
+                "
+                type="submit"
+                class="btn btn-primary"
+                data-dismiss="ResponsAutModal"
+              >
+                Guardar Cambios
+              </button>
+            </div>
+          </ngx-smart-modal>
         </mat-grid-tile>
       </mat-grid-list>
     </mat-tab>
@@ -1418,9 +1451,197 @@
       </div>
       <mat-grid-list cols="1" rowHeight="120px">
         <mat-grid-tile>
-          <button type="button" class="btn btn-primary">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="RelacionesModal.open()"
+          >
             <i class="far fa-edit"></i> Editar Relaciones
           </button>
+          <ngx-smart-modal identifier="RelacionesModal" #RelacionesModal>
+            <div class="modal-header">
+              <h5 class="modal-title">Editando Relaciones Funcionales:</h5>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="row">
+                  <div class="col">
+                    <h4>Relaciones Internas:</h4>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      (click)="RelacionesInternasModal.open()"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                    <ngx-smart-modal
+                      identifier="RelacionesInternasModal"
+                      #RelacionesInternasModal
+                    >
+                      <div class="modal-header">
+                        <h5 class="modal-title">
+                          Añadiendo Relación Funcional Interna:
+                        </h5>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1"
+                              >Añade relación para esta posición:</label
+                            >
+                            <textarea
+                              class="form-control"
+                              [(ngModel)]="interna"
+                              name="interna "
+                              id="interna "
+                              value="{{interna}}"
+                              rows="3"
+                            ></textarea>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                          (click)="RelacionesInternasModal.close()"
+                        >
+                          Cancelar
+                        </button>
+                        <button
+                          type="button"
+                          (click)="
+                            addRelInterna(position._id, interna);
+                            RelacionesInternasModal.close()
+                          "
+                          type="submit"
+                          class="btn btn-primary"
+                        >
+                          Añadir
+                        </button>
+                      </div>
+                    </ngx-smart-modal>
+                    <ul
+                      *ngFor="
+                        let interna of position.RelacFuncionales.RelInternas
+                      "
+                    >
+                      <li>
+                        {{ interna }}
+                        <button
+                          type="button"
+                          class="btn btn-warning"
+                          (click)="removeRelInterna(position._id, interna)"
+                        >
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="row">
+                    <div class="col">
+                      <h4>Relaciones Externas:</h4>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="RelacionesExternasModal.open()"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
+                      <ngx-smart-modal
+                        identifier="RelacionesExternasModal"
+                        #RelacionesExternasModal
+                      >
+                        <div class="modal-header">
+                          <h5 class="modal-title">
+                            Añadiendo Relación Funcional Externa:
+                          </h5>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1"
+                                >Añade relación para esta posición:</label
+                              >
+                              <textarea
+                                class="form-control"
+                                [(ngModel)]="externa"
+                                name="externa "
+                                id="externa "
+                                value="{{externa}}"
+                                rows="3"
+                              ></textarea>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                            (click)="RelacionesExternasModal.close()"
+                          >
+                            Cancelar
+                          </button>
+                          <button
+                            type="button"
+                            (click)="
+                              addRelExterna(position._id, externa);
+                              RelacionesExternasModal.close()
+                            "
+                            type="submit"
+                            class="btn btn-primary"
+                          >
+                            Añadir
+                          </button>
+                        </div>
+                      </ngx-smart-modal>
+                      <ul
+                        *ngFor="
+                          let externa of position.RelacFuncionales.RelExternas
+                        "
+                      >
+                        <li>
+                          {{ externa }}
+                          <button
+                            type="button"
+                            class="btn btn-warning"
+                            (click)="removeRelExterna(position._id, externa)"
+                          >
+                            <i class="fas fa-trash"></i>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                (click)="RelacionesModal.close()"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                (click)="
+                  RelacionesModal.close();
+                  openSnackBar('Cambios guardados', 'OK!')
+                "
+                type="submit"
+                class="btn btn-primary"
+                data-dismiss="ResponsAutModal"
+              >
+                Guardar Cambios
+              </button>
+            </div>
+          </ngx-smart-modal>
         </mat-grid-tile>
       </mat-grid-list>
     </mat-tab>

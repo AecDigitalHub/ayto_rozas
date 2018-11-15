@@ -32,6 +32,8 @@ editedSupervisiones: any;
 editedFunciones: any;
 editedTareas: any;
 editedMision: any;
+editedRelExternas: any;
+editedRelInternas: any;
 
   constructor(public PositionDPTView: PositionService, private route: ActivatedRoute, private router: Router, public Edit: EditService, public snackBar: MatSnackBar) { }
 
@@ -176,6 +178,30 @@ addSupervision(id, supervision) {
 removeSupervision(id, supervision) {
   this.Edit.removeSupervision(id, supervision).subscribe(supervisiones => {
   this.editedSupervisiones = supervisiones;
+  this.ngOnInit();
+});
+}
+addRelInterna(id, interna) {
+  this.Edit.addRelInterna(id, interna).subscribe(internas => {
+  this.editedRelInternas = internas;
+  this.ngOnInit();
+});
+}
+removeRelInterna(id, interna) {
+  this.Edit.removeRelInterna(id, interna).subscribe(internas => {
+  this.editedRelInternas = internas;
+  this.ngOnInit();
+});
+}
+addRelExterna(id, externa) {
+  this.Edit.addRelExterna(id, externa).subscribe(externas => {
+  this.editedRelExternas = externas;
+  this.ngOnInit();
+});
+}
+removeRelExterna(id, externa) {
+  this.Edit.removeRelExterna(id, externa).subscribe(externas => {
+  this.editedRelExternas = externas;
   this.ngOnInit();
 });
 }

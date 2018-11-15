@@ -238,6 +238,56 @@ router.put("/remove/supervision/:id", (req, res, next) => {
       .catch(err => console.log(err));
   });
 });
+router.put("/add/relinterna/:id", (req, res, next) => {
+  const Relacion = req.body;
+  let RelaciontoAdd = Relacion.interna;
+  console.log(RelaciontoAdd);
+
+  dpt.findById(req.params.id).then(pos => {
+    actualiz = pos.RelacFuncionales.RelInternas.push(RelaciontoAdd);
+    dpt
+      .findByIdAndUpdate(req.params.id, { 'RelacFuncionales.RelInternas': pos.RelacFuncionales.RelInternas}, { new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
+router.put("/remove/relinterna/:id", (req, res, next) => {
+  const Relacion = req.body;
+  let RelaciontoRemove = Object.values(Relacion).toString();
+
+  dpt.findById(req.params.id).then(pos => {
+    actual = pos.RelacFuncionales.RelInternas.pull(RelaciontoRemove);
+    dpt
+      .findByIdAndUpdate(req.params.id,{ 'RelacFuncionales.RelInternas': pos.RelacFuncionales.RelInternas },{ new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
+router.put("/add/relexterna/:id", (req, res, next) => {
+  const Relacion = req.body;
+  let RelaciontoAdd = Relacion.externa;
+  console.log(RelaciontoAdd);
+
+  dpt.findById(req.params.id).then(pos => {
+    actualiz = pos.RelacFuncionales.RelExternas.push(RelaciontoAdd);
+    dpt
+      .findByIdAndUpdate(req.params.id, { 'RelacFuncionales.RelExternas': pos.RelacFuncionales.RelExternas}, { new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
+router.put("/remove/relexterna/:id", (req, res, next) => {
+  const Relacion = req.body;
+  let RelaciontoRemove = Object.values(Relacion).toString();
+
+  dpt.findById(req.params.id).then(pos => {
+    actual = pos.RelacFuncionales.RelExternas.pull(RelaciontoRemove);
+    dpt
+      .findByIdAndUpdate(req.params.id,{ 'RelacFuncionales.RelExternas': pos.RelacFuncionales.RelExternas },{ new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
 
 router.put("/edit/condiciones/:id", (req, res, next) => {
   const {

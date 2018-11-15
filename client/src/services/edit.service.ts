@@ -150,7 +150,31 @@ editedResponsAut: any;
   }
   removeSupervision(id, supervision) {
     return this.http
-      .put(`${BASEURL}/api/positions/remove/supervision/${id}`,  {supervision} )
+      .put(`${BASEURL}/api/positions/remove/supervision/${id}`,  { supervision } )
+      .pipe(map((res: Response) => {
+      }));
+  }
+  addRelInterna(id, interna) {
+    return this.http
+      .put(`${BASEURL}/api/positions/add/relinterna/${id}`, { interna })
+      .pipe(map((res: Response) => {
+      }));
+  }
+  removeRelInterna(id, interna) {
+    return this.http
+      .put(`${BASEURL}/api/positions/remove/relinterna/${id}`,  { interna } )
+      .pipe(map((res: Response) => {
+      }));
+  }
+  addRelExterna(id, externa) {
+    return this.http
+      .put(`${BASEURL}/api/positions/add/relexterna/${id}`, { externa })
+      .pipe(map((res: Response) => {
+      }));
+  }
+  removeRelExterna(id, externa) {
+    return this.http
+      .put(`${BASEURL}/api/positions/remove/relexterna/${id}`,  {externa} )
       .pipe(map((res: Response) => {
       }));
   }
