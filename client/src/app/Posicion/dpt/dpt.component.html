@@ -450,11 +450,15 @@
               >
                 <div class="modal-header">
                   <h5 class="modal-title">
-                    ¿Deseas eliminar esta función del catálogo de funciones para
-                    esta posición?
+                    ¿Deseas eliminar esta función?
                   </h5>
                 </div>
-                <div class="modal-body"><h5></h5></div>
+                <div class="modal-body">                  
+                  {{ funcion }}
+                </div>
+                <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                    <mat-grid-tile class="divider"></mat-grid-tile>
+                  </mat-grid-list>
                 <div class="modal-footer">
                   <button
                     type="button"
@@ -469,13 +473,13 @@
                     (click)="
                       removeFuncion(position._id, funcion);
                       RemoveFuncionModal.close();
-                      openSnackBar('Función eliminada', '')
+                      openSnackBar('Función eliminada', 'OK')
                     "
                     type="submit"
                     data-dismiss="FuncionModal"
                     class="btn btn-primary"
                   >
-                    Sí, eliminar función
+                    Sí, eliminar
                   </button>
                 </div>
               </ngx-smart-modal>
@@ -656,7 +660,7 @@
             class="btn btn-danger"
             (click)="
               removeTarea(position._id, tarea);
-              openSnackBar('Tarea Eliminada', '')
+              openSnackBar('Tarea Eliminada', 'OK')
             "
           >
             <i class="far fa-trash-alt"></i> Borrar
