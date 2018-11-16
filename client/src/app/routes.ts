@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './Dashboard/dashboard/dashboard.component';
 import { AreaComponent } from './Area/area/area.component';
 import { PosicionComponent } from './Posicion/posicion/posicion.component';
@@ -10,7 +12,9 @@ import { ComplementoComponent } from './Complementos/complemento/complemento.com
 
 
 export const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', component: LoginComponent },
+  // { path: 'login', component: LoginComponent},
+  { path: 'signup', component: SignupComponent},
   { path: 'Dashboard', component: DashboardComponent },
   { path: 'Area/:area', component: AreaComponent },
   { path: 'Posicion/:id', component: PosicionComponent,

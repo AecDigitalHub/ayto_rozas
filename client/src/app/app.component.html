@@ -1,4 +1,5 @@
 <ng-container>
+        <div *ngIf='Auth.user'>
     <mat-toolbar class="app-header">
         <!-- <div class="logo-background">
                 <img class="logo" src="../assets/images/logo_rozas.png" width="200px">
@@ -9,15 +10,18 @@
             </h2>
         </button>
         <span class="header-spacer"></span>
-        <span>Hola Jon Snow!</span>
+        <div *ngIf='Auth.user'>
+        <span>Hola {{Auth.user.username}}!</span>
+        </div>
         <button mat-button [matMenuTriggerFor]="menu">
             <img src="../assets/images/user.png" width="40px">
         </button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item>Editar Perfil</button>
-            <button mat-menu-item>Log Out</button>
+            <button mat-menu-item (click)="logout()">Log Out</button>
         </mat-menu>
     </mat-toolbar>
+    </div>
 
     <mat-sidenav-container class="app-container">
         <mat-sidenav class="app-sidenav" #sidenav mode="side" [(opened)]="opened">
@@ -33,7 +37,9 @@
         </mat-sidenav>
 
         <mat-sidenav-content>
+                <div *ngIf='Auth.user'>
             <img src='../assets/images/header.png'>
+            </div>
             <mat-grid-list class="divider" cols="1" rowHeight="30px">
                 <mat-grid-tile class="divider"></mat-grid-tile>
             </mat-grid-list>
@@ -46,5 +52,5 @@
         <!-- <img src="../assets/images/escudo.svg" width="35px"> -->
         <img src="../assets/images/logo_las_rozas.png" width="125px">
     </mat-toolbar>
-    
 </ng-container>
+<!-- </div> -->

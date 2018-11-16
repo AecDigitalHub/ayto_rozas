@@ -6,6 +6,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { SideBarMenuComponent } from '../app/side-bar-menu/side-bar-menu.component';
+import { AuthenticationService } from '../services/authentication.service';
+
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,10 @@ import { SideBarMenuComponent } from '../app/side-bar-menu/side-bar-menu.compone
 })
 export class AppComponent implements OnInit {
   title = 'Ayto. Las Rozas Web-App';
-  constructor (private router: Router) {}
+  constructor (public Auth: AuthenticationService, private router: Router) {}
   ngOnInit() {
+  }
+  logout() {
+    this.Auth.logout().subscribe(() => this.router.navigate(['/']));
   }
 }

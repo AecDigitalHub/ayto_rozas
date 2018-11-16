@@ -7,6 +7,7 @@ import { DashboardService } from '../../../services/dashboard.service';
 import { PieChartComponent } from '../../Charts/pie-chart/pie-chart.component';
 import { LinealChartComponent } from '../../Charts/lineal-chart/lineal-chart.component';
 import { PositionsTableComponent } from '../positions-table/positions-table.component';
+import { AuthenticationService } from '../../../services/authentication.service';
 import { EmploymentsTableComponent } from '../employments-table/employments-table.component';
 
 @Component({
@@ -15,6 +16,7 @@ import { EmploymentsTableComponent } from '../employments-table/employments-tabl
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  User: any;
   Positions: Observable<Array<object>>;
   PositionsCount: Number;
   PositionsVacancies: any;
@@ -27,7 +29,7 @@ export class DashboardComponent implements OnInit {
   SalaryDist: any;
   KeysSalaryDist: Array<string> = ['15-20k', '20-35k', '35-50k', '> 50k'];
 
-  constructor(public dashboard: DashboardService) {}
+  constructor(public dashboard: DashboardService, private Auth: AuthenticationService) {}
 
   ngOnInit() {
     this.dashboard.getPositions().subscribe(Positions => {

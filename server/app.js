@@ -2,9 +2,13 @@ require('dotenv').config();
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
+const session      = require('express-session');
+const MongoStore   = require('connect-mongo')(session);
 const favicon      = require('serve-favicon');
 const hbs          = require('hbs');
 const mongoose     = require('mongoose');
+const configure    = require('./config/passport.js');
+const passport     = require('passport');
 const logger       = require('morgan');
 const path         = require('path');
 const cors = require('cors');
@@ -26,10 +30,22 @@ mongoose
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
+const app = express();
+app.use(session({
+  secret: "ayto-rozas-app",
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    maxAge: 2419200000
+  },
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
 
 //Middleware...
 const whitelist = [
   'http://localhost:4200',
+  'http://localhost:3000',
 ]
 
 const corsOptions = {
@@ -40,15 +56,20 @@ const corsOptions = {
   credentials: true
 }
 
-
-const app = express();
 app.use(cors(corsOptions));
+
+
 
 // Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+configure(passport);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Express View engine setup
 

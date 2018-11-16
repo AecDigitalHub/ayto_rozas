@@ -43,6 +43,9 @@ import { RPTComponent } from './Posicion/rpt/rpt.component';
 import { AreaPosititionsTableComponent } from './Area/area-posititions-table/area-posititions-table.component';
 import { NotificacionComponent } from './notificacion/notificacion.component';
 import { MatSnackBarModule } from '@angular/material';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 @NgModule({
@@ -64,6 +67,8 @@ import { MatSnackBarModule } from '@angular/material';
     RPTComponent,
     AreaPosititionsTableComponent,
     NotificacionComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   entryComponents: [
   ]
@@ -92,7 +97,7 @@ import { MatSnackBarModule } from '@angular/material';
     NgxSmartModalModule.forRoot(),
     MatSnackBarModule
   ],
-  providers: [DashboardService, AreaService, TestService, FileDatabase, EditService],
+  providers: [DashboardService, AreaService, TestService, FileDatabase, EditService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
