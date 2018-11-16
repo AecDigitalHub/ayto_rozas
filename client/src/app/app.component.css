@@ -1,3 +1,11 @@
+html {
+  background-color: #F0F1F5;
+}
+
+.ng-container {
+  background-color: #F0F1F5;
+}
+
 .app-container {
   position: absolute;
   top: 60px;
