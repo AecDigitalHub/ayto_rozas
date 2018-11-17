@@ -45,7 +45,6 @@ app.use(session({
 //Middleware...
 const whitelist = [
   'http://localhost:4200',
-  'http://localhost:3000',
 ]
 
 const corsOptions = {

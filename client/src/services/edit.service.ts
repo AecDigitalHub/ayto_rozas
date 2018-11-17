@@ -32,9 +32,9 @@ editedResponsAut: any;
   }
   
   
-  editCondiciones(id, Dedicacion, Dificultad, Responsabilidad, Nocturnidad, Turnicidad, PeligrosidadPenosidad) {
+  editCondiciones(id, Dedicacion, Dificultad, Responsabilidad, JornadaPartida, Turnicidad, PeligrosidadPenosidad) {
     return this.http
-      .put(`${BASEURL}/api/positions/edit/condiciones/${id}`, { id, Dedicacion, Dificultad, Responsabilidad, Nocturnidad, Turnicidad, PeligrosidadPenosidad })
+      .put(`${BASEURL}/api/positions/edit/condiciones/${id}`, { id, Dedicacion, Dificultad, Responsabilidad, JornadaPartida, Turnicidad, PeligrosidadPenosidad })
       .pipe(map((res: Response) => {
         let editedCondiciones = res.json();
         return this.editedCondiciones;

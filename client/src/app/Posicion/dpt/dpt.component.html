@@ -1667,11 +1667,11 @@
         </div>
         <div class="row">
           <div class="col">
-            <h4>Nocturnidad:</h4>
-            {{ position.Condiciones.Nocturnidad }}
+            <h4>Jornada Partida:</h4>
+            {{ position.Condiciones.JornadaPartida }}
           </div>
           <div class="col">
-            <h4>Turnicidad:</h4>
+            <h4>Nocturnidad/Turnicidad:</h4>
             {{ position.Condiciones.Turnicidad }}
           </div>
           <div class="col">
@@ -1757,14 +1757,14 @@
                     <div class="col-sm">
                       <div class="form-group">
                         <label for="exampleFormControlSelect1"
-                          >Nocturnidad</label
+                          >Jornada Partida</label
                         >
                         <select
                           class="form-control"
-                          [(ngModel)]="position.Condiciones.Nocturnidad"
-                          name="position.Condiciones.Nocturnidad "
-                          id="position.Condiciones.Nocturnidad "
-                          value="{{position.Condiciones.Nocturnidad }}"
+                          [(ngModel)]="position.Condiciones.JornadaPartida"
+                          name="position.Condiciones.JornadaPartida "
+                          id="position.Condiciones.JornadaPartida "
+                          value="{{position.Condiciones.JornadaPartida }}"
                         >
                           <option></option>
                           <option>Sí</option>
@@ -1775,7 +1775,7 @@
                     <div class="col-sm">
                       <div class="form-group">
                         <label for="exampleFormControlSelect1"
-                          >Turnicidad</label
+                          >Nocturnidad/Turnicidad</label
                         >
                         <select
                           class="form-control"
@@ -1831,7 +1831,7 @@
                     position.Condiciones.Dedicacion,
                     position.Condiciones.Dificultad,
                     position.Condiciones.Responsabilidad,
-                    position.Condiciones.Nocturnidad,
+                    position.Condiciones.JornadaPartida,
                     position.Condiciones.Turnicidad,
                     position.Condiciones.PeligrosidadPenosidad
                   );

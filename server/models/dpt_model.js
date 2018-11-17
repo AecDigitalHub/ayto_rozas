@@ -16,7 +16,7 @@ const DPTSchema = new Schema({
     Escala: { type: String, enum: ['Escala1', '(AE) Administración Especial','Escala2', 'Escala3', ''], default: ''},
     Subescala: { type: String, enum: ['Básica', 'Técnico','Subescala2', 'Subescala3', ''], default: ''},
     Categoria: { type: String, enum: ['Superior', 'categoria2', 'categoria3', ''], default: ''},
-    Grupo: { type: String, enum: ['A1', 'A2', 'B', 'C1', 'C2', 'E'], default: ''},
+    Grupo: { type: String, enum: ['', 'A1', 'A2', 'B', 'C1', 'C2', 'E'], default: ''},
     Colectivo: { type: String, enum: ['(F) Funcionario', '(L) Laboral', ''], default: ''},
     FormaProvision: { type: String, enum: ['(LD) Libre Designación', '(C) Concurso', 'forma3', ''], default: ''},
     Tipo: { type: String, enum: ['(NS) No Singularizado', 'tipo2', 'tipo3', ''], default: ''},
@@ -64,7 +64,7 @@ const DPTSchema = new Schema({
     Dedicacion: { type: String, enum: ['Sí', 'No', ''], default: ''},
     Dificultad: { type: String, enum: ['Sí', 'No', ''], default: ''},
     Responsabilidad: { type: String, enum: ['Sí', 'No', ''], default: ''},
-    Nocturnidad: { type: String, enum: ['Sí', 'No', ''], default: ''},
+    JornadaPartida: { type: String, enum: ['Sí', 'No', ''], default: ''},
     Turnicidad: { type: String, enum: ['Sí', 'No', ''], default: ''},
     PeligrosidadPenosidad: { type: String, enum: ['Sí', 'No', ''], default: ''}
   },

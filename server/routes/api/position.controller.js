@@ -37,7 +37,7 @@ router.put("/add/funcion/:id", (req, res, next) => {
   let FunctiontoAdd = Object.values(Funcion).toString();
 
   dpt.findById(req.params.id).then(pos => {
-    actualiz = pos.Funciones.unshift(FunctiontoAdd);
+    actualiz = pos.Funciones.push(FunctiontoAdd);
     dpt
       .findByIdAndUpdate(
         req.params.id,
@@ -219,11 +219,11 @@ router.put("/add/supervision/:id", (req, res, next) => {
   console.log(SupervisiontoAdd);
 
   dpt.findById(req.params.id).then(pos => {
-    actualiz = pos.ResponsAut.GradoSuperv.push(SupervisiontoAdd);
+    pos.ResponsAut.GradoSuperv.push(SupervisiontoAdd);
     dpt
-      .findByIdAndUpdate(req.params.id, { 'ResponsAut.GradoSuperv': pos.ResponsAut.GradoSuperv}, { new: true })
-      .then(position => res.status(200).json())
-      .catch(err => console.log(err));
+    .findByIdAndUpdate(req.params.id, { 'ResponsAut.GradoSuperv': pos.ResponsAut.GradoSuperv}, { new: true })
+    .then(position => res.status(200).json())
+    .catch(err => console.log(err));
   });
 });
 router.put("/remove/supervision/:id", (req, res, next) => {
@@ -294,7 +294,7 @@ router.put("/edit/condiciones/:id", (req, res, next) => {
     Dedicacion,
     Dificultad,
     Responsabilidad,
-    Nocturnidad,
+    JornadaPartida,
     Turnicidad,
     PeligrosidadPenosidad
   } = req.body;
@@ -302,7 +302,7 @@ router.put("/edit/condiciones/:id", (req, res, next) => {
     Dedicacion: Dedicacion,
     Dificultad: Dificultad,
     Responsabilidad: Responsabilidad,
-    Nocturnidad: Nocturnidad,
+    JornadaPartida: JornadaPartida,
     Turnicidad: Turnicidad,
     PeligrosidadPenosidad: PeligrosidadPenosidad
   };

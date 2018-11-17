@@ -74,7 +74,6 @@ router.get("/loggedin", function(req, res) {
   if(req.isAuthenticated()) {
     return res.status(200).json(req.user);
   }
-
   return res.status(403).json({ message: 'Unauthorized' });
 });
 

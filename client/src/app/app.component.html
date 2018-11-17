@@ -11,7 +11,7 @@
         </button>
         <span class="header-spacer"></span>
         <div *ngIf='Auth.user'>
-        <span>Hola {{Auth.user.username}}!</span>
+        <span>   Hola {{Auth.user.username}} </span>
         </div>
         <button mat-button [matMenuTriggerFor]="menu">
             <img src="../assets/images/user.png" width="40px">
@@ -50,6 +50,8 @@
     <mat-toolbar class="app-footer">
         <span class="footer-spacer"></span>
         <!-- <img src="../assets/images/escudo.svg" width="35px"> -->
+        <div *ngIf='Auth.user'>
         <img src="../assets/images/logo_las_rozas.png" width="125px">
+        </div>
     </mat-toolbar>
 </ng-container>

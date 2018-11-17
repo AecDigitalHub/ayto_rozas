@@ -3,7 +3,7 @@ html {
 }
 
 .ng-container {
-  background-color: #F0F1F5;
+  background-color: white;
 }
 
 .app-container {
@@ -58,6 +58,7 @@ html {
   bottom: 0;
   left: 0;
   right: 0;
+  background-color: white;
 }
 .footer-spacer {
   flex: 1 1 auto;
