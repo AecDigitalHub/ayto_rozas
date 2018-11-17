@@ -30,8 +30,8 @@ export class LinealChartComponent implements OnInit, OnChanges {
         datasets: [
           {
             data: this.values,
-            backgroundColor: '#F5A51E',
-            borderColor: '#F5A51E',
+            backgroundColor: '#5BC9B4',
+            borderColor: '#5BC9B4',
             fill: true,
           },
         ]

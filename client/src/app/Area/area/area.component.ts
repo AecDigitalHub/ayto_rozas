@@ -4,6 +4,10 @@ import { AreaService } from '../../../services/area.service';
 import { ActivatedRoute } from '@angular/router';
 import { Http, Response } from '@angular/http';
 import { PhotoHeaderComponent } from '../../photo-header/photo-header.component';
+import { PieChartComponent } from '../../Charts/pie-chart/pie-chart.component';
+import { LinealChartComponent } from '../../Charts/lineal-chart/lineal-chart.component';
+
+
 
 
 
@@ -19,8 +23,10 @@ export class AreaComponent implements OnInit {
   AreaDist: Observable<Array<number>>;
   PositionsCount: Number;
   EmployeesCount: Number;
-  Colectivos: Object;
+  Colectivos: any;
+  Grupos: any;
   Vacantes: Number;
+  KeysGruposDist: Array<string> = ['Grupo A: A1', 'Grupo B: A2', 'Grupo C: C1', 'Grupo D: C2', 'Grupo E'];
 
   constructor(public area: AreaService, private route: ActivatedRoute) { }
 
@@ -44,6 +50,20 @@ this.route.params.subscribe(params => {
   (this.Area = params['area']),
   this.area.getVacancies(this.Area).subscribe(Vacantes => {
   this.Vacantes = Vacantes;
+  });
+});
+this.route.params.subscribe(params => {
+  (this.Area = params['area']),
+  this.area.getColectivos(this.Area).subscribe(Colectivos => {
+    this.Colectivos = Colectivos;
+    console.log(this.Colectivos);
+  });
+});
+this.route.params.subscribe(params => {
+  (this.Area = params['area']),
+  this.area.getGruposDist(this.Area).subscribe(Grupos => {
+    this.Grupos = Grupos;
+    console.log(this.Grupos);
   });
 });
 // this.route.params.subscribe(params => {

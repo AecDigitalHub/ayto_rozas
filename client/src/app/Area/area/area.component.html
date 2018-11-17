@@ -1,7 +1,7 @@
 <h2>Área</h2>
 <h3>{{this.Area}}</h3>
 
-<mat-grid-list class="divider" cols="1" rowHeight="60px">
+<mat-grid-list class="divider" cols="1" rowHeight="40px">
     <mat-grid-tile class="divider"></mat-grid-tile>
   </mat-grid-list>
 
@@ -26,9 +26,20 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-<mat-grid-list class="divider" cols="1" rowHeight="60px">
-  <mat-grid-tile class="divider"></mat-grid-tile>
+<mat-grid-list class="divider" cols="3" rowHeight="360px">
+  <mat-grid-tile>
+      <app-pie-chart [values1]='Colectivos.Funcionarios' [values2]='Colectivos.Laborales' width="100px" height="100px"></app-pie-chart>
+  </mat-grid-tile>
+  <mat-grid-tile>
+          <app-lineal-chart [keys]='KeysGruposDist' [values]='Grupos' width="150px" height="100px"></app-lineal-chart>
+    </mat-grid-tile>
 </mat-grid-list>
+
+
+
+  <mat-grid-list class="divider" cols="1" rowHeight="40px">
+    <mat-grid-tile class="divider"></mat-grid-tile>
+  </mat-grid-list>
 
         <app-area-posititions-table></app-area-posititions-table>
   

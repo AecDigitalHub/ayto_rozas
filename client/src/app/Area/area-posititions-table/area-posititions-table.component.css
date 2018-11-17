@@ -4,5 +4,17 @@ input {
   text-align: center; 
 }
 
+.btn {
 
+  margin: .02rem .5rem .25rem 0;
+
+}
+
+table td {
+
+  font-size: .541667rem;
+  border-top: 1px solid #eee;
+  vertical-align: middle;
+
+}
 
