@@ -4,8 +4,81 @@
 
 <mat-grid-list cols="1" rowHeight="120px">
   <mat-grid-tile>
-    <button type="button" class="btn btn-primary">
+    <button type="button" class="btn btn-primary" (click)="PuestoModal.open()">
       <i class="fas fa-plus"></i> Añadir Puesto</button>
+      <ngx-smart-modal identifier="PuestoModal" #PuestoModal>
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Añadiendo nueva puesto a esta posición:
+            </h5>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Cod. Empleado:</label>
+                <input
+                  class="form-control"
+                  [(ngModel)]="CodEmpleado"
+                  name="CodEmpleado"
+                  id="CodEmpleado "
+                  value="CodEmpleado"
+                />
+              </div>
+            </form>
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Nombre Empleado:</label>
+                    <input
+                      class="form-control"
+                      [(ngModel)]="NombreEmpleado"
+                      name="NombreEmpleado"
+                      id="NombreEmpleado "
+                      value="NombreEmpleado"
+                    />
+                  </div>
+            </form>
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Situación:</label>
+                <select
+                  class="form-control"
+                  [(ngModel)]="Situacion"
+                  name="Situacion"
+                  id="Situacion"
+                >
+                  <option>Una</option>
+                  <option>Dos</option>
+                  <option>Tres</option>
+                  <option>Cuatro</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="PuestoModal.close()"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              type="submit"
+              (click)="
+                addPuesto(position._id, position.CodigoDPT, CodEmpleado, NombreEmpleado, Situacion);
+                PuestoModal.close();
+                openSnackBar('Puesto añadido', 'OK')
+              "
+              data-dismiss="PuestoModal"
+              class="btn btn-primary"
+            >
+              Añadir Puesto
+            </button>
+          </div>
+        </ngx-smart-modal>
+
   </mat-grid-tile>
 </mat-grid-list>
 <input type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Buscar...">

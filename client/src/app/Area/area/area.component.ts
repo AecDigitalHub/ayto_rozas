@@ -6,9 +6,7 @@ import { Http, Response } from '@angular/http';
 import { PhotoHeaderComponent } from '../../photo-header/photo-header.component';
 import { PieChartComponent } from '../../Charts/pie-chart/pie-chart.component';
 import { LinealChartComponent } from '../../Charts/lineal-chart/lineal-chart.component';
-
-
-
+import { BubbleChartComponent } from '../../Charts/bubble-chart/bubble-chart.component';
 
 
 
@@ -27,7 +25,8 @@ export class AreaComponent implements OnInit {
   Grupos: any;
   Vacantes: Number;
   KeysGruposDist: Array<string> = ['Grupo A: A1', 'Grupo B: A2', 'Grupo C: C1', 'Grupo D: C2', 'Grupo E'];
-
+  KeysSalaryDist: Array<string> = ['15-20k', '20-35k', '35-50k', '> 50k'];
+values: [25, 54, 150, 5];
   constructor(public area: AreaService, private route: ActivatedRoute) { }
 
   ngOnInit() {

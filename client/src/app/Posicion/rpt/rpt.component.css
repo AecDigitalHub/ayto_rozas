@@ -18,3 +18,11 @@ input {
   width: 100%;
   text-align: center; 
 }
+
+table td {
+
+  font-size: .541667rem;
+  border-top: 1px solid #eee;
+  vertical-align: middle;
+
+}

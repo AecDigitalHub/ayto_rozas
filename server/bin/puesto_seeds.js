@@ -3,136 +3,151 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 mongoose.connect(process.env.DBURL);
 
-const puestos = [
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.17",
-    NombreEmpleado: "GONZALEZ RUBIO, JUAN CARLOS",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.16",
-    NombreEmpleado: "COBO LOPEZ, FERNANDO",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.15",
-    NombreEmpleado: "GALLEGO MORAN, GERARDO",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.14",
-    NombreEmpleado: "JIMENEZ GARCIA, PAULINO",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.18",
-    NombreEmpleado: "CASTILLERO CAMPOS, MIGUEL A.",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.21",
-    NombreEmpleado: "SAN JUAN ALONSO, RICARDO",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.92",
-    NombreEmpleado: "SANCHEZ GUIJO, MARIA",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.28",
-    NombreEmpleado: "ANTON HURTADO, JOSE LUIS",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.38",
-    NombreEmpleado: "CASTAÑO CUESTA, JOSE I.",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.37",
-    NombreEmpleado: "MACÍAS PÉREZ, LUIS MARÍA",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.36",
-    NombreEmpleado: "SANCHEZ PEREZ, ENRIQUE",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.35",
-    NombreEmpleado: "REDONDO GARCIA, FAUSTINO",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.34",
-    NombreEmpleado: "MORA ZAMBRANO, MANUEL",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.33",
-    NombreEmpleado: "BUSTAMANTE MARTINEZ, PEDRO",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.32",
-    NombreEmpleado: "MAYORAL ALVAREZ, JULIO",
-    Situacion: "P"
-  },
-  {
-    Position: '5bcf3944e608dd17f5304bc0',
-    CodDPT: "SS125",
-    DenomPuesto: 'Policía Local',
-    CodEmpleado: "2.D.31",
-    NombreEmpleado: "CHAVEZ VAZQUEZ, JOSE",
-    Situacion: "P"
-  },
-
+const puestos = [  
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "600.E.15",
+      "NombreEmpleado": "LOSA FUNES, ANGEL",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "60.E.14",
+      "NombreEmpleado": "PEREZ SUAREZ, MIGUEL A.",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "60.E.21",
+      "NombreEmpleado": "BARRADO BONILLA, JOSE A.",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "60.E.19",
+      "NombreEmpleado": "VACANTE",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "600.E.16",
+      "NombreEmpleado": "DOMINGUEZ ALENDA, ALBERTO",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "60.E.15",
+      "NombreEmpleado": "TIRADO GARCIA, JUAN J.",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "60.E.11",
+      "NombreEmpleado": "MORAN COVARRUBIAS, JOSE",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "60.E.13",
+      "NombreEmpleado": "MARTIN LOPEZ, LUIS",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "60.E.10",
+      "NombreEmpleado": "VACANTE",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "60.E.16",
+      "NombreEmpleado": "BRAVO RUBIO, MANUEL",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "600.E.31",
+      "NombreEmpleado": "BARRAGAN LOPEZ, JOSE ANTONIO",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "600.E.17",
+      "NombreEmpleado": "FERNANDEZ GONZALEZ, RUBEN",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "600.E.21",
+      "NombreEmpleado": "DIAZ PEREZ, JOSE",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "600.E.18",
+      "NombreEmpleado": "JIMENEZ JIMENEZ, JUAN L.",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "600.E.24",
+      "NombreEmpleado": "ROLDAN CAÑAS, FELIX",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "600.E.23",
+      "NombreEmpleado": "LEO RODRIGUEZ, JUAN ANDRES",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "600.E.25",
+      "NombreEmpleado": "SANZ NUÑO, RICARDO",
+      "Situacion": ""
+    },
+    {
+      "Position": "5befc92bab112103d221cda0",
+      "CodDPT": "SC106",
+      "DenomPuesto": "Operario Infraestructuras",
+      "CodEmpleado": "600.E.20",
+      "NombreEmpleado": "DIAZ ORTEGA, ANGEL",
+      "Situacion": ""
+    }
 ];
 
 Puesto.create(puestos, (err, puestos) => {

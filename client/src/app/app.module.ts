@@ -46,6 +46,7 @@ import { MatSnackBarModule } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthenticationService } from '../services/authentication.service';
+import { BubbleChartComponent } from './Charts/bubble-chart/bubble-chart.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { AuthenticationService } from '../services/authentication.service';
     NotificacionComponent,
     LoginComponent,
     SignupComponent,
+    BubbleChartComponent,
   ],
   entryComponents: [
   ]

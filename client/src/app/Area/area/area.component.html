@@ -1,3 +1,4 @@
+<div *ngIf="area">
 <h2>Área</h2>
 <h3>{{this.Area}}</h3>
 
@@ -28,10 +29,17 @@
 
 <mat-grid-list class="divider" cols="3" rowHeight="360px">
   <mat-grid-tile>
+      <div *ngIf="Colectivos">
       <app-pie-chart [values1]='Colectivos.Funcionarios' [values2]='Colectivos.Laborales' width="100px" height="100px"></app-pie-chart>
-  </mat-grid-tile>
+  </div>
+    </mat-grid-tile>
   <mat-grid-tile>
           <app-lineal-chart [keys]='KeysGruposDist' [values]='Grupos' width="150px" height="100px"></app-lineal-chart>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <app-bubble-chart [values]="[127, 46, 89, 15]" width="150px" height="100px"></app-bubble-chart>
+      <!-- <app-bubble-chart [keys]='KeysSalaryDist' [values]="values" width="150px" height="100px"></app-bubble-chart> -->
+
     </mat-grid-tile>
 </mat-grid-list>
 
@@ -43,3 +51,4 @@
 
         <app-area-posititions-table></app-area-posititions-table>
   
+</div>
