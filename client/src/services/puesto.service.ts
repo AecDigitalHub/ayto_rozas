@@ -16,9 +16,9 @@ newPuesto: any;
 
   @Output() refreshposition: EventEmitter<void> = new EventEmitter();
 
-  addPuesto(Position, CodDPT, CodEmpleado, NombreEmpleado, Situacion) {
+  addPuesto(Position, CodDPT, CodEmpleado, DenomPuesto, NombreEmpleado, Situacion) {
     return this.http
-    .post(`${BASEURL}/api/puestos/addPuesto`, { Position, CodDPT, CodEmpleado, NombreEmpleado, Situacion })
+    .post(`${BASEURL}/api/puestos/addPuesto`, { Position, CodDPT, CodEmpleado, DenomPuesto, NombreEmpleado, Situacion })
     .pipe(map((res: Response) => {
 let newPuesto = res.json();
 return this.newPuesto;

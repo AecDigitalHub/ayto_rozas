@@ -276,6 +276,10 @@ router.put("/add/relexterna/:id", (req, res, next) => {
       .catch(err => console.log(err));
   });
 });
+
+
+
+
 router.put("/remove/relexterna/:id", (req, res, next) => {
   const Relacion = req.body;
   let RelaciontoRemove = Object.values(Relacion).toString();

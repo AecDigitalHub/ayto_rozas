@@ -19,7 +19,7 @@ positionId: String;
 position: Observable<any>;
 newPuesto: any;
 
-constructor(public PositionRPTView: PositionService, private route: ActivatedRoute, private router: Router, public Puestos: PuestoService) { }
+constructor(public snackBar: MatSnackBar, public PositionRPTView: PositionService, private route: ActivatedRoute, private router: Router, public Puestos: PuestoService) { }
 
 ngOnInit() {
   this.route.params.subscribe(params => {
@@ -32,12 +32,16 @@ ngOnInit() {
   console.log(this.position);
 });
 }
-addPuesto(Position, CodDPT, CodEmpleado, NombreEmpleado, Situacion) {
-  this.Puestos.addPuesto(Position, CodDPT, CodEmpleado, NombreEmpleado, Situacion).subscribe(puesto => {
+addPuesto(Position, CodDPT, CodEmpleado, DenomPuesto, NombreEmpleado, Situacion) {
+  this.Puestos.addPuesto(Position, CodDPT, CodEmpleado, DenomPuesto, NombreEmpleado, Situacion).subscribe(puesto => {
   this.newPuesto = puesto;
+  console.log(this.newPuesto);
   this.ngOnInit();
-  // this.PositionRPTView.getPosition(this.positionId).subscribe(position => {
-  // this.position = position.position;
+});
+}
+openSnackBar(message: string, action: string) {
+  this.snackBar.open(message, action, {
+    duration: 1000,
   });
 }
 }

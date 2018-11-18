@@ -1,3 +1,5 @@
+<div *ngIf="position">
+
 <mat-grid-list class="divider" cols="1" rowHeight="20px">
   <mat-grid-tile class="divider"></mat-grid-tile>
 </mat-grid-list>
@@ -39,6 +41,18 @@
             </form>
             <form>
               <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Denominación Puesto:</label>
+                  <input
+                    class="form-control"
+                    [(ngModel)]="position.FichaDPT.DenomPuesto"
+                    name="position.FichaDPT.DenomPuesto"
+                    id="position.FichaDPT.DenomPuesto "
+                    value="{{position.FichaDPT.DenomPuesto}}"
+                  />
+                </div>
+          </form>
+            <form>
+              <div class="form-group">
                 <label for="exampleFormControlTextarea1">Situación:</label>
                 <select
                   class="form-control"
@@ -67,7 +81,7 @@
               type="button"
               type="submit"
               (click)="
-                addPuesto(position._id, position.CodigoDPT, CodEmpleado, NombreEmpleado, Situacion);
+                addPuesto(position._id, position.CodigoDPT, CodEmpleado, position.FichaDPT.DenomPuesto, NombreEmpleado, Situacion);
                 PuestoModal.close();
                 openSnackBar('Puesto añadido', 'OK')
               "
@@ -110,3 +124,4 @@
     </tr>
   </tbody>
 </table>
+</div>
