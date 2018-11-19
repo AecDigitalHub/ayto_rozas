@@ -1,10 +1,19 @@
+<div *ngIf="position">
 <mat-grid-list class="divider" cols="1" rowHeight="30px">
   <mat-grid-tile class="divider"></mat-grid-tile>
 </mat-grid-list>
 
 <mat-tab-group>
   <mat-tab label="Complementos - Puntuación">
-    <mat-grid-list cols="1" rowHeight="30px">
+    <mat-grid-list cols="1" rowHeight="10px">
+    </mat-grid-list>
+    <mat-grid-list class="divider" cols="1" rowHeight="20px">
+      <mat-grid-tile class="divider"></mat-grid-tile>
+    </mat-grid-list>
+    <div *ngIf="position.vpt.Complementos.ComplDestino">
+    <h2>Complemento Destino</h2>
+    <mat-grid-list class="divider" cols="1" rowHeight="40px">
+      <mat-grid-tile class="divider"></mat-grid-tile>
     </mat-grid-list>
     <mat-grid-list cols="4" rowHeight="40px">
       <mat-grid-tile>
@@ -18,10 +27,52 @@
       </mat-grid-tile>
       <mat-grid-tile>
         <button type="button" class="btn btn-primary">
-          <i class="fas fa-plus"></i> Añadir Complemento</button>
+          <i class="fas fa-plus"></i> Añadir Compl. Destino</button>
       </mat-grid-tile>
     </mat-grid-list>
-    <mat-grid-list *ngFor="let complemento of position.vpt.Complementos" cols="4" rowHeight="100px">
+    <!-- <div *ngIf="position.FichaDPT.Colectivo =='(F) Funcionario'"> -->
+    <mat-grid-list *ngFor="let complemento of position.vpt.Complementos.ComplDestino" cols="4" rowHeight="100px">
+      <mat-grid-tile>
+        <h6>{{complemento.Complemento}}</h6>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <h6>{{complemento.Grado}}</h6>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <h6>{{complemento.Puntos}}</h6>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button type="button" class="btn btn-success">
+          <i class="far fa-edit"></i> Editar </button>
+        <button type="button" class="btn btn-danger">
+          <i class="far fa-trash-alt"></i> Borrar </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+    </div>
+    <!-- </div> -->
+    <mat-grid-list class="divider" cols="1" rowHeight="20px">
+      <mat-grid-tile class="divider"></mat-grid-tile>
+    </mat-grid-list>
+    <h2>Complemento Específico</h2>
+    <mat-grid-list class="divider" cols="1" rowHeight="40px">
+      <mat-grid-tile class="divider"></mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="4" rowHeight="40px">
+      <mat-grid-tile>
+        <h4>Complemento</h4>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <h4>Grado</h4>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <h4>Puntos</h4>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button type="button" class="btn btn-primary">
+          <i class="fas fa-plus"></i> Añadir Compl. Específico</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list *ngFor="let complemento of position.vpt.Complementos.ComplEspecifico" cols="4" rowHeight="100px">
       <mat-grid-tile>
         <h6>{{complemento.Complemento}}</h6>
       </mat-grid-tile>
@@ -72,3 +123,4 @@
     </mat-grid-list>
   </mat-tab>
 </mat-tab-group>
+</div>

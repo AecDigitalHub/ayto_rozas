@@ -37,3 +37,11 @@ h6 {
 .dpt-profile-container {
   margin: 0 50px 0 50px;
 }
+
+h2 {
+  text-align: center;
+  color: black;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-weight: 400;
+  background-color: #FCBD37;
+}

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Puesto = require('./puesto_model').schema
+const VPTComplementos = require('./vpt_complementos_model').schema
 
 
 
@@ -69,7 +70,8 @@ const DPTSchema = new Schema({
     PeligrosidadPenosidad: { type: String, enum: ['Sí', 'No', ''], default: ''}
   },
   Puestos: [{type: Schema.Types.ObjectId, ref: 'Puesto'}],
-  Vacantes: [{type: Schema.Types.ObjectId, ref: 'Puesto'}]
+  Vacantes: [{type: Schema.Types.ObjectId, ref: 'Puesto'}],
+  Complementos: [{type: Schema.Types.ObjectId, ref: 'VPTComplementos'}]
   });
  
 const DPT = mongoose.model('DPT', DPTSchema);

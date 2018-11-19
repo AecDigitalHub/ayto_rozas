@@ -5,9 +5,10 @@ mongoose.connect(process.env.DBURL);
 
 const vpts = [
   {
+  Position: "5be846c9d3502d0d564a93b4",
   CodDPT: 'SS125' ,
-  Complementos: [
-    ComplementosDestino: [ {
+  Complementos: {
+    ComplDestino: [ {
   Complemento: 'Formación',
   Grado: 3,
   Puntos: 6,
@@ -58,7 +59,8 @@ const vpts = [
           Puntos: '',
           Retribución: ''
           }]
-        },
+        }],
+        ComplEspecifico: [
         {
           Complemento: 'Dificultad Técnica',
           Grado: '',
@@ -156,7 +158,8 @@ const vpts = [
             }]
           },
     ]
-}]
+}
+  }]
 
 VPT.create(vpts, (err, vpts) => {
   if (err) {

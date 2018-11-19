@@ -9,6 +9,7 @@ h4 {
   justify-content: flex-start;
   text-align: left;
   color: #3675ac;
+  /* color: #B39B7C; */
   font-weight: 500;
 }
 
@@ -24,7 +25,7 @@ mat-grid-tile {
 h5 {
   text-align: left;
   font-weight: 400;
-  margin: 0 50px 0 50px;
+  color: #B39B7C;
 }
 
 mat-card-title {
@@ -34,6 +35,10 @@ mat-card-title {
 li {
   text-align: left;
   margin: initial;
+}
+
+label {
+    color: #B39B7C;
 }
 
 .btn-outline-info {
@@ -85,5 +90,9 @@ span{
   color: #2E5C8A;
   font-size: 0.7rem;
   font-weight: 400;
+}
+
+.modal-header {
+  background-color: #00CCB3;
 }
 
