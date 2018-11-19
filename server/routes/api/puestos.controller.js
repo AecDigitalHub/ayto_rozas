@@ -26,10 +26,20 @@ router.post("/addPuesto", (req, res, next) => {
     if (newPuesto.errors) {
       return res.status(400).json(newPuesto);
     }
-    
-    // return res.status(200).json(newPuesto);
-    dpt.findById(newPuesto.Position).then(pos => {
-      if(newPuesto.NombreEmpleado !== "VACANTE" || newPuesto.NombreEmpleado !== "Vacante"){
+          dpt.findById(newPuesto.Position).then(pos => {
+      if (newPuesto.NombreEmpleado == "VACANTE" || newPuesto.NombreEmpleado == "Vacante") {
+        pos.Puestos.push((newPuesto.id).toString());
+        pos.Vacantes.push((newPuesto.id).toString());
+          dpt
+            .findByIdAndUpdate(
+              newPuesto.Position,
+              { Puestos: pos.Puestos, Vacantes: pos.Vacantes  },
+              { new: true }
+            )
+            .then(position => {
+              return res.status(200).json(position)
+          });
+          } else {
         pos.Puestos.push((newPuesto.id).toString());
         dpt
           .findByIdAndUpdate(
@@ -40,25 +50,7 @@ router.post("/addPuesto", (req, res, next) => {
           .then(position => {
             return res.status(200).json(position)
         });
-           } else if (newPuesto.NombreEmpleado == "VACANTE" || newPuesto.NombreEmpleado == "Vacante") {
-      pos.Puestos.push((newPuesto.id).toString());
-      pos.Vacantes.push((newPuesto.id).toString());
-        dpt
-          .findByIdAndUpdate(
-            newPuesto.Position,
-            { Puestos: pos.Puestos },
-            { new: true }
-          )
-          dpt
-          .findByIdAndUpdate(
-            newPuesto.Position,
-            { Vacantes: pos.Vacantes },
-            { new: true }
-          )
-          .then(position => {
-            return res.status(200).json(position)
-        });
-        };
+      }
       });
     });
   });
