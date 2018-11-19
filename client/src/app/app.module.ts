@@ -47,6 +47,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthenticationService } from '../services/authentication.service';
 import { BubbleChartComponent } from './Charts/bubble-chart/bubble-chart.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 
 @NgModule({
@@ -97,7 +99,8 @@ import { BubbleChartComponent } from './Charts/bubble-chart/bubble-chart.compone
     Ng2SearchPipeModule,
     MatIconModule,
     NgxSmartModalModule.forRoot(),
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule
   ],
   providers: [DashboardService, AreaService, TestService, FileDatabase, EditService, AuthenticationService],
   bootstrap: [AppComponent]

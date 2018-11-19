@@ -3,6 +3,8 @@ import { Observable } from '../../../../node_modules/rxjs';
 import { Router, RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { PositionService } from '../../../services/position.service';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 
 @Component({
