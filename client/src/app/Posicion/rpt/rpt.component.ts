@@ -19,6 +19,7 @@ positionId: String;
 position: Observable<any>;
 newPuesto: any;
 editedPuestos: any;
+editedPuesto: any;
 editedPosition: Observable<any>;
 
 constructor(public snackBar: MatSnackBar, public PositionRPTView: PositionService, private route: ActivatedRoute, private router: Router, public Puestos: PuestoService) { }
@@ -43,11 +44,18 @@ addPuesto(Position, CodDPT, CodEmpleado, DenomPuesto, NombreEmpleado, Situacion)
 }
 
 removePuesto(id) {
-  this.Puestos.removePuesto(id).subscribe(position => {
-    console.log(position);
+  this.Puestos.removePuesto(id).subscribe(() => {
+    this.ngOnInit();
+  });
+}
+
+editPuesto(id, Position, CodDPT, DenomPuesto, CodEmpleado, NombreEmpleado, Situacion) {
+  this.Puestos.editPuesto(id, Position, CodDPT, DenomPuesto, CodEmpleado, NombreEmpleado, Situacion).subscribe(puesto => {
+this.editedPuesto = puesto;
 this.ngOnInit();
   });
 }
+
 openSnackBar(message: string, action: string) {
   this.snackBar.open(message, action, {
     duration: 1000,

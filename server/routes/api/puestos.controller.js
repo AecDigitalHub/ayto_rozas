@@ -55,25 +55,21 @@ router.post("/addPuesto", (req, res, next) => {
     });
   });
 
-  router.delete("/remove/:id", (req, res, next) => {
+  router.put("/remove/:id", (req, res, next) => {
     puesto.findById(req.params.id)
     .then(pues => {
-      console.log(pues.Position);
-      dpt.findById(pues.Position).then(position => {
-        let puestotoRemove = position.Puestos.indexOf(pues._id);
-       actual = position.Puestos.splice(puestotoRemove, 1);
-        dpt.findByIdAndUpdate(pues.position, { Puestos: position.Puestos }, { new: true })
-        puesto.findByIdAndRemove(req.params.id)
-      .then(() => {
-        console.log('delete!')
-        return res.status(200).json();
-      })
-      .catch(err => next(err))
-      })
-      
+      dpt
+      .findOneAndRemove(
+        { 'Puestos.NombreEmpleado': pues.NombreEmpleado },
+      )
+      puesto.
+      findByIdAndRemove(pues._id)
+      //   let puestotoRemove = position.Puestos.indexOf(pues._id);
+      //  actual = position.Puestos.splice(puestotoRemove, 1);    
+        return res.status(200).json()
     })
-      })
-        
+      .catch(err => console.log(err));    
+    });
 
 
 module.exports = router;

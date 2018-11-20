@@ -115,9 +115,96 @@
       <td>{{puesto.NombreEmpleado}}</td>
       <td>{{puesto.Situacion}}</td>
       <td>
-        <button type="button" class="btn btn-success">
+        <button type="button" class="btn btn-success" (click)="EditPuestoModal.open()">
           <i class="far fa-edit"></i>
         </button>
+        <ngx-smart-modal identifier="EditPuestoModal" #EditPuestoModal>
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Editando puesto:
+            </h5>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Cod. Empleado:</label>
+                <input
+                  class="form-control"
+                  [(ngModel)]="puesto.CodEmpleado"
+                  name="puesto.CodEmpleado"
+                  id="puesto.CodEmpleado "
+                  value="{{puesto.CodEmpleado}}"
+                />
+              </div>
+            </form>
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Nombre Empleado:</label>
+                    <input
+                      class="form-control"
+                      [(ngModel)]="puesto.NombreEmpleado"
+                      name="puesto.NombreEmpleado"
+                      id="puesto.NombreEmpleado "
+                      value="{{puesto.NombreEmpleado}}"
+                    />
+                  </div>
+            </form>
+            <form>
+              <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Denominación Puesto:</label>
+                  <input
+                    class="form-control"
+                    [(ngModel)]="puesto.DenomPuesto"
+                    name="puesto.DenomPuesto"
+                    id="puesto.DenomPuesto "
+                    value="{{puesto.DenomPuesto}}"
+                  />
+                </div>
+          </form>
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Situación:</label>
+                <select
+                  class="form-control"
+                  [(ngModel)]="puesto.Situacion"
+                  name="puesto.Situacion"
+                  id="puesto.Situacion"
+                  value="{{puesto.Situacion}}"
+                >
+                  <option>Una</option>
+                  <option>Dos</option>
+                  <option>Tres</option>
+                  <option>Cuatro</option>
+                  <option>P</option>
+
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="EditPuestoModal.close()"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              type="submit"
+              (click)="
+                editPuesto(puesto._id, puesto.Position, puesto.CodDPT, puesto.CodEmpleado, puesto.DenomPuesto, puesto.NombreEmpleado, puesto.Situacion);
+                EditPuestoModal.close();
+                openSnackBar('Cambios guardados', 'OK')
+              "
+              data-dismiss="PuestoModal"
+              class="btn btn-primary"
+            >
+              Editar Puesto
+            </button>
+          </div>
+        </ngx-smart-modal>
         <button type="button" class="btn btn-danger" (click)="removePuesto(puesto._id);
         openSnackBar('Puesto eliminado', 'OK')">
           <i class="far fa-trash-alt"></i>

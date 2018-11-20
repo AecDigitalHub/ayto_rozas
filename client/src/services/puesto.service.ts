@@ -12,6 +12,7 @@ const BASEURL = environment.BASEURL;
 export class PuestoService {
   newPuesto: any;
   editedPuestos: any;
+  editedPuesto: any;
 
   constructor(private http: Http) {}
 
@@ -42,7 +43,17 @@ export class PuestoService {
       );
   }
   removePuesto(id) {
-  return this.http.delete(`${BASEURL}/api/puestos/remove/${id}`).pipe(map((res: Response) => {
+  return this.http.
+  put(`${BASEURL}/api/puestos/remove/${id}`, id).pipe(map((res: Response) => {
   }));
+  }
+
+  editPuesto(id, Position, CodDPT, DenomPuesto, CodEmpleado, NombreEmpleado, Situacion) {
+    return this.http.
+    put(`${BASEURL}/api/puestos/edit/${id}`, { id, Position, CodDPT, DenomPuesto, CodEmpleado, NombreEmpleado, Situacion })
+    .pipe(map((res: Response) => {
+      const editedPuesto = res.json();
+      return this.editedPuesto;
+    }));
   }
 }
