@@ -18,6 +18,8 @@ export class RPTComponent implements OnInit {
 positionId: String;
 position: Observable<any>;
 newPuesto: any;
+editedPuestos: any;
+editedPosition: Observable<any>;
 
 constructor(public snackBar: MatSnackBar, public PositionRPTView: PositionService, private route: ActivatedRoute, private router: Router, public Puestos: PuestoService) { }
 
@@ -38,6 +40,13 @@ addPuesto(Position, CodDPT, CodEmpleado, DenomPuesto, NombreEmpleado, Situacion)
   console.log(this.newPuesto);
   this.ngOnInit();
 });
+}
+
+removePuesto(id) {
+  this.Puestos.removePuesto(id).subscribe(position => {
+    console.log(position);
+this.ngOnInit();
+  });
 }
 openSnackBar(message: string, action: string) {
   this.snackBar.open(message, action, {

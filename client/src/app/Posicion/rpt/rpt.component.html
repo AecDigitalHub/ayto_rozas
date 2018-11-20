@@ -118,7 +118,8 @@
         <button type="button" class="btn btn-success">
           <i class="far fa-edit"></i>
         </button>
-        <button type="button" class="btn btn-danger">
+        <button type="button" class="btn btn-danger" (click)="removePuesto(puesto._id);
+        openSnackBar('Puesto eliminado', 'OK')">
           <i class="far fa-trash-alt"></i>
         </button>
       </td>
