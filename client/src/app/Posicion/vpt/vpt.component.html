@@ -105,7 +105,7 @@
               <mat-panel-description> </mat-panel-description>
             </mat-expansion-panel-header>
 
-            <div *ngIf="!complemento.Subcompl[0]">
+            <div *ngIf="!complemento.Subcomplementos[0]">
             <mat-grid-list cols="4" rowHeight="40px">
               <mat-grid-tile> <h4>Grado</h4> </mat-grid-tile>
               <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
@@ -133,7 +133,7 @@
               </mat-grid-tile>
             </mat-grid-list>
 </div>
-            <div *ngIf="complemento.Subcompl[0]">
+            <div *ngIf="complemento.Subcomplementos[0]">
               <mat-grid-list cols="5" rowHeight="40px">
                 <mat-grid-tile> <h4>Subcomplemento</h4> </mat-grid-tile>
                 <mat-grid-tile> <h4>Grado</h4> </mat-grid-tile>
@@ -251,7 +251,7 @@
                 </mat-grid-tile>
               </mat-grid-list>
               <mat-grid-list
-                *ngFor="let subcomplemento of complemento.Subcompl"
+                *ngFor="let subcomplemento of complemento.Subcomplementos"
                 cols="5"
                 rowHeight="100px"
                 id="subcomplementos"
@@ -290,10 +290,10 @@
               <mat-grid-list cols="5" rowHeight="100px">
                 <mat-grid-tile>  </mat-grid-tile>
                 <mat-grid-tile>
-                  <h6>{{complemento.Subcompl.length}}</h6>
+                  <h6>{{complemento.Subcomplementos.length}}</h6>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                  <h6>{{ complemento.Subcompl.length }}</h6>
+                  <h6>{{ complemento.Subcomplementos.length }}</h6>
                 </mat-grid-tile>
               </mat-grid-list>
             </div>

@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 // const loggedIn = require("../../utils/isAuthenticated");
-// const positionSkill = require("../../models/positionsSkills");
 const dpt = require("../../models/dpt_model");
 const puesto = require("../../models/puesto_model");
 const vptcompls = require("../../models/vpt_complementos_model");
@@ -24,7 +23,9 @@ router.get("/:id", (req, res, next) => {
     .populate("Puestos")
     .populate("Vacantes")
     .then(position => {
-      vptcompls.findOne({ CodDPT: position.CodigoDPT }).then(vpt => {
+      vptcompls.findOne({ CodDPT: position.CodigoDPT })
+      .populate("Complementos.ComplEspecifico.Subcomplementos")
+      .then(vpt => {
         vptretribs.findOne({ CodDPT: position.CodigoDPT }).then(retribucion => {
           return res.status(200).json({ position, vpt, retribucion });
         });

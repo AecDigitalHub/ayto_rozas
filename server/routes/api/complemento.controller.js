@@ -18,10 +18,10 @@ router.get("/:id/complementodestino/:complemento", (req, res, next) => {
   console.log(req.params);
   vptcompls.findById(req.params.id).then(vpt => {
     console.log(vpt.Complementos.ComplDestino);
-    vptcompls.findById(vpt.Complementos.ComplDestino.id((mongoose.Types.ObjectId(req.params.complemento)))).then(compl => {
+    vptcompls.find({ 'vpt.Complementos.ComplDestino._id': { $all: ['req.params.complemento'] }}).then(compl => {
     return res.status(200).json({compl});
-    });
   });
+});
 });
 
 router.put("/complespecifico/add/subcomplemento/:id", (req, res, next)=> {
