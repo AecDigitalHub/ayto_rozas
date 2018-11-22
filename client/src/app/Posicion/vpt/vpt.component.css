@@ -55,3 +55,7 @@ h2 {
   margin-bottom: 20px;
 
 }
+.mat-expansion-panel-body {
+  padding: 15px 24px 16px;
+  background-color: #FCBD37;
+}

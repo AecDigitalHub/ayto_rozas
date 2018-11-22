@@ -23,12 +23,12 @@ export class PositionService {
     }));
 }
 
-getComplementoAvg(position) {
+getComplementoAvg(complemento) {
   let Grado = 0;
   let Puntos = 0;
   let Retrib = 0;
   let ComplementosAvg = {};
-  return this.http.get(`${BASEURL}/api/positions/${position}`).pipe(map(res => {
+  return this.http.get(`${BASEURL}/api/complementos/${complemento}`).pipe(map(res => {
     const vpt = res.json().vpt;
       Grado = vpt.Complementos.ComplEspecifico[0].Subcompl.reduce((acc, e) => {
         return acc + e.Grado;

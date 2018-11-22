@@ -105,6 +105,7 @@
               <mat-panel-description> </mat-panel-description>
             </mat-expansion-panel-header>
 
+            <div *ngIf="!complemento.Subcompl[0]">
             <mat-grid-list cols="4" rowHeight="40px">
               <mat-grid-tile> <h4>Grado</h4> </mat-grid-tile>
               <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
@@ -131,15 +132,123 @@
                 </button>
               </mat-grid-tile>
             </mat-grid-list>
-
+</div>
             <div *ngIf="complemento.Subcompl[0]">
               <mat-grid-list cols="5" rowHeight="40px">
                 <mat-grid-tile> <h4>Subcomplemento</h4> </mat-grid-tile>
                 <mat-grid-tile> <h4>Grado</h4> </mat-grid-tile>
                 <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
                 <mat-grid-tile> <h4>Retribución</h4> </mat-grid-tile>
-
-                <mat-grid-tile> </mat-grid-tile>
+                <mat-grid-tile>
+                    <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="SubcomplModal.open()"
+                  >
+                    <i class="fas fa-plus"></i> Añadir Subcomplemento
+                  </button>  
+                  <ngx-smart-modal identifier="SubcomplModal" #SubcomplModal>
+                      <div class="modal-header">
+                        <h5 class="modal-title">
+                          Añadiendo nuevo subcomplemento:
+                        </h5>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Subcomplemento:</label>
+                            <input
+                              class="form-control"
+                              [(ngModel)]="Subcomplemento"
+                              name="Subcomplemento"
+                              id="Subcomplemento "
+                            />
+                          </div>
+                        </form>
+                        <form>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Grado:</label>
+                            <select
+                              class="form-control"
+                              [(ngModel)]="Grado"
+                              name="Grado"
+                              id="Grado"
+                            >
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                              <option>6</option>
+                              <option>7</option>
+                              <option>8</option>
+                              
+                            </select>
+                          </div>
+                        </form>
+                        <form>
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1">Puntos:</label>
+                              <select
+                                class="form-control"
+                                [(ngModel)]="Puntos"
+                                name="Puntos"
+                                id="Puntos"
+                              >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                
+                              </select>
+                            </div>
+                          </form>
+                          <form>
+                              <div class="form-group">
+                                  <label for="exampleFormControlSelect1"
+                                    >Retribucion</label
+                                  >
+                                  <input
+                                    class="form-control"
+                                    type="number"
+                                    [(ngModel)]="Retribucion"
+                                    name="Retribucion"
+                                    id="Retribucion"
+                                  />
+                                </div>
+                          </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                          (click)="SubcomplModal.close()"
+                        >
+                          Cancelar
+                        </button>
+                        <button
+                          type="button"
+                          type="submit"
+                          (click)="
+                            addSubcompl(position.vpt.id, Subcomplemento, Grado, Puntos, Retribucion);
+                            SubcomplModal.close();
+                            openSnackBar('Subcomplemento añadido', 'OK')
+                          "
+                          data-dismiss="SubcomplModal"
+                          class="btn btn-primary"
+                        >
+                          Añadir Subcompl
+                        </button>
+                      </div>
+                    </ngx-smart-modal>
+                </mat-grid-tile>
               </mat-grid-list>
               <mat-grid-list
                 *ngFor="let subcomplemento of complemento.Subcompl"

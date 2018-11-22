@@ -3,8 +3,8 @@ import { Observable } from '../../../../node_modules/rxjs';
 import { Router, RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { PositionService } from '../../../services/position.service';
-import {MatExpansionModule} from '@angular/material/expansion';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { EditService } from '../../../services/edit.service';
 
 
 @Component({
@@ -16,8 +16,9 @@ export class VPTComponent implements OnInit {
   positionId: String;
 position: Observable<any>;
 ComplAvg: any;
+editedComplemento: any;
 
-constructor(public PositionVPTView: PositionService, private route: ActivatedRoute, private router: Router) { }
+constructor(public Edit: EditService, public PositionVPTView: PositionService, private route: ActivatedRoute, private router: Router) { }
 
 ngOnInit() {
   this.route.params.subscribe(params => {
@@ -32,7 +33,12 @@ ngOnInit() {
   this.ComplAvg = Avg;
   console.log(this.ComplAvg);
 });
-
+}
+addSubcompl(id, Subcomplemento, Grado, Puntos, Retribucion) {
+  this.Edit.addSubcompl(id, Subcomplemento, Grado, Puntos, Retribucion).subscribe(complemento => {
+    this.editedComplemento = complemento;
+    this.ngOnInit();
+  });
 }
 }
 

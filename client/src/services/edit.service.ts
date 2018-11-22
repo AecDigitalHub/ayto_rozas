@@ -185,6 +185,12 @@ editedResponsAut: any;
       return Position;
     }));
 }
+addSubcompl(id, Subcomplemento, Grado, Puntos, Retribucion) {
+  return this.http
+    .put(`${BASEURL}/api/complementos/complespecifico/add/subcomplemento/${id}`, { id, Subcomplemento, Grado, Puntos, Retribucion })
+    .pipe(map((res: Response) => {
+    }));
+}
 }
 
 

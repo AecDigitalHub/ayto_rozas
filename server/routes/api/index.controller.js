@@ -10,7 +10,7 @@ const puestosRoutes = require('./puestos.controller');
 router.use('/', authRoutes);
 router.use('/positions', positionRoutes);
 router.use('/area', areaRoutes);
-router.use('/complements', complementoRoutes);
+router.use('/complementos', complementoRoutes);
 router.use('/employees', employeesRoutes);
 router.use('/puestos', puestosRoutes);
 
