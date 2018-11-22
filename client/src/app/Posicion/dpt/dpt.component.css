@@ -9,7 +9,6 @@ h4 {
   justify-content: flex-start;
   text-align: left;
   color: #3675ac;
-  /* color: #B39B7C; */
   font-weight: 500;
 }
 
@@ -42,14 +41,14 @@ label {
 }
 
 .btn-outline-info {
-  background-color: transparent;
-  color: #1c5c8e;
-  border-color: #1c5c8e;
+  background-color: #f16051;
+  color: white;
+  border-color: #f16051;
 }
 
 .btn-primary {
-  background-color: #6F78DE;
-  border-color: #6F78DE;
+  background-color: #00CCB3;
+  border-color: #00CCB3;
   display: flex;
   align-items: center;
   flex-direction: inherit;
@@ -57,10 +56,25 @@ label {
   
 }
 
+.btn-primary:hover {
+
+  color: #fff;
+  background-color: #00CCB3;
+  border-color: #00CCB3;
+
+}
+
 .btn-danger {
   background-color: #f16051;
   border-color: #f16051;
 }
+
+.btn-secondary {
+  background-color: #f16051;
+  border-color: #f16051;
+  color:  white;
+}
+
 .btn-warning {
   padding: 0;
   border-color: white;
@@ -93,6 +107,6 @@ span{
 }
 
 .modal-header {
-  background-color: #00CCB3;
+  background-color: #1875B1;
 }
 

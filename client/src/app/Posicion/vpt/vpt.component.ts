@@ -15,18 +15,24 @@ import {MatExpansionModule} from '@angular/material/expansion';
 export class VPTComponent implements OnInit {
   positionId: String;
 position: Observable<any>;
+ComplAvg: any;
 
 constructor(public PositionVPTView: PositionService, private route: ActivatedRoute, private router: Router) { }
 
 ngOnInit() {
   this.route.params.subscribe(params => {
     this.positionId = params['id'];
-    console.log(this.positionId);
   });
 
   this.PositionVPTView.getPosition(this.positionId).subscribe(Position => {
     this.position = Position;
   console.log(this.position);
 });
+  this.PositionVPTView.getComplementoAvg(this.positionId).subscribe(Avg => {
+  this.ComplAvg = Avg;
+  console.log(this.ComplAvg);
+});
+
 }
 }
+

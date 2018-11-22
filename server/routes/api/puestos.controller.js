@@ -71,5 +71,61 @@ router.post("/addPuesto", (req, res, next) => {
       .catch(err => console.log(err));    
     });
 
+  router.put("/edit/:id" , (req, res, next) => {
+    const {
+      Position,
+      CodDPT,
+      DenomPuesto,
+      CodEmpleado,
+      NombreEmpleado,
+      Situacion
+    } = req.body;
+    let editedPuesto = {
+      Position: Position,
+      CodDPT: CodDPT,
+      DenomPuesto: DenomPuesto,
+      CodEmpleado: CodEmpleado,
+      NombreEmpleado: NombreEmpleado,
+      Situacion: Situacion
+    }
+    editedPuesto = _.pickBy(editedPuesto);
+    console.log(editedPuesto);
+
+    puesto.findByIdAndUpdate(
+    req.params.id,
+    editedPuesto,
+    { new: true }
+  )
+//   dpt.findById(editedPuesto.Position).then(pos => {
+//     if (editedPuesto.NombreEmpleado == "VACANTE" || editedPuesto.NombreEmpleado == "Vacante") {
+//       actual = pos.Vacantes.push(editedPuesto._id)
+//         dpt
+//           .findByIdAndUpdate(
+//             editedPuesto.Position,
+//             { Vacantes: pos.Vacantes  },
+//             { new: true }
+//           )
+//           .then(position => {
+//             return res.status(200).json(position)
+//         });
+//         } else {
+//       actual = pos.Vacantes.pull(editedPuesto._id);
+//       dpt
+//         .findByIdAndUpdate(
+//           editedPuesto.Position,
+//           { Vacantes: pos.Vacantes },
+//           { new: true }
+//         )
+//         .then(position => {
+//           return res.status(200).json(position)
+//   });
+// }
+//   })
+  .then(puesto => res.status(200).json(puesto))
+  .catch(err => console.log(err));
+
+
+});
+
 
 module.exports = router;
