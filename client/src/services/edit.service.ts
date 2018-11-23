@@ -186,9 +186,17 @@ editedSubComplemento: any;
       return Position;
     }));
 }
-addSubcompl(Complemento, Subcomplemento, Grado, Puntos, Retribucion) {
+addComplDestino(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion) {
   return this.http
-    .post(`${BASEURL}/api/complementos/add/subcomplemento`, { Complemento, Subcomplemento, Grado, Puntos, Retribucion })
+    .post(`${BASEURL}/api/complementos/add/complementodestino`, { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion })
+    .pipe(map((res: Response) => {
+      const nuevoComplemento = res.json();
+      return nuevoComplemento;
+    }));
+}
+addSubcompl(Complemento, SubComplemento, Grado, Puntos, Retribucion) {
+  return this.http
+    .post(`${BASEURL}/api/complementos/add/subcomplemento`, { Complemento, SubComplemento, Grado, Puntos, Retribucion })
     .pipe(map((res: Response) => {
       const nuevoSubcomplemento = res.json();
       return nuevoSubcomplemento;

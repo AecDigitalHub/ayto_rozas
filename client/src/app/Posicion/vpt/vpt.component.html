@@ -11,6 +11,114 @@
       </mat-grid-list>
       <div *ngIf="position.vpt.Complementos.ComplDestino">
         <h2>Complemento Destino</h2>
+        <button
+        type="button"
+        class="btn btn-primary"
+        (click)="AddComplDestModal.open()"
+      >
+        <i class="fas fa-plus"></i> Añadir Complemento Destino
+      </button>  
+      <ngx-smart-modal identifier="AddComplDestModal" #AddComplDestModal>
+        <div class="modal-header">
+          <h5 class="modal-title">
+            Añadiendo nuevo Complemento Destino:
+          </h5>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Complemento:</label>
+              <input
+                class="form-control"
+                [(ngModel)]="Complemento"
+                name="Complemento"
+                id="Complemento "
+              />
+            </div>
+          </form>
+          <form>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Grado:</label>
+              <select
+                class="form-control"
+                [(ngModel)]="Grado"
+                name="Grado"
+                id="Grado"
+              >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                
+              </select>
+            </div>
+          </form>
+          <form>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Puntos:</label>
+                <select
+                  class="form-control"
+                  [(ngModel)]="Puntos"
+                  name="Puntos"
+                  id="Puntos"
+                >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                  
+                </select>
+              </div>
+            </form>
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"
+                      >Retribucion</label
+                    >
+                    <input
+                      class="form-control"
+                      type="text"
+                      [(ngModel)]="Retribucion"
+                      name="Retribucion"
+                      id="Retribucion"
+                    />
+                  </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+            (click)="AddComplDestModal.close()"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            type="submit"
+            (click)="
+              addComplDestino(position.vpt._id, position.vpt.CodDPT, Complemento, Grado, Puntos, Retribucion);
+              AddComplDestModal.close();
+              openSnackBar('Complemento Destino añadido', 'OK')
+            "
+            data-dismiss="SubcomplModal"
+            class="btn btn-primary"
+          >
+            Añadir Compl
+          </button>
+        </div>
+      </ngx-smart-modal>
 
         <mat-accordion
           *ngFor="let complemento of position.vpt.Complementos.ComplDestino"
@@ -19,9 +127,12 @@
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <h4>{{ complemento.Complemento }}</h4>
+               
               </mat-panel-title>
               <mat-panel-description> </mat-panel-description>
             </mat-expansion-panel-header>
+
+           
 
             <mat-grid-list cols="3" rowHeight="40px">
               <mat-grid-tile> <h4>Grado</h4> </mat-grid-tile>
@@ -46,49 +157,7 @@
             </mat-grid-list>
           </mat-expansion-panel>
         </mat-accordion>
-        <!--
-          <div *ngFor="let complemento of position.vpt.Complementos.ComplDestino; let i = index" class="accordion" id="accordion{{i}}">
-        -->
-
-        <!--
-          <mat-grid-list cols="4" rowHeight="40px">
-            <mat-grid-tile>
-              <h4>Complemento</h4>
-            </mat-grid-tile>
-            <mat-grid-tile>
-              <h4>Grado</h4>
-            </mat-grid-tile>
-            <mat-grid-tile>
-              <h4>Puntos</h4>
-            </mat-grid-tile>
-            <mat-grid-tile>
-              <button type="button" class="btn btn-primary">
-                <i class="fas fa-plus"></i> Añadir Compl. Destino</button>
-            </mat-grid-tile>
-          </mat-grid-list>
-        -->
-        <!-- <div *ngIf="position.FichaDPT.Colectivo =='(F) Funcionario'"> -->
-        <!--
-          <mat-grid-list *ngFor="let complemento of position.vpt.Complementos.ComplDestino" cols="4" rowHeight="100px">
-            <mat-grid-tile>
-              <h6>{{complemento.Complemento}}</h6>
-            </mat-grid-tile>
-            <mat-grid-tile>
-              <h6>{{complemento.Grado}}</h6>
-            </mat-grid-tile>
-            <mat-grid-tile>
-              <h6>{{complemento.Puntos}}</h6>
-            </mat-grid-tile>
-            <mat-grid-tile>
-              <button type="button" class="btn btn-success">
-                <i class="far fa-edit"></i> Editar </button>
-              <button type="button" class="btn btn-danger">
-                <i class="far fa-trash-alt"></i> Borrar </button>
-            </mat-grid-tile>
-          </mat-grid-list>
-          </div>
-        -->
-        <!-- </div> -->
+      
         <mat-grid-list class="divider" cols="1" rowHeight="20px">
           <mat-grid-tile class="divider"></mat-grid-tile>
         </mat-grid-list>
@@ -104,6 +173,7 @@
               </mat-panel-title>
               <mat-panel-description> </mat-panel-description>
             </mat-expansion-panel-header>
+
 
             <div *ngIf="!complemento.Subcomplementos[0]">
             <mat-grid-list cols="4" rowHeight="40px">
@@ -159,9 +229,9 @@
                             <label for="exampleFormControlTextarea1">Subcomplemento:</label>
                             <input
                               class="form-control"
-                              [(ngModel)]="Subcomplemento"
-                              name="Subcomplemento"
-                              id="Subcomplemento "
+                              [(ngModel)]="SubComplemento"
+                              name="SubComplemento"
+                              id="SubComplemento "
                             />
                           </div>
                         </form>
@@ -237,7 +307,7 @@
                           type="button"
                           type="submit"
                           (click)="
-                            addSubcompl(complemento._id, Subcomplemento, Grado, Puntos, Retribucion);
+                            addSubcompl(complemento._id, SubComplemento, Grado, Puntos, Retribucion);
                             SubcomplModal.close();
                             openSnackBar('Subcomplemento añadido', 'OK')
                           "
@@ -374,7 +444,7 @@
                         data-dismiss="EditSubcomplModal"
                         class="btn btn-primary"
                       >
-                        Añadir Subcompl
+                        Editar Subcompl
                       </button>
                     </div>
                   </ngx-smart-modal>

@@ -3,6 +3,7 @@ const router = express.Router();
 // const loggedIn = require("../../utils/isAuthenticated");
 const dpt = require("../../models/dpt_model");
 const puesto = require("../../models/puesto_model");
+const valors = require("../../models/vpt_model");
 const vptcompls = require("../../models/vpt_complementos_model");
 const vptretribs = require("../../models/vpt_retribucion_model");
 const _ = require("lodash");
@@ -23,14 +24,19 @@ router.get("/:id", (req, res, next) => {
     .populate("Puestos")
     .populate("Vacantes")
     .then(position => {
-      vptcompls.findOne({ CodDPT: position.CodigoDPT })
-      .populate("Complementos.ComplEspecifico.Subcomplementos")
+      valors.findOne({ CodDPT: position.CodigoDPT })
+      .populate("Complementos.ComplDestino")
+      .populate({ path: "Complementos.ComplEspecifico", populate: { path: "Subcomplementos" }})
+      // populate({
+      //   // path: 'friends',
+      //   // // Get friends of friends - populate the 'friends' array for every friend
+      //   // populate: { path: 'friends' }
       .then(vpt => {
         vptretribs.findOne({ CodDPT: position.CodigoDPT }).then(retribucion => {
           return res.status(200).json({ position, vpt, retribucion });
         });
       });
-    });
+  });
 });
 
 router.put("/add/funcion/:id", (req, res, next) => {

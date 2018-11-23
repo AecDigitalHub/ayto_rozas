@@ -3,9 +3,9 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const vptsubcompls = require('../../models/vpt_subcomplementos_model')
-
 // const loggedIn = require("../../utils/isAuthenticated");
 const vptcompls = require("../../models/vpt_complementos_model");
+const valors = require("../../models/vpt_model");
 const _ = require("lodash");
 
 // router.get("/", (req, res, next) => {
@@ -27,7 +27,7 @@ router.get("/:id/complementodestino/:complemento", (req, res, next) => {
 router.post("/add/subcomplemento", (req, res, next) => {
   const newSubcomplemento = new vptsubcompls({
     Complemento: req.body.Complemento,
-    Subcomplemento: req.body.Subcomplemento,
+    SubComplemento: req.body.SubComplemento,
     Grado: req.body.Grado,
     Puntos: req.body.Puntos,
     Retribucion: req.body.Retribucion
@@ -44,6 +44,30 @@ router.post("/add/subcomplemento", (req, res, next) => {
     actualiz = complemento.Subcomplementos.push(newSubcomplemento.id)
     vptcompls.findByIdAndUpdate(newSubcomplemento.Complemento, { Subcomplementos: complemento.Subcomplementos }, { new: true })
     .then(complemento => res.status(200).json())
+    .catch(err => console.log(err));
+  });
+})
+
+router.post("/add/complementodestino", (req, res, next) => {
+  const newComplemento = new vptcompls({
+    Valor: req.body.Valor,
+    CodDPT: req.body.CodDPT,
+    Complemento: req.body.Complemento,
+    Grado: req.body.Grado,
+    Puntos: req.body.Puntos,
+    Retribucion: req.body.Retribucion,
+  });
+
+  newComplemento.save((err) => {
+    if(err) { return res.status(500).json(err)}
+    if (newComplemento.errors) { return res.status(400).json(newComplemento)}
+    return res.status(200).json(newComplemento)
+  });
+
+  valors.findById(newComplemento.Valor).then(valoracion => {
+    actualiz = valoracion.Complementos.ComplDestino.push(newComplemento.id)
+    valors.findByIdAndUpdate(newComplemento.Valor, { 'Complementos.ComplDestino': valoracion.Complementos.ComplDestino }, { new: true })
+    .then(valoracion => res.status(200).json())
     .catch(err => console.log(err));
   });
 })

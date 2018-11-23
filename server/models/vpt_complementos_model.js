@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const DPTSchema = require('./dpt_model').schema
+const ValorSchema = require('./vpt_model').schema
 const VPTSubComplSchema = require('./vpt_subcomplementos_model').schema
 
 
-// const VPTComplSchema = new Schema({
+const VPTComplSchema = new Schema({
 //   Position: {
 //     type: Schema.Types.ObjectId,
 //     ref: 'DPT'
@@ -17,13 +18,7 @@ const VPTSubComplSchema = require('./vpt_subcomplementos_model').schema
 //   Grado: Number,
 //   Puntos: Number,
 //   Retribución: String,
-//     Subcompl : [
-//     {
-//     SubComplemento: String,
-//     Grado: Number,
-//     Puntos: Number,
-//     Retribución: Number
-//     }]
+//   Subcomplementos : [{type: Schema.Types.ObjectId, ref: 'VPTSubCompl'}]
 //   }],
 //   ComplDestino: [
 //     {
@@ -31,41 +26,20 @@ const VPTSubComplSchema = require('./vpt_subcomplementos_model').schema
 //     Grado: Number,
 //     Puntos: Number,
 //     Retribución: String,
-//       Subcompl : [
-//       {
-//       SubComplemento: String,
-//       Grado: Number,
-//       Puntos: Number,
-//       Retribución: Number
-//       }]
-//     }],
+//     Subcomplementos : [{type: Schema.Types.ObjectId, ref: 'VPTSubCompl'}]
+//   }],
 // }
 // })
-
-const VPTComplSchema = new Schema({
-  Position: {
-    type: Schema.Types.ObjectId,
-    ref: 'DPT'
-  },
-  CodDPT: String,
-  Complementos: {
-    ComplEspecifico: [
-  {
-  Complemento: String,
-  Grado: Number,
-  Puntos: Number,
-  Retribución: String,
-  Subcomplementos : [{type: Schema.Types.ObjectId, ref: 'VPTSubCompl'}]
-  }],
-  ComplDestino: [
-    {
-    Complemento: String,
-    Grado: Number,
-    Puntos: Number,
-    Retribución: String,
-    Subcomplementos : [{type: Schema.Types.ObjectId, ref: 'VPTSubCompl'}]
-  }],
-}
+Valor: {
+  type: Schema.Types.ObjectId,
+  ref: 'Valor'
+},
+CodDPT: String,
+Complemento: String,
+Grado: Number,
+Puntos: Number,
+Retribución: String,
+Subcomplementos : [{ type: Schema.Types.ObjectId, ref: 'VPTSubCompl' }]
 })
 
 

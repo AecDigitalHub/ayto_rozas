@@ -18,6 +18,7 @@ export class VPTComponent implements OnInit {
   positionId: String;
 position: Observable<any>;
 ComplAvg: any;
+nuevoComplemento: any;
 nuevoSubcomplemento: any;
 editedSubcomplemento: any;
 
@@ -33,8 +34,14 @@ ngOnInit() {
   console.log(this.position);
 });
 }
-addSubcompl(Complemento, Subcomplemento, Grado, Puntos, Retribucion) {
-  this.Edit.addSubcompl(Complemento, Subcomplemento, Grado, Puntos, Retribucion).subscribe(subcomplemento => {
+addComplDestino(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion) {
+  this.Edit.addComplDestino(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion).subscribe(complemento => {
+    this.nuevoComplemento = complemento;
+    this.ngOnInit();
+  });
+}
+addSubcompl(Complemento, SubComplemento, Grado, Puntos, Retribucion) {
+  this.Edit.addSubcompl(Complemento, SubComplemento, Grado, Puntos, Retribucion).subscribe(subcomplemento => {
     this.nuevoSubcomplemento = subcomplemento;
     this.ngOnInit();
   });
