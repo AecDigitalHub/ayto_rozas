@@ -52,6 +52,11 @@ editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion) {
     this.ngOnInit();
   });
 }
+removeSubcompl(id) {
+  this.Edit.removeSubcompl(id).subscribe(() => {
+  this.ngOnInit();
+  });
+}
 openSnackBar(message: string, action: string) {
   this.snackBar.open(message, action, {
     duration: 1000,

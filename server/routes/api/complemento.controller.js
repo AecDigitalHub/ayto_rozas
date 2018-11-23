@@ -72,6 +72,28 @@ router.post("/add/complementodestino", (req, res, next) => {
   });
 })
 
+router.delete('/delete/subcomplemento/:id', (req,res, next) => {
+const subcomplId = req.params.id;
+console.log(subcomplId);
+
+vptsubcompls.findById(subcomplId).then(subcomplemento => {
+// vptcompls.findById(subcomplemento.Complemento).then(complemento => {
+//   vptcompls.update({}, { $pull: { Subcomplementos:  ObjectId(subcomplId) }})
+  vptcompls.findByIdAndUpdate(
+    subcomplemento.Complemento,
+  { $pullAll: { Subcomplementos: [subcomplId] } },
+  { new: true },
+  function(err, data) {} 
+);
+vptsubcompls.findByIdAndRemove(subcomplId)
+.then(() => {
+  console.log('Delete!')
+  return res.status(200).json()
+})
+.catch(err => next(err));
+});
+});
+
 router.put('/edit/subcomplemento/:id', (req, res, next) => {
   console.log(req.body);
   const { Complemento, SubComplemento, Grado, Puntos, Retribucion} = req.body;
@@ -81,6 +103,8 @@ router.put('/edit/subcomplemento/:id', (req, res, next) => {
   .then(subcomplemento => res.status(200).json(subcomplemento))
   .catch(err => console.log(err))
 });
+
+
 
 module.exports = router;
 

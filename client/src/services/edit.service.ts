@@ -210,4 +210,9 @@ editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion) {
   return this.editedSubComplemento;
 }));
 }
+removeSubcompl(id) {
+  return this.http
+  .delete(`${BASEURL}/api/complementos/delete/subcomplemento/${id}`, id )
+  .pipe(map((res: Response) => {}));
+}
 }
