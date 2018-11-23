@@ -216,7 +216,7 @@
                                   >
                                   <input
                                     class="form-control"
-                                    type="number"
+                                    type="text"
                                     [(ngModel)]="Retribucion"
                                     name="Retribucion"
                                     id="Retribucion"
@@ -237,7 +237,7 @@
                           type="button"
                           type="submit"
                           (click)="
-                            addSubcompl(position.vpt.id, Subcomplemento, Grado, Puntos, Retribucion);
+                            addSubcompl(complemento._id, Subcomplemento, Grado, Puntos, Retribucion);
                             SubcomplModal.close();
                             openSnackBar('Subcomplemento añadido', 'OK')
                           "
@@ -269,9 +269,115 @@
                     <h6>{{ subcomplemento.Retribucion }}</h6>
                   </mat-grid-tile>
                 <mat-grid-tile>
-                  <button type="button" class="btn btn-success">
+                  <button type="button" class="btn btn-success" (click)="EditSubcomplModal.open()">
                     <i class="far fa-edit"></i> Editar
                   </button>
+                  <ngx-smart-modal identifier="EditSubcomplModal" #EditSubcomplModal>
+                    <div class="modal-header">
+                      <h5 class="modal-title">
+                        Editando nuevo subcomplemento:
+                      </h5>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Subcomplemento:</label>
+                          <input
+                            class="form-control"
+                            [(ngModel)]="subcomplemento.SubComplemento"
+                            name="subcomplemento.SubComplemento"
+                            id="subcomplemento.SubComplemento "
+                            value="{{subcomplemento.SubComplemento}}"
+                          />
+                        </div>
+                      </form>
+                      <form>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Grado:</label>
+                          <select
+                            class="form-control"
+                            [(ngModel)]="subcomplemento.Grado"
+                            name="subcomplemento.Grado"
+                            id="subcomplemento.Grado"
+                            value="{{subcomplemento.Grado}}"
+                          >
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            
+                          </select>
+                        </div>
+                      </form>
+                      <form>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Puntos:</label>
+                            <select
+                              class="form-control"
+                              type="text"
+                              [(ngModel)]="subcomplemento.Puntos"
+                              name="subcomplemento.Puntos"
+                              id="subcomplemento.Puntos"
+                              value="{{subcomplemento.Puntos}}"
+                            >
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                              <option>6</option>
+                              <option>7</option>
+                              <option>8</option>
+                              <option>9</option>
+                              <option>10</option>
+                              
+                            </select>
+                          </div>
+                        </form>
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1"
+                                  >Retribucion</label
+                                >
+                                <input
+                                  class="form-control"
+                                  type="text"
+                                  [(ngModel)]="subcomplemento.Retribucion"
+                                  name="subcomplemento.Retribucion"
+                                  id="subcomplemento.Retribucion"
+                                  value="{{subcomplemento.Retribucion}}"
+                                />
+                              </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                        (click)="EditSubcomplModal.close()"
+                      >
+                        Cancelar
+                      </button>
+                      <button
+                        type="button"
+                        type="submit"
+                        (click)="
+                          editSubcompl(subcomplemento._id, subcomplemento.Complemento, subcomplemento.SubComplemento, subcomplemento.Grado, subcomplemento.Puntos, subcomplemento.Retribucion);
+                          EditSubcomplModal.close();
+                          openSnackBar('Subcomplemento editado', 'OK')
+                        "
+                        data-dismiss="EditSubcomplModal"
+                        class="btn btn-primary"
+                      >
+                        Añadir Subcompl
+                      </button>
+                    </div>
+                  </ngx-smart-modal>
                   <button type="button" class="btn btn-danger">
                     <i class="far fa-trash-alt"></i> Borrar
                   </button>

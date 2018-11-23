@@ -2,17 +2,17 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const vptsubcompls = require('../../models/vpt_subcomplementos_model')
 
 // const loggedIn = require("../../utils/isAuthenticated");
 const vptcompls = require("../../models/vpt_complementos_model");
 const _ = require("lodash");
 
-router.get("/", (req, res, next) => {
-  complemento.find({}).then(complementos => {
-    return res.status(200).json({ complementos });
-  });
-});
+// router.get("/", (req, res, next) => {
+//   complemento.find({}).then(complementos => {
+//     return res.status(200).json({ complementos });
+//   });
+// });
 
 router.get("/:id/complementodestino/:complemento", (req, res, next) => {
   console.log(req.params);
@@ -24,18 +24,38 @@ router.get("/:id/complementodestino/:complemento", (req, res, next) => {
 });
 });
 
-router.put("/complespecifico/add/subcomplemento/:id", (req, res, next)=> {
-  const Subcomplemento = req.body;
-  let SubcomplementotoAdd = Subcomplemento;
-  console.log(SubcomplementotoAdd);
-
-  vptcompls.findById(req.params.id).then(vpt => {
-    mycom = vpt.Complementos.ComplEspecifico[0];
-    mycom.Subcompl.unshift(SubcomplementotoAdd);
-    vptcompls.findByIdAndUpdate(req.params.id, { 'Complementos.ComplEspecifico[0].Subcompl': mycom.Subcompl }, { new: true })
-    .then(complemento => res.status(200).json())
-    .catch(err => console.log(err))
+router.post("/add/subcomplemento", (req, res, next) => {
+  const newSubcomplemento = new vptsubcompls({
+    Complemento: req.body.Complemento,
+    Subcomplemento: req.body.Subcomplemento,
+    Grado: req.body.Grado,
+    Puntos: req.body.Puntos,
+    Retribucion: req.body.Retribucion
   });
+
+  newSubcomplemento.save((err) => {
+    if(err) { return res.status(500).json(err)}
+    if (newSubcomplemento.errors) { return res.status(400).json(newSubcomplemento)}
+    return res.status(200).json(newSubcomplemento)
+  });
+
+  vptcompls.findById(newSubcomplemento.Complemento).then(complemento => {
+    console.log(newSubcomplemento.Complemento);
+    actualiz = complemento.Subcomplementos.push(newSubcomplemento.id)
+    vptcompls.findByIdAndUpdate(newSubcomplemento.Complemento, { Subcomplementos: complemento.Subcomplementos }, { new: true })
+    .then(complemento => res.status(200).json())
+    .catch(err => console.log(err));
+  });
+})
+
+router.put('/edit/subcomplemento/:id', (req, res, next) => {
+  console.log(req.body);
+  const { Complemento, SubComplemento, Grado, Puntos, Retribucion} = req.body;
+  let editedSubComplemento = { Complemento, SubComplemento, Grado, Puntos, Retribucion }
+
+  vptsubcompls.findByIdAndUpdate(req.params.id, editedSubComplemento, { new: true })
+  .then(subcomplemento => res.status(200).json(subcomplemento))
+  .catch(err => console.log(err))
 });
 
 module.exports = router;

@@ -17,6 +17,7 @@ editedTareas: any;
 editedMision: any;
 editedConocimientos: any;
 editedResponsAut: any;
+editedSubComplemento: any;
 
   constructor(private http: Http) { }
 
@@ -185,12 +186,20 @@ editedResponsAut: any;
       return Position;
     }));
 }
-addSubcompl(id, Subcomplemento, Grado, Puntos, Retribucion) {
+addSubcompl(Complemento, Subcomplemento, Grado, Puntos, Retribucion) {
   return this.http
-    .put(`${BASEURL}/api/complementos/complespecifico/add/subcomplemento/${id}`, { id, Subcomplemento, Grado, Puntos, Retribucion })
+    .post(`${BASEURL}/api/complementos/add/subcomplemento`, { Complemento, Subcomplemento, Grado, Puntos, Retribucion })
     .pipe(map((res: Response) => {
+      const nuevoSubcomplemento = res.json();
+      return nuevoSubcomplemento;
     }));
 }
+editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion) {
+  return this.http
+  .put(`${BASEURL}/api/complementos/edit/subcomplemento/${id}`, { id, Complemento, SubComplemento, Grado, Puntos, Retribucion })
+  .pipe(map((res: Response) => {
+  const editedSubComplemento = res.json();
+  return this.editedSubComplemento;
+}));
 }
-
-
+}
