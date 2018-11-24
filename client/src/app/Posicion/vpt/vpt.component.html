@@ -439,6 +439,7 @@
                         (click)="
                           editSubcompl(subcomplemento._id, subcomplemento.Complemento, subcomplemento.SubComplemento, subcomplemento.Grado, subcomplemento.Puntos, subcomplemento.Retribucion);
                           EditSubcomplModal.close();
+                          getComplementoAvg(complemento._id);
                           openSnackBar('Subcomplemento editado', 'OK')
                         "
                         data-dismiss="EditSubcomplModal"
@@ -457,7 +458,7 @@
                 <mat-grid-tile class="divider"></mat-grid-tile>
               </mat-grid-list>
               <mat-grid-list cols="5" rowHeight="40px">
-                <mat-grid-tile> <h4>Total {{ complemento.Complemento }}</h4> </mat-grid-tile>
+                <mat-grid-tile> <h4 (click)="getComplementoAvg(complemento._id)">Total {{ complemento.Complemento }}</h4> </mat-grid-tile>
                 <mat-grid-tile> <h4>Grados</h4> </mat-grid-tile>
                 <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
                 <mat-grid-tile> <h4>Retribución {{ complemento.Complemento }}</h4> </mat-grid-tile>
@@ -466,10 +467,13 @@
               <mat-grid-list cols="5" rowHeight="100px">
                 <mat-grid-tile>  </mat-grid-tile>
                 <mat-grid-tile>
-                  <h6>{{complemento.Subcomplementos.length}}</h6>
+                  <h6>{{complementoAvg.complementoAvgGrado}}</h6>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                  <h6>{{ complemento.Subcomplementos.length }}</h6>
+                  <h6>{{ complementoAvg.complementoAvgPuntos }}</h6>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <h6>{{ complementoAvg.complementoAvgRetribucion }}</h6>
                 </mat-grid-tile>
               </mat-grid-list>
             </div>

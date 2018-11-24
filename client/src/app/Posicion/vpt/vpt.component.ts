@@ -21,6 +21,11 @@ ComplAvg: any;
 nuevoComplemento: any;
 nuevoSubcomplemento: any;
 editedSubcomplemento: any;
+complementoAvg: Object = {
+  complementoAvgGrado: '',
+  complementoAvgPuntos: '',
+  complementoAvgRetribucion: ''
+};
 
 constructor(public Edit: EditService, public PositionVPTView: PositionService, private route: ActivatedRoute, private router: Router, public snackBar: MatSnackBar) { }
 
@@ -31,7 +36,16 @@ ngOnInit() {
 
   this.PositionVPTView.getPosition(this.positionId).subscribe(Position => {
     this.position = Position;
-  console.log(this.position);
+    Position.vpt.Complementos.ComplEspecifico.forEach(function(element) {
+      const complementoAvgGrado = element.Subcomplementos.reduce( function(tot, subcomplemento) {
+        return tot + subcomplemento.Grado / element.Subcomplementos.length;
+    }, 0);
+    const complementoAvgPuntos = element.Subcomplementos.reduce( function(tot, subcomplemento) {
+      return tot + subcomplemento.Puntos / element.Subcomplementos.length;
+  }, 0);
+      const complementoAvg = { complementoAvgGrado, complementoAvgPuntos };
+      console.log(complementoAvg);
+    });
 });
 }
 addComplDestino(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion) {
@@ -50,11 +64,18 @@ editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion) {
   this.Edit.editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion).subscribe(subcomplemento => {
     this.editedSubcomplemento = subcomplemento;
     this.ngOnInit();
+    this.getComplementoAvg(id);
+
   });
 }
 removeSubcompl(id) {
   this.Edit.removeSubcompl(id).subscribe(() => {
   this.ngOnInit();
+  });
+}
+getComplementoAvg(id) {
+  this.PositionVPTView.getComplementoAvg(id).subscribe(complementoAvg => {
+    this.complementoAvg = complementoAvg;
   });
 }
 openSnackBar(message: string, action: string) {

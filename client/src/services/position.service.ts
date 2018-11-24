@@ -13,7 +13,6 @@ const BASEURL = environment.BASEURL;
   providedIn: 'root'
 })
 export class PositionService {
-
   constructor(private http: Http) { }
 
   getPosition(position) {
@@ -23,26 +22,22 @@ export class PositionService {
     }));
 }
 
-getComplementoAvg(complemento) {
-  let Grado = 0;
-  let Puntos = 0;
-  let Retrib = 0;
-  let ComplementosAvg = {};
-  return this.http.get(`${BASEURL}/api/complementos/${complemento}`).pipe(map(res => {
-    const vpt = res.json().vpt;
-      Grado = vpt.Complementos.ComplEspecifico[0].Subcompl.reduce((acc, e) => {
-        return acc + e.Grado;
-      }, 0) / vpt.Complementos.ComplEspecifico[0].Subcompl.length;
-      Puntos = vpt.Complementos.ComplEspecifico[0].Subcompl.reduce((acc, e) => {
-        return acc + e.Puntos;
-      }, 0) / vpt.Complementos.ComplEspecifico[0].Subcompl.length;
-      Retrib = vpt.Complementos.ComplEspecifico[0].Subcompl.reduce((acc, e) => {
-        return acc + e.Retribucion;
-      }, 0) / vpt.Complementos.ComplEspecifico[0].Subcompl.length;
-    const ComplAvg = { Grado, Puntos, Retrib };
-    ComplementosAvg = vpt.Complementos.ComplEspecifico.forEach(this.getComplementoAvg);
-    return ComplementosAvg;
-  }));
+getComplementoAvg(id) {
+  return this.http.get(`${BASEURL}/api/complementos/complemento/${id}`).pipe(map(res => {
+    const complemento = res.json();
+      const complementoAvgGrado = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
+        return tot + subcomplemento.Grado / complemento.Subcomplementos.length;
+    }, 0);
+    const complementoAvgPuntos = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
+      return tot + subcomplemento.Puntos / complemento.Subcomplementos.length;
+  }, 0);
+    const complementoAvgRetribucion = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
+      return tot + parseFloat(subcomplemento.Retribucion) / complemento.Subcomplementos.length;
+  }, 0);
+      const complementoAvg = { complementoAvgGrado, complementoAvgPuntos, complementoAvgRetribucion };
+      console.log(complementoAvg);
+      return complementoAvg;
+}));
+}
 }
 
-}

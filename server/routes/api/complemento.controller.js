@@ -8,11 +8,13 @@ const vptcompls = require("../../models/vpt_complementos_model");
 const valors = require("../../models/vpt_model");
 const _ = require("lodash");
 
-// router.get("/", (req, res, next) => {
-//   complemento.find({}).then(complementos => {
-//     return res.status(200).json({ complementos });
-//   });
-// });
+router.get("/complemento/:id", (req, res, next) => {
+  vptcompls.findById(req.params.id)
+  .populate("Subcomplementos")
+  .then(complemento => {
+    return res.status(200).json(complemento);
+  });
+});
 
 router.get("/:id/complementodestino/:complemento", (req, res, next) => {
   console.log(req.params);
