@@ -194,6 +194,15 @@ addComplDestino(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion) {
       return nuevoComplemento;
     }));
 }
+
+addComplEspecifico(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
+  return this.http
+    .post(`${BASEURL}/api/complementos/add/complementoespecifico`, { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion })
+    .pipe(map((res: Response) => {
+      const nuevoComplemento = res.json();
+      return nuevoComplemento;
+    }));
+}
 addSubcompl(Complemento, SubComplemento, Grado, Puntos, Retribucion) {
   return this.http
     .post(`${BASEURL}/api/complementos/add/subcomplemento`, { Complemento, SubComplemento, Grado, Puntos, Retribucion })

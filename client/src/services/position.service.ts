@@ -26,17 +26,6 @@ editedComplemento: any;
 getComplementoAvg(id) {
   return this.http.get(`${BASEURL}/api/complementos/complemento/${id}`).pipe(map(res => {
     const complemento = res.json();
-  //     const complementoAvgGrado = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
-  //       return tot + subcomplemento.Grado / complemento.Subcomplementos.length;
-  //   }, 0);
-  //   const complementoAvgPuntos = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
-  //     return tot + subcomplemento.Puntos / complemento.Subcomplementos.length;
-  // }, 0);
-  //   const complementoAvgRetribucion = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
-  //     return tot + parseFloat(subcomplemento.Retribucion) / complemento.Subcomplementos.length;
-  // }, 0);
-  //     const complementoAvg = { complementoAvgGrado, complementoAvgPuntos, complementoAvgRetribucion };
-  //     console.log(complementoAvg);
       return complemento;
 }));
 }
