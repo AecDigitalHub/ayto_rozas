@@ -13,6 +13,7 @@ const BASEURL = environment.BASEURL;
   providedIn: 'root'
 })
 export class PositionService {
+editedComplemento: any;
   constructor(private http: Http) { }
 
   getPosition(position) {
@@ -25,19 +26,25 @@ export class PositionService {
 getComplementoAvg(id) {
   return this.http.get(`${BASEURL}/api/complementos/complemento/${id}`).pipe(map(res => {
     const complemento = res.json();
-      const complementoAvgGrado = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
-        return tot + subcomplemento.Grado / complemento.Subcomplementos.length;
-    }, 0);
-    const complementoAvgPuntos = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
-      return tot + subcomplemento.Puntos / complemento.Subcomplementos.length;
-  }, 0);
-    const complementoAvgRetribucion = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
-      return tot + parseFloat(subcomplemento.Retribucion) / complemento.Subcomplementos.length;
-  }, 0);
-      const complementoAvg = { complementoAvgGrado, complementoAvgPuntos, complementoAvgRetribucion };
-      console.log(complementoAvg);
-      return complementoAvg;
+  //     const complementoAvgGrado = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
+  //       return tot + subcomplemento.Grado / complemento.Subcomplementos.length;
+  //   }, 0);
+  //   const complementoAvgPuntos = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
+  //     return tot + subcomplemento.Puntos / complemento.Subcomplementos.length;
+  // }, 0);
+  //   const complementoAvgRetribucion = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
+  //     return tot + parseFloat(subcomplemento.Retribucion) / complemento.Subcomplementos.length;
+  // }, 0);
+  //     const complementoAvg = { complementoAvgGrado, complementoAvgPuntos, complementoAvgRetribucion };
+  //     console.log(complementoAvg);
+      return complemento;
 }));
+}
+editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
+  return this.http.put(`${BASEURL}/api/complementos/edit/complemento/${id}`, { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion }).pipe(map((res: Response) => {
+    const editedComplemento = res.json();
+    return this.editedComplemento;
+  }));
 }
 }
 

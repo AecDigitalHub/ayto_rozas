@@ -27,10 +27,7 @@ router.get("/:id", (req, res, next) => {
       valors.findOne({ CodDPT: position.CodigoDPT })
       .populate("Complementos.ComplDestino")
       .populate({ path: "Complementos.ComplEspecifico", populate: { path: "Subcomplementos" }})
-      // populate({
-      //   // path: 'friends',
-      //   // // Get friends of friends - populate the 'friends' array for every friend
-      //   // populate: { path: 'friends' }
+     
       .then(vpt => {
         vptretribs.findOne({ CodDPT: position.CodigoDPT }).then(retribucion => {
           return res.status(200).json({ position, vpt, retribucion });

@@ -8,11 +8,32 @@ const vptcompls = require("../../models/vpt_complementos_model");
 const valors = require("../../models/vpt_model");
 const _ = require("lodash");
 
+// router.get("/complemento/:id", (req, res, next) => {
+//   vptcompls.findById(req.params.id)
+//   .populate("Subcomplementos")
+//   .then(complemento => {
+    
+//     return res.status(200).json(complemento);
+//   });
+// });
+
 router.get("/complemento/:id", (req, res, next) => {
   vptcompls.findById(req.params.id)
   .populate("Subcomplementos")
   .then(complemento => {
-    return res.status(200).json(complemento);
+    const complementoAvgGrado = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
+      return tot + subcomplemento.Grado / complemento.Subcomplementos.length;
+  }, 0);
+  const complementoAvgPuntos = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
+    return tot + subcomplemento.Puntos / complemento.Subcomplementos.length;
+}, 0);
+  const complementoAvgRetribucion = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
+    return tot + parseFloat(subcomplemento.Retribucion) / complemento.Subcomplementos.length;
+}, 0);
+    const complementoAvg = { complementoAvgGrado, complementoAvgPuntos, complementoAvgRetribucion };
+    vptcompls.findByIdAndUpdate(req.params.id, {AvgGrado: complementoAvgGrado, AvgPuntos: complementoAvgPuntos, AvgRetribucion: complementoAvgRetribucion}, { new:true })
+    .then(complemento => res.status(200).json())
+    .catch(err => console.log(err));
   });
 });
 
@@ -98,11 +119,21 @@ vptsubcompls.findByIdAndRemove(subcomplId)
 
 router.put('/edit/subcomplemento/:id', (req, res, next) => {
   console.log(req.body);
-  const { Complemento, SubComplemento, Grado, Puntos, Retribucion} = req.body;
+  const { Complemento, SubComplemento, Grado, Puntos, Retribucion } = req.body;
   let editedSubComplemento = { Complemento, SubComplemento, Grado, Puntos, Retribucion }
 
   vptsubcompls.findByIdAndUpdate(req.params.id, editedSubComplemento, { new: true })
   .then(subcomplemento => res.status(200).json(subcomplemento))
+  .catch(err => console.log(err))
+});
+
+router.put('/edit/complemento/:id', (req, res, next) => {
+  console.log(req.body);
+  const { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion } = req.body;
+  let editedComplemento = { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion }
+
+  vptcompls.findByIdAndUpdate(req.params.id, editedComplemento, { new: true })
+  .then(complemento => res.status(200).json(complemento))
   .catch(err => console.log(err))
 });
 

@@ -202,7 +202,7 @@ addSubcompl(Complemento, SubComplemento, Grado, Puntos, Retribucion) {
       return nuevoSubcomplemento;
     }));
 }
-editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion) {
+editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion ) {
   return this.http
   .put(`${BASEURL}/api/complementos/edit/subcomplemento/${id}`, { id, Complemento, SubComplemento, Grado, Puntos, Retribucion })
   .pipe(map((res: Response) => {

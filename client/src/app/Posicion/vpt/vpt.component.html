@@ -458,7 +458,10 @@
                 <mat-grid-tile class="divider"></mat-grid-tile>
               </mat-grid-list>
               <mat-grid-list cols="5" rowHeight="40px">
-                <mat-grid-tile> <h4 (click)="getComplementoAvg(complemento._id)">Total {{ complemento.Complemento }}</h4> </mat-grid-tile>
+                <mat-grid-tile> <h4 (click)="
+                  getComplementoAvg(complemento._id)">
+                  <!-- editComplemento(complemento._id, complemento.Valor, complemento.CodDPT, complemento.Complemento, complemento.Grado, complemento.Puntos, complemento.Retribucion, complemento.Subcomplementos, complemento.AvgGrado, complemento.AvgPuntos, complemento.AvgRetribucion)"> -->
+                  Total {{ complemento.Complemento }}</h4> </mat-grid-tile>
                 <mat-grid-tile> <h4>Grados</h4> </mat-grid-tile>
                 <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
                 <mat-grid-tile> <h4>Retribución {{ complemento.Complemento }}</h4> </mat-grid-tile>
@@ -467,13 +470,13 @@
               <mat-grid-list cols="5" rowHeight="100px">
                 <mat-grid-tile>  </mat-grid-tile>
                 <mat-grid-tile>
-                  <h6>{{complementoAvg.complementoAvgGrado}}</h6>
+                  <h6> {{complemento.AvgGrado}}</h6>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                  <h6>{{ complementoAvg.complementoAvgPuntos }}</h6>
+                  <h6>{{ complemento.AvgPuntos }}</h6>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                  <h6>{{ complementoAvg.complementoAvgRetribucion }}</h6>
+                  <h6>{{ complemento.AvgRetribucion }}</h6>
                 </mat-grid-tile>
               </mat-grid-list>
             </div>
