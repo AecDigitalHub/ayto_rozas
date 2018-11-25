@@ -30,9 +30,16 @@ getComplementoAvg(id) {
 }));
 }
 editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
-  return this.http.put(`${BASEURL}/api/complementos/edit/complemento/${id}`, { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion }).pipe(map((res: Response) => {
+  return this.http
+  .put(`${BASEURL}/api/complementos/edit/complemento/${id}`, { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion }).pipe(map((res: Response) => {
     const editedComplemento = res.json();
     return this.editedComplemento;
+  }));
+}
+addValoracion(Position, CodigoDPT, Complementos) {
+  return this.http
+  .post(`${BASEURL}/api/positions/add/vpt/`, { Position, CodigoDPT, Complementos})
+  .pipe(map((res: Response) => {
   }));
 }
 }

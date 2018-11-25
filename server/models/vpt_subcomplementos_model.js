@@ -8,8 +8,8 @@ const VPTSubComplSchema = new Schema({
     ref: 'VPTCompl'
   },
   SubComplemento: String,
-  Grado: Number,
-  Puntos: Number,
+  Grado: String,
+  Puntos: String,
   Retribucion: String
 })
 

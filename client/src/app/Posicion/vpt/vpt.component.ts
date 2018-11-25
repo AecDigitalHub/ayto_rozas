@@ -27,6 +27,7 @@ complementoAvg: Object = {
   complementoAvgRetribucion: ''
 };
 editedComplemento: any;
+nuevoValoracion: any;
 
 constructor(public Edit: EditService, public PositionVPTView: PositionService, private route: ActivatedRoute, private router: Router, public snackBar: MatSnackBar) { }
 
@@ -75,6 +76,12 @@ getComplementoAvg(id) {
     this.editedComplemento = complemento;
 
 
+  });
+}
+addValoracion(Position, CodigoDPT, Complementos) {
+  this.PositionVPTView.addValoracion(Position, CodigoDPT, Complementos).subscribe(valoracion => {
+this.nuevoValoracion = valoracion;
+this.ngOnInit();
   });
 }
 // editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {

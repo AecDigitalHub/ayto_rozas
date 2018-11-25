@@ -36,6 +36,25 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
+router.post("/add/vpt", (req, res, next) => {
+  const newValoracion = new valors({
+    Position: req.body.Position,
+    CodDPT: req.body.CodigoDPT,
+    Complementos: {
+      ComplDestino: [],
+      TotalCD: String,
+      ComplEspecifico: [],
+      TotalCE: String
+    }
+  });
+  newValoracion.save((err) => {
+    if(err) { return res.status(500).json(err)}
+    if (newValoracion.errors) { return res.status(400).json(newValoracion)}
+    return res.status(200).json(newValoracion)
+  });
+});
+
+
 router.put("/add/funcion/:id", (req, res, next) => {
   const Funcion = req.body;
   let FunctiontoAdd = Object.values(Funcion).toString();

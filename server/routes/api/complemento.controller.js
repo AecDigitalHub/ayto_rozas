@@ -20,15 +20,15 @@ const _ = require("lodash");
 router.get("/complemento/:id", (req, res, next) => {
   vptcompls.findById(req.params.id)
   .populate("Subcomplementos")
-  .then(complemento => {
-    const complementoAvgGrado = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
-      return tot + subcomplemento.Grado / complemento.Subcomplementos.length;
+  .then(complem => {
+    const complementoAvgGrado = complem.Subcomplementos.reduce( function(tot, subcomplemento) {
+      return tot + subcomplemento.Grado / complem.Subcomplementos.length;
   }, 0);
-  const complementoAvgPuntos = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
-    return tot + subcomplemento.Puntos / complemento.Subcomplementos.length;
+  const complementoAvgPuntos = complem.Subcomplementos.reduce( function(tot, subcomplemento) {
+    return tot + subcomplemento.Puntos / complem.Subcomplementos.length;
 }, 0);
-  const complementoAvgRetribucion = complemento.Subcomplementos.reduce( function(tot, subcomplemento) {
-    return tot + parseFloat(subcomplemento.Retribucion) / complemento.Subcomplementos.length;
+  const complementoAvgRetribucion = complem.Subcomplementos.reduce( function(tot, subcomplemento) {
+    return tot + parseFloat(subcomplemento.Retribucion) / complem.Subcomplementos.length;
 }, 0);
     const complementoAvg = { complementoAvgGrado, complementoAvgPuntos, complementoAvgRetribucion };
     vptcompls.findByIdAndUpdate(req.params.id, {AvgGrado: complementoAvgGrado, AvgPuntos: complementoAvgPuntos, AvgRetribucion: complementoAvgRetribucion}, { new:true })
@@ -90,6 +90,34 @@ router.post("/add/complementodestino", (req, res, next) => {
   valors.findById(newComplemento.Valor).then(valoracion => {
     actualiz = valoracion.Complementos.ComplDestino.push(newComplemento.id)
     valors.findByIdAndUpdate(newComplemento.Valor, { 'Complementos.ComplDestino': valoracion.Complementos.ComplDestino }, { new: true })
+    .then(valoracion => res.status(200).json())
+    .catch(err => console.log(err));
+  });
+})
+
+router.post("/add/complementoespecifico", (req, res, next) => {
+  const newComplemento = new vptcompls({
+    Valor: req.body.Valor,
+    CodDPT: req.body.CodDPT,
+    Complemento: req.body.Complemento,
+    Grado: req.body.Grado,
+    Puntos: req.body.Puntos,
+    Retribucion: req.body.Retribucion,
+    Sucomplementos: [],
+    AvgGrado: '',
+    AvgPuntos: '',
+    AvgRetribucion: ''
+  });
+
+  newComplemento.save((err) => {
+    if(err) { return res.status(500).json(err)}
+    if (newComplemento.errors) { return res.status(400).json(newComplemento)}
+    return res.status(200).json(newComplemento)
+  });
+
+  valors.findById(newComplemento.Valor).then(valoracion => {
+    actualiz = valoracion.Complementos.ComplEspecifico.push(newComplemento.id)
+    valors.findByIdAndUpdate(newComplemento.Valor, { 'Complementos.ComplEspecifico': valoracion.Complementos.ComplEspecifico }, { new: true })
     .then(valoracion => res.status(200).json())
     .catch(err => console.log(err));
   });
