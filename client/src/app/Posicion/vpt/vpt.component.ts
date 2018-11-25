@@ -54,7 +54,7 @@ addSubcompl(Complemento, SubComplemento, Grado, Puntos, Retribucion) {
 editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion) {
   this.Edit.editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion).subscribe(subcomplemento => {
     this.editedSubcomplemento = subcomplemento;
-    this.ngOnInit();
+    // this.ngOnInit();
     this.getComplementoAvg(id);
 
   });
