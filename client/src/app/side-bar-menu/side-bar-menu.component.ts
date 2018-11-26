@@ -16,25 +16,25 @@ export class FileFlatNode {
 
 const TREE_DATA = JSON.stringify({
   Areas: {
-    'Hacienda': '',
-    'Régimen Interior': '',
-    'Recursos Humanos': '',
-    'Economía y Empleo': '',
-    'Admón Electrónica': '',
-    'Urbanismo': '',
+    'Hacienda': '/Area/Hacienda',
+    'Régimen Interior': '/Area/Régimen Interior',
+    'Recursos Humanos': '/Area/Recursos Humanos',
+    'Economía y Empleo': '/Area/conomía y Empleo',
+    'Admón Electrónica': '/Area/Admón Electrónica',
+    'Urbanismo': '/Area/Urbanismo',
     'Servicios a la Ciudad': '/Area/Servicios a la Ciudad',
-    'Espacios a la Ciudad': '',
+    'Espacios a la Ciudad': '/Area/Espacios a la Ciudad',
     'Seguridad Ciudadana': '/Area/Seguridad Ciudadana, Protección Civil-Samer, Movilidad y Distrito Norte',
-    'Sanidad': '',
-    'Familia y Serv. Sociales': '',
-    'Deportes': '',
-    'Juventud': '',
-    'Educación y Cultura': ''
+    'Sanidad': '/Area/Sanidad',
+    'Familia y Serv. Sociales': '/Area/Familia y Serv. Sociales',
+    'Deportes': '/Area/Deportes',
+    'Juventud': '/Area/Juventud',
+    'Educación y Cultura': '/Area/Educación y Cultura'
   },
-  Complementos: {
-    'Personal Funcionario': '',
-    'Personal Laboral': ''
-  }
+  // Complementos: {
+  //   'Personal Funcionario': '',
+  //   'Personal Laboral': ''
+  // }
 });
 
 @Injectable()
