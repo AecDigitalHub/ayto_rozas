@@ -55,21 +55,44 @@ router.post("/addPuesto", (req, res, next) => {
     });
   });
 
-  router.put("/remove/:id", (req, res, next) => {
+  router.put("/delete/:id", (req, res, next) => {
+    const PuestoId = req.params.id;
     puesto.findById(req.params.id)
     .then(pues => {
+      if (pues.NombreEmpleado == 'Vacante' || pues.NombreEmpleado == 'VACANTE') {
       dpt
-      .findOneAndRemove(
-        { 'Puestos.NombreEmpleado': pues.NombreEmpleado },
-      )
+      .findByIdAndUpdate(
+        pues.Position,
+        { $pullAll: { Vacantes: [PuestoId], Puestos: [PuestoId] }},
+        { new: true},
+        function(err, data) {}
+      );
       puesto.
-      findByIdAndRemove(pues._id)
-      //   let puestotoRemove = position.Puestos.indexOf(pues._id);
-      //  actual = position.Puestos.splice(puestotoRemove, 1);    
+      findByIdAndRemove(PuestoId)
+      .then(() => {
+        console.log('Puesto Deleted!')
         return res.status(200).json()
-    })
-      .catch(err => console.log(err));    
+      })
+      .catch(err => next(err));
+      } else {
+        dpt
+      .findByIdAndUpdate(
+        pues.Position,
+        { $pullAll: { Puestos: [PuestoId] }},
+        { new: true},
+        function(err, data) {}
+      );
+      puesto.
+      findByIdAndRemove(PuestoId)
+      .then(() => {
+        console.log('Puesto Deleted!')
+        return res.status(200).json()
+      })
+      .catch(err => next(err));
+      };
     });
+  });
+  
 
   router.put("/edit/:id" , (req, res, next) => {
     const {

@@ -128,8 +128,6 @@ const subcomplId = req.params.id;
 console.log(subcomplId);
 
 vptsubcompls.findById(subcomplId).then(subcomplemento => {
-// vptcompls.findById(subcomplemento.Complemento).then(complemento => {
-//   vptcompls.update({}, { $pull: { Subcomplementos:  ObjectId(subcomplId) }})
   vptcompls.findByIdAndUpdate(
     subcomplemento.Complemento,
   { $pullAll: { Subcomplementos: [subcomplId] } },

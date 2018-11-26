@@ -44,7 +44,7 @@ export class PuestoService {
   }
   removePuesto(id) {
   return this.http.
-  put(`${BASEURL}/api/puestos/remove/${id}`, id).pipe(map((res: Response) => {
+  put(`${BASEURL}/api/puestos/delete/${id}`, id).pipe(map((res: Response) => {
   }));
   }
 
