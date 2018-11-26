@@ -74,8 +74,11 @@ removeSubcompl(id) {
 getComplementoAvg(id) {
   this.PositionVPTView.getComplementoAvg(id).subscribe(complemento => {
     this.editedComplemento = complemento;
-
-
+  });
+}
+removeComplemento(id) {
+  this.PositionVPTView.removeComplemento(id).subscribe(() => {
+  this.ngOnInit();
   });
 }
 addValoracion(Position, CodigoDPT, Complementos) {
@@ -84,12 +87,6 @@ this.nuevoValoracion = valoracion;
 this.ngOnInit();
   });
 }
-// editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
-//   this.PositionVPTView.editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion).subscribe(complemento => {
-//     this.editedComplemento = complemento;
-//     this.ngOnInit();
-//   });
-// }
 openSnackBar(message: string, action: string) {
   this.snackBar.open(message, action, {
     duration: 1000,

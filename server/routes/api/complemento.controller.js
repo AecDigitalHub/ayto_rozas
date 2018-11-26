@@ -123,6 +123,25 @@ router.post("/add/complementoespecifico", (req, res, next) => {
   });
 })
 
+router.delete('/delete/complemento/:id', (req,res, next) => {
+  const complId = req.params.id;
+  
+  vptcompls.findById(complId).then(complemento => {
+    valors.findByIdAndUpdate(
+      complemento.Valor,
+    { $pullAll: { 'Complementos.ComplDestino': [complId], 'Complementos.ComplEspecifico': [complId] } },
+    { new: true },
+    function(err, data) {} 
+  );
+  vptcompls.findByIdAndRemove(complId)
+  .then(() => {
+    console.log('Delete!')
+    return res.status(200).json()
+  })
+  .catch(err => next(err));
+  });
+  });
+
 router.delete('/delete/subcomplemento/:id', (req,res, next) => {
 const subcomplId = req.params.id;
 console.log(subcomplId);

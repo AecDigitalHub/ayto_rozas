@@ -42,5 +42,10 @@ addValoracion(Position, CodigoDPT, Complementos) {
   .pipe(map((res: Response) => {
   }));
 }
+removeComplemento(id) {
+  return this.http.
+  delete(`${BASEURL}/api/complementos/delete/complemento/${id}`, id).pipe(map((res: Response) => {
+  }));
+}
 }
 
