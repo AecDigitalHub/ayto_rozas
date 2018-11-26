@@ -48,7 +48,7 @@ export class PuestoService {
   }));
   }
 
-  editPuesto(id, Position, CodDPT, DenomPuesto, CodEmpleado, NombreEmpleado, Situacion) {
+  editPuesto(id, Position, CodDPT, CodEmpleado, DenomPuesto, NombreEmpleado, Situacion) {
     return this.http.
     put(`${BASEURL}/api/puestos/edit/${id}`, { id, Position, CodDPT, DenomPuesto, CodEmpleado, NombreEmpleado, Situacion })
     .pipe(map((res: Response) => {
