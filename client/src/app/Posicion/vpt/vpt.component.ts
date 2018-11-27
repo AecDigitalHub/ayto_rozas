@@ -15,7 +15,7 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./vpt.component.css']
 })
 export class VPTComponent implements OnInit {
-  positionId: String;
+positionId: String;
 position: Observable<any>;
 ComplAvg: any;
 nuevoComplemento: any;
@@ -35,15 +35,19 @@ ngOnInit() {
   this.route.params.subscribe(params => {
     this.positionId = params['id'];
   });
-
   this.PositionVPTView.getPosition(this.positionId).subscribe(Position => {
     this.position = Position;
+});
+this.PositionVPTView.getValoracion(this.positionId).subscribe(() => {
 });
 }
 addComplDestino(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion) {
   this.Edit.addComplDestino(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion).subscribe(complemento => {
     this.nuevoComplemento = complemento;
+    this.PositionVPTView.getValoracion(this.positionId).subscribe(() => {
+    });
     this.ngOnInit();
+    // this.nuevoComplemento = complemento;
   });
 }
 addComplEspecifico(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
@@ -58,12 +62,19 @@ addSubcompl(Complemento, SubComplemento, Grado, Puntos, Retribucion) {
     this.ngOnInit();
   });
 }
-editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion) {
-  this.Edit.editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion).subscribe(subcomplemento => {
-    this.editedSubcomplemento = subcomplemento;
+editCompl(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
+  this.Edit.editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion).subscribe(complemento => {
+    this.editedComplemento = complemento;
+    this.PositionVPTView.getValoracion(this.positionId).subscribe(() => {
+    });
     this.ngOnInit();
     this.getComplementoAvg(id);
-
+  });
+}
+editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion) {
+  this.Edit.editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion).subscribe(() => {
+    this.ngOnInit();
+    this.getComplementoAvg(id);
   });
 }
 removeSubcompl(id) {
@@ -74,6 +85,7 @@ removeSubcompl(id) {
 getComplementoAvg(id) {
   this.PositionVPTView.getComplementoAvg(id).subscribe(complemento => {
     this.editedComplemento = complemento;
+    this.ngOnInit();
   });
 }
 removeComplemento(id) {

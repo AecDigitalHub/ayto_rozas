@@ -18,7 +18,7 @@ editedMision: any;
 editedConocimientos: any;
 editedResponsAut: any;
 editedSubComplemento: any;
-
+editedComplemento: any;
   constructor(private http: Http) { }
 
   @Output() refreshposition: EventEmitter<void> = new EventEmitter();
@@ -194,6 +194,13 @@ addComplDestino(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion) {
       return nuevoComplemento;
     }));
 }
+editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
+  return this.http
+  .put(`${BASEURL}/api/complementos/edit/complemento/${id}`, { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion }).pipe(map((res: Response) => {
+    const editedComplemento = res.json();
+    return this.editedComplemento;
+  }));
+}
 
 addComplEspecifico(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
   return this.http
@@ -215,8 +222,9 @@ editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion ) {
   return this.http
   .put(`${BASEURL}/api/complementos/edit/subcomplemento/${id}`, { id, Complemento, SubComplemento, Grado, Puntos, Retribucion })
   .pipe(map((res: Response) => {
-  const editedSubComplemento = res.json();
-  return this.editedSubComplemento;
+    console.log(res.json());
+  // const editedSubComplemento = res.json();
+  // return this.editedSubComplemento;
 }));
 }
 removeSubcompl(id) {

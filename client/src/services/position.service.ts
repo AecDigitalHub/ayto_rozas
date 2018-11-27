@@ -13,7 +13,6 @@ const BASEURL = environment.BASEURL;
   providedIn: 'root'
 })
 export class PositionService {
-editedComplemento: any;
   constructor(private http: Http) { }
 
   getPosition(position) {
@@ -23,18 +22,17 @@ editedComplemento: any;
     }));
 }
 
-getComplementoAvg(id) {
-  return this.http.get(`${BASEURL}/api/complementos/complemento/${id}`).pipe(map(res => {
-    const complemento = res.json();
-      return complemento;
-}));
-}
-editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
+getValoracion(id) {
   return this.http
-  .put(`${BASEURL}/api/complementos/edit/complemento/${id}`, { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion }).pipe(map((res: Response) => {
-    const editedComplemento = res.json();
-    return this.editedComplemento;
+  .get(`${BASEURL}/api/complementos/valoracion/${id}`, id).pipe(map((res: Response) => {
   }));
+}
+
+getComplementoAvg(id) {
+  return this.http.get(`${BASEURL}/api/complementos/complemento/${id}`).pipe(map((res:Response) => {
+    // const complemento = res.json();
+    //   return complemento;
+}));
 }
 addValoracion(Position, CodigoDPT, Complementos) {
   return this.http

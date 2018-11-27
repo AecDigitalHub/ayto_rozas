@@ -32,7 +32,7 @@ router.get("/complemento/:id", (req, res, next) => {
     return tot + parseFloat(subcomplemento.Retribucion) / complem.Subcomplementos.length;
 }, 0);
     const complementoAvg = { complementoAvgGrado, complementoAvgPuntos, complementoAvgRetribucion };
-    vptcompls.findByIdAndUpdate(req.params.id, {AvgGrado: complementoAvgGrado, AvgPuntos: complementoAvgPuntos, AvgRetribucion: complementoAvgRetribucion}, { new:true })
+    vptcompls.findByIdAndUpdate(req.params.id, {AvgGrado: complementoAvgGrado.toFixed(2), AvgPuntos: complementoAvgPuntos.toFixed(2), AvgRetribucion: complementoAvgRetribucion.toFixed(2) }, { new:true })
     .then(complemento => res.status(200).json())
     .catch(err => console.log(err));
   });
@@ -44,7 +44,7 @@ router.get("/valoracion/:id", (req, res, next) => {
   .populate("Complementos.ComplDestino")
   .then(valoracion => {
     const TotCE = valoracion.Complementos.ComplEspecifico.reduce( function(tot, element) {
-      return tot + (Number(element.AvgRetribucion) + Number(element.Retribución));
+      return tot + (Number(element.AvgRetribucion) + Number(element.Retribucion));
   }, 0);
   const PuntosCD = valoracion.Complementos.ComplDestino.reduce(function(tot, element){
     return Math.round(tot + Number(element.Puntos))
