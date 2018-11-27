@@ -36,7 +36,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   cookie: {
-    path: '/Dashboard',
+    path: '/',
     httpOnly: true,
     maxAge: 60000
   },

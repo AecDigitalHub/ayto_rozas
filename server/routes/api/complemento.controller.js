@@ -6,6 +6,7 @@ const vptsubcompls = require('../../models/vpt_subcomplementos_model')
 // const loggedIn = require("../../utils/isAuthenticated");
 const vptcompls = require("../../models/vpt_complementos_model");
 const valors = require("../../models/vpt_model");
+const retribcdestinos = require("../../models/retrib_cdestino");
 const _ = require("lodash");
 
 // router.get("/complemento/:id", (req, res, next) => {
@@ -34,6 +35,31 @@ router.get("/complemento/:id", (req, res, next) => {
     vptcompls.findByIdAndUpdate(req.params.id, {AvgGrado: complementoAvgGrado, AvgPuntos: complementoAvgPuntos, AvgRetribucion: complementoAvgRetribucion}, { new:true })
     .then(complemento => res.status(200).json())
     .catch(err => console.log(err));
+  });
+});
+
+router.get("/valoracion/:id", (req, res, next) => {
+  valors.findOne({ Position: req.params.id })
+  .populate("Complementos.ComplEspecifico")
+  .populate("Complementos.ComplDestino")
+  .then(valoracion => {
+    const TotCE = valoracion.Complementos.ComplEspecifico.reduce( function(tot, element) {
+      return tot + (Number(element.AvgRetribucion) + Number(element.Retribución));
+  }, 0);
+  const PuntosCD = valoracion.Complementos.ComplDestino.reduce(function(tot, element){
+    return Math.round(tot + Number(element.Puntos))
+  }, 0);
+  console.log(PuntosCD)
+    valors.findByIdAndUpdate(valoracion.id, { 'Complementos.TotCE': TotCE.toFixed(2) }, { new:true })
+    .then(valoracion => res.status(200).json())
+    .catch(err => console.log(err));
+    retribcdestinos.findOne({ Puntos: PuntosCD }).then(retribcdestino => {
+      console.log(retribcdestino)
+      valors.findByIdAndUpdate(valoracion.id, { 'Complementos.TotCD': retribcdestino.Retribucion }, { new: true })
+      .then(valoracion => res.status(200).json())
+    .catch(err => console.log(err));
+    console.log(valoracion.Complementos.TotCD)
+    })
   });
 });
 

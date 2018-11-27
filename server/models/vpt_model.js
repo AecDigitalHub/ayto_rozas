@@ -14,7 +14,9 @@ Position: {
 CodDPT: String,
 Complementos: {
   ComplEspecifico: [{type: Schema.Types.ObjectId, ref: 'VPTCompl'}],
-  ComplDestino: [{type: Schema.Types.ObjectId, ref: 'VPTCompl'}]
+  TotCE: String,
+  ComplDestino: [{type: Schema.Types.ObjectId, ref: 'VPTCompl'}],
+  TotCD: String,
 }
 })
 
