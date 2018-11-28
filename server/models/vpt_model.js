@@ -15,8 +15,10 @@ CodDPT: String,
 Complementos: {
   ComplEspecifico: [{type: Schema.Types.ObjectId, ref: 'VPTCompl'}],
   TotCE: String,
+  TotPuntosCE: String,
   ComplDestino: [{type: Schema.Types.ObjectId, ref: 'VPTCompl'}],
   TotCD: String,
+  TotPuntosCD: String,
 },
 SalarioBase: String
 })

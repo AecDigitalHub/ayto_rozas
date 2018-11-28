@@ -55,7 +55,7 @@ router.get("/valoracion/:id", (req, res, next) => {
     .catch(err => console.log(err));
     retribcdestinos.findOne({ Puntos: PuntosCD }).then(retribcdestino => {
       console.log(retribcdestino)
-      valors.findByIdAndUpdate(valoracion.id, { 'Complementos.TotCD': retribcdestino.Retribucion }, { new: true })
+      valors.findByIdAndUpdate(valoracion.id,  {'Complementos.TotCD': retribcdestino.Retribucion, 'Complementos.TotPuntosCD': PuntosCD}, { new: true })
       .then(valoracion => res.status(200).json())
     .catch(err => console.log(err));
     console.log(valoracion.Complementos.TotCD)

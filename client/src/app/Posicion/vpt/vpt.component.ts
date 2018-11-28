@@ -47,13 +47,13 @@ this.PositionVPTView.getValoracion(this.positionId).subscribe(() => {
 }
 addComplDestino(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion) {
   this.Edit.addComplDestino(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion).subscribe(() => {
-    // this.nuevoComplemento = complemento;
+    this.getValoracion(this.positionId);
     this.ngOnInit();
   });
 }
 addComplEspecifico(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
   this.Edit.addComplEspecifico(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion).subscribe(() => {
-    // this.nuevoComplemento = complemento;
+    this.getValoracion(this.positionId);
     this.ngOnInit();
   });
 }
@@ -65,6 +65,7 @@ addSubcompl(Complemento, SubComplemento, Grado, Puntos, Retribucion) {
 }
 editCompl(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
   this.Edit.editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion).subscribe(() => {
+    this.getValoracion(this.positionId);
     this.ngOnInit();
   });
 }
@@ -87,6 +88,7 @@ getComplementoAvg(id) {
 }
 removeComplemento(id) {
   this.PositionVPTView.removeComplemento(id).subscribe(() => {
+  this.getValoracion(this.positionId);
   this.ngOnInit();
   });
 }

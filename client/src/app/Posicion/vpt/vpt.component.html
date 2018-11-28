@@ -45,7 +45,7 @@
           </h5>
         </div>
         <div class="modal-body">
-          <form>
+          <form #myForm="ngForm">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Complemento:</label>
               <input
@@ -55,8 +55,8 @@
                 id="Complemento "
               />
             </div>
-          </form>
-          <form>
+          <!-- </form> -->
+          <!-- <form #myForm="ngForm"> -->
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Grado:</label>
               <select
@@ -76,8 +76,8 @@
                 
               </select>
             </div>
-          </form>
-          <form>
+          <!-- </form> -->
+          <!-- <form #myForm="ngForm"> -->
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Puntos:</label>
                 <select
@@ -99,8 +99,8 @@
                   
                 </select>
               </div>
-            </form>
-            <form>
+            <!-- </form> -->
+            <!-- <form #myForm="ngForm"> -->
                 <div class="form-group">
                     <label for="exampleFormControlSelect1"
                       >Retribucion</label
@@ -129,9 +129,10 @@
             data-dismiss="AddComplDestModal"
             (click)="
               addComplDestino(position.vpt._id, position.vpt.CodDPT, Complemento, Grado, Puntos, Retribucion);
-              getValoracion(position.vpt._id);
               AddComplDestModal.close();
-              openSnackBar('Complemento Destino añadido', 'OK')
+              ngOnInit();
+              openSnackBar('Complemento Destino añadido', 'OK');
+              myForm.reset();
             "
             class="btn btn-primary"
           >
@@ -267,11 +268,12 @@
                     <button
                       type="button"
                       type="submit"
-                      data-dismiss="AddComplDestModal"
+                      data-dismiss="modal"
                       (click)="editCompl(complemento._id, complemento.Valor, complemento.CodDPT, complemento.Complemento, complemento.Grado, complemento.Puntos, complemento.Retribucion, complemento.Subcomplementos, complemento.AvgGrado, complemento.AvgPuntos, complemento.AvgRetribucion);
                         EditComplDestModal.close();
                         getValoracion(position.vpt._id);
-                        openSnackBar('Cambios guardados', 'OK')
+                        openSnackBar('Cambios guardados', 'OK');
+                        form.reset();
                       "
                       class="btn btn-primary"
                     >
@@ -861,8 +863,8 @@
         </div>
         <div class="row">
           <div class="col">
-            <h4>Puesto CD:</h4>
-            <!-- {{ position.retribucion.PuestoCD }} -->
+            <h4>Puntos CD:</h4>
+            {{ position.vpt.Complementos.TotPuntosCD }}
           </div>
           <div class="col">
             <h4>Importe Puesto CD:</h4>
