@@ -6,6 +6,7 @@ const puesto = require("../../models/puesto_model");
 const valors = require("../../models/vpt_model");
 const vptcompls = require("../../models/vpt_complementos_model");
 const vptretribs = require("../../models/vpt_retribucion_model");
+const salariobases = require("../../models/salariobase");
 const _ = require("lodash");
 
 router.get("/", (req, res, next) => {
@@ -24,13 +25,14 @@ router.get("/:id", (req, res, next) => {
     .populate("Puestos")
     .populate("Vacantes")
     .then(position => {
-      valors.findOne({ CodDPT: position.CodigoDPT })
+      salariobases.findOne({ Nivel: position.ConocExper.FormReglada.Nivel }).then(retribucion =>{
+        console.log(retribucion)
+      valors.findOneAndUpdate({ CodDPT: position.CodigoDPT }, { SalarioBase: retribucion.SalarioBase }, { new:true})
       .populate("Complementos.ComplDestino")
       .populate({ path: "Complementos.ComplEspecifico", populate: { path: "Subcomplementos" }})
-     
       .then(vpt => {
-        vptretribs.findOne({ CodDPT: position.CodigoDPT }).then(retribucion => {
-          return res.status(200).json({ position, vpt, retribucion });
+        // salariobases.findOne({ Nivel: position.FichaDPT.Nivel }).then(retribucion => {
+          return res.status(200).json({ position, vpt });
         });
       });
   });

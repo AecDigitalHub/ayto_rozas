@@ -839,20 +839,20 @@
         <h4>Total CE: {{position.vpt.Complementos.TotCE}}</h4>
       </div>
     </mat-tab>
-    <div *ngIf="position.retribucion">
+    <div *ngIf="position.vpt.SalarioBase">
 
     <mat-tab label="Complementos - Retribución">
       <div class="dpt-profile-container">
         <div class="row">
           <div class="col">
             <h4>Salario Base:</h4>
-            {{ position.retribucion.Sbase }} EUR.
+            {{ position.vpt.SalarioBase }} EUR.
           </div>
         </div>
         <div class="row">
           <div class="col">
             <h4>Puesto CE:</h4>
-            {{ position.retribucion.PuestoCe }}
+            <!-- {{ position.retribucion.PuestoCe }} -->
           </div>
           <div class="col">
             <h4>Importe Puesto CE:</h4>
@@ -862,7 +862,7 @@
         <div class="row">
           <div class="col">
             <h4>Puesto CD:</h4>
-            {{ position.retribucion.PuestoCD }}
+            <!-- {{ position.retribucion.PuestoCD }} -->
           </div>
           <div class="col">
             <h4>Importe Puesto CD:</h4>
@@ -870,13 +870,6 @@
           </div>
         </div>
       </div>
-      <mat-grid-list cols="1" rowHeight="120px">
-        <mat-grid-tile>
-          <button type="button" class="btn btn-primary">
-            <i class="far fa-edit"></i> Editar
-          </button>
-        </mat-grid-tile>
-      </mat-grid-list>
     </mat-tab>
   </div>
   </mat-tab-group>

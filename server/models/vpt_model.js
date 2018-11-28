@@ -17,7 +17,8 @@ Complementos: {
   TotCE: String,
   ComplDestino: [{type: Schema.Types.ObjectId, ref: 'VPTCompl'}],
   TotCD: String,
-}
+},
+SalarioBase: String
 })
 
 const Valor = mongoose.model('Valor', ValorSchema);
