@@ -129,6 +129,7 @@
             data-dismiss="AddComplDestModal"
             (click)="
               addComplDestino(position.vpt._id, position.vpt.CodDPT, Complemento, Grado, Puntos, Retribucion);
+              getValoracion(position.vpt._id);
               AddComplDestModal.close();
               openSnackBar('Complemento Destino añadido', 'OK')
             "
@@ -269,15 +270,19 @@
                       data-dismiss="AddComplDestModal"
                       (click)="editCompl(complemento._id, complemento.Valor, complemento.CodDPT, complemento.Complemento, complemento.Grado, complemento.Puntos, complemento.Retribucion, complemento.Subcomplementos, complemento.AvgGrado, complemento.AvgPuntos, complemento.AvgRetribucion);
                         EditComplDestModal.close();
+                        getValoracion(position.vpt._id);
                         openSnackBar('Cambios guardados', 'OK')
                       "
                       class="btn btn-primary"
                     >
-                      Añadir Compl
+                      Editar Compl
                     </button>
                   </div>
                 </ngx-smart-modal>
-                <button type="button" class="btn btn-danger" (click)="removeComplemento(complemento._id)">
+                <button type="button" class="btn btn-danger" (click)="
+                removeComplemento(complemento._id);
+                getValoracion(position.vpt._id);
+                ">
                   <i class="far fa-trash-alt"></i> Borrar
                 </button>
               </mat-grid-tile>
@@ -851,7 +856,7 @@
           </div>
           <div class="col">
             <h4>Importe Puesto CE:</h4>
-            {{ position.retribucion.ImportePuestoCE }}
+            {{ position.vpt.Complementos.TotCE }}
           </div>
         </div>
         <div class="row">
@@ -861,7 +866,7 @@
           </div>
           <div class="col">
             <h4>Importe Puesto CD:</h4>
-            {{ position.retribucion.ImportePuestoCd }}
+            {{ position.vpt.Complementos.TotCD }}
           </div>
         </div>
       </div>
