@@ -55,8 +55,6 @@
                 id="Complemento "
               />
             </div>
-          <!-- </form> -->
-          <!-- <form #myForm="ngForm"> -->
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Grado:</label>
               <select
@@ -76,8 +74,6 @@
                 
               </select>
             </div>
-          <!-- </form> -->
-          <!-- <form #myForm="ngForm"> -->
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Puntos:</label>
                 <select
@@ -99,8 +95,6 @@
                   
                 </select>
               </div>
-            <!-- </form> -->
-            <!-- <form #myForm="ngForm"> -->
                 <div class="form-group">
                     <label for="exampleFormControlSelect1"
                       >Retribucion</label
@@ -183,7 +177,7 @@
                     </h5>
                   </div>
                   <div class="modal-body">
-                    <form>
+                    <form #myForm2="ngForm">
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Complemento:</label>
                         <input
@@ -194,8 +188,6 @@
                           value="{{complemento.Complemento}}"
                         />
                       </div>
-                    </form>
-                    <form>
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Grado:</label>
                         <select
@@ -216,8 +208,6 @@
                           
                         </select>
                       </div>
-                    </form>
-                    <form>
                         <div class="form-group">
                           <label for="exampleFormControlTextarea1">Puntos:</label>
                           <select
@@ -240,8 +230,6 @@
                             
                           </select>
                         </div>
-                      </form>
-                      <form>
                           <div class="form-group">
                               <label for="exampleFormControlSelect1"
                                 >Retribucion</label
@@ -284,6 +272,7 @@
                 <button type="button" class="btn btn-danger" (click)="
                 removeComplemento(complemento._id);
                 getValoracion(position.vpt._id);
+                myForm2.reset();
                 ">
                   <i class="far fa-trash-alt"></i> Borrar
                 </button>
@@ -317,7 +306,7 @@
           </h5>
         </div>
         <div class="modal-body">
-          <form>
+          <form #myForm3="ngForm">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Complemento:</label>
               <input
@@ -327,8 +316,6 @@
                 id="Complemento "
               />
             </div>
-          </form>
-          <form>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Grado:</label>
               <select
@@ -348,8 +335,6 @@
                 
               </select>
             </div>
-          </form>
-          <form>
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Puntos:</label>
                 <select
@@ -371,8 +356,6 @@
                   
                 </select>
               </div>
-            </form>
-            <form>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1"
                       >Retribucion</label
@@ -402,7 +385,9 @@
             (click)="
               addComplEspecifico(position.vpt._id, position.vpt.CodDPT, Complemento, Grado, Puntos, Retribucion);
               AddComplEspecModal.close();
-              openSnackBar('Complemento Especifico añadido', 'OK')
+              openSnackBar('Complemento Especifico añadido', 'OK');
+              myForm3.reset();
+
             "
             data-dismiss="SubcomplModal"
             class="btn btn-primary"
@@ -444,7 +429,7 @@
                     </h5>
                   </div>
                   <div class="modal-body">
-                    <form>
+                    <form #myForm4="ngForm">
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Subcomplemento:</label>
                         <input
@@ -454,8 +439,6 @@
                           id="SubComplemento "
                         />
                       </div>
-                    </form>
-                    <form>
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Grado:</label>
                         <select
@@ -475,8 +458,6 @@
                           
                         </select>
                       </div>
-                    </form>
-                    <form>
                         <div class="form-group">
                           <label for="exampleFormControlTextarea1">Puntos:</label>
                           <select
@@ -498,8 +479,6 @@
                             
                           </select>
                         </div>
-                      </form>
-                      <form>
                           <div class="form-group">
                               <label for="exampleFormControlSelect1"
                                 >Retribucion</label
@@ -530,7 +509,8 @@
                         addSubcompl(complemento._id, SubComplemento, Grado, Puntos, Retribucion);
                         getComplementoAvg(complemento._id);
                         SubcomplModal.close();
-                        openSnackBar('Subcomplemento añadido', 'OK')
+                        myForm4.reset();
+                        openSnackBar('Subcomplemento añadido', 'OK');
                       "
                       data-dismiss="SubcomplModal"
                       class="btn btn-primary"
@@ -581,7 +561,7 @@
                         </h5>
                       </div>
                       <div class="modal-body">
-                        <form>
+                        <form #myForm5="ngForm">
                           <div class="form-group">
                             <label for="exampleFormControlTextarea1">Subcomplemento:</label>
                             <input
@@ -591,8 +571,6 @@
                               id="SubComplemento "
                             />
                           </div>
-                        </form>
-                        <form>
                           <div class="form-group">
                             <label for="exampleFormControlTextarea1">Grado:</label>
                             <select
@@ -612,8 +590,6 @@
                               
                             </select>
                           </div>
-                        </form>
-                        <form>
                             <div class="form-group">
                               <label for="exampleFormControlTextarea1">Puntos:</label>
                               <select
@@ -635,8 +611,6 @@
                                 
                               </select>
                             </div>
-                          </form>
-                          <form>
                               <div class="form-group">
                                   <label for="exampleFormControlSelect1"
                                     >Retribucion</label
@@ -665,6 +639,7 @@
                           type="submit"
                           (click)="
                             addSubcompl(complemento._id, SubComplemento, Grado, Puntos, Retribucion);
+                            myForm5.reset();
                             SubcomplModal.close();
                             openSnackBar('Subcomplemento añadido', 'OK')
                           "
@@ -804,7 +779,8 @@
                       </button>
                     </div>
                   </ngx-smart-modal>
-                  <button type="button" class="btn btn-danger" (click)="removeSubcompl(subcomplemento._id);                           getComplementoAvg(complemento._id);
+                  <button type="button" class="btn btn-danger" (click)="removeSubcompl(subcomplemento._id); 
+                   getComplementoAvg(complemento._id);
                   ">
                     <i class="far fa-trash-alt"></i> Borrar
                   </button>
@@ -871,6 +847,9 @@
             {{ position.vpt.Complementos.TotCD }}
           </div>
         </div>
+        <mat-grid-list class="divider" cols="1" rowHeight="60px">
+          <mat-grid-tile class="divider"></mat-grid-tile>
+        </mat-grid-list>
       </div>
     </mat-tab>
   </div>
