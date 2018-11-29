@@ -8,6 +8,8 @@ const vptcompls = require("../../models/vpt_complementos_model");
 const valors = require("../../models/vpt_model");
 const retribcdestinos = require("../../models/retrib_cdestino");
 const retribcomplCE = require("../../models/vpt_retribcomplCE_model");
+const retribSubcomplCE = require("../../models/vpt_retribSubcomplCE_model");
+
 const _ = require("lodash");
 
 // router.get("/complemento/:id", (req, res, next) => {
@@ -75,14 +77,16 @@ router.get("/:id/complementodestino/:complemento", (req, res, next) => {
 });
 
 router.post("/add/subcomplemento", (req, res, next) => {
+  retribSubcomplCE.findOne( { Subcomplemento: req.body.SubComplemento, Grado: req.body.Grado }).then(retribucion => {
+    console.log(retribucion)
+
   const newSubcomplemento = new vptsubcompls({
     Complemento: req.body.Complemento,
     SubComplemento: req.body.SubComplemento,
     Grado: req.body.Grado,
-    Puntos: req.body.Puntos,
-    Retribucion: req.body.Retribucion
+    Puntos: retribucion.Puntos,
+    Retribucion: parseFloat(retribucion.Retribución).toFixed(2)
   });
-
   newSubcomplemento.save((err) => {
     if(err) { return res.status(500).json(err)}
     if (newSubcomplemento.errors) { return res.status(400).json(newSubcomplemento)}
@@ -96,6 +100,8 @@ router.post("/add/subcomplemento", (req, res, next) => {
     .catch(err => console.log(err));
   });
 })
+})
+
 
 router.post("/add/complementodestino", (req, res, next) => {
   const newComplemento = new vptcompls({
@@ -150,19 +156,7 @@ router.post("/add/complementodestino", (req, res, next) => {
 // })
 
 router.post("/add/complementoespecifico", (req, res, next) => {
-  // const newComplemento = new vptcompls({
-  //   Valor: req.body.Valor,
-  //   CodDPT: req.body.CodDPT,
-  //   Complemento: req.body.Complemento,
-  //   Grado: req.body.Grado,
-  //   Puntos: retribucion.Puntos,
-  //   Retribucion: retribucion.Retribución,
-  //   Sucomplementos: [],
-  //   AvgGrado: '',
-  //   AvgPuntos: '',
-  //   AvgRetribucion: ''
-  // });
-
+ 
   retribcomplCE.findOne( { Complemento: req.body.Complemento, Grado: req.body.Grado }).then(retribucion => {
     console.log(retribucion)
 

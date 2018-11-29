@@ -309,12 +309,20 @@
           <form #myForm3="ngForm">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Complemento:</label>
-              <input
+              <select
                 class="form-control"
                 [(ngModel)]="Complemento"
                 name="Complemento"
                 id="Complemento "
-              />
+              >
+              <option>Dificultad Técnica</option>
+              <option>Dedicación, Jornada, Turno</option>
+              <option>Incompatibilidad</option>
+              <option>Responsabilidad</option>
+              <option>Peligrosidad</option>
+              <option>Penosidad</option>
+              
+            </select>
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Grado:</label>
@@ -324,6 +332,7 @@
                 name="Grado"
                 id="Grado"
               >
+                <option>0</option> 
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -415,6 +424,7 @@
               <mat-grid-tile> <h4>Grado</h4> </mat-grid-tile>
               <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
               <mat-grid-tile> <h4>Retribución</h4> </mat-grid-tile>
+              <div *ngIf="complemento.Complemento == 'Dificultad Técnica' || complemento.Complemento == 'Responsabilidad'">
               <mat-grid-tile> <button
                 type="button"
                 class="btn btn-primary"
@@ -430,15 +440,36 @@
                   </div>
                   <div class="modal-body">
                     <form #myForm4="ngForm">
+                      <div *ngIf="complemento.Complemento == 'Dificultad Técnica'">
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Subcomplemento:</label>
-                        <input
+                        <select
                           class="form-control"
                           [(ngModel)]="SubComplemento"
                           name="SubComplemento"
                           id="SubComplemento "
-                        />
+                        
+                        >
+                        <option>Especialización</option>
+                        <option>Experiencia Requerida</option>
+                        <option>Relaciones</option>                
+                        </select>
                       </div>
+                      </div>
+                      <div *ngIf="complemento.Complemento == 'Responsabilidad'">
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Subcomplemento:</label>
+                            <select
+                              class="form-control"
+                              [(ngModel)]="SubComplemento"
+                              name="SubComplemento"
+                              id="SubComplemento "
+                            >
+                            <option>Resultados</option>
+                            <option>Autonomía y Toma Decisiones</option>
+                            </select>
+                          </div>
+                          </div>
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Grado:</label>
                         <select
@@ -510,6 +541,7 @@
                         getComplementoAvg(complemento._id);
                         SubcomplModal.close();
                         myForm4.reset();
+                        ngOnInit();
                         openSnackBar('Subcomplemento añadido', 'OK');
                       "
                       data-dismiss="SubcomplModal"
@@ -518,7 +550,9 @@
                       Añadir Subcompl
                     </button>
                   </div>
-                </ngx-smart-modal></mat-grid-tile>
+                </ngx-smart-modal>
+              </mat-grid-tile>
+            </div>
             </mat-grid-list>
             <mat-grid-list cols="4" rowHeight="100px">
               <mat-grid-tile>
@@ -562,15 +596,36 @@
                       </div>
                       <div class="modal-body">
                         <form #myForm5="ngForm">
-                          <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Subcomplemento:</label>
-                            <input
-                              class="form-control"
-                              [(ngModel)]="SubComplemento"
-                              name="SubComplemento"
-                              id="SubComplemento "
-                            />
-                          </div>
+                            <div *ngIf="complemento.Complemento == 'Dificultad Técnica'">
+                                <div class="form-group">
+                                  <label for="exampleFormControlTextarea1">Subcomplemento:</label>
+                                  <select
+                                    class="form-control"
+                                    [(ngModel)]="SubComplemento"
+                                    name="SubComplemento"
+                                    id="SubComplemento "
+                                  
+                                  >
+                                  <option>Especialización</option>
+                                  <option>Experiencia Requerida</option>
+                                  <option>Relaciones</option>                
+                                  </select>
+                                </div>
+                                </div>
+                                <div *ngIf="complemento.Complemento == 'Responsabilidad'">
+                                    <div class="form-group">
+                                      <label for="exampleFormControlTextarea1">Subcomplemento:</label>
+                                      <select
+                                        class="form-control"
+                                        [(ngModel)]="SubComplemento"
+                                        name="SubComplemento"
+                                        id="SubComplemento "
+                                      >
+                                      <option>Resultados</option>
+                                      <option>Autonomía y Toma Decisiones</option>
+                                      </select>
+                                    </div>
+                                    </div>
                           <div class="form-group">
                             <label for="exampleFormControlTextarea1">Grado:</label>
                             <select
