@@ -7,6 +7,7 @@ const vptsubcompls = require('../../models/vpt_subcomplementos_model')
 const vptcompls = require("../../models/vpt_complementos_model");
 const valors = require("../../models/vpt_model");
 const retribcdestinos = require("../../models/retrib_cdestino");
+const retribcomplCE = require("../../models/vpt_retribcomplCE_model");
 const _ = require("lodash");
 
 // router.get("/complemento/:id", (req, res, next) => {
@@ -49,25 +50,24 @@ router.get("/valoracion/:id", (req, res, next) => {
   const PuntosCD = valoracion.Complementos.ComplDestino.reduce(function(tot, element){
     return Math.round(tot + Number(element.Puntos))
   }, 0);
-  console.log(PuntosCD)
+  // console.log(PuntosCD)
     valors.findByIdAndUpdate(valoracion.id, { 'Complementos.TotCE': TotCE.toFixed(2) }, { new:true })
     .then(valoracion => res.status(200).json())
     .catch(err => console.log(err));
     retribcdestinos.findOne({ Puntos: PuntosCD }).then(retribcdestino => {
-      console.log(retribcdestino)
+      // console.log(retribcdestino)
       valors.findByIdAndUpdate(valoracion.id,  {'Complementos.TotCD': retribcdestino.Retribucion, 'Complementos.TotPuntosCD': PuntosCD}, { new: true })
       .then(valoracion => res.status(200).json())
     .catch(err => console.log(err));
-    console.log(valoracion.Complementos.TotCD)
+    // console.log(valoracion.Complementos.TotCD)
     })
   });
 });
 
 
 router.get("/:id/complementodestino/:complemento", (req, res, next) => {
-  console.log(req.params);
   vptcompls.findById(req.params.id).then(vpt => {
-    console.log(vpt.Complementos.ComplDestino);
+    // console.log(vpt.Complementos.ComplDestino);
     vptcompls.find({ 'vpt.Complementos.ComplDestino._id': { $all: ['req.params.complemento'] }}).then(compl => {
     return res.status(200).json({compl});
   });
@@ -90,7 +90,6 @@ router.post("/add/subcomplemento", (req, res, next) => {
   });
 
   vptcompls.findById(newSubcomplemento.Complemento).then(complemento => {
-    console.log(newSubcomplemento.Complemento);
     actualiz = complemento.Subcomplementos.push(newSubcomplemento.id)
     vptcompls.findByIdAndUpdate(newSubcomplemento.Complemento, { Subcomplementos: complemento.Subcomplementos }, { new: true })
     .then(complemento => res.status(200).json())
@@ -122,19 +121,63 @@ router.post("/add/complementodestino", (req, res, next) => {
   });
 })
 
+// router.post("/add/complementoespecifico", (req, res, next) => {
+//   const newComplemento = new vptcompls({
+//     Valor: req.body.Valor,
+//     CodDPT: req.body.CodDPT,
+//     Complemento: req.body.Complemento,
+//     Grado: req.body.Grado,
+//     Puntos: req.body.Puntos,
+//     Retribucion: req.body.Retribucion,
+//     Sucomplementos: [],
+//     AvgGrado: '',
+//     AvgPuntos: '',
+//     AvgRetribucion: ''
+//   });
+
+//   newComplemento.save((err) => {
+//     if(err) { return res.status(500).json(err)}
+//     if (newComplemento.errors) { return res.status(400).json(newComplemento)}
+//     return res.status(200).json(newComplemento)
+//   });
+
+//   valors.findById(newComplemento.Valor).then(valoracion => {
+//     actualiz = valoracion.Complementos.ComplEspecifico.push(newComplemento.id)
+//     valors.findByIdAndUpdate(newComplemento.Valor, { 'Complementos.ComplEspecifico': valoracion.Complementos.ComplEspecifico }, { new: true })
+//     .then(valoracion => res.status(200).json())
+//     .catch(err => console.log(err));
+//   });
+// })
+
 router.post("/add/complementoespecifico", (req, res, next) => {
-  const newComplemento = new vptcompls({
-    Valor: req.body.Valor,
-    CodDPT: req.body.CodDPT,
-    Complemento: req.body.Complemento,
-    Grado: req.body.Grado,
-    Puntos: req.body.Puntos,
-    Retribucion: req.body.Retribucion,
-    Sucomplementos: [],
-    AvgGrado: '',
-    AvgPuntos: '',
-    AvgRetribucion: ''
-  });
+  // const newComplemento = new vptcompls({
+  //   Valor: req.body.Valor,
+  //   CodDPT: req.body.CodDPT,
+  //   Complemento: req.body.Complemento,
+  //   Grado: req.body.Grado,
+  //   Puntos: retribucion.Puntos,
+  //   Retribucion: retribucion.Retribución,
+  //   Sucomplementos: [],
+  //   AvgGrado: '',
+  //   AvgPuntos: '',
+  //   AvgRetribucion: ''
+  // });
+
+  retribcomplCE.findOne( { Complemento: req.body.Complemento, Grado: req.body.Grado }).then(retribucion => {
+    console.log(retribucion)
+
+    const newComplemento = new vptcompls({
+      Valor: req.body.Valor,
+      CodDPT: req.body.CodDPT,
+      Complemento: req.body.Complemento,
+      Grado: req.body.Grado,
+      Puntos: retribucion.Puntos,
+      Retribucion: parseFloat(retribucion.Retribución).toFixed(2),
+      Sucomplementos: [],
+      AvgGrado: '',
+      AvgPuntos: '',
+      AvgRetribucion: ''
+    });
 
   newComplemento.save((err) => {
     if(err) { return res.status(500).json(err)}
@@ -149,6 +192,8 @@ router.post("/add/complementoespecifico", (req, res, next) => {
     .catch(err => console.log(err));
   });
 })
+})  
+
 
 router.delete('/delete/complemento/:id', (req,res, next) => {
   const complId = req.params.id;
@@ -171,7 +216,6 @@ router.delete('/delete/complemento/:id', (req,res, next) => {
 
 router.delete('/delete/subcomplemento/:id', (req,res, next) => {
 const subcomplId = req.params.id;
-console.log(subcomplId);
 
 vptsubcompls.findById(subcomplId).then(subcomplemento => {
   vptcompls.findByIdAndUpdate(
@@ -190,7 +234,6 @@ vptsubcompls.findByIdAndRemove(subcomplId)
 });
 
 router.put('/edit/subcomplemento/:id', (req, res, next) => {
-  console.log(req.body);
   const { Complemento, SubComplemento, Grado, Puntos, Retribucion } = req.body;
   let editedSubComplemento = { Complemento, SubComplemento, Grado, Puntos, Retribucion }
 
@@ -200,7 +243,6 @@ router.put('/edit/subcomplemento/:id', (req, res, next) => {
 });
 
 router.put('/edit/complemento/:id', (req, res, next) => {
-  console.log(req.body);
   const { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion } = req.body;
   let editedComplemento = { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion }
 
