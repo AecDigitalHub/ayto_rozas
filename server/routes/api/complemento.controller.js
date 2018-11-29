@@ -3,11 +3,14 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const vptsubcompls = require('../../models/vpt_subcomplementos_model')
+const dpts = require('../../models/dpt_model');
 // const loggedIn = require("../../utils/isAuthenticated");
 const vptcompls = require("../../models/vpt_complementos_model");
 const valors = require("../../models/vpt_model");
 const retribcdestinos = require("../../models/retrib_cdestino");
 const retribcomplCE = require("../../models/vpt_retribcomplCE_model");
+const retribcomplCELaborales = require("../../models/vpt_retribcomplCELaborales_model");
+
 const retribSubcomplCE = require("../../models/vpt_retribSubcomplCE_model");
 
 const _ = require("lodash");
@@ -128,18 +131,22 @@ router.post("/add/complementodestino", (req, res, next) => {
 })
 
 // router.post("/add/complementoespecifico", (req, res, next) => {
-//   const newComplemento = new vptcompls({
-//     Valor: req.body.Valor,
-//     CodDPT: req.body.CodDPT,
-//     Complemento: req.body.Complemento,
-//     Grado: req.body.Grado,
-//     Puntos: req.body.Puntos,
-//     Retribucion: req.body.Retribucion,
-//     Sucomplementos: [],
-//     AvgGrado: '',
-//     AvgPuntos: '',
-//     AvgRetribucion: ''
-//   });
+ 
+//   retribcomplCE.findOne( { Complemento: req.body.Complemento, Grado: req.body.Grado }).then(retribucion => {
+//     console.log(retribucion)
+
+//     const newComplemento = new vptcompls({
+//       Valor: req.body.Valor,
+//       CodDPT: req.body.CodDPT,
+//       Complemento: req.body.Complemento,
+//       Grado: req.body.Grado,
+//       Puntos: retribucion.Puntos,
+//       Retribucion: parseFloat(retribucion.Retribución).toFixed(2),
+//       Sucomplementos: [],
+//       AvgGrado: '',
+//       AvgPuntos: '',
+//       AvgRetribucion: ''
+//     });
 
 //   newComplemento.save((err) => {
 //     if(err) { return res.status(500).json(err)}
@@ -154,9 +161,43 @@ router.post("/add/complementodestino", (req, res, next) => {
 //     .catch(err => console.log(err));
 //   });
 // })
+// })  
 
 router.post("/add/complementoespecifico", (req, res, next) => {
+
+dpts.findOne({ CodigoDPT: req.body.CodDPT }).then(dpt => {
+if (dpt.FichaDPT.Colectivo == '(L) Laboral') {
  
+  retribcomplCELaborales.findOne( { Complemento: req.body.Complemento, Grado: req.body.Grado }).then(retribucion => {
+    console.log(retribucion)
+
+    const newComplemento = new vptcompls({
+      Valor: req.body.Valor,
+      CodDPT: req.body.CodDPT,
+      Complemento: req.body.Complemento,
+      Grado: req.body.Grado,
+      Puntos: retribucion.Puntos,
+      Retribucion: parseFloat(retribucion.Retribución).toFixed(2),
+      Sucomplementos: [],
+      AvgGrado: '',
+      AvgPuntos: '',
+      AvgRetribucion: ''
+    });
+
+  newComplemento.save((err) => {
+    if(err) { return res.status(500).json(err)}
+    if (newComplemento.errors) { return res.status(400).json(newComplemento)}
+    return res.status(200).json(newComplemento)
+  });
+
+  valors.findById(newComplemento.Valor).then(valoracion => {
+    actualiz = valoracion.Complementos.ComplEspecifico.push(newComplemento.id)
+    valors.findByIdAndUpdate(newComplemento.Valor, { 'Complementos.ComplEspecifico': valoracion.Complementos.ComplEspecifico }, { new: true })
+    .then(valoracion => res.status(200).json())
+    .catch(err => console.log(err));
+  });
+})
+} else {
   retribcomplCE.findOne( { Complemento: req.body.Complemento, Grado: req.body.Grado }).then(retribucion => {
     console.log(retribucion)
 
@@ -186,7 +227,10 @@ router.post("/add/complementoespecifico", (req, res, next) => {
     .catch(err => console.log(err));
   });
 })
-})  
+}
+})
+})
+
 
 
 router.delete('/delete/complemento/:id', (req,res, next) => {
