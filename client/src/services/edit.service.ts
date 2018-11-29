@@ -210,9 +210,9 @@ addComplEspecifico(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subco
       return nuevoComplemento;
     }));
 }
-addSubcompl(Complemento, SubComplemento, Grado, Puntos, Retribucion) {
+addSubcompl(CodDPT, Complemento, SubComplemento, Grado) {
   return this.http
-    .post(`${BASEURL}/api/complementos/add/subcomplemento`, { Complemento, SubComplemento, Grado, Puntos, Retribucion })
+    .post(`${BASEURL}/api/complementos/add/subcomplemento`, { CodDPT, Complemento, SubComplemento, Grado })
     .pipe(map((res: Response) => {
       const nuevoSubcomplemento = res.json();
       return nuevoSubcomplemento;
@@ -229,7 +229,7 @@ editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion ) {
 }
 removeSubcompl(id) {
   return this.http
-  .delete(`${BASEURL}/api/complementos/delete/subcomplemento/${id}`, id )
+  .delete(`${BASEURL}/api/complementos/delete/subcomplemento/${id}`,  id )
   .pipe(map((res: Response) => {}));
 }
 }

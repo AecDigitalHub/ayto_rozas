@@ -537,7 +537,7 @@
                       type="button"
                       type="submit"
                       (click)="
-                        addSubcompl(complemento._id, SubComplemento, Grado, Puntos, Retribucion);
+                        addSubcompl(complemento.CodDPT, complemento._id, SubComplemento, Grado, Puntos, Retribucion);
                         getComplementoAvg(complemento._id);
                         SubcomplModal.close();
                         myForm4.reset();
@@ -693,7 +693,7 @@
                           type="button"
                           type="submit"
                           (click)="
-                            addSubcompl(complemento._id, SubComplemento, Grado, Puntos, Retribucion);
+                            addSubcompl(complemento.CodDPT, complemento._id, SubComplemento, Grado);
                             myForm5.reset();
                             SubcomplModal.close();
                             openSnackBar('Subcomplemento añadido', 'OK')
@@ -834,7 +834,7 @@
                       </button>
                     </div>
                   </ngx-smart-modal>
-                  <button type="button" class="btn btn-danger" (click)="removeSubcompl(subcomplemento._id); 
+                  <button type="button" class="btn btn-danger" (click)="removeSubcompl(subcomplemento.Complemento, subcomplemento._id); 
                    getComplementoAvg(complemento._id);
                   ">
                     <i class="far fa-trash-alt"></i> Borrar

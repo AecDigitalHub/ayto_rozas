@@ -10,8 +10,8 @@ const valors = require("../../models/vpt_model");
 const retribcdestinos = require("../../models/retrib_cdestino");
 const retribcomplCE = require("../../models/vpt_retribcomplCE_model");
 const retribcomplCELaborales = require("../../models/vpt_retribcomplCELaborales_model");
-
 const retribSubcomplCE = require("../../models/vpt_retribSubcomplCE_model");
+const retribSubcomplCELaborales = require("../../models/vpt_retribSubcomplCELaborales");
 
 const _ = require("lodash");
 
@@ -79,8 +79,39 @@ router.get("/:id/complementodestino/:complemento", (req, res, next) => {
 });
 });
 
+// router.post("/add/subcomplemento", (req, res, next) => {
+//   retribSubcomplCE.findOne( { Subcomplemento: req.body.SubComplemento, Grado: req.body.Grado }).then(retribucion => {
+//     console.log(retribucion)
+
+//   const newSubcomplemento = new vptsubcompls({
+//     Complemento: req.body.Complemento,
+//     SubComplemento: req.body.SubComplemento,
+//     Grado: req.body.Grado,
+//     Puntos: retribucion.Puntos,
+//     Retribucion: parseFloat(retribucion.Retribución).toFixed(2)
+//   });
+//   newSubcomplemento.save((err) => {
+//     if(err) { return res.status(500).json(err)}
+//     if (newSubcomplemento.errors) { return res.status(400).json(newSubcomplemento)}
+//     return res.status(200).json(newSubcomplemento)
+//   });
+
+//   vptcompls.findById(newSubcomplemento.Complemento).then(complemento => {
+//     actualiz = complemento.Subcomplementos.push(newSubcomplemento.id)
+//     vptcompls.findByIdAndUpdate(newSubcomplemento.Complemento, { Subcomplementos: complemento.Subcomplementos }, { new: true })
+//     .then(complemento => res.status(200).json())
+//     .catch(err => console.log(err));
+//   });
+// })
+// })
+
 router.post("/add/subcomplemento", (req, res, next) => {
-  retribSubcomplCE.findOne( { Subcomplemento: req.body.SubComplemento, Grado: req.body.Grado }).then(retribucion => {
+  console.log(req.body)
+
+dpts.findOne( { CodigoDPT: req.body.CodDPT }).then(dpt => {
+if (dpt.FichaDPT.Colectivo == '(L) Laboral'){
+
+  retribSubcomplCELaborales.findOne( { Subcomplemento: req.body.SubComplemento, Grado: req.body.Grado }).then(retribucion => {
     console.log(retribucion)
 
   const newSubcomplemento = new vptsubcompls({
@@ -103,6 +134,35 @@ router.post("/add/subcomplemento", (req, res, next) => {
     .catch(err => console.log(err));
   });
 })
+} else {
+  retribSubcomplCE.findOne( { Subcomplemento: req.body.SubComplemento, Grado: req.body.Grado }).then(retribucion => {
+    console.log(retribucion)
+
+  const newSubcomplemento = new vptsubcompls({
+    CodDPT: req.body.CodDPT,
+    Complemento: req.body.Complemento,
+    SubComplemento: req.body.SubComplemento,
+    Grado: req.body.Grado,
+    Puntos: retribucion.Puntos,
+    Retribucion: parseFloat(retribucion.Retribución).toFixed(2)
+  });
+  newSubcomplemento.save((err) => {
+    if(err) { return res.status(500).json(err)}
+    if (newSubcomplemento.errors) { return res.status(400).json(newSubcomplemento)}
+    return res.status(200).json(newSubcomplemento)
+  });
+
+  vptcompls.findById(newSubcomplemento.Complemento).then(complemento => {
+    actualiz = complemento.Subcomplementos.push(newSubcomplemento.id)
+    vptcompls.findByIdAndUpdate(newSubcomplemento.Complemento, { Subcomplementos: complemento.Subcomplementos }, { new: true })
+    .then(complemento => res.status(200).json())
+    .catch(err => console.log(err));
+  });
+})
+}
+})
+
+
 })
 
 
@@ -129,39 +189,7 @@ router.post("/add/complementodestino", (req, res, next) => {
     .catch(err => console.log(err));
   });
 })
-
-// router.post("/add/complementoespecifico", (req, res, next) => {
  
-//   retribcomplCE.findOne( { Complemento: req.body.Complemento, Grado: req.body.Grado }).then(retribucion => {
-//     console.log(retribucion)
-
-//     const newComplemento = new vptcompls({
-//       Valor: req.body.Valor,
-//       CodDPT: req.body.CodDPT,
-//       Complemento: req.body.Complemento,
-//       Grado: req.body.Grado,
-//       Puntos: retribucion.Puntos,
-//       Retribucion: parseFloat(retribucion.Retribución).toFixed(2),
-//       Sucomplementos: [],
-//       AvgGrado: '',
-//       AvgPuntos: '',
-//       AvgRetribucion: ''
-//     });
-
-//   newComplemento.save((err) => {
-//     if(err) { return res.status(500).json(err)}
-//     if (newComplemento.errors) { return res.status(400).json(newComplemento)}
-//     return res.status(200).json(newComplemento)
-//   });
-
-//   valors.findById(newComplemento.Valor).then(valoracion => {
-//     actualiz = valoracion.Complementos.ComplEspecifico.push(newComplemento.id)
-//     valors.findByIdAndUpdate(newComplemento.Valor, { 'Complementos.ComplEspecifico': valoracion.Complementos.ComplEspecifico }, { new: true })
-//     .then(valoracion => res.status(200).json())
-//     .catch(err => console.log(err));
-//   });
-// })
-// })  
 
 router.post("/add/complementoespecifico", (req, res, next) => {
 
