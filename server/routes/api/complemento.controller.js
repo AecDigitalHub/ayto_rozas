@@ -9,6 +9,7 @@ const vptcompls = require("../../models/vpt_complementos_model");
 const valors = require("../../models/vpt_model");
 const retribcdestinos = require("../../models/retrib_cdestino");
 const retribcomplCE = require("../../models/vpt_retribcomplCE_model");
+const retribcomplCD = require("../../models/vpt_retribcomplCD_model");
 const retribcomplCELaborales = require("../../models/vpt_retribcomplCELaborales_model");
 const retribSubcomplCE = require("../../models/vpt_retribSubcomplCE_model");
 const retribSubcomplCELaborales = require("../../models/vpt_retribSubcomplCELaborales");
@@ -138,13 +139,16 @@ if (dpt.FichaDPT.Colectivo == '(L) Laboral'){
 })
 
 router.post("/add/complementodestino", (req, res, next) => {
+  retribcomplCD.findOne( { Complemento: req.body.Complemento, Grado: req.body.Grado }).then(retribucion => {
+    console.log(retribucion)
+
   const newComplemento = new vptcompls({
     Valor: req.body.Valor,
     CodDPT: req.body.CodDPT,
     Complemento: req.body.Complemento,
     Grado: req.body.Grado,
-    Puntos: req.body.Puntos,
-    Retribucion: req.body.Retribucion,
+    Puntos: retribucion.Puntos,
+    Retribucion: retribucion.Retribucion,
   });
 
   newComplemento.save((err) => {
@@ -160,6 +164,7 @@ router.post("/add/complementodestino", (req, res, next) => {
     .catch(err => console.log(err));
   });
 })
+});
  
 
 router.post("/add/complementoespecifico", (req, res, next) => {
