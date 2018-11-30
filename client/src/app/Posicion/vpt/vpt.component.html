@@ -822,7 +822,7 @@
                         type="button"
                         type="submit"
                         (click)="
-                          editSubcompl(subcomplemento._id, subcomplemento.Complemento, subcomplemento.SubComplemento, subcomplemento.Grado, subcomplemento.Puntos, subcomplemento.Retribucion);
+                          editSubcompl(subcomplemento._id, subcomplemento.Complemento, complemento.CodDPT, subcomplemento.SubComplemento, subcomplemento.Grado, subcomplemento.Puntos, subcomplemento.Retribucion);
                           EditSubcomplModal.close();
                           getComplementoAvg(complemento._id);
                           openSnackBar('Subcomplemento editado', 'OK')

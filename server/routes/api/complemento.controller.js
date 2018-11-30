@@ -79,32 +79,6 @@ router.get("/:id/complementodestino/:complemento", (req, res, next) => {
 });
 });
 
-// router.post("/add/subcomplemento", (req, res, next) => {
-//   retribSubcomplCE.findOne( { Subcomplemento: req.body.SubComplemento, Grado: req.body.Grado }).then(retribucion => {
-//     console.log(retribucion)
-
-//   const newSubcomplemento = new vptsubcompls({
-//     Complemento: req.body.Complemento,
-//     SubComplemento: req.body.SubComplemento,
-//     Grado: req.body.Grado,
-//     Puntos: retribucion.Puntos,
-//     Retribucion: parseFloat(retribucion.Retribución).toFixed(2)
-//   });
-//   newSubcomplemento.save((err) => {
-//     if(err) { return res.status(500).json(err)}
-//     if (newSubcomplemento.errors) { return res.status(400).json(newSubcomplemento)}
-//     return res.status(200).json(newSubcomplemento)
-//   });
-
-//   vptcompls.findById(newSubcomplemento.Complemento).then(complemento => {
-//     actualiz = complemento.Subcomplementos.push(newSubcomplemento.id)
-//     vptcompls.findByIdAndUpdate(newSubcomplemento.Complemento, { Subcomplementos: complemento.Subcomplementos }, { new: true })
-//     .then(complemento => res.status(200).json())
-//     .catch(err => console.log(err));
-//   });
-// })
-// })
-
 router.post("/add/subcomplemento", (req, res, next) => {
   console.log(req.body)
 
@@ -161,10 +135,7 @@ if (dpt.FichaDPT.Colectivo == '(L) Laboral'){
 })
 }
 })
-
-
 })
-
 
 router.post("/add/complementodestino", (req, res, next) => {
   const newComplemento = new vptcompls({
@@ -259,8 +230,6 @@ if (dpt.FichaDPT.Colectivo == '(L) Laboral') {
 })
 })
 
-
-
 router.delete('/delete/complemento/:id', (req,res, next) => {
   const complId = req.params.id;
   
@@ -300,13 +269,44 @@ vptsubcompls.findByIdAndRemove(subcomplId)
 });
 
 router.put('/edit/subcomplemento/:id', (req, res, next) => {
-  const { Complemento, SubComplemento, Grado, Puntos, Retribucion } = req.body;
-  let editedSubComplemento = { Complemento, SubComplemento, Grado, Puntos, Retribucion }
+  console.log(req.body)
+  dpts.findOne( { CodigoDPT: req.body.CodDPT }).then(dpt => {
+
+    if (dpt.FichaDPT.Colectivo == '(L) Laboral'){
+
+    retribSubcomplCELaborales.findOne( { Subcomplemento: req.body.SubComplemento, Grado: req.body.Grado }).then(retribucion => {
+    let editedSubComplemento = { 
+    Complemento: req.body.Complemento,
+    SubComplemento: req.body.SubComplemento,
+    Grado: req.body.Grado,
+    Puntos: retribucion.Puntos,
+    Retribucion: retribucion.Retribución
+   }
+   console.log(editedSubComplemento)
+
 
   vptsubcompls.findByIdAndUpdate(req.params.id, editedSubComplemento, { new: true })
   .then(subcomplemento => res.status(200).json(subcomplemento))
   .catch(err => console.log(err))
 });
+    } else {
+      retribSubcomplCE.findOne( { Subcomplemento: req.body.SubComplemento, Grado: req.body.Grado }).then(retribucion => {
+      let editedSubComplemento = { 
+      Complemento: req.body.Complemento,
+      SubComplemento: req.body.Subcomplemento,
+      Grado: req.body.Grado,
+      Puntos: retribucion.Puntos,
+      Retribucion: retribucion.Retribución
+      }
+    
+      vptsubcompls.findByIdAndUpdate(req.params.id, editedSubComplemento, { new: true })
+      .then(subcomplemento => res.status(200).json(subcomplemento))
+      .catch(err => console.log(err))
+    });
+    }
+  });
+  });
+
 
 router.put('/edit/complemento/:id', (req, res, next) => {
   const { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion } = req.body;
@@ -320,4 +320,3 @@ router.put('/edit/complemento/:id', (req, res, next) => {
 
 
 module.exports = router;
-

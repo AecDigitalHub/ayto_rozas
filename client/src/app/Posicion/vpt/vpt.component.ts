@@ -71,9 +71,9 @@ editCompl(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplem
     this.ngOnInit();
   });
 }
-editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion) {
-  this.Edit.editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion).subscribe(() => {
-    this.getComplementoAvg(id);
+editSubcompl(id, Complemento, CodDPT, SubComplemento, Grado, Puntos, Retribucion) {
+  this.Edit.editSubcompl(id, Complemento, CodDPT, SubComplemento, Grado, Puntos, Retribucion).subscribe(() => {
+    this.getComplementoAvg(Complemento);
     this.getValoracion(this.positionId);
     this.ngOnInit();
   });

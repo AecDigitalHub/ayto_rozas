@@ -218,9 +218,9 @@ addSubcompl(CodDPT, Complemento, SubComplemento, Grado) {
       return nuevoSubcomplemento;
     }));
 }
-editSubcompl(id, Complemento, SubComplemento, Grado, Puntos, Retribucion ) {
+editSubcompl(id, Complemento, CodDPT, SubComplemento, Grado, Puntos, Retribucion ) {
   return this.http
-  .put(`${BASEURL}/api/complementos/edit/subcomplemento/${id}`, { id, Complemento, SubComplemento, Grado, Puntos, Retribucion })
+  .put(`${BASEURL}/api/complementos/edit/subcomplemento/${id}`, { id, Complemento, CodDPT, SubComplemento, Grado, Puntos, Retribucion })
   .pipe(map((res: Response) => {
     console.log(res.json());
   // const editedSubComplemento = res.json();
