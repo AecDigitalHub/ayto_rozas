@@ -565,9 +565,74 @@
                   <h6>{{ complemento.Retribucion }}</h6>
                 </mat-grid-tile>
               <mat-grid-tile>
-                <button type="button" class="btn btn-success">
+                <button type="button" class="btn btn-success" (click)="editComplEspecModal.open()">
                   <i class="far fa-edit"></i> Editar
                 </button>
+                <ngx-smart-modal identifier="editComplEspecModal" #editComplEspecModal>
+                  <div class="modal-header">
+                    <h5 class="modal-title">
+                      Editando Complemento Especifico:
+                    </h5>
+                  </div>
+                  <div class="modal-body">
+                    <form #myForm6="ngForm">
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Complemento:</label>
+                        <input
+                        class="form-control"
+                        [(ngModel)]="complemento.Complemento"
+                        name="complemento.Complemento"
+                        id="complemento.Complemento"
+                        value="{{complemento.Complemento}}"
+                      />
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Grado:</label>
+                        <select
+                        class="form-control"
+                        [(ngModel)]="complemento.Grado"
+                        name="complemento.Grado"
+                        id="complemento.Grado"
+                        value="{{complemento.Grado}}"
+                        >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        
+                      </select>
+                      </div>
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                      (click)="editComplEspecModal.close()"
+                    >
+                      Cancelar
+                    </button>
+                    <button
+                      type="button"
+                      type="submit"
+                      (click)="
+                      editCompl(complemento._id, complemento.Valor, complemento.CodDPT, complemento.Complemento, complemento.Grado, Puntos, Retribucion, complemento.Subcomplementos, complemento.AvgGrado, complemento.AvgPuntos, complemento.AvgRetribucion);
+                      editComplEspecModal.close();
+                      openSnackBar('Complemento Especifico editado', 'OK');
+                      myForm6.reset();
+                      "
+                      data-dismiss="editComplEspecModal"
+                      class="btn btn-primary"
+                    >
+                      Editar Compl
+                    </button>
+                  </div>
+                </ngx-smart-modal>
                 <button type="button" class="btn btn-danger" (click)="removeComplemento(complemento._id)">
                   <i class="far fa-trash-alt"></i> Borrar
                 </button>
