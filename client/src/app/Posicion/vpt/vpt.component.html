@@ -3,113 +3,119 @@
     <mat-grid-tile class="divider"></mat-grid-tile>
   </mat-grid-list>
 
-
   <div *ngIf="position.vpt == null">
-       <h4>Actualmente no existe VPT para este puesto.</h4> 
-         <h4>¿Deseas comenzar su valoración?</h4> 
-          <button
-                type="button"
-                class="btn btn-primary"
-                (click)="addValoracion(position.position._id, position.position.CodigoDPT, Complementos)"
-              >
-                <i class="fas fa-plus"></i> Comenzar valoración
-              </button> 
+    <h4>Actualmente no existe VPT para este puesto.</h4>
+    <h4>¿Deseas comenzar su valoración?</h4>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="
+        addValoracion(
+          position.position._id,
+          position.position.CodigoDPT,
+          Complementos
+        )
+      "
+    >
+      <i class="fas fa-plus"></i> Comenzar valoración
+    </button>
   </div>
 
   <div *ngIf="position.vpt">
-  <mat-tab-group>
-    <mat-tab label="Complementos - Puntuación">
-      <mat-grid-list cols="1" rowHeight="10px"> </mat-grid-list>
-      <mat-grid-list class="divider" cols="1" rowHeight="20px">
-        <mat-grid-tile class="divider"></mat-grid-tile>
-      </mat-grid-list>
-      <div *ngIf="position.position.FichaDPT.Colectivo.length > 12">
+    <mat-tab-group>
+      <mat-tab label="Complementos - Puntuación">
+        <mat-grid-list cols="1" rowHeight="10px"> </mat-grid-list>
+        <mat-grid-list class="divider" cols="1" rowHeight="20px">
+          <mat-grid-tile class="divider"></mat-grid-tile>
+        </mat-grid-list>
+        <div *ngIf="position.position.FichaDPT.Colectivo.length > 12">
           <h2>Complemento Destino</h2>
           <mat-grid-list class="divider" cols="3" rowHeight="25px">
-              <mat-grid-tile></mat-grid-tile>
-              <mat-grid-tile> <button
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile>
+              <button
                 type="button"
                 class="btn btn-primary"
                 (click)="AddComplDestModal.open()"
               >
                 <i class="fas fa-plus"></i> Añadir Complemento Destino
-              </button> </mat-grid-tile>
-              <mat-grid-tile></mat-grid-tile>
+              </button>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+          </mat-grid-list>
 
-            </mat-grid-list>
-        
-      <ngx-smart-modal identifier="AddComplDestModal" #AddComplDestModal>
-        <div class="modal-header">
-          <h5 class="modal-title">
-            Añadiendo nuevo Complemento Destino:
-          </h5>
-        </div>
-        <div class="modal-body">
-            <mat-grid-list class="divider" cols="1" rowHeight="20px">
+          <ngx-smart-modal identifier="AddComplDestModal" #AddComplDestModal>
+            <div class="modal-header">
+              <h5 class="modal-title">Añadiendo nuevo Complemento Destino:</h5>
+            </div>
+            <div class="modal-body">
+              <mat-grid-list class="divider" cols="1" rowHeight="20px">
                 <mat-grid-tile class="divider"></mat-grid-tile>
               </mat-grid-list>
-          <form #myForm="ngForm">
-              <div class="row">              
-              <div class="col-sm-8">
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Complemento:</label>
-              <select
-                class="form-control"
-                [(ngModel)]="Complemento"
-                name="Complemento"
-                id="Complemento "
-                >
-                <option>Especialización Formación</option>
-                <option>Desarrollo Competencias</option>
-                <option>Complejidad Funcional</option>
-                <option>Tipo de Mando</option>
-                
-              </select>
-            </div>
-            </div>
-            <div class="col-sm-4">
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Grado:</label>
-              <select
-                class="form-control"
-                [(ngModel)]="Grado"
-                name="Grado"
-                id="Grado"
-              >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                
-                
-              </select>
-            </div>
-            </div>
-            </div>
-              <!-- <div class="form-group">
-                <label for="exampleFormControlTextarea1">Puntos:</label>
-                <select
-                  class="form-control"
-                  [(ngModel)]="Puntos"
-                  name="Puntos"
-                  id="Puntos"
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                  
-                </select>
-              </div> -->
-                <!-- <div class="form-group">
+              <form #myForm="ngForm">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1"
+                        >Complemento:</label
+                      >
+                      <select
+                        class="form-control"
+                        [(ngModel)]="Complemento"
+                        name="Complemento"
+                        id="Complemento "
+                      >
+                        <option>Especialización Formación</option>
+                        <option>Desarrollo Competencias</option>
+                        <option>Complejidad Funcional</option>
+                        <option>Tipo de Mando</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Grado:</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="Grado"
+                        name="Grado"
+                        id="Grado"
+                      >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <!--
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Puntos:</label>
+                    <select
+                      class="form-control"
+                      [(ngModel)]="Puntos"
+                      name="Puntos"
+                      id="Puntos"
+                    >
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+
+                    </select>
+                  </div>
+                -->
+                <!--
+                  <div class="form-group">
                     <label for="exampleFormControlSelect1"
                       >Retribucion</label
                     >
@@ -119,143 +125,158 @@
                       name="Retribucion"
                       id="Retribucion"
                     />
-                  </div> -->
-            </form>
-        </div>
-        <mat-grid-list class="divider" cols="1" rowHeight="20px">
-            <mat-grid-tile class="divider"></mat-grid-tile>
-          </mat-grid-list>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-dismiss="modal"
-            (click)="AddComplDestModal.close()"
-          >
-            Cancelar
-          </button>
-          <button
-            type="button"
-            type="submit"
-            data-dismiss="AddComplDestModal"
-            (click)="
-              addComplDestino(position.vpt._id, position.vpt.CodDPT, Complemento, Grado, Puntos, Retribucion);
-              AddComplDestModal.close();
-              openSnackBar('Complemento Destino añadido', 'OK');
-              myForm.reset();
-            "
-            class="btn btn-primary"
-          >
-            Añadir Complemento
-          </button>
-        </div>
-      </ngx-smart-modal>
-
-        <mat-accordion
-          *ngFor="let complemento of position.vpt.Complementos.ComplDestino"
-        >
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <h4>{{ complemento.Complemento }}</h4>
-               
-              </mat-panel-title>
-              <mat-panel-description> </mat-panel-description>
-            </mat-expansion-panel-header>
-
-           
-
-            <mat-grid-list cols="4" rowHeight="40px">
-              <mat-grid-tile> <h4>Grado</h4> </mat-grid-tile>
-              <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
-              <mat-grid-tile><h4>Retribución</h4>  </mat-grid-tile>
-              <mat-grid-tile> </mat-grid-tile>
-
+                  </div>
+                -->
+              </form>
+            </div>
+            <mat-grid-list class="divider" cols="1" rowHeight="20px">
+              <mat-grid-tile class="divider"></mat-grid-tile>
             </mat-grid-list>
-            <mat-grid-list cols="4" rowHeight="100px">
-              <mat-grid-tile>
-                <h6>{{ complemento.Grado }}</h6>
-              </mat-grid-tile>
-              <mat-grid-tile>
-                <h6>{{ complemento.Puntos }}</h6>
-              </mat-grid-tile>
-              <mat-grid-tile>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                (click)="AddComplDestModal.close()"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                type="submit"
+                data-dismiss="AddComplDestModal"
+                (click)="
+                  addComplDestino(
+                    position.vpt._id,
+                    position.vpt.CodDPT,
+                    Complemento,
+                    Grado,
+                    Puntos,
+                    Retribucion
+                  );
+                  AddComplDestModal.close();
+                  openSnackBar('Complemento Destino añadido', 'OK');
+                  myForm.reset()
+                "
+                class="btn btn-primary"
+              >
+                Añadir Complemento
+              </button>
+            </div>
+          </ngx-smart-modal>
+
+          <mat-accordion
+            *ngFor="let complemento of position.vpt.Complementos.ComplDestino"
+          >
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4>{{ complemento.Complemento }}</h4>
+                </mat-panel-title>
+                <mat-panel-description> </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <mat-grid-list cols="4" rowHeight="40px">
+                <mat-grid-tile> <h4>Grado</h4> </mat-grid-tile>
+                <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
+                <mat-grid-tile><h4>Retribución</h4> </mat-grid-tile>
+                <mat-grid-tile> </mat-grid-tile>
+              </mat-grid-list>
+              <mat-grid-list cols="4" rowHeight="100px">
+                <mat-grid-tile>
+                  <h6>{{ complemento.Grado }}</h6>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <h6>{{ complemento.Puntos }}</h6>
+                </mat-grid-tile>
+                <mat-grid-tile>
                   <h6>{{ complemento.Retribucion }}</h6>
                 </mat-grid-tile>
-              <mat-grid-tile>
-                <button type="button" class="btn btn-success" (click)="EditComplDestModal.open()">
-                  <i class="far fa-edit"></i> Editar
-                </button>
-                <ngx-smart-modal identifier="EditComplDestModal" #EditComplDestModal>
-                  <div class="modal-header">
-                    <h5 class="modal-title">
-                      Editando Complemento Destino:
-                    </h5>
-                  </div>
-                  <div class="modal-body">
+                <mat-grid-tile>
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    (click)="EditComplDestModal.open()"
+                  >
+                    <i class="far fa-edit"></i> Editar
+                  </button>
+                  <ngx-smart-modal
+                    identifier="EditComplDestModal"
+                    #EditComplDestModal
+                  >
+                    <div class="modal-header">
+                      <h5 class="modal-title">Editando Complemento Destino:</h5>
+                    </div>
+                    <div class="modal-body">
                       <mat-grid-list class="divider" cols="1" rowHeight="20px">
-                          <mat-grid-tile class="divider"></mat-grid-tile>
-                        </mat-grid-list>
-                    <form #myForm2="ngForm">
-                      <div class="row">
-                      <div class="col">
-                      <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Complemento:</label>
-                        <input
-                          class="form-control"
-                          [(ngModel)]="complemento.Complemento"
-                          name="complemento.Complemento"
-                          id="complemento.Complemento"
-                          value="{{complemento.Complemento}}"
-                          readonly
-                        />
-                      </div>
-                      </div>
-                      <div class="col">
-                      <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Grado:</label>
-                        <select
-                          class="form-control"
-                          [(ngModel)]="complemento.Grado"
-                          name="complemento.Grado"
-                          id="complemento.Grado"
-                          value="{{complemento.Grado}}"
-                        >
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                          <option>6</option>
-                          <option>7</option>
-                          <option>8</option>
-                          
-                        </select>
-                      </div>
-                      </div>
-                        <!-- <div class="form-group">
-                          <label for="exampleFormControlTextarea1">Puntos:</label>
-                          <select
-                            class="form-control"
-                            [(ngModel)]="complemento.Puntos"
-                            name="complemento.Puntos"
-                            id="complemento.Puntos"
-                            value="{{complemento.Puntos}}"
-                          >
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            
-                          </select>
-                        </div> -->
-                          <!-- <div class="form-group">
+                        <mat-grid-tile class="divider"></mat-grid-tile>
+                      </mat-grid-list>
+                      <form #myForm2="ngForm">
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1"
+                                >Complemento:</label
+                              >
+                              <input
+                                class="form-control"
+                                [(ngModel)]="complemento.Complemento"
+                                name="complemento.Complemento"
+                                id="complemento.Complemento"
+                                value="{{complemento.Complemento}}"
+                                readonly
+                              />
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1"
+                                >Grado:</label
+                              >
+                              <select
+                                class="form-control"
+                                [(ngModel)]="complemento.Grado"
+                                name="complemento.Grado"
+                                id="complemento.Grado"
+                                value="{{complemento.Grado}}"
+                              >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                              </select>
+                            </div>
+                          </div>
+                          <!--
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1">Puntos:</label>
+                              <select
+                                class="form-control"
+                                [(ngModel)]="complemento.Puntos"
+                                name="complemento.Puntos"
+                                id="complemento.Puntos"
+                                value="{{complemento.Puntos}}"
+                              >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+
+                              </select>
+                            </div>
+                          -->
+                          <!--
+                            <div class="form-group">
                               <label for="exampleFormControlSelect1"
                                 >Retribucion</label
                               >
@@ -266,399 +287,128 @@
                                 id="complemento.Retribucion"
                                 value="{{complemento.Retribucion}}"
                               />
-                            </div> -->
                             </div>
+                          -->
+                        </div>
                       </form>
-                  </div>
-                  <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                    </div>
+                    <mat-grid-list class="divider" cols="1" rowHeight="20px">
                       <mat-grid-tile class="divider"></mat-grid-tile>
                     </mat-grid-list>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-dismiss="modal"
-                      (click)="EditComplDestModal.close()"
-                    >
-                      Cancelar
-                    </button>
-                    <button
-                      type="button"
-                      type="submit"
-                      data-dismiss="modal"
-                      (click)="editComplDest(complemento._id, complemento.Valor, complemento.CodDPT, complemento.Complemento, complemento.Grado, complemento.Puntos, complemento.Retribucion, complemento.AvgGrado, complemento.AvgPuntos, complemento.AvgRetribucion);
-                        EditComplDestModal.close();
-                        openSnackBar('Cambios guardados', 'OK');
-                        myForm2.reset();
-                      "
-                      class="btn btn-primary"
-                    >
-                      Editar Compl
-                    </button>
-                  </div>
-                </ngx-smart-modal>
-                <button type="button" class="btn btn-danger" (click)="
-                removeComplemento(complemento._id);
-                getValoracion(position.vpt._id);
-                myForm2.reset();
-                ">
-                  <i class="far fa-trash-alt"></i> Borrar
-                </button>
-              </mat-grid-tile>
-            </mat-grid-list>
-          </mat-expansion-panel>
-        </mat-accordion>
-        <h4>Total CD: {{position.vpt.Complementos.TotCD}}</h4>
-      </div>
-      <div>
-        <mat-grid-list class="divider" cols="1" rowHeight="20px">
-          <mat-grid-tile class="divider"></mat-grid-tile>
-        </mat-grid-list>
-        <h2>Complemento Específico</h2>
-        <mat-grid-list class="divider" cols="3" rowHeight="25px">
-            <mat-grid-tile></mat-grid-tile>
-            <mat-grid-tile>   <button
-              type="button"
-              class="btn btn-primary"
-              (click)="AddComplEspecModal.open()"
-            >
-              <i class="fas fa-plus"></i> Añadir Complemento Especifico
-            </button> </mat-grid-tile>
-            <mat-grid-tile></mat-grid-tile>
-</mat-grid-list>
-      
-      <ngx-smart-modal identifier="AddComplespecModal" #AddComplEspecModal>
-        <div class="modal-header">
-          <h5 class="modal-title">
-            Añadiendo nuevo Complemento Especifico:
-          </h5>
-        </div>
-        <div class="modal-body">
-            <mat-grid-list class="divider" cols="1" rowHeight="20px">
-                <mat-grid-tile class="divider"></mat-grid-tile>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                        (click)="EditComplDestModal.close()"
+                      >
+                        Cancelar
+                      </button>
+                      <button
+                        type="button"
+                        type="submit"
+                        data-dismiss="modal"
+                        (click)="
+                          editComplDest(
+                            complemento._id,
+                            complemento.Valor,
+                            complemento.CodDPT,
+                            complemento.Complemento,
+                            complemento.Grado,
+                            complemento.Puntos,
+                            complemento.Retribucion,
+                            complemento.AvgGrado,
+                            complemento.AvgPuntos,
+                            complemento.AvgRetribucion
+                          );
+                          EditComplDestModal.close();
+                          openSnackBar('Cambios guardados', 'OK');
+                          myForm2.reset()
+                        "
+                        class="btn btn-primary"
+                      >
+                        Editar Compl
+                      </button>
+                    </div>
+                  </ngx-smart-modal>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    (click)="
+                      removeComplemento(complemento._id);
+                      getValoracion(position.vpt._id);
+                      myForm2.reset()
+                    "
+                  >
+                    <i class="far fa-trash-alt"></i> Borrar
+                  </button>
+                </mat-grid-tile>
               </mat-grid-list>
-          <form #myForm3="ngForm">
-            <div class="row">
-              <div class="col-sm-8">
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Complemento:</label>
-              <select
-                class="form-control"
-                [(ngModel)]="Complemento"
-                name="Complemento"
-                id="Complemento "
-              >
-              <option>Dificultad Técnica</option>
-              <option>Dedicación, Jornada, Turno</option>
-              <option>Incompatibilidad</option>
-              <option>Responsabilidad</option>
-              <option>Peligrosidad</option>
-              <option>Penosidad</option>
-              
-            </select>
-            </div>
-            </div>
-            <div class="col-sm-4">
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Grado:</label>
-              <select
-                class="form-control"
-                [(ngModel)]="Grado"
-                name="Grado"
-                id="Grado"
-              >
-                <option>0</option> 
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                
-              </select>
-            </div>
-            </div>
-              <!-- <div class="form-group">
-                <label for="exampleFormControlTextarea1">Puntos:</label>
-                <select
-                  class="form-control"
-                  [(ngModel)]="Puntos"
-                  name="Puntos"
-                  id="Puntos"
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                  
-                </select>
-              </div> -->
-                <!-- <div class="form-group">
-                    <label for="exampleFormControlSelect1"
-                      >Retribucion</label
-                    >
-                    <input
-                      class="form-control"
-                      type="text"
-                      [(ngModel)]="Retribucion"
-                      name="Retribucion"
-                      id="Retribucion"
-                    />
-                  </div> -->
-                  </div>
-            </form>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <h4>Total CD: {{ position.vpt.Complementos.TotCD }}</h4>
         </div>
-        <mat-grid-list class="divider" cols="1" rowHeight="20px">
+        <div>
+          <mat-grid-list class="divider" cols="1" rowHeight="20px">
             <mat-grid-tile class="divider"></mat-grid-tile>
           </mat-grid-list>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-dismiss="modal"
-            (click)="AddComplEspecModal.close()"
-          >
-            Cancelar
-          </button>
-          <button
-            type="button"
-            type="submit"
-            (click)="
-              addComplEspecifico(position.vpt._id, position.vpt.CodDPT, Complemento, Grado, Puntos, Retribucion);
-              AddComplEspecModal.close();
-              openSnackBar('Complemento Especifico añadido', 'OK');
-              myForm3.reset();
-
-            "
-            data-dismiss="SubcomplModal"
-            class="btn btn-primary"
-          >
-            Añadir Complemento
-          </button>
-        </div>
-      </ngx-smart-modal>
-
-
-        <mat-accordion
-          *ngFor="let complemento of position.vpt.Complementos.ComplEspecifico"
-        >
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <h4>{{ complemento.Complemento }}</h4>
-              </mat-panel-title>
-              <mat-panel-description> </mat-panel-description>
-            </mat-expansion-panel-header>
-
-
-            <div *ngIf="!complemento.Subcomplementos[0]">
-            <mat-grid-list cols="4" rowHeight="40px">
-              <mat-grid-tile> <h4>Grado</h4> </mat-grid-tile>
-              <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
-              <mat-grid-tile> <h4>Retribución</h4> </mat-grid-tile>
-              <div *ngIf="complemento.Complemento == 'Dificultad Técnica' || complemento.Complemento == 'Responsabilidad'">
-              <mat-grid-tile> <button
+          <h2>Complemento Específico</h2>
+          <mat-grid-list class="divider" cols="3" rowHeight="25px">
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile>
+              <button
                 type="button"
                 class="btn btn-primary"
-                (click)="SubcomplModal.open()"
+                (click)="AddComplEspecModal.open()"
               >
-                <i class="fas fa-plus"></i> Añadir Subcomplemento
-              </button>  
-              <ngx-smart-modal identifier="SubcomplModal" #SubcomplModal>
-                  <div class="modal-header">
-                    <h5 class="modal-title">
-                      Añadiendo nuevo subcomplemento:
-                    </h5>
-                  </div>
-                  <div class="modal-body">
-                      <mat-grid-list class="divider" cols="1" rowHeight="20px">
-                          <mat-grid-tile class="divider"></mat-grid-tile>
-                        </mat-grid-list>
-                    <form #myForm4="ngForm">
-                        <div class="row">
-                        <div class="col">
-                      <div *ngIf="complemento.Complemento == 'Dificultad Técnica'">
-                        
-                      <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Subcomplemento:</label>
-                        <select
-                          class="form-control"
-                          [(ngModel)]="SubComplemento"
-                          name="SubComplemento"
-                          id="SubComplemento "
-                        
-                        >
-                        <option>Especialización</option>
-                        <option>Experiencia Requerida</option>
-                        <option>Relaciones</option>                
-                        </select>
-                      </div>
-                      </div>
-                      <div *ngIf="complemento.Complemento == 'Responsabilidad'">
-                        
-                          <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Subcomplemento:</label>
-                            <select
-                              class="form-control"
-                              [(ngModel)]="SubComplemento"
-                              name="SubComplemento"
-                              id="SubComplemento "
-                            >
-                            <option>Resultados</option>
-                            <option>Autonomía y Toma Decisiones</option>
-                            </select>
-                          </div>
-                          </div>
-                      </div>
-                      <div class="col">
-                      <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Grado:</label>
-                        <select
-                          class="form-control"
-                          [(ngModel)]="Grado"
-                          name="Grado"
-                          id="Grado"
-                        >
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                          <option>6</option>
-                          <option>7</option>
-                          <option>8</option>
-                          
-                        </select>
-                      </div>
-                      </div>
-                      </div>
-                        <!-- <div class="form-group">
-                          <label for="exampleFormControlTextarea1">Puntos:</label>
-                          <select
-                            class="form-control"
-                            [(ngModel)]="Puntos"
-                            name="Puntos"
-                            id="Puntos"
-                          >
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            
-                          </select>
-                        </div> -->
-                          <!-- <div class="form-group">
-                              <label for="exampleFormControlSelect1"
-                                >Retribucion</label
-                              >
-                              <input
-                                class="form-control"
-                                type="text"
-                                [(ngModel)]="Retribucion"
-                                name="Retribucion"
-                                id="Retribucion"
-                              />
-                            </div> -->
-                      </form>
-                  </div>
-                  <mat-grid-list class="divider" cols="1" rowHeight="20px">
-                      <mat-grid-tile class="divider"></mat-grid-tile>
-                    </mat-grid-list>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-dismiss="modal"
-                      (click)="SubcomplModal.close()"
-                    >
-                      Cancelar
-                    </button>
-                    <button
-                      type="button"
-                      type="submit"
-                      (click)="
-                        addSubcompl(complemento.CodDPT, complemento._id, SubComplemento, Grado, Puntos, Retribucion);
-                        getComplementoAvg(complemento._id);
-                        SubcomplModal.close();
-                        myForm4.reset();
-                        ngOnInit();
-                        openSnackBar('Subcomplemento añadido', 'OK');
-                      "
-                      data-dismiss="SubcomplModal"
-                      class="btn btn-primary"
-                    >
-                      Añadir Subcompl
-                    </button>
-                  </div>
-                </ngx-smart-modal>
-              </mat-grid-tile>
+                <i class="fas fa-plus"></i> Añadir Complemento Especifico
+              </button>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+          </mat-grid-list>
+
+          <ngx-smart-modal identifier="AddComplespecModal" #AddComplEspecModal>
+            <div class="modal-header">
+              <h5 class="modal-title">
+                Añadiendo nuevo Complemento Especifico:
+              </h5>
             </div>
-            </mat-grid-list>
-            <mat-grid-list cols="4" rowHeight="100px">
-              <mat-grid-tile>
-                <h6>{{ complemento.Grado }}</h6>
-              </mat-grid-tile>
-              <mat-grid-tile>
-                <h6>{{ complemento.Puntos }}</h6>
-              </mat-grid-tile>
-              <mat-grid-tile>
-                  <h6>{{ complemento.Retribucion }}</h6>
-                </mat-grid-tile>
-              <mat-grid-tile>
-                  <div *ngIf="complemento.Complemento == 'Incompatibilidad' || complemento.Complemento == 'Penosidad'|| complemento.Complemento == 'Peligrosidad'">
-                <button type="button" class="btn btn-success" (click)="editComplEspecModal.open()">
-                  <i class="far fa-edit"></i> Editar
-                </button>
-                </div>
-                <ngx-smart-modal identifier="editComplEspecModal" #editComplEspecModal>
-                  <div class="modal-header">
-                    <h5 class="modal-title">
-                      Editando Complemento Especifico:
-                    </h5>
+            <div class="modal-body">
+              <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                <mat-grid-tile class="divider"></mat-grid-tile>
+              </mat-grid-list>
+              <form #myForm3="ngForm">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1"
+                        >Complemento:</label
+                      >
+                      <select
+                        class="form-control"
+                        [(ngModel)]="Complemento"
+                        name="Complemento"
+                        id="Complemento "
+                      >
+                        <option>Dificultad Técnica</option>
+                        <option>Dedicación, Jornada, Turno</option>
+                        <option>Incompatibilidad</option>
+                        <option>Responsabilidad</option>
+                        <option>Peligrosidad</option>
+                        <option>Penosidad</option>
+                      </select>
+                    </div>
                   </div>
-                  <div class="modal-body">
-                      <mat-grid-list class="divider" cols="1" rowHeight="20px">
-                          <mat-grid-tile class="divider"></mat-grid-tile>
-                        </mat-grid-list>
-                    <form #myForm6="ngForm">
-                      <div class="row">
-                        <div class="col">
-                      <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Complemento:</label>
-                        <input
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Grado:</label>
+                      <select
                         class="form-control"
-                        [(ngModel)]="complemento.Complemento"
-                        name="complemento.Complemento"
-                        id="complemento.Complemento"
-                        value="{{complemento.Complemento}}"
-                        readonly
-                      />
-                      </div>
-                      </div>
-                      <div class="col">
-                      <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Grado:</label>
-                        <select
-                        class="form-control"
-                        [(ngModel)]="complemento.Grado"
-                        name="complemento.Grado"
-                        id="complemento.Grado"
-                        value="{{complemento.Grado}}"
-                        >
+                        [(ngModel)]="Grado"
+                        name="Grado"
+                        id="Grado"
+                      >
+                        <option>0</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -667,62 +417,491 @@
                         <option>6</option>
                         <option>7</option>
                         <option>8</option>
-                        
                       </select>
-                      </div>
-                      </div>
-                      </div>
-                      </form>
+                    </div>
                   </div>
-                  <mat-grid-list class="divider" cols="1" rowHeight="20px">
-                      <mat-grid-tile class="divider"></mat-grid-tile>
-                    </mat-grid-list>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-dismiss="modal"
-                      (click)="editComplEspecModal.close()"
-                    >
-                      Cancelar
-                    </button>
-                    <button
-                      type="button"
-                      type="submit"
-                      (click)="
-                      editCompl(complemento._id, complemento.Valor, complemento.CodDPT, complemento.Complemento, complemento.Grado, Puntos, Retribucion);
-                      editComplEspecModal.close();
-                      openSnackBar('Complemento Especifico editado', 'OK');
-                      myForm6.reset();
-                      "
-                      data-dismiss="editComplEspecModal"
-                      class="btn btn-primary"
-                    >
-                      Editar Compl
-                    </button>
-                  </div>
-                </ngx-smart-modal>
-                <button type="button" class="btn btn-danger" (click)="removeComplemento(complemento._id)">
-                  <i class="far fa-trash-alt"></i> Borrar
-                </button>
-              </mat-grid-tile>
+                  <!--
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Puntos:</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="Puntos"
+                        name="Puntos"
+                        id="Puntos"
+                      >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+
+                      </select>
+                    </div>
+                  -->
+                  <!--
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1"
+                        >Retribucion</label
+                      >
+                      <input
+                        class="form-control"
+                        type="text"
+                        [(ngModel)]="Retribucion"
+                        name="Retribucion"
+                        id="Retribucion"
+                      />
+                    </div>
+                  -->
+                </div>
+              </form>
+            </div>
+            <mat-grid-list class="divider" cols="1" rowHeight="20px">
+              <mat-grid-tile class="divider"></mat-grid-tile>
             </mat-grid-list>
-</div>
-            <div *ngIf="complemento.Subcomplementos[0]">
-              <mat-grid-list cols="5" rowHeight="40px">
-                <mat-grid-tile> <h4>Subcomplemento</h4> </mat-grid-tile>
-                <mat-grid-tile> <h4>Grado</h4> </mat-grid-tile>
-                <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
-                <mat-grid-tile> <h4>Retribución</h4> </mat-grid-tile>
-                <mat-grid-tile>
-                    <button
-                    type="button"
-                    class="btn btn-primary"
-                    (click)="SubcomplModal.open()"
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                (click)="AddComplEspecModal.close()"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                type="submit"
+                (click)="
+                  addComplEspecifico(
+                    position.vpt._id,
+                    position.vpt.CodDPT,
+                    Complemento,
+                    Grado,
+                    Puntos,
+                    Retribucion
+                  );
+                  AddComplEspecModal.close();
+                  openSnackBar('Complemento Especifico añadido', 'OK');
+                  myForm3.reset()
+                "
+                data-dismiss="SubcomplModal"
+                class="btn btn-primary"
+              >
+                Añadir Complemento
+              </button>
+            </div>
+          </ngx-smart-modal>
+
+          <mat-accordion
+            *ngFor="
+              let complemento of position.vpt.Complementos.ComplEspecifico
+            "
+          >
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4>{{ complemento.Complemento }}</h4>
+                </mat-panel-title>
+                <mat-panel-description> </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <div *ngIf="!complemento.Subcomplementos[0]">
+                <mat-grid-list cols="4" rowHeight="40px">
+                  <mat-grid-tile> <h4>Grado</h4> </mat-grid-tile>
+                  <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
+                  <mat-grid-tile> <h4>Retribución</h4> </mat-grid-tile>
+                  <div
+                    *ngIf="
+                      complemento.Complemento == 'Dificultad Técnica' ||
+                      complemento.Complemento == 'Responsabilidad'
+                    "
                   >
-                    <i class="fas fa-plus"></i> Añadir Subcomplemento
-                  </button>  
-                  <ngx-smart-modal identifier="SubcomplModal" #SubcomplModal>
+                    <mat-grid-tile>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="SubcomplModal.open()"
+                      >
+                        <i class="fas fa-plus"></i> Añadir Subcomplemento
+                      </button>
+                      <ngx-smart-modal
+                        identifier="SubcomplModal"
+                        #SubcomplModal
+                      >
+                        <div class="modal-header">
+                          <h5 class="modal-title">
+                            Añadiendo nuevo subcomplemento:
+                          </h5>
+                        </div>
+                        <div class="modal-body">
+                          <mat-grid-list
+                            class="divider"
+                            cols="1"
+                            rowHeight="20px"
+                          >
+                            <mat-grid-tile class="divider"></mat-grid-tile>
+                          </mat-grid-list>
+                          <form #myForm4="ngForm">
+                            <div class="row">
+                              <div class="col">
+                                <div
+                                  *ngIf="
+                                    complemento.Complemento ==
+                                      'Dificultad Técnica' &&
+                                    position.position.FichaDPT.Colectivo
+                                      .length > 12
+                                  "
+                                >
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1"
+                                      >Subcomplemento:</label
+                                    >
+                                    <select
+                                      class="form-control"
+                                      [(ngModel)]="SubComplemento"
+                                      name="SubComplemento"
+                                      id="SubComplemento "
+                                    >
+                                      <option>Especialización</option>
+                                      <option>Experiencia Requerida</option>
+                                      <option>Relaciones</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div
+                                  *ngIf="
+                                    complemento.Complemento ==
+                                      'Dificultad Técnica' &&
+                                    position.position.FichaDPT.Colectivo
+                                      .length < 12
+                                  "
+                                >
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1"
+                                      >Subcomplemento:</label
+                                    >
+                                    <select
+                                      class="form-control"
+                                      [(ngModel)]="SubComplemento"
+                                      name="SubComplemento"
+                                      id="SubComplemento "
+                                    >
+                                    <option>Formación</option>
+                                    <option>Especialización</option>
+                                      <option>Experiencia Requerida</option>
+                                      <option>Dificultad Laboral</option>
+                                      <option>Relaciones</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div
+                                  *ngIf="
+                                    complemento.Complemento == 'Responsabilidad' && position.position.FichaDPT.Colectivo
+                                    .length > 12
+                                  "
+                                >
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1"
+                                      >Subcomplemento:</label
+                                    >
+                                    <select
+                                      class="form-control"
+                                      [(ngModel)]="SubComplemento"
+                                      name="SubComplemento"
+                                      id="SubComplemento "
+                                    >
+                                      <option>Resultados</option>
+                                      <option
+                                        >Autonomía y Toma Decisiones</option
+                                      >
+                                    </select>
+                                  </div>
+                                </div>
+                                <div
+                                *ngIf="
+                                  complemento.Complemento == 'Responsabilidad' && position.position.FichaDPT.Colectivo
+                                  .length < 12
+                                "
+                              >
+                                <div class="form-group">
+                                  <label for="exampleFormControlTextarea1"
+                                    >Subcomplemento:</label
+                                  >
+                                  <select
+                                    class="form-control"
+                                    [(ngModel)]="SubComplemento"
+                                    name="SubComplemento"
+                                    id="SubComplemento "
+                                  >
+                                  <option>Tipo de Mando</option>  
+                                  <option>Resultados</option>
+                                    <option
+                                      >Autonomía y Toma Decisiones</option
+                                    >
+                                  </select>
+                                </div>
+                              </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="exampleFormControlTextarea1"
+                                    >Grado:</label
+                                  >
+                                  <select
+                                    class="form-control"
+                                    [(ngModel)]="Grado"
+                                    name="Grado"
+                                    id="Grado"
+                                  >
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <!--
+                              <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Puntos:</label>
+                                <select
+                                  class="form-control"
+                                  [(ngModel)]="Puntos"
+                                  name="Puntos"
+                                  id="Puntos"
+                                >
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                  <option>6</option>
+                                  <option>7</option>
+                                  <option>8</option>
+                                  <option>9</option>
+                                  <option>10</option>
+
+                                </select>
+                              </div>
+                            -->
+                            <!--
+                              <div class="form-group">
+                                <label for="exampleFormControlSelect1"
+                                  >Retribucion</label
+                                >
+                                <input
+                                  class="form-control"
+                                  type="text"
+                                  [(ngModel)]="Retribucion"
+                                  name="Retribucion"
+                                  id="Retribucion"
+                                />
+                              </div>
+                            -->
+                          </form>
+                        </div>
+                        <mat-grid-list
+                          class="divider"
+                          cols="1"
+                          rowHeight="20px"
+                        >
+                          <mat-grid-tile class="divider"></mat-grid-tile>
+                        </mat-grid-list>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                            (click)="SubcomplModal.close()"
+                          >
+                            Cancelar
+                          </button>
+                          <button
+                            type="button"
+                            type="submit"
+                            (click)="
+                              addSubcompl(
+                                complemento.CodDPT,
+                                complemento._id,
+                                SubComplemento,
+                                Grado,
+                                Puntos,
+                                Retribucion
+                              );
+                              getComplementoAvg(complemento._id);
+                              SubcomplModal.close();
+                              myForm4.reset();
+                              ngOnInit();
+                              openSnackBar('Subcomplemento añadido', 'OK')
+                            "
+                            data-dismiss="SubcomplModal"
+                            class="btn btn-primary"
+                          >
+                            Añadir Subcompl
+                          </button>
+                        </div>
+                      </ngx-smart-modal>
+                    </mat-grid-tile>
+                  </div>
+                </mat-grid-list>
+                <mat-grid-list cols="4" rowHeight="100px">
+                  <mat-grid-tile>
+                    <h6>{{ complemento.Grado }}</h6>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <h6>{{ complemento.Puntos }}</h6>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <h6>{{ complemento.Retribucion }}</h6>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <div
+                      *ngIf="
+                        complemento.Complemento == 'Incompatibilidad' ||
+                        complemento.Complemento == 'Penosidad' ||
+                        complemento.Complemento == 'Peligrosidad'
+                      "
+                    >
+                      <button
+                        type="button"
+                        class="btn btn-success"
+                        (click)="editComplEspecModal.open()"
+                      >
+                        <i class="far fa-edit"></i> Editar
+                      </button>
+                    </div>
+                    <ngx-smart-modal
+                      identifier="editComplEspecModal"
+                      #editComplEspecModal
+                    >
+                      <div class="modal-header">
+                        <h5 class="modal-title">
+                          Editando Complemento Especifico:
+                        </h5>
+                      </div>
+                      <div class="modal-body">
+                        <mat-grid-list
+                          class="divider"
+                          cols="1"
+                          rowHeight="20px"
+                        >
+                          <mat-grid-tile class="divider"></mat-grid-tile>
+                        </mat-grid-list>
+                        <form #myForm6="ngForm">
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="exampleFormControlTextarea1"
+                                  >Complemento:</label
+                                >
+                                <input
+                                  class="form-control"
+                                  [(ngModel)]="complemento.Complemento"
+                                  name="complemento.Complemento"
+                                  id="complemento.Complemento"
+                                  value="{{complemento.Complemento}}"
+                                  readonly
+                                />
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="exampleFormControlTextarea1"
+                                  >Grado:</label
+                                >
+                                <select
+                                  class="form-control"
+                                  [(ngModel)]="complemento.Grado"
+                                  name="complemento.Grado"
+                                  id="complemento.Grado"
+                                  value="{{complemento.Grado}}"
+                                >
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                  <option>6</option>
+                                  <option>7</option>
+                                  <option>8</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                        <mat-grid-tile class="divider"></mat-grid-tile>
+                      </mat-grid-list>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                          (click)="editComplEspecModal.close()"
+                        >
+                          Cancelar
+                        </button>
+                        <button
+                          type="button"
+                          type="submit"
+                          (click)="
+                            editCompl(
+                              complemento._id,
+                              complemento.Valor,
+                              complemento.CodDPT,
+                              complemento.Complemento,
+                              complemento.Grado,
+                              Puntos,
+                              Retribucion
+                            );
+                            editComplEspecModal.close();
+                            openSnackBar(
+                              'Complemento Especifico editado',
+                              'OK'
+                            );
+                            myForm6.reset()
+                          "
+                          data-dismiss="editComplEspecModal"
+                          class="btn btn-primary"
+                        >
+                          Editar Compl
+                        </button>
+                      </div>
+                    </ngx-smart-modal>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      (click)="removeComplemento(complemento._id)"
+                    >
+                      <i class="far fa-trash-alt"></i> Borrar
+                    </button>
+                  </mat-grid-tile>
+                </mat-grid-list>
+              </div>
+              <div *ngIf="complemento.Subcomplementos[0]">
+                <mat-grid-list cols="5" rowHeight="40px">
+                  <mat-grid-tile> <h4>Subcomplemento</h4> </mat-grid-tile>
+                  <mat-grid-tile> <h4>Grado</h4> </mat-grid-tile>
+                  <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
+                  <mat-grid-tile> <h4>Retribución</h4> </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      (click)="SubcomplModal.open()"
+                    >
+                      <i class="fas fa-plus"></i> Añadir Subcomplemento
+                    </button>
+                    <ngx-smart-modal identifier="SubcomplModal" #SubcomplModal>
                       <div class="modal-header">
                         <h5 class="modal-title">
                           Añadiendo nuevo subcomplemento:
@@ -730,38 +909,96 @@
                       </div>
                       <div class="modal-body">
                         <form #myForm5="ngForm">
-                            <div *ngIf="complemento.Complemento == 'Dificultad Técnica'">
-                                <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Subcomplemento:</label>
-                                  <select
-                                    class="form-control"
-                                    [(ngModel)]="SubComplemento"
-                                    name="SubComplemento"
-                                    id="SubComplemento "
-                                  
-                                  >
-                                  <option>Especialización</option>
-                                  <option>Experiencia Requerida</option>
-                                  <option>Relaciones</option>                
-                                  </select>
-                                </div>
-                                </div>
-                                <div *ngIf="complemento.Complemento == 'Responsabilidad'">
-                                    <div class="form-group">
-                                      <label for="exampleFormControlTextarea1">Subcomplemento:</label>
-                                      <select
-                                        class="form-control"
-                                        [(ngModel)]="SubComplemento"
-                                        name="SubComplemento"
-                                        id="SubComplemento "
-                                      >
-                                      <option>Resultados</option>
-                                      <option>Autonomía y Toma Decisiones</option>
-                                      </select>
-                                    </div>
-                                    </div>
+                          <div
+                            *ngIf="
+                              complemento.Complemento == 'Dificultad Técnica' &&
+                              position.position.FichaDPT.Colectivo.length < 12
+                            "
+                          >
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1"
+                                >Subcomplemento:</label
+                              >
+                              <select
+                                class="form-control"
+                                [(ngModel)]="SubComplemento"
+                                name="SubComplemento"
+                                id="SubComplemento "
+                              >
+                                <option>Formación</option>
+                                <option>Especialización</option>
+                                <option>Experiencia Requerida</option>
+                                <option>Dificultad Laboral</option>
+                                <option>Relaciones</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div
+                            *ngIf="
+                              complemento.Complemento == 'Dificultad Técnica' &&
+                              position.position.FichaDPT.Colectivo.length > 12
+                            "
+                          >
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1"
+                                >Subcomplemento:</label
+                              >
+                              <select
+                                class="form-control"
+                                [(ngModel)]="SubComplemento"
+                                name="SubComplemento"
+                                id="SubComplemento "
+                              >
+                                <option>Especialización</option>
+                                <option>Experiencia Requerida</option>
+                                <option>Relaciones</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div
+                            *ngIf="complemento.Complemento == 'Responsabilidad' && position.position.FichaDPT.Colectivo
+                            .length < 12"
+                          >
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1"
+                                >Subcomplemento:</label
+                              >
+                              <select
+                                class="form-control"
+                                [(ngModel)]="SubComplemento"
+                                name="SubComplemento"
+                                id="SubComplemento "
+                              >
+                              <option>Tipo de Mando</option>  
+                              <option>Resultados</option>
+                                <option>Autonomía y Toma Decisiones</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div
+                            *ngIf="complemento.Complemento == 'Responsabilidad' && position.position.FichaDPT.Colectivo
+                            .length > 12"
+                          >
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1"
+                                >Subcomplemento:</label
+                              >
+                              <select
+                                class="form-control"
+                                [(ngModel)]="SubComplemento"
+                                name="SubComplemento"
+                                id="SubComplemento "
+                              >
+                              <option>Resultados</option>
+                                <option>Autonomía y Toma Decisiones</option>
+                              </select>
+                            </div>
+                          </div>
                           <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Grado:</label>
+                            <label for="exampleFormControlTextarea1"
+                              >Grado:</label
+                            >
                             <select
                               class="form-control"
                               [(ngModel)]="Grado"
@@ -776,10 +1013,10 @@
                               <option>6</option>
                               <option>7</option>
                               <option>8</option>
-                              
                             </select>
                           </div>
-                            <!-- <div class="form-group">
+                          <!--
+                            <div class="form-group">
                               <label for="exampleFormControlTextarea1">Puntos:</label>
                               <select
                                 class="form-control"
@@ -797,22 +1034,25 @@
                                 <option>8</option>
                                 <option>9</option>
                                 <option>10</option>
-                                
+
                               </select>
-                            </div> -->
-                              <!-- <div class="form-group">
-                                  <label for="exampleFormControlSelect1"
-                                    >Retribucion</label
-                                  >
-                                  <input
-                                    class="form-control"
-                                    type="text"
-                                    [(ngModel)]="Retribucion"
-                                    name="Retribucion"
-                                    id="Retribucion"
-                                  />
-                                </div> -->
-                          </form>
+                            </div>
+                          -->
+                          <!--
+                            <div class="form-group">
+                              <label for="exampleFormControlSelect1"
+                                >Retribucion</label
+                              >
+                              <input
+                                class="form-control"
+                                type="text"
+                                [(ngModel)]="Retribucion"
+                                name="Retribucion"
+                                id="Retribucion"
+                              />
+                            </div>
+                          -->
+                        </form>
                       </div>
                       <div class="modal-footer">
                         <button
@@ -827,7 +1067,12 @@
                           type="button"
                           type="submit"
                           (click)="
-                            addSubcompl(complemento.CodDPT, complemento._id, SubComplemento, Grado);
+                            addSubcompl(
+                              complemento.CodDPT,
+                              complemento._id,
+                              SubComplemento,
+                              Grado
+                            );
                             myForm5.reset();
                             SubcomplModal.close();
                             openSnackBar('Subcomplemento añadido', 'OK')
@@ -839,81 +1084,70 @@
                         </button>
                       </div>
                     </ngx-smart-modal>
-                </mat-grid-tile>
-              </mat-grid-list>
-              <mat-grid-list
-                *ngFor="let subcomplemento of complemento.Subcomplementos"
-                cols="5"
-                rowHeight="100px"
-                id="subcomplementos"
-              >
-                <mat-grid-tile>
-                  <h6>{{ subcomplemento.SubComplemento }}</h6>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <h6>{{ subcomplemento.Grado }}</h6>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <h6>{{ subcomplemento.Puntos }}</h6>
-                </mat-grid-tile>
-                <mat-grid-tile>
+                  </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list
+                  *ngFor="let subcomplemento of complemento.Subcomplementos"
+                  cols="5"
+                  rowHeight="100px"
+                  id="subcomplementos"
+                >
+                  <mat-grid-tile>
+                    <h6>{{ subcomplemento.SubComplemento }}</h6>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <h6>{{ subcomplemento.Grado }}</h6>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <h6>{{ subcomplemento.Puntos }}</h6>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
                     <h6>{{ subcomplemento.Retribucion }}</h6>
                   </mat-grid-tile>
-                <mat-grid-tile>
-                  <button type="button" class="btn btn-success" (click)="EditSubcomplModal.open()">
-                    <i class="far fa-edit"></i> Editar
-                  </button>
-                  <ngx-smart-modal identifier="EditSubcomplModal" #EditSubcomplModal>
-                    <div class="modal-header">
-                      <h5 class="modal-title">
-                        Editando nuevo subcomplemento:
-                      </h5>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="form-group">
-                          <label for="exampleFormControlTextarea1">Subcomplemento:</label>
-                          <input
-                            class="form-control"
-                            [(ngModel)]="subcomplemento.SubComplemento"
-                            name="subcomplemento.SubComplemento"
-                            id="subcomplemento.SubComplemento"
-                            value="{{subcomplemento.SubComplemento}}"
-                            readonly
-                          />
-                        </div>
-                      </form>
-                      <form>
-                        <div class="form-group">
-                          <label for="exampleFormControlTextarea1">Grado:</label>
-                          <select
-                            class="form-control"
-                            [(ngModel)]="subcomplemento.Grado"
-                            name="subcomplemento.Grado"
-                            id="subcomplemento.Grado"
-                            value="{{subcomplemento.Grado}}"
-                          >
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            
-                          </select>
-                        </div>
-                      </form>
-                      <form>
-                          <!-- <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Puntos:</label>
+                  <mat-grid-tile>
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      (click)="EditSubcomplModal.open()"
+                    >
+                      <i class="far fa-edit"></i> Editar
+                    </button>
+                    <ngx-smart-modal
+                      identifier="EditSubcomplModal"
+                      #EditSubcomplModal
+                    >
+                      <div class="modal-header">
+                        <h5 class="modal-title">
+                          Editando nuevo subcomplemento:
+                        </h5>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1"
+                              >Subcomplemento:</label
+                            >
+                            <input
+                              class="form-control"
+                              [(ngModel)]="subcomplemento.SubComplemento"
+                              name="subcomplemento.SubComplemento"
+                              id="subcomplemento.SubComplemento"
+                              value="{{subcomplemento.SubComplemento}}"
+                              readonly
+                            />
+                          </div>
+                        </form>
+                        <form>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1"
+                              >Grado:</label
+                            >
                             <select
                               class="form-control"
-                              [(ngModel)]="subcomplemento.Puntos"
-                              name="subcomplemento.Puntos"
-                              id="subcomplemento.Puntos"
-                              value="{{subcomplemento.Puntos}}"
+                              [(ngModel)]="subcomplemento.Grado"
+                              name="subcomplemento.Grado"
+                              id="subcomplemento.Grado"
+                              value="{{subcomplemento.Grado}}"
                             >
                               <option>1</option>
                               <option>2</option>
@@ -923,127 +1157,170 @@
                               <option>6</option>
                               <option>7</option>
                               <option>8</option>
-                              <option>9</option>
-                              <option>10</option>
-                              
                             </select>
-                          </div> -->
+                          </div>
                         </form>
                         <form>
-                            <!-- <div class="form-group">
-                                <label for="exampleFormControlSelect1"
-                                  >Retribucion</label
-                                >
-                                <input
-                                  class="form-control"
-                                  [(ngModel)]="subcomplemento.Retribucion"
-                                  name="subcomplemento.Retribucion"
-                                  id="subcomplemento.Retribucion"
-                                  value="{{subcomplemento.Retribucion}}"
-                                />
-                              </div> -->
+                          <!--
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1">Puntos:</label>
+                              <select
+                                class="form-control"
+                                [(ngModel)]="subcomplemento.Puntos"
+                                name="subcomplemento.Puntos"
+                                id="subcomplemento.Puntos"
+                                value="{{subcomplemento.Puntos}}"
+                              >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+
+                              </select>
+                            </div>
+                          -->
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-dismiss="EditSubcomplModal"
-                        (click)="EditSubcomplModal.close()"
-                      >
-                        Cancelar
-                      </button>
-                      <button
-                        type="button"
-                        type="submit"
-                        (click)="
-                          editSubcompl(subcomplemento._id, subcomplemento.Complemento, complemento.CodDPT, subcomplemento.SubComplemento, subcomplemento.Grado, subcomplemento.Puntos, subcomplemento.Retribucion);
-                          EditSubcomplModal.close();
-                          getComplementoAvg(complemento._id);
-                          openSnackBar('Subcomplemento editado', 'OK')
-                        "
-                        data-dismiss="EditSubcomplModal"
-                        class="btn btn-primary"
-                      >
-                        Editar Subcompl
-                      </button>
-                    </div>
-                  </ngx-smart-modal>
-                  <button type="button" class="btn btn-danger" (click)="removeSubcompl(subcomplemento.Complemento, subcomplemento._id); 
-                   getComplementoAvg(complemento._id);
-                  ">
-                    <i class="far fa-trash-alt"></i> Borrar
-                  </button>
-                </mat-grid-tile>
-              </mat-grid-list>
-              <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                        <form>
+                          <!--
+                            <div class="form-group">
+                              <label for="exampleFormControlSelect1"
+                                >Retribucion</label
+                              >
+                              <input
+                                class="form-control"
+                                [(ngModel)]="subcomplemento.Retribucion"
+                                name="subcomplemento.Retribucion"
+                                id="subcomplemento.Retribucion"
+                                value="{{subcomplemento.Retribucion}}"
+                              />
+                            </div>
+                          -->
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="EditSubcomplModal"
+                          (click)="EditSubcomplModal.close()"
+                        >
+                          Cancelar
+                        </button>
+                        <button
+                          type="button"
+                          type="submit"
+                          (click)="
+                            editSubcompl(
+                              subcomplemento._id,
+                              subcomplemento.Complemento,
+                              complemento.CodDPT,
+                              subcomplemento.SubComplemento,
+                              subcomplemento.Grado,
+                              subcomplemento.Puntos,
+                              subcomplemento.Retribucion
+                            );
+                            EditSubcomplModal.close();
+                            getComplementoAvg(complemento._id);
+                            openSnackBar('Subcomplemento editado', 'OK')
+                          "
+                          data-dismiss="EditSubcomplModal"
+                          class="btn btn-primary"
+                        >
+                          Editar Subcompl
+                        </button>
+                      </div>
+                    </ngx-smart-modal>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      (click)="
+                        removeSubcompl(
+                          subcomplemento.Complemento,
+                          subcomplemento._id
+                        );
+                        getComplementoAvg(complemento._id)
+                      "
+                    >
+                      <i class="far fa-trash-alt"></i> Borrar
+                    </button>
+                  </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                  <mat-grid-tile class="divider"></mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="5" rowHeight="40px">
+                  <mat-grid-tile>
+                    <h4 (click)="getComplementoAvg(complemento._id)">
+                      Total {{ complemento.Complemento }}
+                    </h4>
+                  </mat-grid-tile>
+                  <mat-grid-tile> <h4>Grados</h4> </mat-grid-tile>
+                  <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
+                  <mat-grid-tile>
+                    <h4>Retribución {{ complemento.Complemento }}</h4>
+                  </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="5" rowHeight="100px">
+                  <mat-grid-tile> </mat-grid-tile>
+                  <mat-grid-tile>
+                    <h6>{{ complemento.AvgGrado }}</h6>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <h6>{{ complemento.AvgPuntos }}</h6>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <h6>{{ complemento.AvgRetribucion }}</h6>
+                  </mat-grid-tile>
+                </mat-grid-list>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <h4>Total CE: {{ position.vpt.Complementos.TotCE }}</h4>
+        </div>
+      </mat-tab>
+      <div *ngIf="position.vpt.SalarioBase">
+        <mat-tab label="Complementos - Retribución">
+          <div class="dpt-profile-container">
+            <div class="row">
+              <div class="col">
+                <h4>Salario Base:</h4>
+                {{ position.vpt.SalarioBase }} EUR.
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h4>Puesto CE:</h4>
+                <!-- {{ position.retribucion.PuestoCe }} -->
+              </div>
+              <div class="col">
+                <h4>Importe Puesto CE:</h4>
+                {{ position.vpt.Complementos.TotCE }}
+              </div>
+            </div>
+            <div *ngIf="position.position.FichaDPT.Colectivo.length > 12">
+              <div class="row">
+                <div class="col">
+                  <h4>Puntos CD:</h4>
+                  {{ position.vpt.Complementos.TotPuntosCD }}
+                </div>
+                <div class="col">
+                  <h4>Importe Puesto CD:</h4>
+                  {{ position.vpt.Complementos.TotCD }}
+                </div>
+              </div>
+              <mat-grid-list class="divider" cols="1" rowHeight="60px">
                 <mat-grid-tile class="divider"></mat-grid-tile>
               </mat-grid-list>
-              <mat-grid-list cols="5" rowHeight="40px">
-                <mat-grid-tile> <h4 (click)="
-                  getComplementoAvg(complemento._id)">
-                  Total {{ complemento.Complemento }}</h4> </mat-grid-tile>
-                <mat-grid-tile> <h4>Grados</h4> </mat-grid-tile>
-                <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>
-                <mat-grid-tile> <h4>Retribución {{ complemento.Complemento }}</h4> </mat-grid-tile>
-
-              </mat-grid-list>
-              <mat-grid-list cols="5" rowHeight="100px">
-                <mat-grid-tile>  </mat-grid-tile>
-                <mat-grid-tile>
-                  <h6> {{complemento.AvgGrado}}</h6>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <h6>{{ complemento.AvgPuntos }}</h6>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <h6>{{ complemento.AvgRetribucion }}</h6>
-                </mat-grid-tile>
-              </mat-grid-list>
             </div>
-          </mat-expansion-panel>
-        </mat-accordion>
-        <h4>Total CE: {{position.vpt.Complementos.TotCE}}</h4>
+          </div>
+        </mat-tab>
       </div>
-    </mat-tab>
-    <div *ngIf="position.vpt.SalarioBase">
-
-    <mat-tab label="Complementos - Retribución">
-      <div class="dpt-profile-container">
-        <div class="row">
-          <div class="col">
-            <h4>Salario Base:</h4>
-            {{ position.vpt.SalarioBase }} EUR.
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <h4>Puesto CE:</h4>
-            <!-- {{ position.retribucion.PuestoCe }} -->
-          </div>
-          <div class="col">
-            <h4>Importe Puesto CE:</h4>
-            {{ position.vpt.Complementos.TotCE }}
-          </div>
-        </div>
-        <div *ngIf="position.position.FichaDPT.Colectivo.length > 12">
-        <div class="row">
-          <div class="col">
-            <h4>Puntos CD:</h4>
-            {{ position.vpt.Complementos.TotPuntosCD }}
-          </div>
-          <div class="col">
-            <h4>Importe Puesto CD:</h4>
-            {{ position.vpt.Complementos.TotCD }}
-          </div>
-        </div>
-        <mat-grid-list class="divider" cols="1" rowHeight="60px">
-          <mat-grid-tile class="divider"></mat-grid-tile>
-        </mat-grid-list>
-      </div>
-      </div>
-    </mat-tab>
+    </mat-tab-group>
   </div>
-  </mat-tab-group>
-</div>
 </div>
