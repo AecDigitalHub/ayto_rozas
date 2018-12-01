@@ -93,6 +93,12 @@ editedComplemento: any;
       .pipe(map((res: Response) => {
       }));
   }
+  addHabilidad(id, habilidad) {
+    return this.http
+      .put(`${BASEURL}/api/positions/add/habilidad/${id}`, { habilidad })
+      .pipe(map((res: Response) => {
+      }));
+  }
   removeHabilidad(id, habilidad) {
     return this.http
       .put(`${BASEURL}/api/positions/remove/habilidad/${id}`,  {habilidad} )

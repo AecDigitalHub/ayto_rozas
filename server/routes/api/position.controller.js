@@ -134,6 +134,20 @@ router.put("/add/certificacion/:id", (req, res, next) => {
   });
 });
 
+router.put("/add/habilidad/:id", (req, res, next) => {
+  const Habilidad = req.body;
+  let HabilidadtoAdd = Habilidad.habilidad;
+
+  dpt.findById(req.params.id).then(pos => {
+    actualiz = pos.ConocExper.Habilidades.unshift(HabilidadtoAdd);
+    console.log(pos.ConocExper.Certificaciones);
+    dpt
+      .findByIdAndUpdate(req.params.id, { 'ConocExper.Habilidades': pos.ConocExper.Habilidades}, { new: true })
+      .then(position => res.status(200).json())
+      .catch(err => console.log(err));
+  });
+});
+
 router.put("/remove/certificacion/:id", (req, res, next) => {
   const Certificacion = req.body;
   let CertificaciontoRemove = Object.values(Certificacion).toString();

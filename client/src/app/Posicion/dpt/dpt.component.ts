@@ -107,6 +107,12 @@ addCertificacion(id, Certificacion) {
   this.ngOnInit();
 });
 }
+addHabilidad(id, Habilidad) {
+  this.Edit.addHabilidad(id, Habilidad).subscribe(habilidades => {
+  this.editedHabilidades = habilidades;
+  this.ngOnInit();
+});
+}
 addFormacion(id, Formacion) {
   this.Edit.addFormacion(id, Formacion).subscribe(formaciones => {
   this.editedFormCompl = formaciones;
