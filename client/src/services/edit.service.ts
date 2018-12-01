@@ -202,6 +202,14 @@ editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subc
   }));
 }
 
+editComplementoDest(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, AvgGrado, AvgPuntos, AvgRetribucion) {
+  return this.http
+  .put(`${BASEURL}/api/complementos/edit/complementodest/${id}`, { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, AvgGrado, AvgPuntos, AvgRetribucion }).pipe(map((res: Response) => {
+    const editedComplemento = res.json();
+    return this.editedComplemento;
+  }));
+}
+
 addComplEspecifico(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
   return this.http
     .post(`${BASEURL}/api/complementos/add/complementoespecifico`, { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion })

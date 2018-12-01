@@ -357,6 +357,29 @@ router.put('/edit/complemento/:id', (req, res, next) => {
   });
 });
 
+router.put('/edit/complementodest/:id', (req, res, next) => {
+  console.log(req.body);
+  console.log(req.params.id)
+  
+    retribcomplCD.findOne( { Complemento: req.body.Complemento, Grado: req.body.Grado }).then(retribucion => {
+    let editedComplemento = { 
+    Valor: req.body.Valor,
+    CodDPT: req.body.CodDPT,
+    Complemento: req.body.Complemento,
+    Grado: req.body.Grado,
+    Puntos: retribucion.Puntos,
+    Retribucion: retribucion.Retribucion,
+    AvgGrado: req.body.AvgGrado,
+    AvgPuntos: req.body.AvgPuntos,
+    AvgRetribucion: req.body.AvgRetribucion,
+   }
+  vptcompls.findByIdAndUpdate(req.params.id, editedComplemento, { new: true })
+  .then(complemento => res.status(200).json(complemento))
+  .catch(err => console.log(err))
+});
+   
+  });
+
 
 
 module.exports = router;
