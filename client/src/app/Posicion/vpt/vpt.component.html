@@ -45,7 +45,12 @@
           </h5>
         </div>
         <div class="modal-body">
+            <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                <mat-grid-tile class="divider"></mat-grid-tile>
+              </mat-grid-list>
           <form #myForm="ngForm">
+              <div class="row">              
+              <div class="col-sm-8">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Complemento:</label>
               <select
@@ -61,6 +66,8 @@
                 
               </select>
             </div>
+            </div>
+            <div class="col-sm-4">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Grado:</label>
               <select
@@ -79,7 +86,9 @@
                 
               </select>
             </div>
-              <div class="form-group">
+            </div>
+            </div>
+              <!-- <div class="form-group">
                 <label for="exampleFormControlTextarea1">Puntos:</label>
                 <select
                   class="form-control"
@@ -99,8 +108,8 @@
                   <option>10</option>
                   
                 </select>
-              </div>
-                <div class="form-group">
+              </div> -->
+                <!-- <div class="form-group">
                     <label for="exampleFormControlSelect1"
                       >Retribucion</label
                     >
@@ -110,9 +119,12 @@
                       name="Retribucion"
                       id="Retribucion"
                     />
-                  </div>
+                  </div> -->
             </form>
         </div>
+        <mat-grid-list class="divider" cols="1" rowHeight="20px">
+            <mat-grid-tile class="divider"></mat-grid-tile>
+          </mat-grid-list>
         <div class="modal-footer">
           <button
             type="button"
@@ -181,7 +193,12 @@
                     </h5>
                   </div>
                   <div class="modal-body">
+                      <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                          <mat-grid-tile class="divider"></mat-grid-tile>
+                        </mat-grid-list>
                     <form #myForm2="ngForm">
+                      <div class="row">
+                      <div class="col">
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Complemento:</label>
                         <input
@@ -190,8 +207,11 @@
                           name="complemento.Complemento"
                           id="complemento.Complemento"
                           value="{{complemento.Complemento}}"
+                          readonly
                         />
                       </div>
+                      </div>
+                      <div class="col">
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Grado:</label>
                         <select
@@ -212,7 +232,8 @@
                           
                         </select>
                       </div>
-                        <div class="form-group">
+                      </div>
+                        <!-- <div class="form-group">
                           <label for="exampleFormControlTextarea1">Puntos:</label>
                           <select
                             class="form-control"
@@ -233,8 +254,8 @@
                             <option>10</option>
                             
                           </select>
-                        </div>
-                          <div class="form-group">
+                        </div> -->
+                          <!-- <div class="form-group">
                               <label for="exampleFormControlSelect1"
                                 >Retribucion</label
                               >
@@ -245,9 +266,13 @@
                                 id="complemento.Retribucion"
                                 value="{{complemento.Retribucion}}"
                               />
+                            </div> -->
                             </div>
                       </form>
                   </div>
+                  <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                      <mat-grid-tile class="divider"></mat-grid-tile>
+                    </mat-grid-list>
                   <div class="modal-footer">
                     <button
                       type="button"
@@ -309,7 +334,12 @@
           </h5>
         </div>
         <div class="modal-body">
+            <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                <mat-grid-tile class="divider"></mat-grid-tile>
+              </mat-grid-list>
           <form #myForm3="ngForm">
+            <div class="row">
+              <div class="col-sm-8">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Complemento:</label>
               <select
@@ -327,6 +357,8 @@
               
             </select>
             </div>
+            </div>
+            <div class="col-sm-4">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Grado:</label>
               <select
@@ -347,7 +379,8 @@
                 
               </select>
             </div>
-              <div class="form-group">
+            </div>
+              <!-- <div class="form-group">
                 <label for="exampleFormControlTextarea1">Puntos:</label>
                 <select
                   class="form-control"
@@ -367,8 +400,8 @@
                   <option>10</option>
                   
                 </select>
-              </div>
-                <div class="form-group">
+              </div> -->
+                <!-- <div class="form-group">
                     <label for="exampleFormControlSelect1"
                       >Retribucion</label
                     >
@@ -379,9 +412,13 @@
                       name="Retribucion"
                       id="Retribucion"
                     />
+                  </div> -->
                   </div>
             </form>
         </div>
+        <mat-grid-list class="divider" cols="1" rowHeight="20px">
+            <mat-grid-tile class="divider"></mat-grid-tile>
+          </mat-grid-list>
         <div class="modal-footer">
           <button
             type="button"
@@ -442,8 +479,14 @@
                     </h5>
                   </div>
                   <div class="modal-body">
+                      <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                          <mat-grid-tile class="divider"></mat-grid-tile>
+                        </mat-grid-list>
                     <form #myForm4="ngForm">
+                        <div class="row">
+                        <div class="col">
                       <div *ngIf="complemento.Complemento == 'Dificultad Técnica'">
+                        
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Subcomplemento:</label>
                         <select
@@ -460,6 +503,7 @@
                       </div>
                       </div>
                       <div *ngIf="complemento.Complemento == 'Responsabilidad'">
+                        
                           <div class="form-group">
                             <label for="exampleFormControlTextarea1">Subcomplemento:</label>
                             <select
@@ -473,6 +517,8 @@
                             </select>
                           </div>
                           </div>
+                      </div>
+                      <div class="col">
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Grado:</label>
                         <select
@@ -492,7 +538,9 @@
                           
                         </select>
                       </div>
-                        <div class="form-group">
+                      </div>
+                      </div>
+                        <!-- <div class="form-group">
                           <label for="exampleFormControlTextarea1">Puntos:</label>
                           <select
                             class="form-control"
@@ -512,8 +560,8 @@
                             <option>10</option>
                             
                           </select>
-                        </div>
-                          <div class="form-group">
+                        </div> -->
+                          <!-- <div class="form-group">
                               <label for="exampleFormControlSelect1"
                                 >Retribucion</label
                               >
@@ -524,9 +572,12 @@
                                 name="Retribucion"
                                 id="Retribucion"
                               />
-                            </div>
+                            </div> -->
                       </form>
                   </div>
+                  <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                      <mat-grid-tile class="divider"></mat-grid-tile>
+                    </mat-grid-list>
                   <div class="modal-footer">
                     <button
                       type="button"
@@ -568,9 +619,11 @@
                   <h6>{{ complemento.Retribucion }}</h6>
                 </mat-grid-tile>
               <mat-grid-tile>
+                  <div *ngIf="complemento.Complemento == 'Incompatibilidad' || complemento.Complemento == 'Penosidad'|| complemento.Complemento == 'Peligrosidad'">
                 <button type="button" class="btn btn-success" (click)="editComplEspecModal.open()">
                   <i class="far fa-edit"></i> Editar
                 </button>
+                </div>
                 <ngx-smart-modal identifier="editComplEspecModal" #editComplEspecModal>
                   <div class="modal-header">
                     <h5 class="modal-title">
@@ -578,7 +631,12 @@
                     </h5>
                   </div>
                   <div class="modal-body">
+                      <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                          <mat-grid-tile class="divider"></mat-grid-tile>
+                        </mat-grid-list>
                     <form #myForm6="ngForm">
+                      <div class="row">
+                        <div class="col">
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Complemento:</label>
                         <input
@@ -587,8 +645,11 @@
                         name="complemento.Complemento"
                         id="complemento.Complemento"
                         value="{{complemento.Complemento}}"
+                        readonly
                       />
                       </div>
+                      </div>
+                      <div class="col">
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Grado:</label>
                         <select
@@ -609,8 +670,13 @@
                         
                       </select>
                       </div>
+                      </div>
+                      </div>
                       </form>
                   </div>
+                  <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                      <mat-grid-tile class="divider"></mat-grid-tile>
+                    </mat-grid-list>
                   <div class="modal-footer">
                     <button
                       type="button"
@@ -624,7 +690,7 @@
                       type="button"
                       type="submit"
                       (click)="
-                      editCompl(complemento._id, complemento.Valor, complemento.CodDPT, complemento.Complemento, complemento.Grado, Puntos, Retribucion, complemento.Subcomplementos, complemento.AvgGrado, complemento.AvgPuntos, complemento.AvgRetribucion);
+                      editCompl(complemento._id, complemento.Valor, complemento.CodDPT, complemento.Complemento, complemento.Grado, Puntos, Retribucion);
                       editComplEspecModal.close();
                       openSnackBar('Complemento Especifico editado', 'OK');
                       myForm6.reset();
@@ -713,7 +779,7 @@
                               
                             </select>
                           </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                               <label for="exampleFormControlTextarea1">Puntos:</label>
                               <select
                                 class="form-control"
@@ -733,8 +799,8 @@
                                 <option>10</option>
                                 
                               </select>
-                            </div>
-                              <div class="form-group">
+                            </div> -->
+                              <!-- <div class="form-group">
                                   <label for="exampleFormControlSelect1"
                                     >Retribucion</label
                                   >
@@ -745,7 +811,7 @@
                                     name="Retribucion"
                                     id="Retribucion"
                                   />
-                                </div>
+                                </div> -->
                           </form>
                       </div>
                       <div class="modal-footer">
@@ -813,6 +879,7 @@
                             name="subcomplemento.SubComplemento"
                             id="subcomplemento.SubComplemento"
                             value="{{subcomplemento.SubComplemento}}"
+                            readonly
                           />
                         </div>
                       </form>
@@ -839,7 +906,7 @@
                         </div>
                       </form>
                       <form>
-                          <div class="form-group">
+                          <!-- <div class="form-group">
                             <label for="exampleFormControlTextarea1">Puntos:</label>
                             <select
                               class="form-control"
@@ -860,10 +927,10 @@
                               <option>10</option>
                               
                             </select>
-                          </div>
+                          </div> -->
                         </form>
                         <form>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="exampleFormControlSelect1"
                                   >Retribucion</label
                                 >
@@ -874,7 +941,7 @@
                                   id="subcomplemento.Retribucion"
                                   value="{{subcomplemento.Retribucion}}"
                                 />
-                              </div>
+                              </div> -->
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -915,7 +982,6 @@
               <mat-grid-list cols="5" rowHeight="40px">
                 <mat-grid-tile> <h4 (click)="
                   getComplementoAvg(complemento._id)">
-                  <!-- editComplemento(complemento._id, complemento.Valor, complemento.CodDPT, complemento.Complemento, complemento.Grado, complemento.Puntos, complemento.Retribucion, complemento.Subcomplementos, complemento.AvgGrado, complemento.AvgPuntos, complemento.AvgRetribucion)"> -->
                   Total {{ complemento.Complemento }}</h4> </mat-grid-tile>
                 <mat-grid-tile> <h4>Grados</h4> </mat-grid-tile>
                 <mat-grid-tile> <h4>Puntos</h4> </mat-grid-tile>

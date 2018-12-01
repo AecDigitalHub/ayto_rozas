@@ -200,9 +200,9 @@ addComplDestino(Valor, CodDPT, Complemento, Grado, Puntos, Retribucion) {
       return nuevoComplemento;
     }));
 }
-editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
+editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion) {
   return this.http
-  .put(`${BASEURL}/api/complementos/edit/complemento/${id}`, { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion }).pipe(map((res: Response) => {
+  .put(`${BASEURL}/api/complementos/edit/complemento/${id}`, { Valor, CodDPT, Complemento, Grado, Puntos, Retribucion }).pipe(map((res: Response) => {
     const editedComplemento = res.json();
     return this.editedComplemento;
   }));

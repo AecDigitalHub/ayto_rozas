@@ -274,7 +274,6 @@ vptsubcompls.findByIdAndRemove(subcomplId)
 });
 
 router.put('/edit/subcomplemento/:id', (req, res, next) => {
-  console.log(req.body)
   dpts.findOne( { CodigoDPT: req.body.CodDPT }).then(dpt => {
 
     if (dpt.FichaDPT.Colectivo == '(L) Laboral'){
@@ -282,10 +281,11 @@ router.put('/edit/subcomplemento/:id', (req, res, next) => {
     retribSubcomplCELaborales.findOne( { Subcomplemento: req.body.SubComplemento, Grado: req.body.Grado }).then(retribucion => {
     let editedSubComplemento = { 
     Complemento: req.body.Complemento,
+    CodDPT: req.body.CodDPT,
     SubComplemento: req.body.SubComplemento,
     Grado: req.body.Grado,
     Puntos: retribucion.Puntos,
-    Retribucion: retribucion.Retribución
+    Retribucion: parseFloat(retribucion.Retribución).toFixed(2)
    }
    console.log(editedSubComplemento)
 
@@ -298,10 +298,11 @@ router.put('/edit/subcomplemento/:id', (req, res, next) => {
       retribSubcomplCE.findOne( { Subcomplemento: req.body.SubComplemento, Grado: req.body.Grado }).then(retribucion => {
       let editedSubComplemento = { 
       Complemento: req.body.Complemento,
-      SubComplemento: req.body.Subcomplemento,
+      CodDPT: req.body.CodDPT,
+      SubComplemento: req.body.SubComplemento,
       Grado: req.body.Grado,
       Puntos: retribucion.Puntos,
-      Retribucion: retribucion.Retribución
+      Retribucion: parseFloat(retribucion.Retribución).toFixed(2)
       }
     
       vptsubcompls.findByIdAndUpdate(req.params.id, editedSubComplemento, { new: true })
@@ -325,11 +326,7 @@ router.put('/edit/complemento/:id', (req, res, next) => {
     Complemento: req.body.Complemento,
     Grado: req.body.Grado,
     Puntos: retribucion.Puntos,
-    Retribucion: retribucion.Retribución,
-    Subcomplementos: req.body.Subcomplementos,
-    AvgGrado: req.body.AvgGrado,
-    AvgPuntos: req.body.AvgPuntos,
-    AvgRetribucion: req.body.AvgRetribucion
+    Retribucion: parseFloat(retribucion.Retribución).toFixed(2),
    }
   vptcompls.findByIdAndUpdate(req.params.id, editedComplemento, { new: true })
   .then(complemento => res.status(200).json(complemento))
@@ -343,11 +340,7 @@ router.put('/edit/complemento/:id', (req, res, next) => {
           Complemento: req.body.Complemento,
           Grado: req.body.Grado,
           Puntos: retribucion.Puntos,
-          Retribucion: retribución.Retribución,
-          Subcomplementos,
-          AvgGrado:
-          AvgPunto,
-          AvgRetribucion
+          Retribucion: parseFloat(retribucion.Retribución).toFixed(2),
          }
         vptcompls.findByIdAndUpdate(req.params.id, editedComplemento, { new: true })
         .then(complemento => res.status(200).json(complemento))

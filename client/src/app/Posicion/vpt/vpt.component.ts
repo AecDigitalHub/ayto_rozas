@@ -65,8 +65,8 @@ addSubcompl(CodDPT, Complemento, SubComplemento, Grado) {
     this.ngOnInit();
   });
 }
-editCompl(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion) {
-  this.Edit.editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion, Subcomplementos, AvgGrado, AvgPuntos, AvgRetribucion).subscribe(() => {
+editCompl(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion) {
+  this.Edit.editComplemento(id, Valor, CodDPT, Complemento, Grado, Puntos, Retribucion).subscribe(() => {
     this.getComplementoAvg(Complemento);
     this.getValoracion(this.positionId);
     this.ngOnInit();
