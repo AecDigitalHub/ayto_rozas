@@ -10,7 +10,6 @@ export class EmploymentsTableComponent implements OnChanges {
 jobs = [];
 searchText: any;
 
-
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {

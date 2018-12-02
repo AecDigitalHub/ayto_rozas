@@ -15,8 +15,8 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  opened: any;
   title = 'Ayto. Las Rozas Web-App';
+  opened: any;
   constructor (public Auth: AuthenticationService, private router: Router) {}
   ngOnInit() {
   }

@@ -1,5 +1,3 @@
-<div *ngIf='Auth.user'>
-
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
     <a routerLink={{node.type}}><h6>{{node.filename}}</h6></a>
@@ -17,4 +15,3 @@
   </mat-tree-node>
 </mat-tree>
 
-</div>
