@@ -33,7 +33,7 @@ const DPTSchema = new Schema({
     }],
   ConocExper: {
     FormReglada: {
-      Nivel: { type: String, enum: ['A2', 'C1', 'nivel3', ''], default: ''},
+      Nivel: { type: String, enum: ['A1', 'A2', 'C1', 'C2', 'E'], default: 'E'},
       Titulo: String
     },
     FormCompl: [String],

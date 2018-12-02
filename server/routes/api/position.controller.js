@@ -27,13 +27,21 @@ router.get("/:id", (req, res, next) => {
     .then(position => {
       salariobases.findOne({ Nivel: position.ConocExper.FormReglada.Nivel }).then(retribucion =>{
         console.log(retribucion)
+        if(retribucion == null){
+      valors.findOneAndUpdate({ CodDPT: position.CodigoDPT }, { SalarioBase: '0' }, { new:true})
+      .populate("Complementos.ComplDestino")
+      .populate({ path: "Complementos.ComplEspecifico", populate: { path: "Subcomplementos" }})
+      .then(vpt => {
+          return res.status(200).json({ position, vpt });
+        });
+      } else {
       valors.findOneAndUpdate({ CodDPT: position.CodigoDPT }, { SalarioBase: retribucion.SalarioBase }, { new:true})
       .populate("Complementos.ComplDestino")
       .populate({ path: "Complementos.ComplEspecifico", populate: { path: "Subcomplementos" }})
       .then(vpt => {
-        // salariobases.findOne({ Nivel: position.FichaDPT.Nivel }).then(retribucion => {
           return res.status(200).json({ position, vpt });
         });
+      }
       });
   });
 });
