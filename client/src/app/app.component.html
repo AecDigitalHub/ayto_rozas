@@ -24,6 +24,7 @@
     </div>
 
     <mat-sidenav-container class="app-container">
+            <div *ngIf='Auth.user'>
         <mat-sidenav class="app-sidenav" #sidenav mode="side" [(opened)]="opened">
             <mat-nav-list>
                 <a mat-list-item class="app-sidenav">
@@ -35,6 +36,7 @@
                 <app-side-bar-menu></app-side-bar-menu>
             </mat-nav-list>
         </mat-sidenav>
+        </div>
 
         <mat-sidenav-content>
                 <div *ngIf='Auth.user'>
