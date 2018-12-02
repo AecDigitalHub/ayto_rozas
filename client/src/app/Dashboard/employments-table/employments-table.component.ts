@@ -8,6 +8,8 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 export class EmploymentsTableComponent implements OnChanges {
 @Input() JobsFuncionarios;
 jobs = [];
+searchText: any;
+
 
   constructor() { }
 

@@ -15,7 +15,7 @@ const cors = require('cors');
 
 
 
-DBURL=process.env.DBURL;
+DBURL=process.env.MONGODB_URI;
 
 
 mongoose.Promise = Promise;

@@ -10,6 +10,8 @@ import { Observable } from '../../../node_modules/rxjs';
 })
 export class LoginComponent implements OnInit {
   User: any;
+  username: any;
+  password: any;
 
   constructor(private Auth: AuthenticationService, private router: Router) { }
 

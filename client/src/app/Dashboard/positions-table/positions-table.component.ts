@@ -13,6 +13,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 export class PositionsTableComponent implements OnInit {
   positions: Position [];
   PositionsVacancies: any;
+  searchText: any;
 
 constructor(public PositionTable: DashboardService) {}
 

@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
   SalaryDist: any;
   KeysSalaryDist: Array<string> = ['15-20k', '20-35k', '35-50k', '> 50k'];
 
-  constructor(public dashboard: DashboardService, private Auth: AuthenticationService) {}
+  constructor(public dashboard: DashboardService, public Auth: AuthenticationService) {}
 
   ngOnInit() {
     this.dashboard.getPositions().subscribe(Positions => {

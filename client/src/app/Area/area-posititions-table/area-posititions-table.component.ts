@@ -16,6 +16,8 @@ import { Http, Response } from '@angular/http';
 export class AreaPosititionsTableComponent implements OnInit {
 Area: String;
 AreaPositions: Observable<Array<object>>;
+searchText: any;
+
 constructor(public AreaPositionTable: AreaService, private route: ActivatedRoute) {}
 
   ngOnInit() {
