@@ -17,7 +17,7 @@ require('dotenv').config();
 
 
 
-DBURL=process.env.DBURL;
+DBURL=process.env.MONGODB_URI;
 
 
 mongoose.Promise = Promise;
