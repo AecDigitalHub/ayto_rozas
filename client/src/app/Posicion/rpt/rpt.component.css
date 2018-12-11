@@ -4,8 +4,33 @@ h2 {
 }
 
 .btn-success {
-  background-color: #50BF9F;
-  border-color: #50BF9F;
+  background-color: #00CCB3;
+  border-color: #00CCB3;
+}
+.btn-success:hover {
+
+  color: #fff;
+  background-color: #B1B3B3;
+  border-color: #B1B3B3;
+
+}
+.btn-secondary {
+  border-color: #48A9C5;
+}
+.btn-secondary:hover {
+  background-color: #f16051;
+  border-color: #f16051;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #48A9C5;
+  border-color: #48A9C5;
+}
+.btn-primary:hover {
+  background-color: #00CCB3;
+  border-color: #00CCB3;
+  color: white;
 }
 
 .btn-danger {

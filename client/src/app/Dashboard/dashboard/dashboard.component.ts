@@ -20,14 +20,18 @@ export class DashboardComponent implements OnInit {
   Positions: Observable<Array<object>>;
   PositionsCount: Number;
   PositionsVacancies: any;
-  EmployeesCount: Observable<Number>;
+  EmployeesCount: any;
   JobsCount: Observable<number>;
   Funcionarios;
   Laborales;
   Vacantes: Number;
   AvgArea;
   SalaryDist: any;
+  SalaryCount: any;
+  SalaryAvg: any;
   KeysSalaryDist: Array<string> = ['15-20k', '20-35k', '35-50k', '> 50k'];
+  Colectivos: any;
+
 
   constructor(public dashboard: DashboardService, public Auth: AuthenticationService) {}
 
@@ -35,32 +39,32 @@ export class DashboardComponent implements OnInit {
     this.dashboard.getPositions().subscribe(Positions => {
       this.Positions = Positions;
       this.PositionsCount = Positions.positions.length;
-      console.log(this.PositionsCount);
+      console.log(this.Positions);
     });
     this.dashboard.getColectivos().subscribe(Colectivos => {
       this.Funcionarios = Colectivos.funcionarios;
       this.Laborales = Colectivos.laborales;
-      console.log(this.Funcionarios, this.Laborales);
     });
-    // this.dashboard.getEmployeesColectivos().subscribe(jobs => {
-    //   this.JobsFuncionarios = jobs[0];
-    //   this.JobsLaborales = jobs[1];
-    //   console.log(this.JobsFuncionarios, this.JobsLaborales);
+    this.dashboard.getColectivos().subscribe(Colectivos => {
+      this.Colectivos = Colectivos;
+    });
 
-      this.dashboard.getEmployeesCount().subscribe(Employees => {
-        this.EmployeesCount = Employees;
+      this.dashboard.getEmployeesCount().subscribe(Puestos => {
+        this.EmployeesCount = Number(Puestos);
       });
 
       this.dashboard.getVacancy().subscribe(Vacantes => {
       this.Vacantes = Vacantes;
-      console.log('Vacantes =', this.Vacantes);
     });
     this.dashboard.getAvgEmployees().subscribe(Avg => {
       this.AvgArea = Avg.toFixed(2);
     });
     this.dashboard.getSalaryDist().subscribe(SalaryDist => {
       this.SalaryDist = SalaryDist;
-    console.log(this.SalaryDist);
+    });
+    this.dashboard.getSalaryCount().subscribe(SalaryCount => {
+      this.SalaryCount = SalaryCount;
+      this.SalaryAvg = (SalaryCount / this.EmployeesCount).toFixed(2);
     });
   }
 }

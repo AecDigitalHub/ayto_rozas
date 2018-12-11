@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from '../../../../node_modules/rxjs';
 import { MatTableDataSource, MatInput } from '@angular/material';
 import { Router, RouterModule } from '@angular/router';
+import { AuthenticationService } from '../../../services/authentication.service';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserModule } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -19,7 +20,7 @@ export class PosicionComponent implements OnInit {
 positionId: String;
 position: Observable<any>;
 
-  constructor(public PositionView: PositionService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public PositionView: PositionService, private route: ActivatedRoute, private router: Router, public Auth: AuthenticationService) { }
 
   ngOnInit() {
 

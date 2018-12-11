@@ -37,12 +37,10 @@ const TREE_DATA = JSON.stringify({
     'Familia y Serv. Sociales': '/Area/Familia y Serv. Sociales',
     'Deportes': '/Area/Deportes',
     'Juventud': '/Area/Juventud',
-    'Educación y Cultura': '/Area/Educación y Cultura'
+    'Educación y Cultura': '/Area/Educación y Cultura',
+    'Ferias': '/Area/Ferias',
+    'Distrito Norte': '/Area/Distrito Norte'
   },
-  // Complementos: {
-  //   'Personal Funcionario': '',
-  //   'Personal Laboral': ''
-  // }
 });
 
 @Injectable()

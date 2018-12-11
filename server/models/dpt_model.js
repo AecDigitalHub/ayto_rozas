@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Puesto = require('./puesto_model').schema
-const VPTComplementos = require('./vpt_complementos_model').schema
+const Valor = require('./vpt_model').schema
 
 
 
@@ -33,7 +33,7 @@ const DPTSchema = new Schema({
     }],
   ConocExper: {
     FormReglada: {
-      Nivel: { type: String, enum: ['A1', 'A2', 'C1', 'C2', 'E'], default: 'E'},
+      Nivel: { type: String, enum: ['A2', 'C1', 'nivel3', ''], default: ''},
       Titulo: String
     },
     FormCompl: [String],
@@ -71,7 +71,7 @@ const DPTSchema = new Schema({
   },
   Puestos: [{type: Schema.Types.ObjectId, ref: 'Puesto'}],
   Vacantes: [{type: Schema.Types.ObjectId, ref: 'Puesto'}],
-  Complementos: [{type: Schema.Types.ObjectId, ref: 'VPTComplementos'}]
+  Valoracion: [{type: Schema.Types.ObjectId, ref: 'Valor'}]
   });
  
 const DPT = mongoose.model('DPT', DPTSchema);

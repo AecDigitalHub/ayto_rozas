@@ -24,7 +24,6 @@
     </div>
 
     <mat-sidenav-container class="app-container">
-            <div *ngIf='Auth.user'>
         <mat-sidenav class="app-sidenav" #sidenav mode="side" [(opened)]="opened">
             <mat-nav-list>
                 <a mat-list-item class="app-sidenav">
@@ -34,9 +33,14 @@
                     <a matLine routerLink="/Dashboard">Dashboard</a>
                 </a>
                 <app-side-bar-menu></app-side-bar-menu>
+                <mat-grid-list class="divider" cols="1" rowHeight="30px">
+                        <mat-grid-tile class="divider"></mat-grid-tile>
+                    </mat-grid-list>
+                <a mat-list-item class="app-sidenav">
+                    <a matLine routerLink="/RPT">RPT</a>
+                </a>
             </mat-nav-list>
         </mat-sidenav>
-        </div>
 
         <mat-sidenav-content>
                 <div *ngIf='Auth.user'>

@@ -27,7 +27,7 @@ router.post("/addPuesto", (req, res, next) => {
       return res.status(400).json(newPuesto);
     }
           dpt.findById(newPuesto.Position).then(pos => {
-      if (newPuesto.NombreEmpleado == "VACANTE" || newPuesto.NombreEmpleado == "Vacante") {
+      if (newPuesto.NombreEmpleado == "VACANTE" || newPuesto.NombreEmpleado == "Vacante" || newPuesto.NombreEmpleado == "vacante") {
         pos.Puestos.push((newPuesto.id).toString());
         pos.Vacantes.push((newPuesto.id).toString());
           dpt
@@ -59,7 +59,7 @@ router.post("/addPuesto", (req, res, next) => {
     const PuestoId = req.params.id;
     puesto.findById(req.params.id)
     .then(pues => {
-      if (pues.NombreEmpleado == 'Vacante' || pues.NombreEmpleado == 'VACANTE') {
+      if (pues.NombreEmpleado == 'Vacante' || pues.NombreEmpleado == 'VACANTE' || pues.NombreEmpleado == "vacante") {
       dpt
       .findByIdAndUpdate(
         pues.Position,
@@ -113,7 +113,7 @@ router.post("/addPuesto", (req, res, next) => {
     }
     console.log(editedPuesto);
 
-  if (editedPuesto.NombreEmpleado == "VACANTE" || editedPuesto.NombreEmpleado == "Vacante") {
+  if (editedPuesto.NombreEmpleado == "VACANTE" || editedPuesto.NombreEmpleado == "Vacante" || editedPuesto.NombreEmpleado == "vacante") {
         dpt
           .findByIdAndUpdate(
             editedPuesto.Position,

@@ -32,12 +32,12 @@ chart = [];
         label: 'Distribución Puestos Funcionarios vs. Laborales',
         data: [this.values1, this.values2],
         backgroundColor: [
-          '#6492A9',
-          '#98B9CB',
+          '#48A9C5',
+          '#EAA842',
         ],
         borderColor: [
-          '#6492A9',
-          '#98B9CB',
+          '#48A9C5',
+          '#EAA842',
         ],
       borderWidth: 1
   }]

@@ -59,8 +59,8 @@ label {
 .btn-primary:hover {
 
   color: #fff;
-  background-color: #00CCB3;
-  border-color: #00CCB3;
+  background-color: #48A9C5;
+  border-color: #48A9C5;
 
 }
 
@@ -70,9 +70,14 @@ label {
 }
 
 .btn-secondary {
+  border-color: #f16051;
+  background-color: #f16051;
+  color: white;
+}
+.btn-secondary:hover {
   background-color: #f16051;
   border-color: #f16051;
-  color:  white;
+  color: white;
 }
 
 .btn-warning {
@@ -107,6 +112,6 @@ span{
 }
 
 .modal-header {
-  background-color: #1875B1;
+  background-color: #48A9C5;
 }
 

@@ -1,8 +1,9 @@
 <div *ngIf="position"> 
-
+<div *ngIf='Auth.user'>
 
 <h2>{{position.position.FichaDPT.DenomPuesto}}</h2>
-<p> 'Usuario', hac clic en el icono correspondiente para ver la información que necesitas</p>
+<p> {{Auth.user.username}}, hac clic en el icono correspondiente para ver la información que necesitas</p>
+
 <mat-grid-list cols="3" rowHeight="175px">
     <mat-grid-tile>
       <img src='../../../assets/images/content.png' width="80px" href='#1' [routerLink]="['./dpt', position.position._id]">
@@ -19,4 +20,6 @@
   </mat-grid-list>
 
         <router-outlet></router-outlet>
+
+</div>
 </div>

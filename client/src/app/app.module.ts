@@ -48,6 +48,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AuthenticationService } from '../services/authentication.service';
 import { BubbleChartComponent } from './Charts/bubble-chart/bubble-chart.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { RPTColectivosComponent } from './rptcolectivos/rptcolectivos.component';
 
 
 
@@ -73,6 +74,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     LoginComponent,
     SignupComponent,
     BubbleChartComponent,
+    RPTColectivosComponent,
   ],
   entryComponents: [
   ]

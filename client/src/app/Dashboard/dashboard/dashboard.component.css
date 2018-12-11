@@ -1,6 +1,3 @@
-mat-grid-list {
-margin: 0 20px 0 20px;  
-}
 
 mat-grid-tile {
   background: #F0F1F5;
@@ -18,19 +15,19 @@ h3 {
 }
 
 .a {
-  color: #EAA842;
+  color: #48A9C5;
   font-weight: 500;
   text-align: center;
 }
 
 .b {
-  color: #395C87;
+  color: #52D2BC;
   font-weight: 500;
   text-align: center;
 }
 
 .c {
-  color: #C85034;
+  color: #FF5C39;
   font-weight: 500;
   text-align: center;
 }
@@ -43,7 +40,8 @@ h4 {
 
 h5 {
   margin-bottom: 20px;
-  color: #F5A51E;
+  color: #395C87;
+  text-align: center;
 }
 
 mat-list {

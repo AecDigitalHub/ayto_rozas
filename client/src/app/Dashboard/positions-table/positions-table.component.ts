@@ -19,7 +19,6 @@ constructor(public PositionTable: DashboardService) {}
 
 ngOnInit() {
   this.PositionTable.getPositions().subscribe(Positions => {
-    console.log(Positions);
     this.positions = Positions.positions;
   });
 

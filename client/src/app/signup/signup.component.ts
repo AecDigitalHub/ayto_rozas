@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +14,7 @@ export class SignupComponent implements OnInit {
   password: any;
   email: any;
 
-  constructor(private authentication: AuthenticationService, private router: Router) { }
+  constructor(private authentication: AuthenticationService, private router: Router, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -21,7 +23,12 @@ export class SignupComponent implements OnInit {
     this.authentication.signup(username, email, password).subscribe( (user: any) => {
       console.log(`WELCOME USER ${user.username}, register OK`);
       console.log(user);
-      this.router.navigate(['/']);
+      this.router.navigate(['/Dashboard']);
     });
+}
+openSnackBar(message: string, action: string) {
+  this.snackBar.open(message, action, {
+    duration: 1000,
+  });
 }
 }

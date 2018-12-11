@@ -23,10 +23,11 @@ export class AreaComponent implements OnInit {
   EmployeesCount: Number;
   Colectivos: any;
   Grupos: any;
+  SalaryDist: any;
   Vacantes: Number;
   KeysGruposDist: Array<string> = ['Grupo A: A1', 'Grupo B: A2', 'Grupo C: C1', 'Grupo D: C2', 'Grupo E'];
   KeysSalaryDist: Array<string> = ['15-20k', '20-35k', '35-50k', '> 50k'];
-values: [25, 54, 150, 5];
+
   constructor(public area: AreaService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -34,6 +35,7 @@ values: [25, 54, 150, 5];
       (this.Area = params['area']),
       this.area.getArea(this.Area).subscribe(Area => {
       this.AreaPositions = Area;
+
       console.log(this.AreaPositions);
       this.PositionsCount = Area.positions.length;
     });
@@ -65,12 +67,13 @@ this.route.params.subscribe(params => {
     console.log(this.Grupos);
   });
 });
-// this.route.params.subscribe(params => {
-//   (this.Area = params['area']),
-//   this.area.getSalaryDist(this.Area).subscribe(SalaryDist => {
-//   console.log(SalaryDist);
-//   });
-// });
+this.route.params.subscribe(params => {
+  (this.Area = params['area']),
+  this.area.getSalaryDist(this.Area).subscribe(SalaryDist => {
+    this.SalaryDist = SalaryDist;
+  console.log(SalaryDist);
+  });
+});
 }
 }
 

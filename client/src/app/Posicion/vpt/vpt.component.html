@@ -1,24 +1,33 @@
 <div *ngIf="position">
-  <mat-grid-list class="divider" cols="1" rowHeight="30px">
+  <mat-grid-list class="divider" cols="1" rowHeight="20px">
     <mat-grid-tile class="divider"></mat-grid-tile>
   </mat-grid-list>
 
   <div *ngIf="position.vpt == null">
-    <h4>Actualmente no existe VPT para este puesto.</h4>
-    <h4>¿Deseas comenzar su valoración?</h4>
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="
-        addValoracion(
-          position.position._id,
-          position.position.CodigoDPT,
-          Complementos
-        )
-      "
-    >
-      <i class="fas fa-plus"></i> Comenzar valoración
-    </button>
+      <mat-grid-list cols="3" rowHeight="50px">
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile><h4>Aún no existe VPT para este puesto.</h4>
+        </mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="3" rowHeight="110px">
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile> <button
+          type="button"
+          class="btn btn-primary"
+          (click)="
+            addValoracion(
+              position.position._id,
+              position.position.CodigoDPT,
+              Complementos
+            )
+          "
+        >
+          <i class="fas fa-plus"></i> Comenzar valoración
+        </button></mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+      </mat-grid-list>
+   
   </div>
 
   <div *ngIf="position.vpt">
@@ -349,7 +358,7 @@
           <h4>Total CD: {{ position.vpt.Complementos.TotCD }}</h4>
         </div>
         <div>
-          <mat-grid-list class="divider" cols="1" rowHeight="20px">
+          <mat-grid-list class="divider" cols="1" rowHeight="5px">
             <mat-grid-tile class="divider"></mat-grid-tile>
           </mat-grid-list>
           <h2>Complemento Específico</h2>

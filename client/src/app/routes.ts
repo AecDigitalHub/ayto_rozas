@@ -9,6 +9,7 @@ import { DPTComponent } from './Posicion/dpt/dpt.component';
 import { VPTComponent } from './Posicion/vpt/vpt.component';
 import { RPTComponent } from './Posicion/rpt/rpt.component';
 import { ComplementoComponent } from './Complementos/complemento/complemento.component';
+import { RPTColectivosComponent } from './rptcolectivos/rptcolectivos.component';
 
 
 export const routes: Routes = [
@@ -25,5 +26,6 @@ export const routes: Routes = [
     ]
    },
   { path: 'Complementos/:complemento', component: ComplementoComponent },
+  { path: 'RPT', component: RPTColectivosComponent }
 ];
 

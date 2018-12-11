@@ -6,7 +6,10 @@ const dpt = require("../../models/dpt_model");
 const _ = require("lodash");
 
 router.get("/:area", (req, res, next) => {
-  dpt.find({ 'FichaDPT.Area': req.params.area }).then(positions => {
+  dpt.find({ 'FichaDPT.Area': req.params.area })
+  .populate("Valoracion")
+  .populate("Puestos")
+  .then(positions => {
      return res.status(200).json({ positions });
   });
 });

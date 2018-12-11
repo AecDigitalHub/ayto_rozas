@@ -28,40 +28,32 @@
 
 
 
-<mat-grid-list cols="2" rowHeight="300px">
-  <!-- <mat-grid-tile>
-    <mat-card>
-      <app-pie-chart [values1]='Funcionarios' [values2]='Laborales'></app-pie-chart>
-    </mat-card>
-  </mat-grid-tile> -->
-
-  
+<mat-grid-list cols="3" rowHeight="300px">
 
   <mat-grid-tile>
       <app-lineal-chart [keys]='KeysSalaryDist' [values]='SalaryDist'></app-lineal-chart>
   </mat-grid-tile>
+
+  <mat-grid-tile>
+  <div *ngIf="Colectivos">
+      <app-pie-chart [values1]='Colectivos.funcionarios' [values2]='Colectivos.laborales' width="100px" height="100px"></app-pie-chart>
+  </div>
+  </mat-grid-tile>
+
   <mat-grid-tile>
     <mat-card>
-    <mat-card-title>Algunas Estadísticas...</mat-card-title>
-    <mat-list>
     <mat-list-item>
-      <h4>Promedios Puestos/Área</h4>
+      <h5>Promedio Puestos/Área:</h5>
       <span class="mat-list-item-divider"></span>
-      <h5>{{AvgArea}}</h5>
+      <h5 class="b">{{AvgArea}} Puestos</h5>
       </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
-        <h4>Título</h4>
+        <h5>Retribución media:</h5>
         <span class="mat-list-item-divider"></span>
-        <h5>Número</h5>
+        <h5 class="b">{{SalaryAvg}} Euros</h5>
         </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>
-        <h4>Título</h4>
-        <span class="mat-list-item-divider"></span>
-        <h5>Número</h5>
-        </mat-list-item>
-  </mat-list>
 </mat-card>
 </mat-grid-tile>
 </mat-grid-list>

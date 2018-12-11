@@ -12,53 +12,42 @@ import { Chart } from 'chart.js';
   templateUrl: './bubble-chart.component.html',
   styleUrls: ['./bubble-chart.component.css']
 })
-export class BubbleChartComponent implements OnInit {
+export class BubbleChartComponent implements OnInit, OnChanges {
   @Input() keys: Array<string>;
   @Input() values: Array<number>;
-  chart = [];
+  chart2 = [];
 
   constructor() {}
 
   ngOnInit() {
-    this.createChart();
   }
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   if (changes['values']) {
-  //     this.createChart();
-  //   }
-  // }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['values']) {
+      this.createChart();
+    }
+  }
 
   createChart() {
-    this.chart = new Chart('bubble-chart', {
+    this.chart2 = new Chart('bubble-chart', {
       type: 'doughnut',
-      data: this.values,
-      // labels: this.keys
-      //     options: {
-      //       legend: {
-      //         display: false
-      //       },
-      //       scales: {
-      //         xAxes: [
-      //           {
-      //             display: true
-      //           }
-      //         ],
-      //         yAxes: [
-      //           {
-      //             display: true
-      //     }
-      //   ]
-      // }
-      //   }
-      // });
+      data: {
+      labels: this.keys,
+      datasets: [
+        {
+          data: this.values,
+          backgroundColor: ['#48A9C5', '#EAA842', '#F8485E', '#52D2BC']
+
+        }
+      ]
+    },
       options: {
         responsive: true,
         legend: {
           position: 'top'
         },
         title: {
-          display: true,
+          display: false,
           text: 'Chart.js Doughnut Chart'
         },
         animation: {

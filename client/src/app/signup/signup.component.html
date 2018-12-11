@@ -1,26 +1,43 @@
-
+<html>
 <form> 
+  <div class="background">
+    <div class="wrapper fadeInDown">
 
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="basic-addon1">Username</span>
-    </div>
-    <input input type="text" [(ngModel)]="username" name="username" aria-label="Username">
-  </div>
+        <div id="formContent">
+            <!-- Tabs Titles -->
+            <h2 class="active"> RPT By </h2>
+        
+            <!-- Icon -->
+            <div class="fadeIn first">
+              <img src="../../assets/images/logo_las_rozas.png" width="200px"/>
+              <mat-grid-list class="divider" cols="1" rowHeight="20px">
+                <mat-grid-tile class="divider"></mat-grid-tile>
+              </mat-grid-list>
+            </div>
+        
+            <!-- SignUp Form -->
+            <form>
+                <input input type="text" [(ngModel)]="username" name="username" placeholder="Selecciona un nombre usuario">
+                <input type="text" [(ngModel)]="email" class="fadeIn second" name="email"  placeholder="Tu dirección mail">
+                <input type="password" [(ngModel)]="password" name="password" placeholder="Introduce un password">
+
+      </form>
   
-  <div class="input-group mb-3">
-    <input type="text" [(ngModel)]="email" name="email"  aria-label="Recipient's username">
-    <div class="input-group-append">
-      <span class="input-group-text" id="basic-addon2">Email</span>
-    </div>
-  </div>
+      <p routerLink="/login">¿Ya registrado?</p>
+        
+      <mat-grid-list class="divider" cols="1" rowHeight="20px">
+        <mat-grid-tile class="divider"></mat-grid-tile>
+      </mat-grid-list>
   
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="basic-addon3">Password</span>
-    </div>
-    <input type="password" [(ngModel)]="password" name="password" aria-describedby="basic-addon3">
-  </div>
+      <div id="formFooter">
+          <button (click)="signup(username,email,password);
+          openSnackBar('Bienvenid@', '!!')"
+           class="btn btn-info"> Registrarme </button>
+        </div>
+          </div>
+
+</div>
+</div>
   
-  <button (click)="signup(username,email,password)"> SIGNUP </button>
   </form>
+</html>

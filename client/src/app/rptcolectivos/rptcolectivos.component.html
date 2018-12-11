@@ -1,0 +1,97 @@
+<div *ngIf='Auth.user'>
+
+  
+  <mat-grid-list class="divider" cols="1" rowHeight="30px">
+    <mat-grid-tile class="divider"></mat-grid-tile>
+  </mat-grid-list>
+
+  <h2>RPT - Ayto. de Las Rozas</h2>
+<p> {{Auth.user.username}}, desde aquí podrás consultar la Relación de Puestos de Trabajo según está configurada en todo momento</p>
+<mat-grid-list cols="1" rowHeight="175px">
+    <mat-grid-tile>
+      <img src='../../../assets/images/responsive.png' width="80px">
+        </mat-grid-tile>
+    
+  </mat-grid-list>
+
+
+  <mat-tab-group>
+    <mat-tab label="RPT - Funcionarios">
+       
+      <!-- <mat-grid-list cols="4" rowHeight="70px">
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile><button onclick="Exportar()">Excel</button>
+        </mat-grid-tile>
+      </mat-grid-list> -->
+
+
+            <table class="table table-striped" id="tableData">
+                <thead>
+                  <tr>
+                    <th scope="col">Cód. Puesto</th>
+                    <th scope="col">Denominación Puesto</th>
+                    <th scope="col">Área</th>
+                    <th scope="col">Nombre Empleado</th>
+                    <th scope="col">Salario Base</th>
+                    <th scope="col">Total CD</th>
+                    <th scope="col">Total CE</th>
+                    <th scope="col"><button type="button" onclick="Exportar()" class="btn btn-primary">
+                      <i class="fas fa-file-excel"></i>  Exportar </button></th>
+                  </tr>
+                </thead>
+                <tbody *ngFor = "let RPTFuncionario of RPTFuncionarios">
+                  <tr *ngFor = "let puesto of RPTFuncionario.Puestos">
+                    <td>{{puesto.CodEmpleado}}</td>
+                    <td>{{RPTFuncionario.FichaDPT.DenomPuesto}}</td>
+                    <td>{{RPTFuncionario.FichaDPT.Area}}</td>
+                    <td>{{puesto.NombreEmpleado}}</td>
+                    <td *ngIf="RPTFuncionario.Valoracion[0]">{{RPTFuncionario.Valoracion[0].SalarioBase}}</td>
+                    <td *ngIf="RPTFuncionario.Valoracion[0]">{{RPTFuncionario.Valoracion[0].Complementos.TotCD}}</td>
+                    <td *ngIf="RPTFuncionario.Valoracion[0]">{{RPTFuncionario.Valoracion[0].Complementos.TotCE}}</td>
+                        <td *ngIf="!RPTFuncionario.Valoracion[0]"> - </td>
+                        <td *ngIf="!RPTFuncionario.Valoracion[0]"> - </td>
+                        <td *ngIf="!RPTFuncionario.Valoracion[0]"> - </td>
+                    <td><button type="button" href='#name' [routerLink]="['/Posicion', RPTFuncionario._id]" class="btn btn-primary2">
+                      <i class="fas fa-search-plus"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+
+      </mat-tab>
+      <mat-tab label="RPT - Laborales">
+          <table class="table table-striped" id="tableData">
+              <thead>
+                <tr>
+                  <th scope="col">Cód. Puesto</th>
+                  <th scope="col">Denominación Puesto</th>
+                  <th scope="col">Área</th>
+                  <th scope="col">Nombre Empleado</th>
+                  <th scope="col">Salario Base</th>
+                  <th scope="col">Total CE</th>
+                  <th scope="col"><button type="button" onclick="Exportar()" class="btn btn-primary">
+                    <i class="fas fa-file-excel"></i>  Exportar </button></th>
+                </tr>
+              </thead>
+              <tbody *ngFor = "let RPTLaboral of RPTLaborales">
+                <tr *ngFor = "let puesto of RPTLaboral.Puestos">
+                  <td>{{puesto.CodEmpleado}}</td>
+                  <td>{{RPTLaboral.FichaDPT.DenomPuesto}}</td>
+                  <td>{{RPTLaboral.FichaDPT.Area}}</td>
+                  <td>{{puesto.NombreEmpleado}}</td>
+                  <td *ngIf="RPTLaboral.Valoracion[0]">{{RPTLaboral.Valoracion[0].SalarioBase}}</td>
+                  <td *ngIf="RPTLaboral.Valoracion[0]">{{RPTLaboral.Valoracion[0].Complementos.TotCE}}</td>
+                      <td *ngIf="!RPTLaboral.Valoracion[0]"> - </td>
+                      <td *ngIf="!RPTLaboral.Valoracion[0]"> - </td>
+                  <td><button type="button" href='#name' [routerLink]="['/Posicion', RPTLaboral._id]" class="btn btn-primary2">
+                    <i class="fas fa-search-plus"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+            
+            
+        </mat-tab>
+    </mat-tab-group>
+    
+</div>

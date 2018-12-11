@@ -12,10 +12,12 @@ const passport     = require('passport');
 const logger       = require('morgan');
 const path         = require('path');
 const cors = require('cors');
+require('dotenv').config();
 
 
 
-DBURL=process.env.MONGODB_URI;
+
+DBURL=process.env.DBURL;
 
 
 mongoose.Promise = Promise;
