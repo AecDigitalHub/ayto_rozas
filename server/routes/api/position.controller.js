@@ -51,8 +51,8 @@ router.get("/:id", (req, res, next) => {
             valors
               .findOneAndUpdate(
                 { CodDPT: position.CodigoDPT },
-                { SalarioBase: retribucion.SalarioBase,
-                CActividad: retribucion.CActividadNuevo },
+                { "$set":{ SalarioBase: retribucion.SalarioBase,
+                CActividad: retribucion.CActividadNuevo }},
                 { new: true }
               )
               .populate("Complementos.ComplDestino")
