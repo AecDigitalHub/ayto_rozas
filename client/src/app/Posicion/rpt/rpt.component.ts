@@ -27,18 +27,15 @@ constructor(public snackBar: MatSnackBar, public PositionRPTView: PositionServic
 ngOnInit() {
   this.route.params.subscribe(params => {
     this.positionId = params['id'];
-    console.log(this.positionId);
   });
 
   this.PositionRPTView.getPosition(this.positionId).subscribe(position => {
     this.position = position.position;
-  console.log(this.position);
 });
 }
 addPuesto(Position, CodDPT, CodEmpleado, DenomPuesto, NombreEmpleado, Situacion) {
   this.Puestos.addPuesto(Position, CodDPT, CodEmpleado, DenomPuesto, NombreEmpleado, Situacion).subscribe(puesto => {
   this.newPuesto = puesto;
-  console.log(this.newPuesto);
   this.ngOnInit();
 });
 }

@@ -188,7 +188,6 @@ editedComplemento: any;
   getPosition(position) {
     return this.http.get(`${BASEURL}/api/positions/${position}`).pipe(map(res => {
       const Position = res.json();
-      console.log(Position);
       return Position;
     }));
 }
@@ -236,9 +235,6 @@ editSubcompl(id, Complemento, CodDPT, SubComplemento, Grado, Puntos, Retribucion
   return this.http
   .put(`${BASEURL}/api/complementos/edit/subcomplemento/${id}`, { id, Complemento, CodDPT, SubComplemento, Grado, Puntos, Retribucion })
   .pipe(map((res: Response) => {
-    console.log(res.json());
-  // const editedSubComplemento = res.json();
-  // return this.editedSubComplemento;
 }));
 }
 removeSubcompl(id) {

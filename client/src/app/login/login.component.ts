@@ -20,12 +20,11 @@ export class LoginComponent implements OnInit {
   login(username: string, password: string) {
     console.log('login....');
     this.Auth.login(username, password).subscribe( user => {
-      console.log(user);
       this.User = user;
       if (this.User) {
         this.router.navigate(['Dashboard']);
       } else {
-       this.router.navigate(['/']);
+       this.router.navigate(['/signup']);
       }
       });
     }

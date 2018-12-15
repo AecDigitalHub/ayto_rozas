@@ -24,16 +24,11 @@ table: any;
 
   ngOnInit() {
 
-// this.dashboard.getRPTFuncionarios().subscribe(Funcionarios => {
-// this.RPTFuncionarios = Funcionarios.positions;
-// console.log(this.RPTFuncionarios);
-// });
 this.dashboard.getRPTLaborales().subscribe(Laborales => {
   this.RPTLaborales = Laborales.positions;
 });
 this.dashboard.getRPTFuncionarios().subscribe(Funcionarios => {
   this.RPTFuncionarios = Funcionarios.positions;
-  console.log(this.RPTFuncionarios);
 
   });
 }
@@ -44,7 +39,7 @@ exportAsXLSXLaborales(): void {
   this.excelService.exportAsExcelFile(this.RPTLaborales, 'sample');
 }
 tableToJson(table) {
-  const data = []; // first row needs to be headers var headers = []; 
+  const data = []; // first row needs to be headers var headers = [];
   for (let i = 0; i < table.rows[0].cells.length; i++) {
   //  headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi, '');
   }

@@ -16,15 +16,6 @@ const retribSubcomplCELaborales = require("../../models/vpt_retribSubcomplCELabo
 
 const _ = require("lodash");
 
-// router.get("/complemento/:id", (req, res, next) => {
-//   vptcompls.findById(req.params.id)
-//   .populate("Subcomplementos")
-//   .then(complemento => {
-    
-//     return res.status(200).json(complemento);
-//   });
-// });
-
 router.get("/complemento/:id", (req, res, next) => {
   vptcompls.findById(req.params.id)
   .populate("Subcomplementos")
@@ -56,16 +47,13 @@ router.get("/valoracion/:id", (req, res, next) => {
   const PuntosCD = valoracion.Complementos.ComplDestino.reduce(function(tot, element){
     return Math.round(tot + Number(element.Puntos))
   }, 0);
-  // console.log(PuntosCD)
     valors.findByIdAndUpdate(valoracion.id, { 'Complementos.TotCE': TotCE.toFixed(2) }, { new:true })
     .then(valoracion => res.status(200).json())
     .catch(err => console.log(err));
     retribcdestinos.findOne({ Puntos: PuntosCD }).then(retribcdestino => {
-      // console.log(retribcdestino)
       valors.findByIdAndUpdate(valoracion.id,  {'Complementos.TotCD': retribcdestino.Retribucion, 'Complementos.TotPuntosCD': PuntosCD}, { new: true })
       .then(valoracion => res.status(200).json())
     .catch(err => console.log(err));
-    // console.log(valoracion.Complementos.TotCD)
     })
   });
 });
@@ -73,7 +61,6 @@ router.get("/valoracion/:id", (req, res, next) => {
 
 router.get("/:id/complementodestino/:complemento", (req, res, next) => {
   vptcompls.findById(req.params.id).then(vpt => {
-    // console.log(vpt.Complementos.ComplDestino);
     vptcompls.find({ 'vpt.Complementos.ComplDestino._id': { $all: ['req.params.complemento'] }}).then(compl => {
     return res.status(200).json({compl});
   });
@@ -81,13 +68,11 @@ router.get("/:id/complementodestino/:complemento", (req, res, next) => {
 });
 
 router.post("/add/subcomplemento", (req, res, next) => {
-  console.log(req.body)
 
 dpts.findOne( { CodigoDPT: req.body.CodDPT }).then(dpt => {
 if (dpt.FichaDPT.Colectivo == '(L) Laboral'){
 
   retribSubcomplCELaborales.findOne( { Subcomplemento: req.body.SubComplemento, Grado: req.body.Grado }).then(retribucion => {
-    console.log(retribucion)
 
   const newSubcomplemento = new vptsubcompls({
     Complemento: req.body.Complemento,
@@ -111,7 +96,6 @@ if (dpt.FichaDPT.Colectivo == '(L) Laboral'){
 })
 } else {
   retribSubcomplCE.findOne( { Subcomplemento: req.body.SubComplemento, Grado: req.body.Grado }).then(retribucion => {
-    console.log(retribucion)
 
   const newSubcomplemento = new vptsubcompls({
     CodDPT: req.body.CodDPT,
@@ -140,7 +124,6 @@ if (dpt.FichaDPT.Colectivo == '(L) Laboral'){
 
 router.post("/add/complementodestino", (req, res, next) => {
   retribcomplCD.findOne( { Complemento: req.body.Complemento, Grado: req.body.Grado }).then(retribucion => {
-    console.log(retribucion)
 
   const newComplemento = new vptcompls({
     Valor: req.body.Valor,
@@ -173,7 +156,6 @@ dpts.findOne({ CodigoDPT: req.body.CodDPT }).then(dpt => {
 if (dpt.FichaDPT.Colectivo == '(L) Laboral') {
  
   retribcomplCELaborales.findOne( { Complemento: req.body.Complemento, Grado: req.body.Grado }).then(retribucion => {
-    console.log(retribucion)
 
     const newComplemento = new vptcompls({
       Valor: req.body.Valor,
@@ -203,7 +185,6 @@ if (dpt.FichaDPT.Colectivo == '(L) Laboral') {
 })
 } else {
   retribcomplCE.findOne( { Complemento: req.body.Complemento, Grado: req.body.Grado }).then(retribucion => {
-    console.log(retribucion)
 
     const newComplemento = new vptcompls({
       Valor: req.body.Valor,
@@ -287,7 +268,6 @@ router.put('/edit/subcomplemento/:id', (req, res, next) => {
     Puntos: retribucion.Puntos,
     Retribucion: parseFloat(retribucion.Retribución).toFixed(2)
    }
-   console.log(editedSubComplemento)
 
 
   vptsubcompls.findByIdAndUpdate(req.params.id, editedSubComplemento, { new: true })
@@ -315,8 +295,6 @@ router.put('/edit/subcomplemento/:id', (req, res, next) => {
 
 
 router.put('/edit/complemento/:id', (req, res, next) => {
-  console.log(req.body);
-  console.log(req.params.id)
   dpts.findOne( { CodigoDPT: req.body.CodDPT }).then(dpt => {
     if (dpt.FichaDPT.Colectivo == '(L) Laboral'){
       retribcomplCELaborales.findOne( { Complemento: req.body.Complemento, Grado: req.body.Grado }).then(retribucion => {
@@ -351,8 +329,6 @@ router.put('/edit/complemento/:id', (req, res, next) => {
 });
 
 router.put('/edit/complementodest/:id', (req, res, next) => {
-  console.log(req.body);
-  console.log(req.params.id)
   
     retribcomplCD.findOne( { Complemento: req.body.Complemento, Grado: req.body.Grado }).then(retribucion => {
     let editedComplemento = { 

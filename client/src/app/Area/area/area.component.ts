@@ -36,7 +36,6 @@ export class AreaComponent implements OnInit {
       this.area.getArea(this.Area).subscribe(Area => {
       this.AreaPositions = Area;
 
-      console.log(this.AreaPositions);
       this.PositionsCount = Area.positions.length;
     });
   });
@@ -57,21 +56,18 @@ this.route.params.subscribe(params => {
   (this.Area = params['area']),
   this.area.getColectivos(this.Area).subscribe(Colectivos => {
     this.Colectivos = Colectivos;
-    console.log(this.Colectivos);
   });
 });
 this.route.params.subscribe(params => {
   (this.Area = params['area']),
   this.area.getGruposDist(this.Area).subscribe(Grupos => {
     this.Grupos = Grupos;
-    console.log(this.Grupos);
   });
 });
 this.route.params.subscribe(params => {
   (this.Area = params['area']),
   this.area.getSalaryDist(this.Area).subscribe(SalaryDist => {
     this.SalaryDist = SalaryDist;
-  console.log(SalaryDist);
   });
 });
 }

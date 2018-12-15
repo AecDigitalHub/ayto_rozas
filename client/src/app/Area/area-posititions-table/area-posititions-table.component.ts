@@ -22,10 +22,9 @@ constructor(public AreaPositionTable: AreaService, private route: ActivatedRoute
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      (this.Area = params['area']),
+    (this.Area = params['area']),
     this.AreaPositionTable.getArea(this.Area).subscribe(Positions => {
-      console.log(Positions);
-      this.AreaPositions = Positions.positions;
+    this.AreaPositions = Positions.positions;
     });
   });
 }

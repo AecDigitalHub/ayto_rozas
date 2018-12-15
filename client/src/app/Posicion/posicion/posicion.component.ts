@@ -30,7 +30,6 @@ position: Observable<any>;
 
     this.PositionView.getPosition(this.positionId).subscribe(Position => {
       this.position = Position;
-      console.log(this.position);
     });
   }
 

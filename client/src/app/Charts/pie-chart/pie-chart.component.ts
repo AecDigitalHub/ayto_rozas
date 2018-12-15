@@ -14,11 +14,9 @@ chart = [];
   constructor() { }
 
   ngOnInit() {
-    console.log(this.values1, this.values2);
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(this.values1);
   if (changes['values1']) {
      this.createChart();
    }

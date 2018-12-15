@@ -83,7 +83,6 @@ getRPTLaborales() {
       SalaryCount = SalaryCount + (Number(res.json().positions[i].Valoracion[0].SalarioBase) + Number(res.json().positions[i].Valoracion[0].Complementos.TotCD) + Number(res.json().positions[i].Valoracion[0].Complementos.TotCE));
     }
   }
-     console.log(SalaryCount);
       return SalaryCount;
         }));
   }
@@ -131,7 +130,6 @@ getVacancy() {
     }
   }
     const SalaryDist = [salary0, salary1, salary2, salary3, salary4];
-    console.log(SalaryDist);
     return SalaryDist;
   }));
 }

@@ -112,7 +112,6 @@ router.get("/colectivo/Funcionarios", (req, res, next) => {
       pos.reduce(function(acc, e) {
         valors.findOne({ CodDPT: e.CodigoDPT }).then(valoracion => {
           if (valoracion != null) {
-            console.log(valoracion.id);
             dpt.findByIdAndUpdate(
               valoracion.Position,
               // { $push: { Valoracion: valoracion.id } },
@@ -143,10 +142,8 @@ router.get("/colectivo/Laborales", (req, res, next) => {
       pos.reduce(function(acc, e) {
         valors.findOne({ CodDPT: e.CodigoDPT }).then(valoracion => {
           if (valoracion != null) {
-            console.log(valoracion.id);
             dpt.findByIdAndUpdate(
               valoracion.Position,
-              // { $push: { Valoracion: valoracion.id } },
               { Valoracion: valoracion.id },
               { new: true },
               function(err, data) {}
@@ -224,7 +221,6 @@ router.put("/remove/funcion/:id", (req, res, next) => {
 router.put("/add/tarea/:id", (req, res, next) => {
   const Tarea = req.body;
   let TareatoAdd = Tarea;
-  console.log(TareatoAdd);
 
   dpt.findById(req.params.id).then(pos => {
     actualiz = pos.Tareas.unshift(TareatoAdd);
@@ -238,7 +234,6 @@ router.put("/add/tarea/:id", (req, res, next) => {
 router.put("/remove/tarea/:id", (req, res, next) => {
   const Tarea = req.body;
   let TareatoRemove = Tarea.tarea;
-  console.log(TareatoRemove);
 
   dpt.findById(req.params.id).then(pos => {
     actual = pos.Tareas.pull(TareatoRemove);
@@ -252,11 +247,9 @@ router.put("/remove/tarea/:id", (req, res, next) => {
 router.put("/add/certificacion/:id", (req, res, next) => {
   const Certificacion = req.body;
   let CertificaciontoAdd = Certificacion.certificacion;
-  console.log(CertificaciontoAdd);
 
   dpt.findById(req.params.id).then(pos => {
     actualiz = pos.ConocExper.Certificaciones.unshift(CertificaciontoAdd);
-    console.log(pos.ConocExper.Certificaciones);
     dpt
       .findByIdAndUpdate(
         req.params.id,
@@ -274,7 +267,6 @@ router.put("/add/habilidad/:id", (req, res, next) => {
 
   dpt.findById(req.params.id).then(pos => {
     actualiz = pos.ConocExper.Habilidades.unshift(HabilidadtoAdd);
-    console.log(pos.ConocExper.Certificaciones);
     dpt
       .findByIdAndUpdate(
         req.params.id,
@@ -323,7 +315,6 @@ router.put("/remove/habilidad/:id", (req, res, next) => {
 router.put("/add/formacion/:id", (req, res, next) => {
   const Formacion = req.body;
   let FormaciontoAdd = Formacion.formacion;
-  console.log(Formacion);
 
   dpt.findById(req.params.id).then(pos => {
     actualiz = pos.ConocExper.FormCompl.push(FormaciontoAdd);
@@ -357,7 +348,6 @@ router.put("/remove/formacion/:id", (req, res, next) => {
 router.put("/add/idioma/:id", (req, res, next) => {
   const Idioma = req.body;
   let IdiomatoAdd = Idioma;
-  console.log(IdiomatoAdd);
 
   dpt.findById(req.params.id).then(pos => {
     actualiz = pos.ConocExper.Idiomas.unshift(IdiomatoAdd);
@@ -374,7 +364,6 @@ router.put("/add/idioma/:id", (req, res, next) => {
 router.put("/remove/idioma/:id", (req, res, next) => {
   const Idioma = req.body;
   let IdiomatoRemove = Idioma.idioma;
-  console.log(IdiomatoRemove);
 
   dpt.findById(req.params.id).then(pos => {
     actual = pos.ConocExper.Idiomas.pull(IdiomatoRemove);
@@ -391,7 +380,6 @@ router.put("/remove/idioma/:id", (req, res, next) => {
 router.put("/add/guia/:id", (req, res, next) => {
   const Guia = req.body;
   let GuiatoAdd = Guia.guia;
-  console.log(GuiatoAdd);
 
   dpt.findById(req.params.id).then(pos => {
     actualiz = pos.ResponsAut.GuiaOrientRecibidas.push(GuiatoAdd);
@@ -426,7 +414,6 @@ router.put("/remove/guia/:id", (req, res, next) => {
 router.put("/add/supervision/:id", (req, res, next) => {
   const Supervision = req.body;
   let SupervisiontoAdd = Supervision.supervision;
-  console.log(SupervisiontoAdd);
 
   dpt.findById(req.params.id).then(pos => {
     pos.ResponsAut.GradoSuperv.push(SupervisiontoAdd);
@@ -459,7 +446,6 @@ router.put("/remove/supervision/:id", (req, res, next) => {
 router.put("/add/relinterna/:id", (req, res, next) => {
   const Relacion = req.body;
   let RelaciontoAdd = Relacion.interna;
-  console.log(RelaciontoAdd);
 
   dpt.findById(req.params.id).then(pos => {
     actualiz = pos.RelacFuncionales.RelInternas.push(RelaciontoAdd);
@@ -492,7 +478,6 @@ router.put("/remove/relinterna/:id", (req, res, next) => {
 router.put("/add/relexterna/:id", (req, res, next) => {
   const Relacion = req.body;
   let RelaciontoAdd = Relacion.externa;
-  console.log(RelaciontoAdd);
 
   dpt.findById(req.params.id).then(pos => {
     actualiz = pos.RelacFuncionales.RelExternas.push(RelaciontoAdd);
@@ -542,7 +527,6 @@ router.put("/edit/condiciones/:id", (req, res, next) => {
     PeligrosidadPenosidad: PeligrosidadPenosidad
   };
   editedCondiciones = _.pickBy(editedCondiciones);
-  console.log(editedCondiciones);
 
   dpt
     .findByIdAndUpdate(
@@ -579,7 +563,6 @@ router.put("/edit/conocimientos/:id", (req, res, next) => {
     },
     Habilidades: Habilidades
   };
-  console.log(editedConocExper);
 
   dpt
     .findByIdAndUpdate(
@@ -608,7 +591,6 @@ router.put("/edit/responsaut/:id", (req, res, next) => {
     ResponsabilidadMando: ResponsabilidadMando,
     Subordinados: Subordinados
   };
-  console.log(editedResponsAut);
 
   dpt
     .findByIdAndUpdate(
@@ -650,7 +632,6 @@ router.put("/edit/ficha/:id", (req, res, next) => {
     NumPuestosHomog: NumPuestos
   };
   editedFicha = _.pickBy(editedFicha);
-  console.log(editedFicha);
 
   dpt
     .findByIdAndUpdate(req.params.id, { FichaDPT: editedFicha }, { new: true })
@@ -659,11 +640,9 @@ router.put("/edit/ficha/:id", (req, res, next) => {
 });
 
 router.put("/edit/mision/:id", (req, res, next) => {
-  console.log(req.body);
   const { Mision } = req.body;
   let editedMision = { Mision: Mision };
   editedMision = _.pickBy(editedMision);
-  console.log(editedMision);
 
   dpt
     .findByIdAndUpdate(req.params.id, editedMision, { new: true })

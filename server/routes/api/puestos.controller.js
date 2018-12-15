@@ -111,7 +111,6 @@ router.post("/addPuesto", (req, res, next) => {
       NombreEmpleado: NombreEmpleado,
       Situacion: Situacion
     }
-    console.log(editedPuesto);
 
   if (editedPuesto.NombreEmpleado == "VACANTE" || editedPuesto.NombreEmpleado == "Vacante" || editedPuesto.NombreEmpleado == "vacante") {
         dpt
@@ -128,7 +127,6 @@ router.post("/addPuesto", (req, res, next) => {
             { new: true }
           )
           .then(editedPuesto => res.status(200).json())
-          console.log(editedPuesto.NombreEmpleado)
         }
 
       else if (editedPuesto.NombreEmpleado !== "VACANTE" || editedPuesto.NombreEmpleado !== "Vacante") {
@@ -145,7 +143,6 @@ router.post("/addPuesto", (req, res, next) => {
           { new: true }
         )
         .then(editedPuesto => res.status(200).json())
-        console.log(editedPuesto.NombreEmpleado)
         }
 
 });

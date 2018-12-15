@@ -39,7 +39,6 @@ export class DashboardComponent implements OnInit {
     this.dashboard.getPositions().subscribe(Positions => {
       this.Positions = Positions;
       this.PositionsCount = Positions.positions.length;
-      console.log(this.Positions);
     });
     this.dashboard.getColectivos().subscribe(Colectivos => {
       this.Funcionarios = Colectivos.funcionarios;

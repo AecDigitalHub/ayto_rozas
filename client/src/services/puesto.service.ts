@@ -37,7 +37,7 @@ export class PuestoService {
       })
       .pipe(
         map((res: Response) => {
-          let newPuesto = res.json();
+          const newPuesto = res.json();
           return this.newPuesto;
         })
       );

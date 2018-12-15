@@ -60,7 +60,6 @@ export class AreaService {
       }
   }
   const GruposDist = [GrupoA, GrupoB, GrupoC, GrupoD, GrupoE];
-  console.log(GruposDist);
   return GruposDist;
 }));
 }
@@ -123,7 +122,6 @@ getSalaryDist(area) {
   }
 }
   const SalaryDist = [salary0, salary1, salary2, salary3, salary4];
-  console.log(SalaryDist);
   return SalaryDist;
 }));
 }

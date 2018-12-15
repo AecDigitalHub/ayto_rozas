@@ -15,7 +15,6 @@ export class TestService {
   constructor(private http: Http) { }
   getCol(area) {
     return this.http.get(`${BASEURL}/api/area/${area}`).pipe(map(res => {
-      console.log(res.json());
       let funcionarios = 0;
       let laborales = 0;
       for (let i = 0; i < res.json().positions.length; i++) {

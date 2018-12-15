@@ -39,7 +39,6 @@ export class AuthenticationService {
   signup(username: string, email: string, password: string): Observable<object> {
   return this.http.post(`${BASEURL}/api/signup`, { username, email, password }, this.options).pipe(map( (res: Response) => {
       this.user = res.json();
-      console.log(this.user);
       return this.user;
     }));
 }
@@ -47,7 +46,7 @@ export class AuthenticationService {
 
 login(username: string, password: string): Observable<object> {
   return this.http.post(`${BASEURL}/api/login`, { username, password }, this.options).pipe(map( (res: Response) => {
-      let user = res.json();
+      const user = res.json();
       this.user = user;
       return this.user;
     }));

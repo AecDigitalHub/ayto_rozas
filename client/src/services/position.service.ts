@@ -29,9 +29,7 @@ getValoracion(id) {
 }
 
 getComplementoAvg(id) {
-  return this.http.get(`${BASEURL}/api/complementos/complemento/${id}`).pipe(map((res:Response) => {
-    // const complemento = res.json();
-    //   return complemento;
+  return this.http.get(`${BASEURL}/api/complementos/complemento/${id}`).pipe(map((res: Response) => {
 }));
 }
 addValoracion(Position, CodigoDPT, Complementos) {
