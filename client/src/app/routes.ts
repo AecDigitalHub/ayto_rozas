@@ -18,11 +18,11 @@ export const routes: Routes = [
   { path: 'signup', component: SignupComponent},
   { path: 'Dashboard', component: DashboardComponent },
   { path: 'Area/:area', component: AreaComponent },
-  { path: 'Posicion/#/:id', component: PosicionComponent,
+  { path: 'Posicion/:id', component: PosicionComponent,
    children: [
-     { path: 'dpt/#/:id', component: DPTComponent },
-     { path: 'vpt/#/:id', component: VPTComponent},
-      { path: 'rpt/#/:id', component: RPTComponent}
+     { path: 'dpt/:id', component: DPTComponent },
+     { path: 'vpt/:id', component: VPTComponent},
+      { path: 'rpt/:id', component: RPTComponent}
     ]
    },
   { path: 'Complementos/:complemento', component: ComplementoComponent },
