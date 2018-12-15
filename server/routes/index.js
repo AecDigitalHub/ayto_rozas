@@ -11,6 +11,6 @@ const apiRoutes = require('./api/index.controller');
 //     res.sendFile(path.resolve('app/index.html'));
 // });
 
-router.use('/api', apiRoutes);
+router.use('/api', apiRoutes, express.static('app', { redirect: false }));
 
 module.exports = router;
