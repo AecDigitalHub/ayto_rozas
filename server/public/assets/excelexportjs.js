@@ -241,8 +241,10 @@
             var ua = window.navigator.userAgent;
             var msie = ua.indexOf("MSIE ");
 
-            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))  
+              // If Internet Explorer
             {
+                var txtArea1 = [] 
                 txtArea1.document.open("txt/html", "replace");
                 txtArea1.document.write(tab_text);
                 txtArea1.document.close();

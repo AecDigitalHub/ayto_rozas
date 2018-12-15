@@ -432,6 +432,7 @@ input[type=text]:placeholder {
   
   input[type=text] {
     background-color: #C3B7BC;
+    font-family: Arial, Helvetica, sans-serif;
     border: none;
     color: #0d0d0d;
     padding: 15px 32px;

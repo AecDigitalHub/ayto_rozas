@@ -17,6 +17,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
   styleUrls: ['./area.component.css']
 })
 export class AreaComponent implements OnInit {
+  User: any;
   Area: String;
   AreaPositions: Observable<Array<object>>;
   AreaDist: Observable<Array<number>>;

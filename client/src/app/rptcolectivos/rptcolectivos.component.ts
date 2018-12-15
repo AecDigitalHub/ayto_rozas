@@ -13,6 +13,7 @@ import { TableExport } from '../../../node_modules/tableexport';
   styleUrls: ['./rptcolectivos.component.css']
 })
 export class RPTColectivosComponent implements OnInit {
+User: any;
 colectivo: any;
 RPTFuncionarios: Position [];
 RPTLaborales: Position [];
