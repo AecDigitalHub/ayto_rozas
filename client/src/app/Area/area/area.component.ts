@@ -7,6 +7,7 @@ import { PhotoHeaderComponent } from '../../photo-header/photo-header.component'
 import { PieChartComponent } from '../../Charts/pie-chart/pie-chart.component';
 import { LinealChartComponent } from '../../Charts/lineal-chart/lineal-chart.component';
 import { BubbleChartComponent } from '../../Charts/bubble-chart/bubble-chart.component';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 
 
@@ -28,7 +29,7 @@ export class AreaComponent implements OnInit {
   KeysGruposDist: Array<string> = ['Grupo A: A1', 'Grupo B: A2', 'Grupo C: C1', 'Grupo D: C2', 'Grupo E'];
   KeysSalaryDist: Array<string> = ['15-20k', '20-35k', '35-50k', '> 50k'];
 
-  constructor(public area: AreaService, private route: ActivatedRoute) { }
+  constructor(public area: AreaService, private route: ActivatedRoute, public Auth: AuthenticationService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
