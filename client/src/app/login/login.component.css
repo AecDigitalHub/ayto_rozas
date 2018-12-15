@@ -317,7 +317,7 @@ input[type=text]:placeholder {
   }
   
   body {
-    font-family: "Poppins", sans-serif;
+    /* font-family: "Poppins", sans-serif; */
     height: 100vh;
   }
   
@@ -384,7 +384,7 @@ input[type=text]:placeholder {
   /* TABS */
   
   h2.inactive {
-    color: #cccccc;
+    color: #C3B7BC;
   }
   
   h2.active {
@@ -431,7 +431,7 @@ input[type=text]:placeholder {
   }
   
   input[type=text] {
-    background-color: #f6f6f6;
+    background-color: #C3B7BC;
     border: none;
     color: #0d0d0d;
     padding: 15px 32px;
@@ -441,7 +441,7 @@ input[type=text]:placeholder {
     font-size: 16px;
     margin: 5px;
     width: 85%;
-    border: 2px solid #f6f6f6;
+    border: 2px solid #C3B7BC;
     /* -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
@@ -452,7 +452,7 @@ input[type=text]:placeholder {
   }
   
   input[type=password] {
-    background-color: #f6f6f6;
+    background-color: #C3B7BC;
     border: none;
     color: #0d0d0d;
     padding: 15px 32px;
@@ -462,7 +462,7 @@ input[type=text]:placeholder {
     font-size: 16px;
     margin: 5px;
     width: 85%;
-    border: 2px solid #f6f6f6;
+    border: 2px solid #C3B7BC;
     /* -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
@@ -473,12 +473,12 @@ input[type=text]:placeholder {
   }
   
   input[type=text]:focus {
-    background-color: #fff;
+    background-color: #C3B7BC;
     border-bottom: 2px solid #5fbae9;
   }
   
   input[type=text]:placeholder {
-    color: #cccccc;
+    color: #0d0d0d;
   }
   
   
