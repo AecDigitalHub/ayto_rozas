@@ -82,7 +82,8 @@ import { RPTColectivosComponent } from './rptcolectivos/rptcolectivos.component'
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload' }),
+    // RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload' }),
+    RouterModule.forRoot(routes, { useHash: true }),
     HttpModule,
     MatToolbarModule,
     MatSidenavModule,
