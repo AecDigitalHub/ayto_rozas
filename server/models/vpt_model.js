@@ -20,7 +20,8 @@ Complementos: {
   TotCD: String,
   TotPuntosCD: String,
 },
-SalarioBase: String
+SalarioBase: String,
+CActividad: String,
 })
 
 const Valor = mongoose.model('Valor', ValorSchema);
