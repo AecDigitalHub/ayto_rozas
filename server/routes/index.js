@@ -8,9 +8,9 @@ const path = require('path');
 // router.use('/', express.static('app', { redirect: false }));
  
 // rewrite virtual urls to angular app to enable refreshing of internal pages
-router.get('*', function (req, res, next) {
-  res.sendFile(path.resolve('public/index.html'));
-});
+// router.get('*', function (req, res, next) {
+//   res.sendFile(path.resolve('public/index.html'));
+// });
 
 router.use('/api', apiRoutes, express.static('app', { redirect: false }));
 
