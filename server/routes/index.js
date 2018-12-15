@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const apiRoutes = require('./api/index.controller');
+const path = require('path');
 
 
 // // serve angular front end files from root path
