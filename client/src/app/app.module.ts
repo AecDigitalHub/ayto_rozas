@@ -49,7 +49,6 @@ import { AuthenticationService } from '../services/authentication.service';
 import { BubbleChartComponent } from './Charts/bubble-chart/bubble-chart.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { RPTColectivosComponent } from './rptcolectivos/rptcolectivos.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -105,7 +104,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     MatSnackBarModule,
     MatExpansionModule
   ],
-  providers: [DashboardService, AreaService, TestService, FileDatabase, EditService, AuthenticationService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [DashboardService, AreaService, TestService, FileDatabase, EditService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
