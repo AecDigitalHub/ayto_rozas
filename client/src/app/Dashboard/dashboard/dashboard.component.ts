@@ -61,9 +61,9 @@ export class DashboardComponent implements OnInit {
     this.dashboard.getSalaryDist().subscribe(SalaryDist => {
       this.SalaryDist = SalaryDist;
     });
-    this.dashboard.getSalaryCount().subscribe(SalaryCount => {
-      this.SalaryCount = SalaryCount;
-      this.SalaryAvg = (SalaryCount / this.EmployeesCount).toFixed(2);
-    });
+    // this.dashboard.getSalaryCount().subscribe(SalaryCount => {
+    //   this.SalaryCount = SalaryCount;
+    //   this.SalaryAvg = (SalaryCount / this.EmployeesCount).toFixed(2);
+    // });
   }
 }
