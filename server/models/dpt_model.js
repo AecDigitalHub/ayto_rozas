@@ -11,7 +11,7 @@ const DPTSchema = new Schema({
     DenomPuesto: String,
     OrgDirectivo: String,
     Concejalia: { type: String, enum: ['Seguridad y Orden Público - Seguridad Ciudadana', 'Conservación y Medio Ambiente','conc2', 'conc3...', ''], default: ''},
-    Area: { type: String, enum: ['Seguridad Ciudadana, Protección Civil-Samer, Movilidad y Distrito Norte', 'Servicios a la Ciudad','Area2', '...','', ``, `   `], default: ''},
+    Area: { type: String },
     CodArea: String,
     Unidad: { type: String, enum: ['Policía Local (Servicios Operativos)', 'Espacios a la Ciudad', 'Unidad2', 'Unidad3', '', ``, ` `], default: ''},
     Escala: { type: String, enum: ['Escala1', '(AE) Administración Especial','Escala2', 'Escala3', ''], default: ''},
