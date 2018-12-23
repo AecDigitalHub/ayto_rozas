@@ -125,5 +125,13 @@ getSalaryDist(area) {
   return SalaryDist;
 }));
 }
+addDPT(area, CodigoDPT) {
+  return this.http.post(`${BASEURL}/api/area/${area}/add/dpt`, {area, CodigoDPT }).pipe(map(res => {
+    if (res.json().CodigoDPT) {
+    const newDPT = res.json();
+       return newDPT;
+    }
+     }));
+   }
 }
 
