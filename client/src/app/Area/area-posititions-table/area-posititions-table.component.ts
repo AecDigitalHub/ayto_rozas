@@ -18,6 +18,8 @@ export class AreaPosititionsTableComponent implements OnInit {
 Area: String;
 AreaPositions: Observable<Array<object>>;
 searchText: any;
+CodigoDPT: any;
+area: any;
 
 constructor(public AreaPositionTable: AreaService, private route: ActivatedRoute, public snackBar: MatSnackBar) {}
 
